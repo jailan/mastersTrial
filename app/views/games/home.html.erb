@@ -1,0 +1,136 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+
+
+	
+
+<%= button_to "Flipping Cards", games_matching_path, {:class => "button fuschia", :id => "match"} %>
+<%= button_to "Maze", games_maze_path, {:class => "button fuschia", :id => "maze"} %>
+<%= button_to "Hangman", games_hangman_path, {:class => "button orange", :id => "hang"} %>
+<%= button_to "Shooting", games_shooting_path, {:class => "button orange", :id => "shoot"} %>
+<%= button_to "Puzzle", games_puzzle_path, {:class => "button fuschia", :id => "puzzle"} %>
+<%= button_to "Drag and Drop ", games_drag_path, {:class => "button fuschia", :id => "drag"} %>
+
+
+<style>
+@charset "UTF-8";
+body {
+
+
+    background-image: url("http://localhost:3000/assets/paper.jpg");
+    
+}
+h1 {
+	text-align: center;
+	font-family: Tahoma, Geneva, sans-serif;
+	color:#006;
+    font-size: 40px;
+}
+.button {
+
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 20px/100% Arial, Helvetica, sans-serif;
+    padding: 2em 3em 2em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:220px;
+}
+ #maze{
+ 	
+    left:200px;	
+    top:150px;
+    position:absolute;
+    }
+     #match{
+    left:570px;	
+    top:150px;
+    position:absolute;
+    }
+     #shoot{
+    left:400px;	
+    top:330px;
+    position:absolute;
+    }
+     #hang{
+    left:800px;	
+    top:330px;
+    position:absolute;
+    }
+     #puzzle{
+    left:900px;  
+    top:150px;
+    position:absolute;
+    }
+      #drag{
+    left:600px;  
+    top:460px;
+    position:absolute;
+    }
+.orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+
+}
+.fuschia {
+    
+    color: white;
+    border: solid 1px #52003D;
+    background: #b3005b;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#66004C));
+    background: -moz-linear-gradient(top,  #CC0099,  #66004C);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.fuschia:hover {
+    background: #52003D;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#A3007A));
+    background: -moz-linear-gradient(top,  #CC0099,  #A3007A);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.fuschia:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#A3007A));
+    background: -moz-linear-gradient(top,  #CC0099,  #A3007A);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+</style>
+<body>
+
+</body>
+</html>

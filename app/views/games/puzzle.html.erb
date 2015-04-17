@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+body{
+background-image: url("http://localhost:3000/assets/paper.jpg");
+
+    } 
+</style>
+    <script type="text/javascript" src="http://localhost:3000/assets/jigsawScript.js"></script>
+    <script type="text/javascript">
+
+        var game = null;
+        var imageID = "img1";
+        var totalRows = 3;
+        var totalColumns = 3;
+
+
+        function InitGame() {
+            LoadNewImage(imageID);
+        }
+
+        function LoadNewImage(imgID) {
+            imageID = imgID;
+            
+            SetRowsColumn();
+            
+            LoadGame();
+        }
+        
+        function LoadGame() {
+            var canvasID = "canJigsaw";
+
+            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+
+            game.initDrawing();
+
+        }
+
+        function ShowPreview() {
+            if (game) {
+
+                game.showPreview();
+
+            }
+        }
+
+        function SetRowsColumn() {
+            var r1 = document.getElementById("rd1");
+            var r2 = document.getElementById("rd2");
+            var r3 = document.getElementById("rd3");
+
+            if (r1.checked) {
+                totalRows = 2;
+                totalColumns = 2;
+
+            }
+            else if (r2.checked) {
+                totalRows = 3;
+                totalColumns = 3;
+
+            }
+            else if (r3.checked) {
+                totalRows = 4;
+                totalColumns = 4;
+
+            }
+
+
+        }
+
+    </script>
+</head>
+ <style>
+ canvas{
+    position: absolute;
+     left: 20px;
+
+ }
+ </style>
+<body onload="InitGame();" style="zoom:100%">
+
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <table cellpadding="0" cellspacing="0" width="100%" >
+                        <tr>
+                            <td>
+                                <span>
+                                    <input id="rd1" type="radio" value="Easy" name="r1" onclick="InitGame();" checked />
+                                    Easy
+                            </td>
+                            <td width="150px">
+                                <span >
+                                    <input type="button" value="Show Preview" onclick="ShowPreview()"/>
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <canvas id="canJigsaw" width="1230" height="450" style="border: black solid 2px;">
+          
+                    </canvas>
+                       </div>
+                   
+                   
+
+                             
+                        <img id="img1" width="130" height="130" ondblclick="LoadNewImage(this.id);" src="http://localhost:3000/assets/Images/ta2.jpg" style="position: absolute; top: 570px; left: 475px;"></img>
+
+                      <img id="img2" width="80" height="80" ondblclick="LoadNewImage(this.id);" src="http://localhost:3000/assets/Images/phone.png" style="position: absolute; top: 595px; left: 717px;"></img>
+
+                        <img id="img3" width="80" height="80" ondblclick="LoadNewImage(this.id);" src="http://localhost:3000/assets/Images/croc.png" style="position: absolute; top: 595px; left: 820px;"></img>
+
+                     <img id="img4" width="80" height="80" ondblclick="LoadNewImage(this.id);" src="http://localhost:3000/assets/Images/apple.png" style="position: absolute; top: 595px; left: 923px;"></img>
+
+                     <img width="130" height="130"src="http://localhost:3000/assets/Images/frame.png" style="position: absolute; top: 570px; left: 475px;" ondblclick="LoadNewImage('img1'); listen('ت');"></img>
+
+                       <img width="80" height="80"src="http://localhost:3000/assets/Images/arrow2.png" style="position: absolute; top: 600px; left: 620px;"></img>
+
+                     <img width="90" height="90"src="http://localhost:3000/assets/Images/frame.png" style="position: absolute; top: 590px; left: 717px;" ondblclick="LoadNewImage('img2'); listen('تِلِيفُون');"></img>
+                     <img width="90" height="90"src="http://localhost:3000/assets/Images/frame.png" style="position: absolute; top: 590px; left: 817px;" ondblclick="LoadNewImage('img3'); listen('تمساح');"></img>
+                     
+                     <img width="90" height="90"src="http://localhost:3000/assets/Images/frame.png" style="position: absolute; top: 590px; left: 917px;" ondblclick="LoadNewImage('img4'); listen('تُفّاحة');"></img>
+                    
+ 
+    </table>
+</body>
+</html>

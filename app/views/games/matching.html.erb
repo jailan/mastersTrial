@@ -1,0 +1,243 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flipping Cards Game</title>
+	<style>
+
+
+root { 
+    display: block;
+}
+
+body {
+	/*background-color: #fff;*/
+	background-image: url("http://localhost:3000/assets/paper.jpg");
+
+	margin: 20px 0px 0px 0px;
+
+}
+
+body article#game {
+	width: 600px;
+	padding-left: 90px;
+    /*margin-right: 60px;*/
+}
+
+
+#home{
+    position:absolute;
+    top:80px;
+    left:30px;
+}
+
+#board {
+	padding-top: 10px;
+    margin-left: 140px;
+    width: 570px;
+    height: 450px;
+	background-color: rgb(228, 223, 208);
+}
+
+.button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:95px;
+    /*float:right;*/
+  
+}
+.orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+.fuschia {
+    color: #b3005b;
+    border: solid 1px #52003D;
+    background: #b3005b;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#66004C));
+    background: -moz-linear-gradient(top,  #CC0099,  #66004C);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.fuschia:hover {
+    background: #52003D;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#A3007A));
+    background: -moz-linear-gradient(top,  #CC0099,  #A3007A);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.fuschia:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#A3007A));
+    background: -moz-linear-gradient(top,  #CC0099,  #A3007A);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+#score{
+   font-size: 25px;
+    color: #B8008A;
+
+    margin-left:970px;
+}
+
+
+
+#startGameButton
+{
+	
+	width: 170px;
+	padding-bottom: 10px;
+	text-align: center;
+	margin: 0.2em 0 0 300px;
+	font-size: 112.5%;
+	cursor: pointer;
+	color: #fff;
+	display: block;
+	/*background-color: #069; Baby Blue*/
+    /*background-color:#006;navy*/
+    background-color: #b3005b;
+    margin-left: 620px;
+	/*font-family: 'Cherry Swash', cursive;
+	font-weight: 400;
+	color: rgb(20, 166, 0);
+	padding-bottom: 10px;
+	display: block;*/
+}
+#flipAgainButton
+{
+    
+    width: 170px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 300px;
+    font-size: 112.5%;
+    cursor: pointer;
+    color: #fff;
+    display: block;
+    /*background-color: #069; Baby Blue*/
+    /*background-color:#006;navy*/
+    background-color: #b3005b;
+    margin-left: 620px;
+    /*font-family: 'Cherry Swash', cursive;
+    font-weight: 400;
+    color: rgb(20, 166, 0);
+    padding-bottom: 10px;
+    display: block;*/
+}
+
+.tile {
+	float:left;
+	width: 100px;
+	height: 100px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #cfcfcf;
+	cursor: pointer;
+	    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+.tile img {
+	display: block;
+	margin: 0 auto;
+	padding-top: 25px;
+	width: 50px;
+}
+
+.tileColor1 {
+	 background-color: rgb(176, 235, 23);
+}
+
+.tileColor2 {
+	 background-color: rgb(57, 171, 62);
+}
+
+.tileColor3 {
+	 background-color: rgb(130, 189, 46);
+}
+
+.tileColor4 {
+	 background-color: rgb(200, 217, 126);
+}
+
+
+.tileColor5 {
+	 background-color: #82bd2d;
+}
+
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<script src="http://localhost:3000/assets/tile.js"></script>
+	<script src="http://localhost:3000/assets/jquery.flip.js"></script>
+	<script src="http://localhost:3000/assets/matching.js"></script>
+
+
+
+<body>
+
+        <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+
+		<div id="score"></div>
+	<article id="game">
+		
+<section id="board">
+
+		</section>
+		
+		
+
+	
+	</article>
+	<a  href='#' class="button fuschia" id="startGameButton">New Game</a>
+	<a  href='#' class="button fuschia" id="flipAgainButton">Peek Cards</a>
+	
+	<audio id="audioEngine">
+	  <source src="mp3/applause.mp3" type="audio/mpeg">
+	Your browser does not support the audio element.
+	</audio>
+
+</body>
+</html>

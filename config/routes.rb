@@ -15,6 +15,37 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  get'games/home'
+  post'games/home'
+  post 'games/hangman'
+  get 'games/hangman'
+
+  get 'games/shooting'
+
+  get 'games/matching'
+
+  get 'games/maze'
+  post 'games/shooting'
+  get 'games/puzzle'
+  post 'games/puzzle'
+  post 'games/matching'
+
+  post 'games/maze'
+
+  get 'games/ool'
+
+    get 'games/drag'
+  post 'games/drag'
+   get 'games/page1'
+  post 'games/page1'
+     get 'games/page2'
+  post 'games/page2'
+     get 'games/page3'
+  post 'games/page3'
+    get 'games/monumentos'
+  post 'games/monumentos'
+  get '/ool/:data' => 'games#ool'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
