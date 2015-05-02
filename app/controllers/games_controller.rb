@@ -28,6 +28,10 @@ class GamesController < ApplicationController
       
   end
 
+      def writing
+      
+  end
+
   def ool
 
  $data = request.filtered_parameters

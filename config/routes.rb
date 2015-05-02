@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   post 'games/page3'
     get 'games/monumentos'
   post 'games/monumentos'
+      get 'games/writing'
+  post 'games/writing'
   get '/ool/:data' => 'games#ool'
   resources :users
   resources :account_activations, only: [:edit]

@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html manifest="letterpaint.manifest" lang="en-US">
+<head>
+  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <title>letterpaint</title>
+  <link rel="stylesheet" type="text/css" href="letterpaint.css">
+</head>
+<style>
+
+body, html {
+  width: 100%;
+  height: 100%;
+background-image: url("http://localhost:3000/assets/paper.jpg");
+
+  margin:0;
+  padding: 0;
+  
+}
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+}
+canvas {
+  background: rgba(255, 255, 255, 0.1);
+  display: block;
+  width: 100%;
+  height: 100%;
+
+}
+.gamedata {
+  display: none;
+
+}
+.cover {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  right: 10px;
+  bottom: 20px;
+  z-index: 2;
+  border-radius: 10px;
+  background: #ccc;
+  background: rgba(255,255,255,0.9);
+  transition: transform 0.5s;
+  -webkit-transform: translate(-120%,0);
+  transform: translate(-120%,0);
+} 
+
+.info #info {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.win #win {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.error #error {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.intro #intro {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.cover p {
+  text-align: center;
+  z-index: 2;
+  padding: 10px;
+  font-size: 6vw;
+}
+.navbutton {
+  position: absolute;
+  top: 50px;
+  display: block;
+  right: 5px;
+  line-height: 40px;
+  font-size: 30px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  /*background: #060;*/
+  background: #000066;/*navy*/
+  color: #fff;
+  border-radius: 50% 50%;
+  transition: 0.5s;
+}
+.navbuttonoff {
+  position: absolute;
+  top: 50px;
+  display: block;
+  right: 5px;
+  line-height: 40px;
+  font-size: 30px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background: #666;
+  color: #ccc;
+  border-radius: 50% 50%;
+  transition: 0.5s;
+}
+.actionbutton {
+  position: absolute;
+  bottom: 20px;
+  display: block;
+  right: 20px;
+  line-height: 60px;
+  font-size: 50px;
+  border: none;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  background: #060;
+  color: #fff;
+  border-radius: 50% 50%;
+  transition: 0.5s;
+}
+.inlinebutton {
+  float: right;
+  background: #060;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 20px;
+  font-size: 3vw;
+}
+#infos {
+  font-weight: bold;
+  right: 55px;
+}
+.actionbutton.undo {
+ /* background: #900; nebeety*/
+  background: #8FD600;/*limegween*/
+  color: #fff;
+  left: -100px;
+   bottom: 580px;
+  font-weight: bold;
+  text-shadow: 2px 2px #000;
+  box-shadow: 2px 2px 4px #333;
+}
+.play .undo {
+  position: absolute;  
+  left: 10px;
+ 
+}
+.check p::after {
+  content: '✔';
+  font-size: 20vw;
+  position: absolute;
+  top: 10vh;
+  z-index: 1;
+  left: 60%;
+  color: #060;
+  color: rgba(0,200,0,0.4);
+}
+
+.toppanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 30px;
+  margin: 0;
+  padding: 5px 10px;
+  background: #000;
+  background: linear-gradient(to top, #000, #333);
+  color: #fff;
+  font-weight: normal;
+}
+.infopanel h1 {
+  font-size: 5vw;
+  font-weight: normal;
+  padding: 0 10px;
+}
+.infopanel p {
+  font-size: 3vw;
+  text-align: left;
+  padding: 0 10px;
+}  
+@media all and (max-width: 320px) {
+  .infopanel h1 {
+    font-size: 8vw;
+    font-weight: normal;
+    padding: 0 10px;
+  }
+  .infopanel p {
+    font-size: 5vw;
+    text-align: left;
+    padding: 0 10px;
+  }  
+}
+
+</style>
+<body>
+  <div id="container" class="container">
+
+    <div id="chars" class="gamedata">أبتثجحخدذرزسشصضطظعغفقكلمنهوي</div>
+    
+
+    <canvas></canvas>
+
+    <h1 class="toppanel">letterpaint</h1>
+
+    <div id="intro" class="cover">
+      <p>Paint over the letter you see on the screen. Can you write it without going outside of it?</p>
+      <button class="actionbutton">➜</button>
+    </div>
+
+    <button id="sound" class="navbutton">♬</button>
+    <button id="infos" class="navbutton">i</button>
+
+    <div id="win" class="cover check">
+      <p>Good job!</p> 
+      <button class="actionbutton">➜</button>
+    </div>
+
+    <div id="error" class="cover">
+      <p>You painted outside the letter!</p> 
+      <button class="actionbutton">➜</button>
+    </div>
+
+    <div id="info" class="cover infopanel">
+      <h1>letterpaint</h1>
+      <p>version 1.0</p>
+      <p>Written by Chris Heilmann</p>
+      <button id="install" class="inlinebutton">Install this</button>
+    </div>
+
+    <button class="actionbutton undo" id="reload">!</button>
+  </div>
+
+  <!-- http://freesound.org/people/NenadSimic/sounds/150879/ -->
+  <audio src="http://localhost:3000/assets/win.ogg" id="winsound"></audio>
+  <!-- http://freesound.org/people/Autistic%20Lucario/sounds/142608/ -->
+  <audio src="http://localhost:3000/assets/error.ogg" id="errorsound"></audio>
+
+  <script src="http://localhost:3000/assets/letterpaint.js"></script>
+</body>
+</html>
