@@ -31,6 +31,8 @@ class GamesController < ApplicationController
       def writing
       
   end
+  def preschooler
+  end
 
   def ool
 

@@ -47,6 +47,9 @@ Rails.application.routes.draw do
   post 'games/monumentos'
       get 'games/writing'
   post 'games/writing'
+
+        get 'games/preschooler'
+  post 'games/preschooler'
   get '/ool/:data' => 'games#ool'
   resources :users
   resources :account_activations, only: [:edit]

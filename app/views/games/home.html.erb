@@ -15,6 +15,7 @@ and open the template in the editor.
 <%= button_to "Puzzle", games_puzzle_path, {:class => "button fuschia", :id => "puzzle"} %>
 <%= button_to "Drag and Drop ", games_drag_path, {:class => "button fuschia", :id => "drag"} %>
 <%= button_to "Letter Paint", games_writing_path, {:class => "button orange", :id => "paint"} %>
+<%= button_to "Animals", games_preschooler_path, {:class => "button orange", :id => "preschooler"} %>
 
 
 <style>
@@ -51,12 +52,12 @@ h1 {
 }
  #maze{
  	
-    left:200px;	
+    left:400px;	
     top:150px;
     position:absolute;
     }
      #match{
-    left:570px;	
+    left:800px;	
     top:150px;
     position:absolute;
     }
@@ -71,18 +72,24 @@ h1 {
     position:absolute;
     }
      #puzzle{
-    left:900px;  
-    top:150px;
+ left:400px;  
+    top:440px;
     position:absolute;
     }
       #drag{
-    left:600px;  
+    left:800px;  
     top:440px;
     position:absolute;
     }
 
       #paint{
-    left:600px;  
+    left:400px;  
+    top:560px;
+    position:absolute;
+    }
+
+          #preschooler{
+    left:800px;  
     top:560px;
     position:absolute;
     }
