@@ -9,7 +9,7 @@
 </head>
 <body  background="img/paper.jpg" onload="start();">
 
-	<div><img id="arrow"src="http://localhost:3000/assets/garrowd.png"  height="50" width="30" class="spacer"></div>    
+	<div><img id="arrow"src="/assets/garrowd.png"  height="50" width="30" class="spacer"></div>    
 	<div id="navContent"> 
 		<div id="game1"></div>
 		<div id="game2"></div>
@@ -19,7 +19,7 @@
 	<canvas width="420" height="445" id="mazecanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
 	<canvas width="420" height="445" id="questioncanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
 	<div id="score"></div>
-	<div> <img class="alarm"src="http://localhost:3000/assets/alarm.png"  height="40" width="40"><div id="time"></div> </div>
+	<div> <img class="alarm"src="/assets/alarm.png"  height="40" width="40"><div id="time"></div> </div>
  
 
     <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
@@ -31,7 +31,7 @@
 		position:relative;
 		margin: 0;
 		padding-top: 300;
-		background-image:url(http://localhost:3000/assets/paper.jpg);
+		background-image:url(/assets/paper.jpg);
 		font-family: Arial, Helvetica, sans-serif;
 	}
     #home{
@@ -302,7 +302,7 @@
             <%= $speech="كرة" %>
 
     		</script>
-    		<script src="http://localhost:3000/assets/jquery.js"></script>    <script type="text/javascript" charset="utf-8">
+    		<script src="/assets/jquery.js"></script>    <script type="text/javascript" charset="utf-8">
 
     		var canvas = document.getElementById("mazecanvas");
     		var context = canvas.getContext("2d");
@@ -431,7 +431,7 @@
                 //window.open(dataUrl, "toDataURL() image", "width=600, height=200");
             };
             //mazeImg.src = "maze.gif";
-            mazeImg.src = "http://localhost:3000/assets/maze3.png";
+            mazeImg.src = "/assets/maze3.png";
         }
         function drawRectangle(x, y, style) {
 
@@ -546,7 +546,7 @@
                              	else{
 
                              		setTimeout(function(){changeQuestion()},1000); }
-                             		//new Audio('http://localhost:3000/assets/boing.wav').play();
+                             		//new Audio('/assets/boing.wav').play();
                                      textq=answersBank[questionNumber][0];
                                      getSpeech(textq);
                               
@@ -663,7 +663,7 @@ function makeWhite(x, y, w, h) {
         var numberOfQuestions;
         var answersBank=new Array();
 
-        $.getJSON('http://localhost:3000/assets/activity.json', function(data) {
+        $.getJSON('/assets/activity.json', function(data) {
 
         	for(i=0;i<data.quizlist.length;i++){ 
         		questionBank[i]=new Array;
@@ -682,7 +682,7 @@ function makeWhite(x, y, w, h) {
 
 
        // fillDB();
- $.getJSON('http://localhost:3000/assets/activityanswers.json', function(data) {
+ $.getJSON('/assets/activityanswers.json', function(data) {
 
             for(i=0;i<data.answerslist.length;i++){ 
                 answersBank[i]=new Array;
@@ -716,7 +716,7 @@ function makeWhite(x, y, w, h) {
         	if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
 
 
-        	$(stage).append('<div  class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="pix"><img src="http://localhost:3000/assets/'+q1+'"></div><div id="2" class="pix"><img src="http://localhost:3000/assets/'+q2+'"></div><div id="3" class="pix"><img src="http://localhost:3000/assets/'+q3+'"></div>');
+        	$(stage).append('<div  class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="pix"><img src="/assets/'+q1+'"></div><div id="2" class="pix"><img src="/assets/'+q2+'"></div><div id="3" class="pix"><img src="/assets/'+q3+'"></div>');
          
         
            /*  $(document).ready(function(){
@@ -733,7 +733,7 @@ $('.pix').click(function(){
   if(this.id==rnd){
   var texti=answersBank[questionNumber][1];
    getSpeech(texti);
-   new Audio('http://localhost:3000/assets/applause.mp3').play();
+   new Audio('/assets/applause.mp3').play();
   	$(stage).append('<div class="feedback1">CORRECT</div>');
   	unMakeWhite();
   	answered = 1;
@@ -753,8 +753,8 @@ $('.pix').click(function(){
   //wrong answer    
   if(this.id!=rnd){
   	$(stage).append('<div class="feedback2">WRONG</div>');
-  	//new Audio('http://localhost:3000/assets/no.mp3').play();
-    new Audio('http://localhost:3000/assets/boing.wav').play();
+  	//new Audio('/assets/no.mp3').play();
+    new Audio('/assets/boing.wav').play();
 
   	subscore-=3 ;
   	setTimeout(function(){changeQuestion()},1000); 
