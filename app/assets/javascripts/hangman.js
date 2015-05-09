@@ -257,7 +257,7 @@ function showScore() {
     c.fillText('Won: ' + won + ' Lost: ' + lost, 100, 80);
 }
 function listen(){
-      textq=wordToGuess;
+      textq="Apple";
      getSpeech(textq);
 }
 
