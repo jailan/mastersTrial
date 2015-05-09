@@ -248,7 +248,7 @@ function jigsaw(canvasID, imageID, rows,columns) {
     function OnFinished() {
 
         var audioElement = document.createElement('audio');
-        audioElement.setAttribute('src', 'http://localhost:3000/assets/Audio/finish.mp3');
+        audioElement.setAttribute('src', '/assets/Audio/finish.mp3');
         audioElement.play();
 
         remove_width = BLOCK_WIDTH;
