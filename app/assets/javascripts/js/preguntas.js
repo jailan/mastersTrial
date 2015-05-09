@@ -6,7 +6,7 @@ function main(){
   	establecerPropiedades();
     //$('#listen2').css('display', 'inline-block').click(listen);
 
-	var bod=$("body").css("background-image","url('http://localhost:3000/assets/img/paper.jpg')");
+	var bod=$("body").css("background-image","url('/assets/img/paper.jpg')");
 	//var imoo = $("preguntas");
 		bod.css("background-repeat","no-repeat");
 	bod.css("background-position","center");
@@ -41,26 +41,26 @@ function dropPregunta(event,ui){
 	if(correcta==respuesta.attr("alt")){
 		contPregunta.children("img").remove();
 		contPregunta.addClass("resCorrecta");
-		contPregunta.append("<img src='http://localhost:3000/assets/img/correcta.png' class='ok' />" +"<img src='"+respuesta.attr("src")+"' class='rDrop' />" );
+		contPregunta.append("<img src='/assets/img/correcta.png' class='ok' />" +"<img src='"+respuesta.attr("src")+"' class='rDrop' />" );
 		numCorrectas++;
 	respuesta.draggable("destroy");
 	contPregunta.droppable("destroy");
 	comprobarFinal();
 	comprobarResultados();
 	respuesta.remove();
-	  new Audio('http://localhost:3000/assets/applause.mp3').play();
+	  new Audio('/assets/applause.mp3').play();
 
 	}else{
 		
 		numIncorrectas++;
         contPregunta.addClass("resIncorrecta");
-		contPregunta.append("<img src='http://localhost:3000/assets/img/incorrecta.png' class='inco' />"+"<img src='"+respuesta.attr("src")+" ' class='rDrop'/>");
+		contPregunta.append("<img src='/assets/img/incorrecta.png' class='inco' />"+"<img src='"+respuesta.attr("src")+" ' class='rDrop'/>");
 		contPregunta.children("img").remove();
-		contPregunta.append("<img src='http://localhost:3000/assets/img/incorrecta.png' class='inco' />");
+		contPregunta.append("<img src='/assets/img/incorrecta.png' class='inco' />");
 
 	comprobarFinal();
 	comprobarResultados();
-	  new Audio('http://localhost:3000/assets/boing.wav').play();
+	  new Audio('/assets/boing.wav').play();
 
 	}
 	

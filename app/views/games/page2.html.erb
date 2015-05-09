@@ -4,79 +4,174 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
         <link rel="shortcut icon"type="image/x-icon" href="favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="http://localhost:3000/assets/css/estilos.css">
-        <script type="text/javascript" src="http://localhost:3000/assets/js/jquery.js"></script>
-        <script type="text/javascript" src="http://localhost:3000/assets/js/preguntas.js"></script>
-        <script type="text/javascript" src="http://localhost:3000/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="http://localhost:3000/assets/stylesheets/css/smoothness/jquery-ui-1.9.2.custom.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/estilos.css">
+        <script type="text/javascript" src="/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="/assets/js/preguntas.js"></script>
+        <script type="text/javascript" src="/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/css/smoothness/jquery-ui-1.9.2.custom.min.css">
+        <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
 
 </head>
+<style>
+.button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:90px;
+}#home{
+    position:absolute;
+    top:60px;
+    left:1150px;
+}
+.orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+.js #listen2 {
+    background-image: url(/assets/images4/icons.png);
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+</style>
 
 <body>
     <section id="preguntas">
         <article class="preg" >
-            دب
+           <div id="listen2" onClick='listen("دُب");' style='width:40px; height: 40px;  position: absolute;
+    top: 60px;
+   left: 70px;'></div> دب
+
         </article>
 
         <article class="preg">
+             <div id="listen2" onClick='listen("تمساح");' style='width:40px; height: 40px;  position: absolute;
+    top: 60px;
+   left: 220px;'></div>
             تمساح
         </article>
 
         <article class="preg">
+            <div id="listen2" onClick='listen("تُفّاحة");' style='width:40px; height: 40px;  position: absolute;
+    top: 60px;
+   left: 370px;'></div>
             تفاحة
         </article>
 
         <article class="preg">
+             <div id="listen2" onClick='listen("كلب");' style='width:40px; height: 40px;  position: absolute;
+    top: 60px;
+   left: 520px;'></div>
             كلب
         </article>
 
         <article class="preg">
+            <div id="listen2" onClick='listen("فيل");' style='width:40px; height: 40px;  position: absolute;
+    top: 60px;
+   left: 670px;'></div>
             فيل
         </article>  
 
         <article class="preg">
+            <div id="listen2" onClick='listen("قِطّة");' style='width:40px; height: 40px;  position: absolute;
+    top: 60px;
+   left: 820px;'></div>
             قطة
         </article>
 
         <article class="preg">
+            <div id="listen2" onClick='listen("كُرسي");' style='width:40px; height: 40px;  position: absolute;
+    top: 210px;
+   left: 70px;'></div>
             كرسي
         </article>
 
         <article class="preg">
+             <div id="listen2" onClick='listen("عُصفور");' style='width:40px; height: 40px;  position: absolute;
+    top: 210px;
+   left: 220px;'></div>
             عصفور
         </article>
 
         <article class="preg">
+            <div id="listen2" onClick='listen("سَمَكة");' style='width:40px; height: 40px;  position: absolute;
+    top: 210px;
+   left: 370px;'></div>
             سمكة
         </article>
 
         <article class="preg">
+            <div id="listen2" onClick='listen("شَجَرَة");' style='width:40px; height: 40px;  position: absolute;
+    top: 210px;
+   left: 520px;'></div>
             شجرة
         </article>
 
         <article class="preg">
+            <div id="listen2" onClick='listen("قِرْد");' style='width:40px; height: 40px;  position: absolute;
+    top: 210px;
+   left: 670px;'></div>
             قرد
         </article>  
 
         <article class="preg">
+            <div id="listen2" onClick='listen("أَسَدْ");' style='width:40px; height: 40px;  position: absolute;
+    top: 210px;
+   left: 820px;'></div>
             أسد
         </article>
 
         <div id="respuestas"  class="prezo">
-            <img src="http://localhost:3000/assets/img/level1/0.jpg" class="respuesta" alt="فيل" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/1.jpg" class="respuesta" alt="قطة" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/2.jpg" class="respuesta" alt="كلب" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/3.jpg" class="respuesta" alt="دب" width="130" height="68"/>    
-            <img src="http://localhost:3000/assets/img/level1/4.jpg" class="respuesta" alt="تمساح" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/5.jpg" class="respuesta" alt="تفاحة" width="130" height="68"/>
+            <img src="/assets/img/level1/0.jpg" class="respuesta" alt="فيل" width="130" height="68"/>
+            <img src="/assets/img/level1/1.jpg" class="respuesta" alt="قطة" width="130" height="68"/>
+            <img src="/assets/img/level1/2.jpg" class="respuesta" alt="كلب" width="130" height="68"/>
+            <img src="/assets/img/level1/3.jpg" class="respuesta" alt="دب" width="130" height="68"/>    
+            <img src="/assets/img/level1/4.jpg" class="respuesta" alt="تمساح" width="130" height="68"/>
+            <img src="/assets/img/level1/5.jpg" class="respuesta" alt="تفاحة" width="130" height="68"/>
             
 
-            <img src="http://localhost:3000/assets/img/level1/6.jpg" class="respuesta" alt="قرد" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/7.jpg" class="respuesta" alt="أسد" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/8.jpg" class="respuesta" alt="عصفور" width="130" height="68"/> 
-            <img src="http://localhost:3000/assets/img/level1/9.jpg" class="respuesta" alt="سمكة" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/10.jpg" class="respuesta" alt="كرسي" width="130" height="68"/>
-            <img src="http://localhost:3000/assets/img/level1/11.jpg" class="respuesta" alt="شجرة" width="130" height="68"/>
+            <img src="/assets/img/level1/6.jpg" class="respuesta" alt="قرد" width="130" height="68"/>
+            <img src="/assets/img/level1/7.jpg" class="respuesta" alt="أسد" width="130" height="68"/>
+            <img src="/assets/img/level1/8.jpg" class="respuesta" alt="عصفور" width="130" height="68"/> 
+            <img src="/assets/img/level1/9.jpg" class="respuesta" alt="سمكة" width="130" height="68"/>
+            <img src="/assets/img/level1/10.jpg" class="respuesta" alt="كرسي" width="130" height="68"/>
+            <img src="/assets/img/level1/11.jpg" class="respuesta" alt="شجرة" width="130" height="68"/>
         </div>
         
     </section>
