@@ -43,7 +43,7 @@ class GamesController < ApplicationController
     end
    
 
-    "#{$speechy}".play("ar")
+    "#{$speechy}".play("en")
 
  
 
