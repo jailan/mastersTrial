@@ -46,7 +46,7 @@ function createTile(iCounter) {
 	curTile.setFrontColor("tileColor" + Math.floor((Math.random() * 5) + 1));
 	curTile.setStartAt(500 * Math.floor((Math.random() * 5) + 1));
 	curTile.setFlipMethod(flips[Math.floor((Math.random() * 3) + 1)]);
-	curTile.setBackContentImage("http://localhost:3000/assets/images2/" +(iRandomImage +1)+".jpg");
+	curTile.setBackContentImage("/assets/images2/" +(iRandomImage +1)+".jpg");
 	curTile.setImageNum(iRandomImage);
 	
 	return curTile;
@@ -169,7 +169,7 @@ function checkMatch() {
 			setTimeout("tiles[" + iTileBeingFlippedId + "].revertFlip()", 2000);
 			
 		
-			playAudio("http://localhost:3000/assets/boing.wav");
+			playAudio("/assets/boing.wav");
 			if(scory!=0)
 				scory-=1;
 
@@ -180,7 +180,7 @@ function checkMatch() {
             getSpeech(textq);
 			scory+=10;
 			//alert('array:'+flags[0]+""+flags[1]+""+flags[2]+""+flags[3]+""+flags[4]+""+flags[5]+""+flags[6]+""+flags[7]+""+flags[8]+""+flags[9]+""+flags[10]+""+flags[11]+""+flags[12]+""+flags[13]+""+flags[14]+""+flags[15]+""+flags[16]+""+flags[17]+""+flags[18]+""+flags[19]+"");
-			playAudio("http://localhost:3000/assets/applause.mp3");
+			playAudio("/assets/applause.mp3");
 
 		}
 		displayScory();
