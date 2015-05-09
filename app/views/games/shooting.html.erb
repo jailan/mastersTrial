@@ -8,7 +8,7 @@
 	<style>
 
 	body{
-		background-image: url("http://localhost:3000/assets/paper.jpg");
+		background-image: url("/assets/paper.jpg");
 
 	}
 	}#home{
@@ -29,7 +29,7 @@
 
 		/*background-color: 	#A30052;*/
 		border: 3px solid #99CC00;
-		background-image: url("http://localhost:3000/assets/images3/rainbow.png");
+		background-image: url("/assets/images3/rainbow.png");
 		background-size: 650px 400px;
 		background-repeat: no-repeat;
 
@@ -359,7 +359,7 @@ Explosion.prototype.checkHits = function(things) {
 		    	
 		    	if(correctShots==7){
 		    		done =1;
-		    		new Audio('http://localhost:3000/assets/applause.mp3').play();
+		    		new Audio('/assets/applause.mp3').play();
 		    	}
 		    //placeholders = placeholders +20;
 
@@ -369,7 +369,7 @@ Explosion.prototype.checkHits = function(things) {
 		}
 		else{
 			wrongShots++;
-			new Audio('http://localhost:3000/assets/no.mp3').play();
+			new Audio('/assets/no.mp3').play();
 		}
 		things[i].setHit();
 
@@ -411,24 +411,24 @@ Explosion.prototype.draw = function(ctx, explosion) {
 function loadSprite() {
 
 	sprite = new Image();
-	sprite.src = 'http://localhost:3000/assets/images3/trial134.png';
+	sprite.src = '/assets/images3/trial134.png';
 	sprite2 = new Image();
-	sprite2.src = 'http://localhost:3000/assets/images3/trial5.png';
+	sprite2.src = '/assets/images3/trial5.png';
 
 	target = new Image();
-	target.src = 'http://localhost:3000/assets/images3/target.gif';
+	target.src = '/assets/images3/target.gif';
 
 	explosion = new Image();
-	explosion.src = 'http://localhost:3000/assets/images3/explosion.png';
+	explosion.src = '/assets/images3/explosion.png';
 
 	targetLetter = new Image();
-	targetLetter.src = 'http://localhost:3000/assets/images3/letto3.png';
+	targetLetter.src = '/assets/images3/letto3.png';
 
 	frame = new Image();
-	frame.src = 'http://localhost:3000/assets/images3/frame3.png';
+	frame.src = '/assets/images3/frame3.png';
 
 	frames = new Image();
-	frames.src = 'http://localhost:3000/assets/images3/frames.png';
+	frames.src = '/assets/images3/frames.png';
 
 
 
@@ -523,7 +523,7 @@ function createThings() {
 
 		 ctx.clearRect(0, 0, canvas.width, canvas.height); 
 		 cvx.clearRect(0, 0, canvaso.width, canvaso.height); 
-		 var img = document.getElementById("http://localhost:3000/assets/paper.jpg");
+		 var img = document.getElementById("/assets/paper.jpg");
 		 ctx.fillStyle = img;
    // var pat = ctx.createPattern(img, direction);
    //ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -720,7 +720,7 @@ if(done>0){
 
 	function fire() {
 
-		explosions.push(new Explosion(targetX, targetY, new Audio('http://localhost:3000/assets/bang.wav')));
+		explosions.push(new Explosion(targetX, targetY, new Audio('/assets/bang.wav')));
 		shots++;
 
 	}
