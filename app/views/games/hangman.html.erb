@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <title>Hangman</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="http://localhost:3000/assets/hangman.css" rel="stylesheet" type="text/css">
+<link href="/assets/hangman.css" rel="stylesheet" type="text/css">
 
 <style>
 @charset "UTF-8";
 body {
 
-    background-image: url("http://localhost:3000/assets/paper.jpg");
+    background-image: url("/assets/paper.jpg");
     
 }
 h1 {
@@ -104,7 +104,7 @@ h1 {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-image: url(http://localhost:3000/assets/images4/icons.png);
+    background-image: url(/assets/images4/icons.png);
     background-position: 2px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -115,7 +115,7 @@ h1 {
   position: absolute;
     top: 300px;
    left: 665px;
-    background-image: url(http://localhost:3000/assets/images4/icons.png);
+    background-image: url(/assets/images4/icons.png);
     background-position: 2px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -144,7 +144,7 @@ h1 {
     top: -20px;
     right: -20px;
     z-index: 10;
-    background-image: url(http://localhost:3000/assets/images4/icons.png);
+    background-image: url(/assets/images4/icons.png);
     background-position: -48px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -296,10 +296,10 @@ h1 {
 }
 
 </style>
-<script src="http://localhost:3000/assets/modernizr.hangman.js"></script>
+<script src="/assets/modernizr.hangman.js"></script>
 <script>
 Modernizr.load({
-    load: ['http://localhost:3000/assets/jquery-2.1.3.min.js', 'http://localhost:3000/assets/hangman.js'],
+    load: ['/assets/jquery-2.1.3.min.js', '/assets/hangman.js'],
     complete: function() {
         init();
     }
@@ -324,8 +324,8 @@ Modernizr.load({
 <div id="word"></div>
 
 <div id="letters"></div>
-<img id="frame" src="http://localhost:3000/assets/images4/frame.png" height="79px" width="79px">
-<img id="hint" src="http://localhost:3000/assets/images4/9.jpg" height="70px" width="70px">
+<img id="frame" src="/assets/images4/frame.png" height="79px" width="79px">
+<img id="hint" src="/assets/images4/9.jpg" height="70px" width="70px">
 <div href="#" class="button orange" id="listen">Listen</div>
 
 <div id="listen2"></div>

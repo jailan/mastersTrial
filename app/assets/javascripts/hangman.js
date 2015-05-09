@@ -50,7 +50,7 @@ function getRandomImageHint() {
     // iRandomImage = hints[index];
 
     var imgName = index+".jpg";
-    $("#hint").attr("src","http://localhost:3000/assets/images4/"+imgName);
+    $("#hint").attr("src","/assets/images4/"+imgName);
     // tileImages2.splice(index,1);
     // return iRandomImage;
 }
@@ -119,7 +119,7 @@ function checkLetter(letter) {
       if (wordToGuess.charAt(i) == letter.toLowerCase()) {
       	placeholders[i] = letter;
       	wrongGuess = false;
-       new Audio('http://localhost:3000/assets/applause.mp3').play();
+       new Audio('/assets/applause.mp3').play();
       
       	correctGuesses++;
          // redraw the canvas only if all letters have been guessed
@@ -133,7 +133,7 @@ function checkLetter(letter) {
    // guesses and redraw the canvas
    if (wrongGuess) {
    	badGuesses++;
-   new Audio('http://localhost:3000/assets/boing.wav').play();
+   new Audio('/assets/boing.wav').play();
    	drawCanvas();
    }
    // convert the array to a string and display it again
