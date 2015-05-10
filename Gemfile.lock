@@ -189,6 +189,7 @@ GEM
       rdoc (~> 4.0)
     shellany (0.0.1)
     slop (3.6.0)
+    soundmanager-rails (1.0.1)
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -241,6 +242,7 @@ DEPENDENCIES
   rails_12factor (= 0.0.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  soundmanager-rails
   spring
   sqlite3
   tts!
