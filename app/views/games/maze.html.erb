@@ -21,6 +21,8 @@
 	<div id="score"></div>
 	<div> <img class="alarm"src="/assets/alarm.png"  height="40" width="40"><div id="time"></div> </div>
  
+ <%= link_to "DELETOOOOO", :controller => "games", :action => "delo" %>
+  <%= link_to "CREATOOOOOO", :controller => "games", :action => "creato" %>
 
     <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
 
@@ -549,7 +551,11 @@
                              		//new Audio('/assets/boing.wav').play();
                                      textq=answersBank[questionNumber][0];
                                      getSpeech(textq);
-                              
+                                    // getSpeechy(textq);
+                                   
+
+                                     new Audio("/assets/lalazy.mp3").play();
+                                    //playAudio("/assets/boing.wav");                              
 
 
                        // 2 means: the Question point is reached
@@ -580,6 +586,9 @@
             displayScore();
             return canMove;
         }
+
+
+
        /* function createTimer(seconds) {
             intervalVar = setInterval(function () {
                 makeWhite(mazeWidth, 0, canvas.width - mazeWidth, canvas.height);
@@ -615,6 +624,7 @@
                 seconds--;
             }, 1000);
 }*/
+
 
 function makeWhite(x, y, w, h) {
 
@@ -733,7 +743,8 @@ $('.pix').click(function(){
   if(this.id==rnd){
   var texti=answersBank[questionNumber][1];
    getSpeech(texti);
-   new Audio('/assets/applause.mp3').play();
+    //getSpeechy(texti);
+   new Audio('/assets/lalazy.mp3').play();
   	$(stage).append('<div class="feedback1">CORRECT</div>');
   	unMakeWhite();
   	answered = 1;
@@ -754,7 +765,7 @@ $('.pix').click(function(){
   if(this.id!=rnd){
   	$(stage).append('<div class="feedback2">WRONG</div>');
   	//new Audio('/assets/no.mp3').play();
-    new Audio('/assets/boing.wav').play();
+   // new Audio('/assets/boing.wav').play();
 
   	subscore-=3 ;
   	setTimeout(function(){changeQuestion()},1000); 
@@ -764,22 +775,6 @@ $('.pix').click(function(){
 }});
  
 }//display question
-
- function getSpeech(fieldClicked) {
-    $.ajax({
-        url: 'ool',
-        type: 'get',
-        contentType: 'application/json; charset=UTF-8',
-        accept: 'application/json',
-        dataType: 'json',
-        data: {speech:fieldClicked}
-    
-    });
-};
-
-
-
-
 
 
 function changeQuestion(){
@@ -812,16 +807,33 @@ function changeQuestion(){
 
 
     }
+
+     function getSpeech(fieldClicked) {
+    $.ajax({
+        url: 'ool',
+        type: 'get',
+        contentType: 'application/json; charset=UTF-8',
+        accept: 'application/json',
+        dataType: 'json',
+        data: {speech:fieldClicked}
+    
+    });
+};
+
+
     </script>
 
     <script src="soundmanager2.js"></script>
 <script>
+     function getSpeechy(fieldClicked) {
+
 soundManager.setup({
   url: '/assets/',
   onready: function() {
+
     var mySound = soundManager.createSound({
       id: 'aSound',
-      url: '/assets/applause.mp3'
+      url: '/assets/lalazy.mp3'
     });
     mySound.play();
   },
@@ -829,6 +841,12 @@ soundManager.setup({
     // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
   }
 });
+};
+
+
+
+
+
 </script>
 </body>
 </html>

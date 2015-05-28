@@ -41,13 +41,16 @@ class GamesController < ApplicationController
       $speechy = $data['speech']
 
     end
-   
+  File.delete(Rails.root + 'app/assets/images/lalazy.mp3')
 
-    "#{$speechy}".play("ar")
-
- 
+content = "data from the form"
+File.open(Rails.root + 'app/assets/images/lalazy.mp3', "w+") do |f|
+  f.write(content)
+end
+"#{$speechy}".to_file "ar", "app/assets/images/lalazy.mp3"
 
 end
+
 
 
 end

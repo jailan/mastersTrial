@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   get 'sessions/new'
-
+ post 'games/ool'
   get 'users/new'
+
 
   root             'static_pages#home'
   get 'help'    => 'static_pages#help'
@@ -34,6 +35,13 @@ Rails.application.routes.draw do
   post 'games/maze'
 
   get 'games/ool'
+    post 'games/delo'
+
+  get 'games/delo'
+
+      post 'games/creato'
+
+  get 'games/creato'
 
     get 'games/drag'
   post 'games/drag'
