@@ -260,7 +260,7 @@ function showScore() {
 function listen(){
       textq=wordToGuess;
      getSpeech(textq);
-     new Audio('/assets/lalazy.mp3').play();
+     new Audio('/assets/no.mp3').play();
 }
 
 // Reset stored scores to zero
