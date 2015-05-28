@@ -210,6 +210,7 @@ setTimeout(showScore, 2000);
     if (correctGuesses == wordLength) {
          textq=wordToGuess;
      getSpeech(textq);
+
     	letters.innerHTML = '';
         c.fillStyle='#24px Optimer, Arial, Helvetica, sans-serif';
         c.fillStyle = '#8F006B';
@@ -259,6 +260,7 @@ function showScore() {
 function listen(){
       textq=wordToGuess;
      getSpeech(textq);
+     new Audio('/assets/lalazy.mp3').play();
 }
 
 // Reset stored scores to zero
