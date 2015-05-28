@@ -20,9 +20,6 @@
 	<canvas width="420" height="445" id="questioncanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
 	<div id="score"></div>
 	<div> <img class="alarm"src="/assets/alarm.png"  height="40" width="40"><div id="time"></div> </div>
- 
- <%= link_to "DELETOOOOO", :controller => "games", :action => "delo" %>
-  <%= link_to "CREATOOOOOO", :controller => "games", :action => "creato" %>
 
     <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
 
@@ -554,7 +551,7 @@
                                     // getSpeechy(textq);
                                    
 
-                                     new Audio("/assets/lalazy.mp3").play();
+                                     new Audio('/assets/lalazy.mp3').play();
                                     //playAudio("/assets/boing.wav");                              
 
 
@@ -833,7 +830,7 @@ soundManager.setup({
 
     var mySound = soundManager.createSound({
       id: 'aSound',
-      url: '/assets/lalazy.mp3'
+      url: '/assets/images/lalazy.mp3'
     });
     mySound.play();
   },
