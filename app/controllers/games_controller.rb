@@ -39,7 +39,9 @@ class GamesController < ApplicationController
  $data = request.filtered_parameters
     if($data != nil)
       $speechy = $data['speech']
+
     end
+File.delete(Rails.root + 'app/assets/images/lalazy.mp3')
 File.open(Rails.root + 'app/assets/images/lalazy.mp3', "w+") do |f|
   f.write("")
 end
