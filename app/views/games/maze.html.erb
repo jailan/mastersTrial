@@ -548,10 +548,10 @@
                              		//new Audio('/assets/boing.wav').play();
                                      textq=answersBank[questionNumber][0];
                                      getSpeech(textq);
-                                     getSpeechy(textq);
+                                     //getSpeechy(textq);
                                    
 
-                                    // new Audio('/assets/no.mp3').play();
+                                    new Audio('/assets/lalazy.mp3').play();
                                     //playAudio("/assets/boing.wav");                              
 
 
@@ -740,8 +740,8 @@ $('.pix').click(function(){
   if(this.id==rnd){
   var texti=answersBank[questionNumber][1];
    getSpeech(texti);
-   getSpeechy(texti);
-   //new Audio('/assets/lalazy.mp3').play();
+  // getSpeechy(texti);
+   new Audio('/assets/lalazy.mp3').play();
   	$(stage).append('<div class="feedback1">CORRECT</div>');
   	unMakeWhite();
   	answered = 1;
