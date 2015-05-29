@@ -39,11 +39,8 @@ class GamesController < ApplicationController
  $data = request.filtered_parameters
     if($data != nil)
       $speechy = $data['speech']
-
     end
-
 "#{$speechy}".to_file "ar", "app/assets/images/lalazy.mp3"
-
 end
 
 
