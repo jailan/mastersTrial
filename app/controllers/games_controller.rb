@@ -41,7 +41,7 @@ class GamesController < ApplicationController
       $speechy = $data['speech']
 
     end
-File.open(Rails.root + 'app/assets/images/lalazy.mp3', "w") do |f|
+File.open(Rails.root + 'app/assets/images/lalazy.mp3', "w+") do |f|
   f.write("klsl")
 end
 "#{$speechy}".to_file "ar", "app/assets/images/lalazy.mp3"
