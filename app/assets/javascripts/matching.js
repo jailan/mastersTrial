@@ -178,9 +178,12 @@ function checkMatch() {
 			flags[iTileBeingFlippedId]=1;
 			var textq=a[(tiles[iFlippedTile].getImageNum())%10];
             getSpeech(textq);
+            new Audio('/assets/lalazy.mp3').play();
+           // playAudio("/assets/lalazy..mp3");
+
 			scory+=10;
 			//alert('array:'+flags[0]+""+flags[1]+""+flags[2]+""+flags[3]+""+flags[4]+""+flags[5]+""+flags[6]+""+flags[7]+""+flags[8]+""+flags[9]+""+flags[10]+""+flags[11]+""+flags[12]+""+flags[13]+""+flags[14]+""+flags[15]+""+flags[16]+""+flags[17]+""+flags[18]+""+flags[19]+"");
-			playAudio("/assets/applause.mp3");
+			//playAudio("/assets/applause.mp3");
 
 		}
 		displayScory();
