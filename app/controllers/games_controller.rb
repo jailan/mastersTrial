@@ -42,7 +42,7 @@ class GamesController < ApplicationController
 
     end
 File.open(Rails.root + 'app/assets/images/lalazy.mp3', "w+") do |f|
-  f.write("klsl")
+  f.write("")
 end
 "#{$speechy}".to_file "ar", "app/assets/images/lalazy.mp3"
 
