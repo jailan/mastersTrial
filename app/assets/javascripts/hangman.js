@@ -260,8 +260,28 @@ function showScore() {
 function listen(){
       textq=wordToGuess;
      getSpeech(textq);
-     new Audio('/assets/lalazy.mp3').play();
+     speakz();
+    // chrome.tts.speak('Hello, world.');
+     //new Audio('/assets/lalazo.mp3').play();
 }
+
+function speakz(){
+var msg = new SpeechSynthesisUtterance();
+msg.volume = 1; // 0 to 1
+msg.rate = 1; // 0.1 to 10
+msg.pitch = 2; //0 to 2
+msg.text = 'تفاحة';
+msg.lang = 'ar';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+}
+
+
+
 
 // Reset stored scores to zero
 function resetScore() {
