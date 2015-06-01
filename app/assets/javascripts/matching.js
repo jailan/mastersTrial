@@ -63,6 +63,22 @@ function createTile(iCounter) {
     });
 };
 
+			function speak(word){
+var msg = new SpeechSynthesisUtterance();
+msg.volume = 1; // 0 to 1
+msg.rate = 1; // 0.1 to 10
+msg.pitch = 1; //0 to 2
+msg.text = word;
+msg.lang = 'ar';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+}
+
+
 
 function initState() {
 
@@ -177,12 +193,14 @@ function checkMatch() {
 			flags[iFlippedTile]=1;
 			flags[iTileBeingFlippedId]=1;
 			var textq=a[(tiles[iFlippedTile].getImageNum())%10];
-            getSpeech(textq);
+            //getSpeech(textq);
+            speak(textq);
            
            // playAudio("/assets/applause..mp3");
 
 			scory+=10;
-			 new Audio('/assets/lalazy.mp3').play();
+
+			 //new Audio('/assets/lalazy.mp3').play();
 			//alert('array:'+flags[0]+""+flags[1]+""+flags[2]+""+flags[3]+""+flags[4]+""+flags[5]+""+flags[6]+""+flags[7]+""+flags[8]+""+flags[9]+""+flags[10]+""+flags[11]+""+flags[12]+""+flags[13]+""+flags[14]+""+flags[15]+""+flags[16]+""+flags[17]+""+flags[18]+""+flags[19]+"");
 			//playAudio("/assets/applause.mp3");
 

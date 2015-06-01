@@ -191,7 +191,8 @@ var errorcount=0;
         paintcolour[1],
         paintcolour[2]
       ) / letterpixels > 0.45) {
-         getSpeech(letter);
+        // getSpeech(letter);
+      speak(letter);
        setstate('win');
        if (sound) {
          winsound.play();
@@ -262,6 +263,21 @@ var errorcount=0;
       ev.preventDefault();
     }
   }
+
+  function speak(word){
+var msg = new SpeechSynthesisUtterance();
+msg.volume = 1; // 0 to 1
+msg.rate = 1; // 0.1 to 10
+msg.pitch = 1; //0 to 2
+msg.text = word;
+msg.lang = 'ar';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+}
  function getSpeech(fieldClicked) {
     $.ajax({
         url: 'ool',
