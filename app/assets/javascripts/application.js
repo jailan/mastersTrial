@@ -13,6 +13,7 @@
 //= require jquery
 //= require soundmanager2
 //= require jquery_ujs
+//= require phaser
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
