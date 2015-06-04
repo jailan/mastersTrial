@@ -1,0 +1,864 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title> Maze Game</title>
+	<link href="main.css"rel="stylesheet"type="text/css"/>
+	<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+</head>
+<body  background="/assets/paper.jpg" onload="start();">
+
+	<div><img id="arrow"src="/assets/garrowd.png"  height="50" width="30" class="spacer"></div>    
+	<div id="navContent"> 
+		<div id="game1"></div>
+		<div id="game2"></div>
+	</div>
+
+
+	<canvas width="420" height="445" id="mazecanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+	<canvas width="420" height="445" id="questioncanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+	<div id="score"></div>
+	<div> <img class="alarm"src="/assets/alarm.png"  height="40" width="40"><div id="time"></div> </div>
+
+    <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+
+  <style>
+	html, body {
+		width:100%;
+		height:100%;
+		position:relative;
+		margin: 0;
+		padding-top: 300;
+		background-image:url(/assets/paper.jpg);
+		font-family: Arial, Helvetica, sans-serif;
+	}
+    #home{
+    position:absolute;
+    top:0px;
+    left:80px;
+    margin-top: 80px;
+}
+
+
+    .button {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0,0,0,.3);
+        -webkit-border-radius: .5em; 
+        -moz-border-radius: .5em;
+        border-radius: .5em;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        float:right;
+        margin-right: 20px;
+        width:90px;
+
+
+
+    }
+    .orange {
+        color: #fef4e9;
+        border: solid 1px #da7c0c;
+        background: #f78d1d;
+        background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+        background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    }
+    .orange:hover {
+        background: #f47c20;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+        background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+    }
+    .orange:active {
+        color: #fcd3a5;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+        background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+    }
+
+
+    .button:hover {
+        text-decoration: none;
+    }
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+
+	#navContent{
+		position:relative;
+		margin-left:380px;	
+		width:800px;
+		height:200px;
+		padding-left: 100px;
+		/*right:-700px;*/
+		/*position:relative;*/
+		overflow:hidden;
+	}
+
+	#game1{
+		margin:auto;
+		width:400px;
+		height:400px;
+		right:0px;
+		position:absolute;
+
+	}
+
+	#game2{
+		margin:auto;	
+		width:400px;
+		height:400px;
+		right:-800px;
+		position:absolute;
+
+	} 
+
+
+
+	
+	.questionText{
+		font-size:40px;
+		color:#006;
+	}
+
+	.resultText{
+		width:900px;
+		font-size:20px;
+		color:#006;
+		margin-right:880px;
+	}
+
+	.pix{
+		width:86px;
+		height:86px;
+		margin:15px;
+		float:left;
+		border: 3px solid #B8008A;;
+		cursor:pointer;
+	}
+
+	.clicked{
+		border:#FC0 solid 4px;
+	}
+
+	.pix:hover{
+		border:#FC0 solid 4px;
+	}
+	.pix:active{
+		border:#FC0 solid 4px;
+	}
+	.pix:target{
+		border:#FC0 solid 4px;
+	}
+
+
+	#arrow{
+
+
+		margin-left:25px;
+        margin-top: 5px;
+
+	}
+
+	#topbar{
+		height:100px;
+		margin:auto;
+		margin-top:50px;
+		color:#FFF;
+		font-size:36px;
+		font-family:Arial, Helvetica, sans-serif;
+		width:800px;
+	}
+	
+	.spacer{
+		height:50px;
+		margin-top: -40px;
+	}
+	.feedback1{
+		width:120px;
+		padding:5px;
+		font-size:20px;
+		color:#FFFFCC;
+		background-color:#009900;
+		font-family:Arial, Helvetica, sans-serif;
+		text-align:center;
+		position:absolute;
+		top:170px;
+		right:180px;
+	}
+
+	.feedback2{
+		width:150px;
+		padding:5px;
+		font-size:20px;
+		color:#FFFFCC;
+		background-color:#CC3300;
+		font-family:Arial, Helvetica, sans-serif;
+		text-align:center;
+		position:absolute;
+		top:170px;
+		right:180px;
+	}
+	h1 {
+		text-align: center;
+		font-family: Tahoma, Geneva, sans-serif;
+		color:#006;
+		font-size: 40px;
+	}
+/*div {
+    font-size: 30px;
+    color: #006;
+    padding-top: 0px;
+    padding-left:980px;
+
+    }*/
+    div {
+    	
+    	margin-top:0px;
+    	margin-left:280px;
+
+
+    }
+
+    #time{
+    	font-size: 25px;
+    	
+    	padding-top: 10px;
+    	padding-left:445px;
+    }
+    .alarm{
+
+    	margin-left: 730px;
+    	margin-top: 150px;
+
+    }
+
+
+    #score{
+    	font-size: 25px;
+    	color: #B8008A;
+    	padding-top: 10px;
+    	padding-left:300px;
+    }
+    #questioncanvas { position:absolute; 
+    	top:120px;
+    	width: 400px;
+    	height:400px;
+    	margin: 0px auto;
+    	border: 1px solid #B8008A;
+    	margin-left:80px; }
+    	#mazecanvas { position:absolute; 
+    		top:120px;
+    		width: 400px;
+    		height:400px;
+    		margin: 0px auto;
+    		border: 1px solid #B8008A;
+    		margin-left:80px; }
+
+    		#canvas-wrap {position:relative;}
+
+
+
+    		
+    		
+    		@media screen and (max-width:800px) {
+    			#topbar{margin-left:1%;margin-right:1%;	width:98%;}
+    			#navContent{margin:1%;	width:98%;}
+    			#game1{margin:1%;	width:98%;}
+    			#game2{margin:1%;	width:98%;}
+
+
+    		}
+    		@media screen and (max-width:400px) {
+    			.pix{margin:1px;margin-top:10px;}
+
+
+    		}
+    		</style>
+
+    		
+
+
+
+
+    		<noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
+    		<script type='text/javascript' > 
+    		var ask = 0; 
+    		var answered =0;
+    		var first = 1;
+    		var score = 0;
+    		var subscore = 10;
+            var textq="كرة";
+            <%= $speech="كرة" %>
+
+    		</script>
+    		<script src="/assets/jquery.js"></script>    <script type="text/javascript" charset="utf-8">
+
+    		var canvas = document.getElementById("mazecanvas");
+    		var context = canvas.getContext("2d");
+    		var dataUrl = canvas.toDataURL();
+    		var myImage = canvas.toDataURL("image/png");  
+
+
+    		var cnv = document.getElementById("questioncanvas");
+    		var ctx = cnv.getContext("2d");
+    		var currRectX = 425;
+    		var currRectY = 3;
+    		var mazeWidth = 556;
+    		var mazeHeight = 556;
+    		var intervalVar;
+    		
+
+
+
+    		/* TIMER ************************************/
+    		var mins = 5;
+    		var secs = 0;
+    		var timer;
+    		function start(){
+    			timer = setInterval('update()', 1000);
+
+    		}
+    		function update(){
+
+    			var timeField = document.getElementById('time');
+    			timeField.style.color="green";
+    			if(secs == 0){
+    				if(mins == 0){
+    					timeField.style.color= "red";
+    					timeField.innerHTML = 'Time is up!';
+
+    					clearInterval(timer);
+    					//alert('Time is up');
+    					return;
+    				}
+    				
+    				secs = 59;
+    				mins--;}
+    				else{
+    					secs--;}
+    					
+    					
+    					if(mins <= 2){
+    						timeField.style.color= "orangered";
+    						timeField.innerHTML = mins + ':' + secs;
+    					}  else if (mins<= 1) {
+    						timeField.style.color= "red";
+    						timeField.innerHTML = mins + ':' + secs;
+    					}
+    					else{
+    						timeField.style.color="green";
+    						timeField.innerHTML =  mins + ':' + secs;
+    					} 
+    					if(secs <10){
+    						timeField.innerHTML =  mins + ':0' + secs;
+    					}
+
+
+    				}
+    				/* TIMER ************************************/
+    				function drawMazeAndRectangle(rectX, rectY) {
+    					makeWhite(0, 0, canvas.width, canvas.height);
+    					var mazeImg = new Image();
+    					mazeImg.onload = function () {
+    						context.drawImage(mazeImg, -40, -10);
+    						drawRectangle(rectX, rectY, "#000066");
+    						context.beginPath();
+    						context.arc(50, 434, 9, 0, 2 * Math.PI, false);
+    						context.closePath();
+                context.fillStyle = '#B8008A';//fushciac
+                context.fill();
+                context.beginPath();
+                context.arc(300, 36, 9, 0, 2 * Math.PI, false);
+                //context.arc(370, 36, 7, 0, 2 * Math.PI, false);
+                context.closePath();
+                context.fillStyle = '#FF9900';//orange
+                context.fill();
+                context.beginPath();
+                //context.arc(400, 80, 7, 0, 2 * Math.PI, false);
+
+                context.arc(400, 100, 9, 0, 2 * Math.PI, false);
+                //context.arc(400, 130, 7, 0, 2 * Math.PI, false);
+                context.closePath();
+
+                context.fill();
+                context.beginPath();
+                //context.arc(370, 160, 7, 0, 2 * Math.PI, false);
+                context.arc(300, 160, 9, 0, 2 * Math.PI, false);
+                //context.arc(100, 160, 10, 0, 2 * Math.PI, false);
+                context.closePath();
+
+                context.fill();
+                context.beginPath();
+               /// context.arc(100, 138, 10, 0, 2 * Math.PI, false);
+
+               context.closePath();
+
+               context.fill();
+               context.beginPath();
+               
+               context.arc(120, 210, 9, 0, 2 * Math.PI, false);
+               context.closePath();
+
+               context.fill();
+               context.beginPath();
+               context.arc(195, 260, 9, 0, 2 * Math.PI, false);
+               context.closePath();
+               
+               context.fill();
+               context.beginPath();
+               context.arc(105, 310, 9, 0, 2 * Math.PI, false);
+               context.closePath();
+
+               context.fill();
+               context.beginPath();
+               context.arc(24, 383, 9, 0, 2 * Math.PI, false);
+               context.closePath();
+
+               context.fill();
+               // new Audio('background-music.wav').play();
+               // myImage = canvas.toDataURL("image/png"); 
+                //window.open(dataUrl, "toDataURL() image", "width=600, height=200");
+            };
+            //mazeImg.src = "maze.gif";
+            mazeImg.src = "/assets/maze3.png";
+        }
+        function drawRectangle(x, y, style) {
+
+        	makeWhite(currRectX, currRectY, 17, 17);
+        	currRectX = x;
+        	currRectY = y;
+        	context.beginPath();
+        	context.rect(x, y, 17, 17);
+        	context.closePath();
+        	context.fillStyle = style;
+        	context.fill();
+
+        }
+        function moveRect(e) {
+        	var newX;
+        	var newY;
+        	var movingAllowed;
+        	e = e || window.event;
+        	switch (e.keyCode) {
+                case 38:   // arrow up key
+                case 87: // W key
+                newX = currRectX;
+                newY = currRectY - 5;
+                break;
+                case 37: // arrow left key
+                case 65: // A key
+                newX = currRectX - 5;
+                newY = currRectY;
+                break;
+                case 40: // arrow down key
+                case 83: // S key
+                newX = currRectX;
+                newY = currRectY + 5;
+                break;
+                case 39: // arrow right key
+                case 68: // D key
+                newX = currRectX + 5;
+                newY = currRectY;
+                break;
+            }
+
+            movingAllowed = canMoveTo(newX, newY);
+            if (movingAllowed === 1) {      // 1 means 'the rectangle can move'
+            	drawRectangle(newX, newY, "#000066");
+            currRectX = newX;
+            currRectY = newY;
+        }
+            else if (movingAllowed === 2 ) { // 2 means 'the rectangle reached the end point'
+            	clearInterval(intervalVar);
+            makeWhite(0, 0, canvas.width, canvas.height);
+            context.font = "40px Arial";
+            context.fillStyle = "#B8008A";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+
+            context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+            //displayFinalSlide();
+
+            window.removeEventListener("keydown", moveRect, true);
+            clearTimeout(timer);
+        }
+
+               else if (movingAllowed === 3) { // 2 means 'the rectangle reached the question orange point'
+               	clearInterval(intervalVar);
+               makeWhito(0, 0, canvas.width, canvas.height);
+               ctx.font = "200px Arial";
+               ctx.fillStyle = "#B8008A";
+               ctx.textAlign = "center";
+               ctx.textBaseline = "middle";
+               var str1 = "انتي جاية اشتغلي ايه ?";
+               ctx.fillText("?", canvas.width / 2, canvas.height / 2);
+
+
+               myImage = canvas.toDataURL("image/png"); 
+
+                /*makeWhite(0, 0, canvas.width, canvas.height);
+                context.font = "200px Arial";
+                context.fillStyle = "#B8008A";
+                context.textAlign = "center";
+                context.textBaseline = "middle";
+                context.fillText("?", canvas.width / 2, canvas.height / 2);*/
+                window.removeEventListener("keydown", moveRect, true);
+            }
+        }
+        function canMoveTo(destX, destY) {
+       // myImage = canvas.toDataURL("image/png"); 
+       var imgData = context.getImageData(destX, destY, 17, 17);
+       var data = imgData.data;
+            var canMove = 1; // 1 means: the rectangle can move
+            if (destX >= 0 && destX <= mazeWidth - 15 && destY >= 0 && destY <= mazeHeight - 15) {
+            	for (var i = 0; i < 4 * 17* 17; i += 4) {
+                    if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0) { // black
+                        canMove = 0; // 0 means: the rectangle can't move
+                        break;
+                    }
+                    /*else if (data[i] === 0 && data[i + 1] === 255 && data[i + 2] === 0) { // #00FF00
+                        canMove = 2; // 2 means: the end point is reached
+                        break;*/
+                        else if (data[i] === 184 && data[i + 1] === 0 && data[i + 2] === 138){ // #B8008A fuschiac
+                        canMove = 2; // 2 means: the end point is reached
+                        break;
+                    }
+                              else if (data[i] === 255 && data[i + 1] === 153 && data[i + 2] === 0 && answered === 0 && ask === 0){ // #FF9900 orange
+                              //  alert('REACHED ORANGE');
+                             // myImage = canvas.toDataURL("image/png"); 
+
+                             canMove = 3;
+                             ask = 1;
+                             if (first === 1){
+                             	displayQuestion();
+                             	first =0;}
+                             	else{
+
+                             		setTimeout(function(){changeQuestion()},1000); }
+                             		 //new Audio('/assets/boing.wav').play();
+                                     textq=answersBank[questionNumber][0];
+                                     //getSpeech(textq);
+                                     //getSpeechy(textq);
+                                     speak(textq);
+                                     //new Audio('/assets/lalazy.mp3').play();
+                                     //playAudio("/assets/boing.wav");                              
+
+
+                       // 2 means: the Question point is reached
+                       break;
+                   }
+                   else if (data[i] === 255 && data[i + 1] === 153 && data[i + 2] === 0 && answered === 1 && ask ===1){ 
+                     // #FF9900 orange
+
+                     canMove = 1;
+
+                     ask = 0;
+                        // 2 means: the Question point is reached
+                        break;
+                    }
+
+
+                }
+            }
+            else {
+
+            	canMove = 0;
+            }
+            if(canMove === 0 && answered === 1){
+            	answered =0;
+            }
+
+
+            displayScore();
+            return canMove;
+        }
+
+
+
+       /* function createTimer(seconds) {
+            intervalVar = setInterval(function () {
+                makeWhite(mazeWidth, 0, canvas.width - mazeWidth, canvas.height);
+                if (seconds === 0) {
+                    clearInterval(intervalVar);
+                    window.removeEventListener("keydown", moveRect, true);
+                    makeWhite(0, 0, canvas.width, canvas.height);
+                    context.font = "40px Arial";
+                    context.fillStyle = "red";
+                    context.textAlign = "center";
+                    context.textBaseline = "middle";
+                    context.fillText("Time's up!", canvas.width / 2, canvas.height / 2);
+                    return;
+                }
+                context.font = "20px Arial";
+                if (seconds <= 10 && seconds > 5) {
+                    context.fillStyle = "orangered";
+                }
+                else if (seconds <= 5) {
+                    context.fillStyle = "red";
+                }
+                else {
+                    context.fillStyle = "green";
+                }
+                context.textAlign = "center";
+                context.textBaseline = "middle";
+                var minutes = Math.floor(seconds / 60);
+                var secondsToShow = (seconds - minutes * 60).toString();
+                if (secondsToShow.length === 1) {
+                    secondsToShow = "0" + secondsToShow; // if the number of seconds is '5' for example, make sure that it is shown as '05'
+                }
+                context.fillText(minutes.toString() + ":" + secondsToShow, mazeWidth-390, canvas.height / 2 -210);
+                seconds--;
+            }, 1000);
+}*/
+
+
+function makeWhite(x, y, w, h) {
+
+	context.beginPath();
+	context.rect(x, y, w, h);
+	context.closePath();
+	context.fillStyle ='rgba(255, 255, 255,0.5)';
+	context.fill(); }
+	function makeWhito(x, y, w, h) {
+
+		ctx.beginPath();
+		ctx.rect(x, y, w, h);
+		ctx.closePath();
+		ctx.fillStyle ='rgba(255, 255, 255,0.5)';
+		ctx.fill(); 
+	}
+	var imo = new Image();
+
+
+	function unMakeWhite() {
+
+		imo.src = myImage; 
+		ctx.clearRect ( 0, 0, canvas.width, canvas.height );
+        //context.drawImage(imo,0,0);
+        //drawMazeAndRectangle(currRectX, currRectY);
+
+    }
+
+
+
+
+
+    drawMazeAndRectangle(242, 7);
+    
+    window.addEventListener("keydown", moveRect, true);
+        //createTimer(120*10); // 20 minutes
+
+        /******************* SECOND HAAAALFFFFFFF***************/
+
+
+        var questionNumber=0;
+        var questionBank=new Array();
+        var stage="#game1";
+        var stage2=new Object;
+        var questionLock=false;
+        var numberOfQuestions;
+        var answersBank=new Array();
+
+        $.getJSON('/assets/activity.json', function(data) {
+
+        	for(i=0;i<data.quizlist.length;i++){ 
+        		questionBank[i]=new Array;
+        		questionBank[i][0]=data.quizlist[i].question;
+        		questionBank[i][1]=data.quizlist[i].option1;
+        		questionBank[i][2]=data.quizlist[i].option2;
+        		questionBank[i][3]=data.quizlist[i].option3;
+        	}
+        	numberOfQuestions=questionBank.length; 
+
+        	if (ask > 0){
+
+        		displayQuestion();}
+
+        })//gtjson
+
+
+       // fillDB();
+ $.getJSON('/assets/activityanswers.json', function(data) {
+
+            for(i=0;i<data.answerslist.length;i++){ 
+                answersBank[i]=new Array;
+                answersBank[i][0]=data.answerslist[i].question;
+                answersBank[i][1]=data.answerslist[i].option1;
+                answersBank[i][2]=data.answerslist[i].option2;
+                answersBank[i][3]=data.answerslist[i].option3;
+            }
+            //numberOfQuestions=questionBank.length; 
+
+            //if (ask > 0){
+
+                //displayQuestion();}
+
+        })//gtjson
+
+
+        fillDB();
+
+
+        function displayQuestion(){
+        	var rnd=Math.random()*3;
+        	rnd=Math.ceil(rnd);
+        	var q1;
+        	var q2;
+        	var q3;
+
+
+        	if(rnd==1){q1=questionBank[questionNumber][1];q2=questionBank[questionNumber][2];q3=questionBank[questionNumber][3];}
+        	if(rnd==2){q2=questionBank[questionNumber][1];q3=questionBank[questionNumber][2];q1=questionBank[questionNumber][3];}
+        	if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
+
+
+        	$(stage).append('<div  class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="pix"><img src="/assets/'+q1+'"></div><div id="2" class="pix"><img src="/assets/'+q2+'"></div><div id="3" class="pix"><img src="/assets/'+q3+'"></div>');
+         
+        
+           /*  $(document).ready(function(){
+      $('button').click(function(){
+           $(this).addClass('clicked');
+      });
+}); */
+
+$('.pix').click(function(){
+	$(this).addClass('clicked');
+	
+	if(questionLock==false){questionLock=true;    
+  //correct answer
+  if(this.id==rnd){
+  var texti=answersBank[questionNumber][1];
+   //getSpeech(texti);
+   speak(texti);
+  // getSpeechy(texti);
+  // new Audio('/assets/lalazy.mp3').play();
+  	$(stage).append('<div class="feedback1">CORRECT</div>');
+  	unMakeWhite();
+  	answered = 1;
+  	
+  	score=score+subscore;
+  	subscore=10;
+
+
+ 
+  	window.addEventListener("keydown", moveRect, true);
+
+  	movingAllowed =0;
+  	questionNumber++;
+ 
+
+  }
+  //wrong answer    
+  if(this.id!=rnd){
+  	$(stage).append('<div class="feedback2">WRONG</div>');
+  	//new Audio('/assets/no.mp3').play();
+    new Audio('/assets/boing.wav').play();
+
+  	subscore-=3 ;
+  	setTimeout(function(){changeQuestion()},1000); 
+
+  }
+ // setTimeout(function(){changeQuestion()},1000); 
+}});
+ 
+}//display question
+
+
+function changeQuestion(){
+
+
+	if(stage=="#game1"){stage2="#game1";stage="#game2";}
+	else{stage2="#game2";stage="#game1";}
+	
+	if(questionNumber<numberOfQuestions){displayQuestion();}else{displayFinalSlide();}
+	
+	$(stage2).animate({"right": "+=800px"},"slow", function() {$(stage2).css('right','-800px');$(stage2).empty();});
+	$(stage).animate({"right": "+=800px"},"slow", function() {questionLock=false;});
+    }//change question
+
+    
+
+
+    
+    function displayFinalSlide(){
+
+        //$(stage).append('<div class="questionText">You can Go!<br><br>Total questions: '+numberOfQuestions+'<br>Correct answers: '+score+'</div>');
+        $(stage).append('<div id="score" class="resultText">You can Go!<br><br>Score: '+score+'/'+numberOfQuestions);
+
+        
+    }//display final slide
+
+    function displayScore(){
+    	var scoreField = document.getElementById('score');
+    	scoreField.innerHTML = 'Score: '+score+' / '+'70';
+
+
+    }
+
+     function getSpeech(fieldClicked) {
+    $.ajax({
+        url: 'ool',
+        type: 'get',
+        contentType: 'application/json; charset=UTF-8',
+        accept: 'application/json',
+        dataType: 'json',
+        data: {speech:fieldClicked}
+    
+    });
+};
+
+function speak(word){
+var msg = new SpeechSynthesisUtterance();
+msg.volume = 1; // 0 to 1
+msg.rate = 1; // 0.1 to 10
+msg.pitch = 1; //0 to 2
+msg.text = word;
+msg.lang = 'ar';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+}
+
+
+    </script>
+
+    <script src="soundmanager2.js"></script>
+<script>
+     function getSpeechy(fieldClicked) {
+
+soundManager.setup({
+  url: '/assets/',
+  onready: function() {
+
+    var mySound = soundManager.createSound({
+      id: 'aSound',
+      url: '/assets/lalazy.mp3'
+    });
+    mySound.play();
+  },
+  ontimeout: function() {
+    // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
+  }
+});
+};
+
+
+
+
+
+</script>
+</body>
+</html>
