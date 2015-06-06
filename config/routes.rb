@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   post 'games/shooting'
   get 'games/puzzle'
   post 'games/puzzle'
+  get 'games/collect'
+  post 'games/collect'
   post 'games/matching'
 
   post 'games/maze'

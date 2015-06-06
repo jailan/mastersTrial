@@ -33,6 +33,8 @@ class GamesController < ApplicationController
   end
   def preschooler
   end
+  def collect
+  end
 
   def ool
 
