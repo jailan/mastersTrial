@@ -3,14 +3,51 @@
 <head> 
 	<meta charset="UTF-8" />
     <title>Phaser - Making your first game, part 9</title>
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+  <div>
+    <div id="dialogboxhead"></div>
+    <div id="dialogboxbody"></div>
+    <div id="dialogboxfoot"></div>
+  </div>
+</div>
+
+<button onclick="Alert.render('And you also smell very nice.')">Custom Alert 2</button>
+<%= content_tag :div, class: "temp_information", data: {temp: $game} do %>
+<% end %>
 	<script type="text/javascript" src="/assets/pjs/phaser.min.js"></script>
     <style type="text/css">
         body {
             margin: 0;
         }
+
+#dialogoverlay{
+    display: none;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #FFF;
+    width: 100%;
+    z-index: 10;
+}
+#dialogbox{
+    display: none;
+    position: fixed;
+    background: #000;
+    border-radius:7px; 
+    width:550px;
+    z-index: 10;
+}
+#dialogbox > div{ background:#FFF; margin:8px; }
+#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
+#dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
+#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+
     </style>
 </head>
 <body>
+
 
 <script type="text/javascript">
 
@@ -160,7 +197,7 @@ function create() {
     star.scale.setTo(0.9,0.9);
     //////////////////// 2ND LEVEL
    star = stars.create(520, 365, 'alef');
-   star.text="أ";
+   star.text="ا";
    star =stars.create(460, 375, 'dal');
    star.text="د";
    star =stars.create(400, 370, 'thal');
@@ -239,6 +276,7 @@ function create() {
 }
 
 function update() {
+      
 
     //  Collide the player and the stars with the platforms
     game.physics.arcade.collide(player, platforms);
@@ -248,16 +286,18 @@ function update() {
     game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
     //  Reset the players velocity (movement)
+  
     player.body.velocity.x = 0;
+  
 
-    if (cursors.left.isDown)
+    if (cursors.left.isDown && disable === 0)
     {
         //  Move to the left
         player.body.velocity.x = -150;
 
         player.animations.play('left');
     }
-    else if (cursors.right.isDown)
+    else if (cursors.right.isDown && disable === 0)
     {
         //  Move to the right
         player.body.velocity.x = 150;
@@ -273,12 +313,15 @@ function update() {
     }
     
     //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down)
+    if (cursors.up.isDown && player.body.touching.down && disable === 0)
     {
         player.body.velocity.y = -350;
     }
 
+
 }
+
+
 
       function speak(word){
 var msg = new SpeechSynthesisUtterance();
@@ -294,12 +337,73 @@ msg.onend = function(e) {
 
 speechSynthesis.speak(msg);
 }
+var disable = 0;
+
+function CustomAlert(){
+    this.render = function(dialog){
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        var dialogoverlay = document.getElementById('dialogoverlay');
+        var dialogbox = document.getElementById('dialogbox');
+        dialogoverlay.style.display = "block";
+        dialogoverlay.style.height = winH+"px";
+        dialogbox.style.left = (winW/2) - (550 * .5)+"px";
+        dialogbox.style.top = "100px";
+        dialogbox.style.display = "block";
+        disable=1;
+        document.getElementById('dialogboxhead').innerHTML = "Are You Ready ? :D";
+        document.getElementById('dialogboxbody').innerHTML = dialog;
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+       
+    }
+    this.ok = function(){
+        document.getElementById('dialogbox').style.display = "none";
+        document.getElementById('dialogoverlay').style.display = "none";
+        disable=0;
+        var game= $('.temp_information').data('temp'); 
+        var link='balala';
+        switch (game) {
+    case 0:
+        day = 'games_hangman_path';
+        break;
+    case 1:
+        day = 'games_shooting_path';
+        break;
+    case 2:
+        day = 'games_matching_path';
+        break;
+    case 3:
+        day = 'games_maze_path';
+        break;
+    case 4:
+        day = 'games_writing_path';
+        break;
+    case 5:
+        day = 'games_puzzle_path';
+        break;
+    case 6:
+        day = 'games_drag_path';
+        break;
+    case 7:
+        day = 'games_preschooler_path';
+        break;                   
+}
+     
+       window.open(day, "_self")
+        //$.get('hangman', function(data) {});
+
+    }
+}
+var Alert = new CustomAlert();
 
 function collectStar (player, star) {
     
     // Removes the star from the screen
     star.kill();
     speak(star.text);
+    
+    Alert.render('Welcome to '+star.text+ ' Kingdom, Hero !')
+ 
 
     //  Add and update the score
     score += 10;

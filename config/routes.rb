@@ -58,9 +58,19 @@ Rails.application.routes.draw do
       get 'games/writing'
   post 'games/writing'
 
-        get 'games/preschooler'
+  get 'games/preschooler'
   post 'games/preschooler'
   get '/ool/:data' => 'games#ool'
+  get 'games/games_hangman_path' => 'games#hanglink'
+  get 'games/games_matching_path' => 'games#matchlink'
+  get 'games/games_shooting_path' => 'games#shootlink'
+  get 'games/games_maze_path' => 'games#mazelink'
+  get 'games/games_writing_path' => 'games#paintlink'
+  get 'games/games_puzzle_path' => 'games#puzzlelink'
+  get 'games/games_drag_path' => 'games#draglink'
+  get 'games/games_preschooler_path' => 'games#preschoolerlink'
+
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

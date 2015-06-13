@@ -8,14 +8,17 @@ and open the template in the editor.
 
 	
 
-<%= button_to "Flipping Cards", games_matching_path, {:class => "button fuschia", :id => "match"} %>
-<%= button_to "Maze", games_maze_path, {:class => "button fuschia", :id => "maze"} %>
-<%= button_to "Hangman", games_hangman_path, {:class => "button orange", :id => "hang"} %>
-<%= button_to "Shooting", games_shooting_path, {:class => "button orange", :id => "shoot"} %>
-<%= button_to "Puzzle", games_puzzle_path, {:class => "button fuschia", :id => "puzzle"} %>
-<%= button_to "Drag and Drop ", games_drag_path, {:class => "button fuschia", :id => "drag"} %>
-<%= button_to "Letter Paint", games_writing_path, {:class => "button orange", :id => "paint"} %>
-<%= button_to "Animals", games_preschooler_path, {:class => "button orange", :id => "preschooler"} %>
+<%= button_to "Flipping Cards", games_collect_path, {:class => "button fuschia", :id => "match"} %>
+<%= button_to "Maze", games_collect_path, {:class => "button fuschia", :id => "maze"} %>
+<%= button_to "Hangman", games_collect_path, {:class => "button orange", :id => "hang"} %>
+<%= button_to "Shooting", games_collect_path, {:class => "button orange", :id => "shoot"} %>
+<%= button_to "Puzzle", games_collect_path, {:class => "button fuschia", :id => "puzzle"} %>
+<%= button_to "Drag and Drop ", games_collect_path, {:class => "button fuschia", :id => "drag"} %>
+<%= button_to "Letter Paint", games_collect_path, {:class => "button orange", :id => "paint"} %>
+<%= button_to "Animals", games_collect_path, {:class => "button orange", :id => "preschooler"} %>
+
+<%= content_tag :div, class: "temp_information", data: {temp: $game} do %>
+<% end %>
 
 
 <style>
@@ -144,7 +147,69 @@ h1 {
     top: 1px;
 }
 </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+
 <body>
+<script>
+
+     function changeLevel(fieldClicked) {
+    $.ajax({
+        url: 'home',
+        type: 'get',
+        contentType: 'application/json; charset=UTF-8',
+        accept: 'application/json',
+        dataType: 'json',
+        data: {level:fieldClicked}
+    
+    });
+};
+
+/*var count = 0;
+$(document).ready(function() {
+
+
+  $("#update").click(function() {
+    //count= $('.temp_information').data('temp');
+    //$('.temp_information').data('temp') =1;
+    count= $('.temp_information').data('temp');
+    changeLevel(0);
+$('#content').html(count);
+
+});
+});*/
+
+$(document).ready(function() {
+
+  $("#hang").click(function() {
+    changeLevel(0);
+});
+
+  });
+  $("#shoot").click(function() {
+    changeLevel(1);
+});
+  $("#match").click(function() {
+    changeLevel(2);
+}); 
+  $("#maze").click(function() {
+    changeLevel(3);
+}); 
+  $("#paint").click(function() {
+    changeLevel(4);
+}); 
+  $("#puzzle").click(function() {
+    changeLevel(5);
+}); 
+  $("#drag").click(function() {
+    changeLevel(6);
+}); 
+  $("#preschooler").click(function() {
+    changeLevel(7);
+});  
+
+
+
+</script>
 
 </body>
 </html>

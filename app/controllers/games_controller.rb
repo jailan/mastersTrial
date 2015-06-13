@@ -1,8 +1,35 @@
 class GamesController < ApplicationController
+$game = 1
 
-  def hangman
-         $speech = "يا ميمي"
-            $speechy="عااااا"
+  def hanglink
+    redirect_to games_hangman_path
+  end 
+  def matchlink
+    redirect_to games_matching_path
+  end 
+  def shootlink
+    redirect_to games_shooting_path
+  end 
+  def mazelink
+    redirect_to games_maze_path
+  end 
+  def paintlink
+    redirect_to games_writing_path
+  end 
+  def puzzlelink
+    redirect_to games_puzzle_path
+  end 
+  def draglink
+    redirect_to games_drag_path
+  end 
+  def preschoolerlink
+    redirect_to games_preschooler_path
+  end 
+    def hangman
+   $speech = "يا ميمي"
+   $speechy="عااااا"
+
+            
   end
 
   def shooting
@@ -22,6 +49,9 @@ class GamesController < ApplicationController
   end
 
     def home
+     $games = request.filtered_parameters
+         $game = $games['level']
+
   end
 
     def drag
@@ -34,6 +64,9 @@ class GamesController < ApplicationController
   def preschooler
   end
   def collect
+
+    @hangman_path = "games_hangman_path"
+
   end
 
   def ool
