@@ -329,7 +329,7 @@ msg.volume = 1; // 0 to 1
 msg.rate = 1; // 0.1 to 10
 msg.pitch = 1; //0 to 2
 msg.text = word;
-msg.lang = 'ar';
+msg.lang = "ar";
 
 msg.onend = function(e) {
   console.log('Finished in ' + event.elapsedTime + ' seconds.');
@@ -363,33 +363,33 @@ function CustomAlert(){
         var game= $('.temp_information').data('temp'); 
         var link='balala';
         switch (game) {
-    case 0:
-        day = 'games_hangman_path';
+    case 10:
+        link = 'games_hangman_path';
         break;
-    case 1:
-        day = 'games_shooting_path';
+    case 11:
+        link = 'games_shooting_path';
         break;
-    case 2:
-        day = 'games_matching_path';
+    case 12:
+        link = 'games_matching_path';
         break;
-    case 3:
-        day = 'games_maze_path';
+    case 13:
+        link = 'games_maze_path';
         break;
-    case 4:
-        day = 'games_writing_path';
+    case 14:
+        link = 'games_writing_path';
         break;
-    case 5:
-        day = 'games_puzzle_path';
+    case 15:
+        link = 'games_puzzle_path';
         break;
-    case 6:
-        day = 'games_drag_path';
+    case 16:
+        link = 'games_drag_path';
         break;
-    case 7:
-        day = 'games_preschooler_path';
+    case 17:
+        link = 'games_preschooler_path';
         break;                   
 }
      
-       window.open(day, "_self")
+       window.open(link, "_self")
         //$.get('hangman', function(data) {});
 
     }
