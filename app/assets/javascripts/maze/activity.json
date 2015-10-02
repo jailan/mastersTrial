@@ -1,0 +1,48 @@
+{"quizlist":[
+{
+	"question":"كرة ؟",
+	"option1":"ball.jpg",
+	"option2":"hat.jpg",
+	"option3":"coin.jpg"
+	},
+  
+	{
+	"question":"أسد ؟",
+	"option1":"lion.png",
+	"option2":"chipmunk.png",
+	"option3":"labrador.png"
+	},
+	{
+	"question":"ت ؟",
+	"option1":"tito.jpg",
+	"option2":"fifo.jpg",
+	"option3":"bibo.jpg"
+	},
+	{
+	"question":"تفاحة ؟",
+	"option1":"apple.jpg",
+	"option2":"banana.jpg",
+	"option3":"tomato.jpg"
+	},
+	
+	
+		{
+	"question":"ل ؟",
+	"option1":"lilo.jpg",
+	"option2":"kiko.jpg",
+	"option3":"asad.jpg"
+	},
+	{
+	"question":"ك ؟",
+	"option1":"ball.jpg",
+	"option2":"hat.jpg",
+	"option3":"coin.jpg"
+	},
+		{
+	"question":"م ؟",
+	"option1":"banana.jpg",
+	"option2":"apple.jpg",
+	"option3":"tomato.jpg"
+	}
+]
+}
