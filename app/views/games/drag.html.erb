@@ -1,29 +1,545 @@
 <DOCTYPE html>
 <html lang="es">
 <head>
-	    <meta charset="utf-8"/>
-	    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-		<link rel="shortcut icon"type="image/x-icon" href="favicon.ico"/>
-	    <link rel="stylesheet" type="text/css" href="css/estilos.css">
-	    <script type="text/javascript" src="/assets/js/jquery.js"></script>
-	    <script type="text/javascript" src="/assets/js/preguntas.js"></script>
-	    <script type="text/javascript" src="/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-	    <link rel="stylesheet" type="text/css" href="/assets/css/smoothness/jquery-ui-1.9.2.custom.min.css">
+    <%= content_tag :div, class: "temp_information", data: {temp: @temppage1, stagty: @dragstageno} do %>
+<% end %>
+
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link rel="shortcut icon"type="image/x-icon" href="favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="/assets/css/estilos.css">
+
+        <script type="text/javascript" src="/assets/js/jquery.js"></script>
+        <script type="text/javascript" src="/assets/js/preguntas.js"></script>
+
+        <script type="text/javascript" src="/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
+                <script type="text/javascript">
+           var dragletter = $('.temp_information').data('temp'); 
+           //alert(dragletter);
+           var yalla = $('.temp_information').data('stagty'); 
+           //alert(yalla);
+           var dragstage = yalla;
+          //var dragstage = 5;
+
+ 
+    </script>
+        <link rel="stylesheet" type="text/css" href="/assets/stylesheets/css/smoothness/jquery-ui-1.9.2.custom.min.css">
+        <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+
+
 
 </head>
+<style>
+.button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:90px;
+}#home{
+    position:absolute;
+    top:60px;
+    left:1150px;
+}
+.orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+.js #listen2 {
+    background-image: url(/assets/images4/icons.png);
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.opachint{
+    position: relative;
+    top: 36px;
+    left: 20px;
+    width:100px;
+    height: 100px;
+}
+.options{
+    margin-top: 70px;
+    margin-left:420px;
+    width: 340px;
+    height: 120px;
+    border: 4px solid #FF7519;/*Oghanjen Zaft*/
+    padding-left: 15px;
+     padding-top: 7px;
+}
+.levels{
+    position: absolute;
+    margin-top: 40px;
+    margin-left:460px;
+}
+.btnBlue {
+  background: #3baaf5;
+  background-image: -webkit-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -moz-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -ms-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -o-linear-gradient(top, #3baaf5, #1021de);
+  background-image: linear-gradient(to bottom, #3baaf5, #1021de);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnBlue:hover {
+  background: #0a1bcc;
+  background-image: -webkit-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -moz-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -ms-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -o-linear-gradient(top, #0a1bcc, #042985);
+  background-image: linear-gradient(to bottom, #0a1bcc, #042985);
+  text-decoration: none;
+}
+.btnGreen {
+  background: #5cb524;
+  background-image: -webkit-linear-gradient(top, #5cb524, #255705);
+  background-image: -moz-linear-gradient(top, #5cb524, #255705);
+  background-image: -ms-linear-gradient(top, #5cb524, #255705);
+  background-image: -o-linear-gradient(top, #5cb524, #255705);
+  background-image: linear-gradient(to bottom, #5cb524, #255705);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnGreen:hover {
+  background: #0acc11;
+  background-image: -webkit-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -moz-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -ms-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -o-linear-gradient(top, #0acc11, #257a1d);
+  background-image: linear-gradient(to bottom, #0acc11, #257a1d);
+  text-decoration: none;
+}
+.btnYellow {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -moz-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -ms-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -o-linear-gradient(top, #ffff00, #ffd500);
+  background-image: linear-gradient(to bottom, #ffff00, #ffd500);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnYellow:hover {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -moz-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -ms-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -o-linear-gradient(top, #ffff00, #f5b105);
+  background-image: linear-gradient(to bottom, #ffff00, #f5b105);
+  text-decoration: none;
+}
+.btnOrange{
+
+  background: #ff7700;
+  background-image: -webkit-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -moz-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -ms-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -o-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: linear-gradient(to bottom, #ff7700, #ff9b05);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnOrange:hover {
+  background: #fa8d3a;
+  background-image: -webkit-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -moz-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -ms-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -o-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: linear-gradient(to bottom, #fa8d3a, #ffb12b);
+  text-decoration: none;
+}
+.btnRed {
+  background: #ff000d;
+  background-image: -webkit-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -moz-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -ms-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -o-linear-gradient(top, #ff000d, #8c1414);
+  background-image: linear-gradient(to bottom, #ff000d, #8c1414);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnRed:hover {
+  background: #c70000;
+  background-image: -webkit-linear-gradient(top, #c70000, #ff4929);
+  background-image: -moz-linear-gradient(top, #c70000, #ff4929);
+  background-image: -ms-linear-gradient(top, #c70000, #ff4929);
+  background-image: -o-linear-gradient(top, #c70000, #ff4929);
+  background-image: linear-gradient(to bottom, #c70000, #ff4929);
+  text-decoration: none;
+}
+
+.listenz1{
+   position: absolute;
+    margin-top: 2px;
+    margin-left:700px;
+}
+.listenz2{
+   position: absolute;
+    margin-top: 2px;
+    margin-left:560px;
+}
+
+.listenz3{
+   position: absolute;
+    margin-top: 2px;
+    margin-left:400px;
+}
+
+
+
+</style>
+
 
 <body>
-	<h1>Pre-Educational Game: Matching Objects</h1>
-	<div id="banderas">
-		<h2>Drag the object that corresponds to the word</h2>
-	<a href="page1.html">Easy</a><br /><br />
-	<a href="page2.html">Normal</a><br /><br />
-	<a href="page3.html">Hard</a><br /><br /><br />
-	</div>	
-		<div id="monumentos">
-		<h2>Drag the object that corresponds to the word</h2>
-	<a href="monumentos.html">Objects</a><br /><br />
+    <section id="preguntas">
+        <article class="preg" >
+           <div  onClick='listen("برتقالة");' style='width:40px; height: 40px;  position: absolute;
+   '><img id="opc3"  class="opachint"  width="100" height="100"/></div> برتقالة
 
-	</div>	
+        </article>
+
+        <article class="preg">
+             <div  onClick='listen("بنت");' style='width:40px; height: 40px;  position: absolute;
+   '><img id="opc2"  class="opachint" width="100" height="100"/></div>
+            بنت
+        </article>
+
+        <article class="preg">
+            <div  onClick='listen("بطة");' style='width:40px; height: 40px;  position: absolute;
+'><img id="opc1" class="opachint" width="100" height="100"/></div>
+            بطة
+        </article>
+       
+        
+    </section>
+             <a class="listenz1" id="listen2" onClick='listen("بَطّة");' style='width:40px; height: 40px;  position: absolute;'></a> 
+             <a class="listenz2" id="listen2" onClick='listen("بِنْت");' style='width:40px; height: 40px;  position: absolute;'></a>
+             <a class="listenz3" id="listen2" onClick='listen("برتقالة");' style='width:40px; height: 40px;  position: absolute;'></a>
+  
+       <div class="options">     
+            <img id="img3"  class="respuesta" alt="بطة" width="100" height="100"/> 
+             <img id="img5"  class="respuesta" alt="برتقالة" width="100" height="100" />
+            <img id="img4"  class="respuesta" alt="بنت" width="100" height="100"/>
+
+        </div>
+           <div class="levels">
+            <a  href='#' class="btnBlue" id="level1">1</a>
+    <a  href='#' class="btnGreen" id="level2">2</a>
+    <a  href='#' class="btnYellow" id="level3">3</a>
+    <a  href='#' class="btnOrange" id="level4">4</a>
+    <a  href='#' class="btnRed" id="level5">5</a>
+</div>
+    <div id="resultados">
+
+    </div>
+    
+
 </body>
 </html>
+<script>
+
+
+
+$(document).ready(main);
+//var dragletter = $('.temp_information').data('temp');
+var numCorrectas=0;
+var numIncorrectas=0;
+
+
+
+function main(){
+    //var dragletter = $('.temp_information').data('temp'); 
+    //alert("babooo "+dragletter);
+    var dragletter=2;
+
+    establecerPropiedades();
+if (dragstage === 1){ 
+   document.getElementById("img3").src= "/assets/drag/l"+dragletter+"/1.jpg" ;
+   document.getElementById("img4").src= "/assets/drag/l"+dragletter+"/2.jpg" ;
+   document.getElementById("img5").src= "/assets/drag/l"+dragletter+"/3.jpg" ;}
+
+   if (dragstage === 3 || dragstage === 5 ){
+   document.getElementById("img3").src= "/assets/drag/l"+dragletter+"/1p.jpg" ;
+   document.getElementById("img4").src= "/assets/drag/l"+dragletter+"/2p.jpg" ;
+   document.getElementById("img5").src= "/assets/drag/l"+dragletter+"/3p.jpg" ;
+}
+    if (dragstage === 2 || dragstage === 4 ){
+   document.getElementById("img3").src= "/assets/drag/l"+dragletter+"/1w.jpg" ;
+   document.getElementById("img4").src= "/assets/drag/l"+dragletter+"/2w.jpg" ;
+   document.getElementById("img5").src= "/assets/drag/l"+dragletter+"/3w.jpg" ;}
+
+   if (dragstage === 1){
+   document.getElementById("opc1").src= "/assets/drag/l"+dragletter+"/opac1.png" ;
+   document.getElementById("opc2").src= "/assets/drag/l"+dragletter+"/opac2.png" ;
+   document.getElementById("opc3").src= "/assets/drag/l"+dragletter+"/opac3.png" ;
+ }
+
+
+if(dragstage ===2 || dragstage ===3){
+
+   document.getElementById("opc1").src= "/assets/drag/l"+dragletter+"/opac1w.png" ;
+   document.getElementById("opc2").src= "/assets/drag/l"+dragletter+"/opac2w.png" ;
+   document.getElementById("opc3").src= "/assets/drag/l"+dragletter+"/opac3w.png" ;}
+
+
+if(dragstage ===4 || dragstage ===5){
+   document.getElementById("opc1").src= "/assets/drag/l"+dragletter+"/opac1d.png" ;
+   document.getElementById("opc2").src= "/assets/drag/l"+dragletter+"/opac2d.png" ;
+   document.getElementById("opc3").src= "/assets/drag/l"+dragletter+"/opac3d.png" ;}
+
+
+    //$('#listen2').css('display', 'inline-block').click(listen);
+
+    var bod=$("body").css("background-image","url('/assets/drag/paper.jpg')");
+    //var imoo = $("preguntas");
+        bod.css("background-repeat","no-repeat");
+    bod.css("background-position","center");
+}
+
+function establecerPropiedades(){
+    var res =$(".respuesta");
+    res.draggable();
+    res.mousedown(downRespuesta);
+    $(".preg, .pregMonumento").droppable({drop:dropPregunta});
+    
+
+}
+
+
+function listen(word){
+      textq=word;
+     //getSpeech(textq);
+     speak(textq);
+}
+
+function speak(word){
+var msg = new SpeechSynthesisUtterance();
+msg.volume = 1; // 0 to 1
+msg.rate = 1; // 0.1 to 10
+msg.pitch = 1; //0 to 2
+msg.text = word;
+msg.lang = 'ar';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+}
+
+function dropPregunta(event,ui){
+    var contPregunta =$(this);
+    var respuesta = ui.draggable;
+
+    var correcta = contPregunta.text().toLowerCase();
+    correcta = correcta.trim();
+    var pos = contPregunta.position();
+    contPregunta.css("background","#BBB");
+    contPregunta.css("box-shadow",".2px .2px .2em #000");
+    contPregunta.css("border","1px dashed #333")
+    respuesta.css("cursor","default");
+
+    if(correcta==respuesta.attr("alt")){
+        contPregunta.children("img").remove();
+        contPregunta.addClass("resCorrecta");
+        contPregunta.append("<img src='/assets/drag/correcta.png' class='ok' />" +"<img src='"+respuesta.attr("src")+"' class='rDrop' />" );
+        numCorrectas++;
+    respuesta.draggable("destroy");
+    contPregunta.droppable("destroy");
+    comprobarFinal();
+    comprobarResultados();
+    respuesta.remove();
+      new Audio('/assets/Audio/applause.mp3').play();
+      if(numCorrectas === 3){
+       setTimeout(function(){updateDragStage();}, 3000);
+        //chooseDragStage(dragstagy);
+        //yalla= $('.temp_information').data('stagy');
+    
+        //location.reload();
+       }
+      
+
+    }else{
+        
+        numIncorrectas++;
+        contPregunta.addClass("resIncorrecta");
+        contPregunta.append("<img src='/assets/drag/incorrecta.png' class='inco' />"+"<img src='"+respuesta.attr("src")+" ' class='rDrop'/>");
+        contPregunta.children("img").remove();
+        contPregunta.append("<img src='/assets/drag/incorrecta.png' class='inco' />");
+
+    comprobarFinal();
+    comprobarResultados();
+      new Audio('/assets/Audio/boing.wav').play();
+
+    }
+    
+}
+
+function comprobarResultados(){
+    $(".ok,.inco").fadeIn("slow");
+    $("#resultados").html("Correct answers:     "+numCorrectas+"<br />"+"Incorrect answers:    "+numIncorrectas);
+
+}
+
+function comprobarFinal(){
+    resul = numCorrectas+numIncorrectas;
+    if(resul ==12){
+        
+        comprobarResultados();
+    }
+}
+
+function downRespuesta(){
+    $(".respuesta").css("z-index","0");
+    $(this).css("z-index","100");
+}
+
+function getStage(){
+  
+    return dragstagy;
+
+}
+function changeDragStage(n){
+    dragstagy = n;
+    dragstage= dragstagy;
+}
+
+function updateDragStage(){
+    if(dragstage < 5){
+      dragstage ++;
+    }
+    else{
+      dragstage = 1;
+    }
+
+        chooseDragStage(dragstage);
+        yalla= $('.temp_information').data('stagy');
+      //alert(dragstage);
+        location.reload();
+}
+
+         function chooseDragStage(fieldClicked) {
+    $.ajax({
+        url: 'drag',
+        type: 'get',
+        contentType: 'application/json; charset=UTF-8',
+        accept: 'application/json',
+        dataType: 'json',
+        data: {mydragstage:fieldClicked}
+    
+    });
+};
+
+var dragstagy=1;
+//var yalla;
+    $('#level1').click(function() {
+    chooseDragStage(1);
+        yalla= $('.temp_information').data('stagy');
+ 
+        location.reload();
+  });
+    $('#level2').click(function() {
+    chooseDragStage(2);
+            yalla= $('.temp_information').data('stagy');
+       
+        location.reload();
+  });
+    $('#level3').click(function() {
+    chooseDragStage(3);
+            yalla= $('.temp_information').data('stagy');
+           
+        location.reload();
+  });
+    $('#level4').click(function() {
+    chooseDragStage(4);
+            yalla= $('.temp_information').data('stagy');
+           //  alert(dragstage);
+        location.reload();
+  });
+    $('#level5').click(function() {
+    chooseDragStage(5);
+            yalla= $('.temp_information').data('stagy');
+           
+       location.reload();
+  });
+
+      window.onload = function() {
+    chooseDragStage(1);
+        yalla= $('.temp_information').data('stagy');
+ 
+   
+  };
+
+</script>

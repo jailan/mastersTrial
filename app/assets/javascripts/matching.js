@@ -2,16 +2,20 @@ var tiles = new Array(),
 flips = new Array('tb', 'bt', 'lr', 'rl' ),
 iFlippedTile = null,
 iTileBeingFlippedId = null,
-tileImages = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),
-tileImages2 = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),
+tileImages = new Array(21,2,13,31,12,23),
+tileImages2 = new Array(21,2,13,11,12,23),
 tileAllocation = null,
 iTimer = 0,
 iInterval = 100,
 iPeekTime = 3000;
+var stageNumber =1;
 
 var scory =0;
-var flags = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var a = new Array("شجرة","تُفّاحة","مُوز","فيل","قِرْدْ","كرسي","كرة","ساعة","تمساح","جَزَرْ");
+var matchletter = $('.temp_information').data('temp'); 
+var abc = ['أ','ب','ت','ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
+
+var flags = new Array(0,0,0,0,0,0,0);
+var a = new Array("ياماما","بَطّة","بِنت","بُرتُقالة");
 
 
 function getRandomImageForTile() {
@@ -39,6 +43,7 @@ function displayScory(){
 
 }
 function createTile(iCounter) {
+	//var stageNumber =4;
 	var iRandomImage = getRandomImageForTile(),
 	curTile =  new tile("tile" + iCounter);
 	tileAllocation[iRandomImage] = tileAllocation[iRandomImage] + 1;
@@ -46,7 +51,9 @@ function createTile(iCounter) {
 	curTile.setFrontColor("tileColor" + Math.floor((Math.random() * 5) + 1));
 	curTile.setStartAt(500 * Math.floor((Math.random() * 5) + 1));
 	curTile.setFlipMethod(flips[Math.floor((Math.random() * 3) + 1)]);
-	curTile.setBackContentImage("/assets/images2/" +(iRandomImage +1)+".jpg");
+	//HERE WE CHOOSE THE IMAGES THAT RELATE TO THIS CERTAIN LETTER(MATCHLETTER)
+	//matchletter=""; //JOLLY, UNCOMMENT THIS TO MAKE IT WORK PROPERLY
+	curTile.setBackContentImage("/assets/matching/l"+matchletter+"/stage"+stageNumber+"/" +(iRandomImage)+".jpg");
 	curTile.setImageNum(iRandomImage);
 	
 	return curTile;
@@ -86,7 +93,7 @@ function initState() {
 		is used to ensure each image is only 
 		allocated twice.
 		*/
-		tileAllocation = new Array(0,0,0,0,0,0,0,0,0,0);
+		tileAllocation = new Array(0,0,0);
 		
 		while(tiles.length > 0) {
 			tiles.pop();
@@ -106,7 +113,7 @@ function initState() {
 		initState();
 		
 	// Randomly create twenty tiles and render to board
-	for(iCounter = 0; iCounter < 20; iCounter++) {
+	for(iCounter = 0; iCounter < 6; iCounter++) {
 		
 		curTile = createTile(iCounter);
 		
@@ -168,7 +175,7 @@ function playAudio(sAudio) {
 		audioElement.play();
 	}	
 }
-
+var county =0;
 function checkMatch() {
 	
 	if(iFlippedTile === null) {
@@ -185,7 +192,7 @@ function checkMatch() {
 			setTimeout("tiles[" + iTileBeingFlippedId + "].revertFlip()", 2000);
 			
 		
-			playAudio("/assets/boing.wav");
+			playAudio("/assets/Audio/boing.wav");
 			if(scory!=0)
 				scory-=1;
 
@@ -199,6 +206,7 @@ function checkMatch() {
            // playAudio("/assets/applause..mp3");
 
 			scory+=10;
+			county ++;
 
 			 //new Audio('/assets/lalazy.mp3').play();
 			//alert('array:'+flags[0]+""+flags[1]+""+flags[2]+""+flags[3]+""+flags[4]+""+flags[5]+""+flags[6]+""+flags[7]+""+flags[8]+""+flags[9]+""+flags[10]+""+flags[11]+""+flags[12]+""+flags[13]+""+flags[14]+""+flags[15]+""+flags[16]+""+flags[17]+""+flags[18]+""+flags[19]+"");
@@ -208,6 +216,9 @@ function checkMatch() {
 		displayScory();
 		iFlippedTile = null;
 		iTileBeingFlippedId = null;
+		if (county === 3){
+			upgradeLevel();
+		}
 	}
 }
 
@@ -229,23 +240,58 @@ function onPeekStart() {
 	setTimeout("hideTiles( function() { onPeekComplete(); })",iPeekTime);
 }
 
-$(document).ready(function() {
+function sendStage(stageNo){
+stageNumber = stageNo;
+}
 
+function upgradeLevel(n){
+
+          if(stageNumber < 5){
+          stageNumber ++; }
+          else{
+            stageNumber =1;
+          }/*IN CASE OF AUTOMATIC CHANGE*/
+          county =0;
+          playAudio("/assets/Audio/applause.mp3");
+       //initiateMatchingGame();/* WE CAN WAIT HERE*/ "SET TIME OUT INSTEAD OF CLICKING THE NEW GAME BUTON AGAIN"
+setTimeout(function(){ initiateMatchingGame(); }, 5000);
+
+        
+}
+function initiateMatchingGame(){
+	   scory =0;
+	    iFlippedTile = null;
+	    iTileBeingFlippedId = null;
+	    tileImages = new Array(21,2,13,31,12,23);
+	    tileImages2 = new Array(21,2,13,31,12,23);
+	    tileAllocation = null;
+	    iTimer = 0;
+	    iInterval = 100;
+	    flags = new Array(0,0,0,0,0,0);
+	    initTiles();
+	    displayScory();
+	    setTimeout("revealTiles(function() { onPeekStart(); })",iInterval);
+}
+ 
+
+$(document).ready(function() {
+initiateMatchingGame();
 
 	$('#startGameButton').click(function() {
 	    //location.reload(true);
 	    scory =0;
 	    iFlippedTile = null;
 	    iTileBeingFlippedId = null;
-	    tileImages = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
-	    tileImages2 = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+	    tileImages = new Array(21,2,13,31,12,23);
+	    tileImages2 = new Array(21,2,13,31,12,23);
 	    tileAllocation = null;
 	    iTimer = 0;
 	    iInterval = 100;
-	    flags = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+	    flags = new Array(0,0,0,0,0,0);
 	    initTiles();
 	    displayScory();
 	    setTimeout("revealTiles(function() { onPeekStart(); })",iInterval);
+	    //alert(abc[matchletter-1]);
 
 	});
 	$('#flipAgainButton').click(function() {
@@ -254,6 +300,22 @@ $(document).ready(function() {
 		displayScory();
 		setTimeout("revealTiles(function() { onPeekStart(); })",iInterval);
 
+	});
+
+		$('#level1').click(function() {
+		sendStage(1);
+	});
+		$('#level2').click(function() {
+		sendStage(2);
+	});
+		$('#level3').click(function() {
+		sendStage(3);
+	});
+		$('#level4').click(function() {
+		sendStage(4);
+	});
+		$('#level5').click(function() {
+		sendStage(5);
 	});
 });
 

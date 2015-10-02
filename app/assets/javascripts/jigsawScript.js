@@ -29,8 +29,48 @@ speechSynthesis.speak(msg);
 
 
 function jigsaw(canvasID, imageID, rows,columns) {
+    //handlng the major image
+    if(puzzleLevel ===1 )
+           { document.getElementById("img0").src= "/assets/Images/puzz"+puzzleletter+"/letterba2.jpg" ;}
 
-    var MAIN_IMG_WIDTH = 800;
+if(puzzleLevel > 1 && puzzleLevel < 5){
+         document.getElementById("img0").src= "/assets/Images/puzz"+puzzleletter+"/"+puzzleSubLevel+"w.jpg" ;
+
+}
+
+    if(puzzleLevel ===5){
+ document.getElementById("img0").src= "/assets/Images/puzz"+puzzleletter+"/"+puzzleSubLevel+"d.jpg" ;}
+   
+//handling the three images
+
+    if( puzzleLevel < 3){
+
+   document.getElementById("img1").src= "/assets/Images/puzz"+puzzleletter+"/1.jpg" ;
+   document.getElementById("img2").src= "/assets/Images/puzz"+puzzleletter+"/2.jpg" ;
+   document.getElementById("img3").src= "/assets/Images/puzz"+puzzleletter+"/3.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/Images/puzz"+puzzleletter+"/1opac.png" ;
+}
+
+if (puzzleLevel === 3 || puzzleLevel === 5){
+
+   document.getElementById("img1").src= "/assets/Images/puzz"+puzzleletter+"/1p.jpg" ;
+   document.getElementById("img2").src= "/assets/Images/puzz"+puzzleletter+"/2p.jpg" ;
+   document.getElementById("img3").src= "/assets/Images/puzz"+puzzleletter+"/3p.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/Images/puzz"+puzzleletter+"/1opac.png" ;  
+}
+
+if (puzzleLevel === 4){
+
+   document.getElementById("img1").src= "/assets/Images/puzz"+puzzleletter+"/1d.jpg" ;
+   document.getElementById("img2").src= "/assets/Images/puzz"+puzzleletter+"/2d.jpg" ;
+   document.getElementById("img3").src= "/assets/Images/puzz"+puzzleletter+"/3d.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/Images/puzz"+puzzleletter+"/1opac.png" ;  
+}
+   // document.getElementById("imgprev2").src= "/assets/Images/puzz"+puzzleletter+"/2opac.png" ;
+   // document.getElementById("imgprev3").src= "/assets/Images/puzz"+puzzleletter+"/3opac.png" ;
+
+
+    var MAIN_IMG_WIDTH = 600;
     var MAIN_IMG_HEIGHT = 600;
 
 
@@ -55,6 +95,7 @@ function jigsaw(canvasID, imageID, rows,columns) {
     var image1;
     var canvas;
     var ctx;
+    var imagePrev;
 
     this.canvasID = canvasID;
     this.imageID = imageID;
@@ -88,6 +129,7 @@ function jigsaw(canvasID, imageID, rows,columns) {
         canvas.onmousemove = handleOnMouseMove;
 
         image1 = document.getElementById(imageID);
+        imagePrev = document.getElementById("imgprev");
 
 
         initializeNewGame();
@@ -111,20 +153,27 @@ function jigsaw(canvasID, imageID, rows,columns) {
         var x1 = 20;
         var y1 = 20;
         var width = BLOCK_IMG_WIDTH - (x1 * 2);
-        var height = BLOCK_IMG_HEIGHT - (y1 * 2);
+        var height = BLOCK_IMG_HEIGHT - (y1 * 2)
 
         ctx.save();
+       image1 = document.getElementById(imageID);
+        var puzzoImg = new Image();
+        puzzoImg.src= "/assets/Images/puzz"+puzzleletter+"/1opac.png";
+       ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
 
-        ctx.drawImage(image1, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
+        //imagePrev = document.getElementById("imgprev").src;
+       // ctx.drawImage(imagePrev, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
 
+        //ctx.drawimage("/assets/Images/puzz"+puzzleletter+"/opac1.png", 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
 
         // DRAE RECTANGLE
 
         ctx.fillStyle = '#00f'; // blue
         ctx.strokeStyle = '#f00'; // red
-        ctx.lineWidth = 4;
+        ctx.lineWidth = 2;
 
-        ctx.strokeRect(x1 - 2, y1 - 2, width + 4, height + 4);
+
+        ctx.strokeRect(x1 - 2, y1 - 2, width + 8, height + 8);
 
 
         ctx.restore();
@@ -344,8 +393,9 @@ function jigsaw(canvasID, imageID, rows,columns) {
         }
 
     }
-
-
+ var flagsCorrecta = [0,0,0,0];
+        var audioElementCorrect = document.createElement('audio');
+        //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
         if (selectedBlock) {
@@ -370,8 +420,31 @@ function jigsaw(canvasID, imageID, rows,columns) {
             selectedBlock = null;
             DrawGame();
 
+      for (var m = 0; m < TOTAL_PIECES; m++) {
+
+            var img = imageBlockList[m];
+            var block = blockList[m];
+
+            if (
+                (img.x == block.x) &&
+                (img.y == block.y) &&
+                (flagsCorrecta[m] === 0)
+                ) {
+
+                flagsCorrecta[m]=1;
+                audioElementCorrect.play();
+            }
+
+        }
             if (isFinished()) {
+               
                 OnFinished();
+               
+                //InitGame(puzzleLevel,puzzleSubLevel+1);
+               
+                //initializeNewGame();
+
+              
             }
 
         }
@@ -433,8 +506,43 @@ function jigsaw(canvasID, imageID, rows,columns) {
         return null;
     }
 
+    function sendStage(n){
+        puzzleLevel=n;
+    }
+        function UpdateSubStage(){
+            if (puzzleSubLevel<3){
+        puzzleSubLevel++;}
+    else{
+    puzzleSubLevel =1;
+    }
+       
+   // InitGame(puzzleLevel,puzzleSubLevel);
+    }
+
+
+        $('#level1').click(function() {
+     
+        InitGame(1,1);
+    });
+        $('#level2').click(function() {
+      
+        InitGame(2,1)
+    });
+        $('#level3').click(function() {
+    
+        InitGame(3,1);
+    });
+        $('#level4').click(function() {
+    
+        InitGame(4,1);
+    });
+        $('#level5').click(function() {
+ 
+        InitGame(5,1);
+    });
 
     function GetImageBlockOnEqual(list, x, y) {
+
 
         for (var i = 0; i < list.length; i++) {
             var imgBlock = list[i];
@@ -460,10 +568,10 @@ function jigsaw(canvasID, imageID, rows,columns) {
 
 
     function isFinished() {
+    //ShowPreview();
+    var total = TOTAL_PIECES;
 
-        var total = TOTAL_PIECES;
-
-        for (var i = 0; i < total; i++) {
+  for (var i = 0; i < total; i++) {
 
             var img = imageBlockList[i];
             var block = blockList[i];
@@ -472,6 +580,7 @@ function jigsaw(canvasID, imageID, rows,columns) {
                 (img.x != block.x) ||
                 (img.y != block.y)
                 ) {
+
                 return false;
             }
 

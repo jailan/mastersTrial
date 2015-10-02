@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
-$game = 1
+$mygame = 1
+$letter = 2
+$myshootstage = 3
+$mydragstage = 3
 
   def hanglink
     redirect_to games_hangman_path
@@ -22,57 +25,89 @@ $game = 1
   def draglink
     redirect_to games_drag_path
   end 
+
   def preschoolerlink
     redirect_to games_preschooler_path
   end 
     def hangman
+      @temphang = $letter
    $speech = "يا ميمي"
    $speechy="عااااا"
 
             
   end
 
-  def shooting
-  end
+
 
   def matching
+     @tempmatch = $letter
   end
 
   def maze
+    @tempmaze = $letter
       
          $speech = "يا ميمي"
             $speechy="عااااا"
   end
     def puzzle
+      @temppuzzle = $letter
       
   
   end
+    def shooting
+     @shootstageno = $myshootstage
+     @tempshoot= $letter
+    $shootz = request.filtered_parameters
+    $myshootstage = $shootz['myshootstage']
 
-    def home
-     $games = request.filtered_parameters
-         $game = $games['level']
 
   end
 
-    def drag
-      
+      def drag
+      @dragstageno = $mydragstage
+      @tempdrag = $letter
+     $dragz = request.filtered_parameters
+    $mydragstage = $dragz['mydragstage']
+  
+  end
+
+  def collect
+    @temphome =  $mygame
+    $letterz = request.filtered_parameters
+    $letter = $letterz['letter']
+  end
+
+    def home
+
+    $gamez = request.filtered_parameters
+    $mygame = $gamez['level']
+    @tempo =  $mygame
+
+
+  end
+
+
+
+      def page1
+          @dragstageno = $mydragstage
+      @temppage1 = $letter
+         $dragz = request.filtered_parameters
+    $mydragstage = $dragz['mydragstage']
   end
 
       def writing
+        @tempwrite = $letter
       
   end
   def preschooler
+    @temppreschooler = $letter
   end
-  def collect
 
-    @hangman_path = "games_hangman_path"
-
-  end
 
   def ool
 
  $data = request.filtered_parameters
-    if($data != nil)
+if($data != nil)
       $speechy = $data['speech']
 
     end

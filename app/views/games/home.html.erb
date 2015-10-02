@@ -17,7 +17,7 @@ and open the template in the editor.
 <%= button_to "Letter Paint", games_collect_path, {:class => "button orange", :id => "paint"} %>
 <%= button_to "Animals", games_collect_path, {:class => "button orange", :id => "preschooler"} %>
 
-<%= content_tag :div, class: "temp_information", data: {temp: $game} do %>
+<%= content_tag :div, class: "temp_information", data: {temp: @tempo} do %>
 <% end %>
 
 
@@ -90,7 +90,11 @@ h1 {
     top:560px;
     position:absolute;
     }
-
+      #yalahwy{
+    left:200px;  
+    top:560px;
+    position:absolute;
+    }
           #preschooler{
     left:800px;  
     top:560px;
@@ -152,6 +156,7 @@ h1 {
 <body>
 <script>
 
+
      function changeLevel(fieldClicked) {
     $.ajax({
         url: 'home',
@@ -162,7 +167,12 @@ h1 {
         data: {level:fieldClicked}
     
     });
+
+
 };
+
+
+//changeLevel(6);
 
 /*var count = 0;
 $(document).ready(function() {
@@ -181,31 +191,52 @@ $('#content').html(count);
 $(document).ready(function() {
 
   $("#hang").click(function() {
-    changeLevel(10);
+    changeLevel(0);
+      
 });
+    });
+$(document).ready(function() {
   $("#shoot").click(function() {
-    changeLevel(11);
+    changeLevel(1);
 });
+    });
+$(document).ready(function() {
   $("#match").click(function() {
-    changeLevel(12);
-}); 
+    changeLevel(2);
+
+  });
+    });
+  $(document).ready(function() {
+
   $("#maze").click(function() {
-    changeLevel(13);
+    changeLevel(3);
 }); 
+    });
+
+$(document).ready(function() {
   $("#paint").click(function() {
-    changeLevel(14);
+    changeLevel(4);
 }); 
+    });
+$(document).ready(function() {
   $("#puzzle").click(function() {
-    changeLevel(15);
+    changeLevel(5);
 }); 
+    });
+
+$(document).ready(function() {
   $("#drag").click(function() {
-    changeLevel(16);
-}); 
+    changeLevel(6);
+ 
+  });
+    });
+$(document).ready(function() {
   $("#preschooler").click(function() {
-    changeLevel(17);
+    changeLevel(7);
 });  
 
-});
+  });
+
 
 </script>
 

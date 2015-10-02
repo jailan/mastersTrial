@@ -5,11 +5,12 @@
 	<link href="main.css"rel="stylesheet"type="text/css"/>
 	<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-
+    <%= content_tag :div, class: "temp_information", data: {temp: @tempmaze} do %>
+<% end %>
 </head>
 <body  background="/assets/paper.jpg" onload="start();">
 
-	<div><img id="arrow"src="/assets/garrowd.png"  height="50" width="30" class="spacer"></div>    
+	<div><img id="arrow"src="/assets/maze/garrowd.png"  height="50" width="30" class="spacer"></div>    
 	<div id="navContent"> 
 		<div id="game1"></div>
 		<div id="game2"></div>
@@ -19,9 +20,10 @@
 	<canvas width="420" height="445" id="mazecanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
 	<canvas width="420" height="445" id="questioncanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
 	<div id="score"></div>
-	<div> <img class="alarm"src="/assets/alarm.png"  height="40" width="40"><div id="time"></div> </div>
+	<div> <img class="alarm"src="/assets/maze/alarm.png"  height="40" width="40"><div id="time"></div> </div>
 
     <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+
 
   <style>
 	html, body {
@@ -97,7 +99,7 @@
 		position:relative;
 		margin-left:380px;	
 		width:800px;
-		height:200px;
+		height:250px;
 		padding-left: 100px;
 		/*right:-700px;*/
 		/*position:relative;*/
@@ -130,6 +132,7 @@
 		color:#006;
 	}
 
+
 	.resultText{
 		width:900px;
 		font-size:20px;
@@ -142,9 +145,18 @@
 		height:86px;
 		margin:15px;
 		float:left;
-		border: 3px solid #B8008A;;
+		border: 3px solid #B8008A;
 		cursor:pointer;
 	}
+    .pixie{
+        width:86px;
+        height:86px;
+        margin-right: 180px;
+        margin-left:245px;
+        float:right;
+        border: 3px solid #FC0;
+     
+    }
 
 	.clicked{
 		border:#FC0 solid 4px;
@@ -192,7 +204,7 @@
 		font-family:Arial, Helvetica, sans-serif;
 		text-align:center;
 		position:absolute;
-		top:170px;
+		top:200px;
 		right:180px;
 	}
 
@@ -205,7 +217,7 @@
 		font-family:Arial, Helvetica, sans-serif;
 		text-align:center;
 		position:absolute;
-		top:170px;
+		top:200px;
 		right:180px;
 	}
 	h1 {
@@ -292,12 +304,18 @@
 
     		<noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
     		<script type='text/javascript' > 
-    		var ask = 0; 
+            var ON_BORDER = 0;
+            var ON_BLANK_SPACE = 1;
+            var ON_END_OF_MAZE = 2;
+            var ON_QUESTION = 3;
+
     		var answered =0;
     		var first = 1;
     		var score = 0;
     		var subscore = 10;
             var textq="كرة";
+            var mazeletter = $('.temp_information').data('temp'); 
+            //alert(mazeletter);
             <%= $speech="كرة" %>
 
     		</script>
@@ -366,72 +384,36 @@
 
     				}
     				/* TIMER ************************************/
-    				function drawMazeAndRectangle(rectX, rectY) {
-    					makeWhite(0, 0, canvas.width, canvas.height);
-    					var mazeImg = new Image();
-    					mazeImg.onload = function () {
-    						context.drawImage(mazeImg, -40, -10);
-    						drawRectangle(rectX, rectY, "#000066");
-    						context.beginPath();
-    						context.arc(50, 434, 9, 0, 2 * Math.PI, false);
-    						context.closePath();
-                context.fillStyle = '#B8008A';//fushciac
-                context.fill();
+      var obstaclesArray = [[300,36],[400,70],[400,120],[300,160],[210,160],[140,160],[24,185],[120,210],[220,210],[290,260],[195,260],[105,310],[24,340],[24,383],[50,434]];
+    function drawMazeAndRectangle(rectX, rectY) {
+              makeWhite(0, 0, canvas.width, canvas.height);
+              var mazeImg = new Image();
+              mazeImg.onload = function () {
+                context.drawImage(mazeImg, -40, -10);
+                drawRectangle(rectX, rectY, "#000066");
+                drawStroke(89, 145, "#000000");
+                drawStroke(313, 320, "#000000");
+             for(w=0;w<obstaclesArray.length;w++){ 
                 context.beginPath();
-                context.arc(300, 36, 9, 0, 2 * Math.PI, false);
-                //context.arc(370, 36, 7, 0, 2 * Math.PI, false);
+                context.arc(obstaclesArray[w][0], obstaclesArray[w][1], 9, 0, 2 * Math.PI, false);
                 context.closePath();
-                context.fillStyle = '#FF9900';//orange
+                if((w+1)%3 === 0){
+                 context.fillStyle = '#B8008A';   
+                }
+                else{
+                context.fillStyle = '#FF9900'; }//orange
+                //context.fillStyle = '#B8008A';//fushciac
                 context.fill();
-                context.beginPath();
-                //context.arc(400, 80, 7, 0, 2 * Math.PI, false);
-
-                context.arc(400, 100, 9, 0, 2 * Math.PI, false);
-                //context.arc(400, 130, 7, 0, 2 * Math.PI, false);
-                context.closePath();
-
-                context.fill();
-                context.beginPath();
-                //context.arc(370, 160, 7, 0, 2 * Math.PI, false);
-                context.arc(300, 160, 9, 0, 2 * Math.PI, false);
-                //context.arc(100, 160, 10, 0, 2 * Math.PI, false);
-                context.closePath();
-
-                context.fill();
-                context.beginPath();
-               /// context.arc(100, 138, 10, 0, 2 * Math.PI, false);
-
-               context.closePath();
-
-               context.fill();
-               context.beginPath();
-               
-               context.arc(120, 210, 9, 0, 2 * Math.PI, false);
-               context.closePath();
-
-               context.fill();
-               context.beginPath();
-               context.arc(195, 260, 9, 0, 2 * Math.PI, false);
-               context.closePath();
-               
-               context.fill();
-               context.beginPath();
-               context.arc(105, 310, 9, 0, 2 * Math.PI, false);
-               context.closePath();
-
-               context.fill();
-               context.beginPath();
-               context.arc(24, 383, 9, 0, 2 * Math.PI, false);
-               context.closePath();
-
-               context.fill();
+             }
+                
                // new Audio('background-music.wav').play();
                // myImage = canvas.toDataURL("image/png"); 
-                //window.open(dataUrl, "toDataURL() image", "width=600, height=200");
+               //window.open(dataUrl, "toDataURL() image", "width=600, height=200");
             };
             //mazeImg.src = "maze.gif";
-            mazeImg.src = "/assets/maze3.png";
+            mazeImg.src = "/assets/maze/maze3.png";
         }
+        
         function drawRectangle(x, y, style) {
 
         	makeWhite(currRectX, currRectY, 17, 17);
@@ -444,146 +426,163 @@
         	context.fill();
 
         }
-        function moveRect(e) {
-        	var newX;
-        	var newY;
-        	var movingAllowed;
-        	e = e || window.event;
-        	switch (e.keyCode) {
-                case 38:   // arrow up key
-                case 87: // W key
-                newX = currRectX;
-                newY = currRectY - 5;
-                break;
-                case 37: // arrow left key
-                case 65: // A key
-                newX = currRectX - 5;
-                newY = currRectY;
-                break;
-                case 40: // arrow down key
-                case 83: // S key
-                newX = currRectX;
-                newY = currRectY + 5;
-                break;
-                case 39: // arrow right key
-                case 68: // D key
-                newX = currRectX + 5;
-                newY = currRectY;
-                break;
-            }
+                function drawStroke(x, y, style) {
 
-            movingAllowed = canMoveTo(newX, newY);
-            if (movingAllowed === 1) {      // 1 means 'the rectangle can move'
-            	drawRectangle(newX, newY, "#000066");
-            currRectX = newX;
-            currRectY = newY;
+            context.beginPath();
+            context.rect(x, y, 21, 6);
+            context.closePath();
+            context.fillStyle = style;
+            context.fill();
+
         }
-            else if (movingAllowed === 2 ) { // 2 means 'the rectangle reached the end point'
-            	clearInterval(intervalVar);
-            makeWhite(0, 0, canvas.width, canvas.height);
-            context.font = "40px Arial";
+            var correctAnswers =0;
+function moveRect(e) {
+	var newX=currRectX;
+	var newY=currRectY;
+	var location;
+	e = e || window.event;
+	switch (e.keyCode) {
+        case 38:   // arrow up key
+        case 87: // W key
+        newX = currRectX;
+        newY = currRectY - 3;
+        break;
+        case 37: // arrow left key
+        case 65: // A key
+        newX = currRectX - 3;
+        newY = currRectY;
+        break;
+        case 40: // arrow down key
+        case 83: // S key
+        newX = currRectX;
+        newY = currRectY + 3;
+        break;
+        case 39: // arrow right key
+        case 68: // D key
+        newX = currRectX +3;
+        newY = currRectY;
+        break;
+    }
+
+    location = canMoveTo(newX, newY);
+
+
+    if (location === ON_BLANK_SPACE) {      // 1 means 'the rectangle can move'
+        if(currentQuestionIsAnswered()) {
+            questionNumber++;
+        }
+    } else if (correctAnswers === 15) { // 2 means 'the rectangle reached the end point'
+    alert("khalasnaaa");
+    	clearInterval(intervalVar);
+        makeWhite(0, 0, canvas.width, canvas.height);
+        context.font = "40px Arial";
+        context.fillStyle = "#B8008A";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+        //displayFinalSlide();
+
+        window.removeEventListener("keydown", moveRect, true);
+        clearTimeout(timer);
+    } else if (location === ON_QUESTION || location === ON_END_OF_MAZE) { // 3 means 'the rectangle reached the question orange point'
+        if(!currentQuestionIsAnswered()) {
+            if (first === 1){
+                displayQuestion();
+                first =0;
+            } else{
+
+                setTimeout(function(){changeQuestion()},1000);
+            }
+            textq=answersBank[questionNumber][0];
+            speak(textq);
+
+
+            clearInterval(intervalVar);
+           makeWhito(0, 0, canvas.width, canvas.height);
+           ctx.font = "200px Arial";
+           ctx.fillStyle = "#B8008A";
+           ctx.textAlign = "center";
+           ctx.textBaseline = "middle";
+           var str1 = "انتي جاية اشتغلي ايه ?";
+           ctx.fillText("?", canvas.width / 2, canvas.height / 2);
+
+
+           myImage = canvas.toDataURL("image/png"); 
+
+            /*makeWhite(0, 0, canvas.width, canvas.height);
+            context.font = "200px Arial";
             context.fillStyle = "#B8008A";
             context.textAlign = "center";
             context.textBaseline = "middle";
-
-            context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
-            //displayFinalSlide();
-
+            context.fillText("?", canvas.width / 2, canvas.height / 2);*/
             window.removeEventListener("keydown", moveRect, true);
-            clearTimeout(timer);
         }
+    }
 
-               else if (movingAllowed === 3) { // 2 means 'the rectangle reached the question orange point'
-               	clearInterval(intervalVar);
-               makeWhito(0, 0, canvas.width, canvas.height);
-               ctx.font = "200px Arial";
-               ctx.fillStyle = "#B8008A";
-               ctx.textAlign = "center";
-               ctx.textBaseline = "middle";
-               var str1 = "انتي جاية اشتغلي ايه ?";
-               ctx.fillText("?", canvas.width / 2, canvas.height / 2);
+    if (isOnMovable(location)) {
+        movePiece(newX, newY)
+    }
+}
 
+function movePiece(newX, newY) {
+    drawRectangle(newX, newY, "#000066");
+    currRectX = newX;
+    currRectY = newY;
+}
 
-               myImage = canvas.toDataURL("image/png"); 
+function isOnMovable(location) {
+    return location == ON_BLANK_SPACE || location == ON_QUESTION;
+}
+function currentQuestionIsAnswered() {
+ return questionBank[questionNumber].answered;
+}
 
-                /*makeWhite(0, 0, canvas.width, canvas.height);
-                context.font = "200px Arial";
-                context.fillStyle = "#B8008A";
-                context.textAlign = "center";
-                context.textBaseline = "middle";
-                context.fillText("?", canvas.width / 2, canvas.height / 2);*/
-                window.removeEventListener("keydown", moveRect, true);
-            }
+function canMoveTo(destX, destY) {
+    debugger
+    // myImage = canvas.toDataURL("image/png"); 
+    var imgData = context.getImageData(destX, destY, 17, 17);
+    var data = imgData.data;
+    var canMove = ON_BLANK_SPACE; // ON_BLANK_SPACE means the rectangle can move
+    if (isInMazeBounds(destX, destY)) {
+    	for (var i = 0; i < 4 * 17* 17; i += 4) {
+            if (isOnWall(data, i)) { // black
+                canMove = ON_BORDER; // 0 means: the rectangle can't move
+                break;
+            } else if (isOnEndMaze(data, i)){ // #B8008A fuschiac
+                canMove = ON_END_OF_MAZE; // 2 means: the end point is reached
+                break;
+            } else if (isOnQuestion(data, i)) {
+                // #FF9900 orange
+                canMove = ON_QUESTION;
+                break;
+           }
         }
-        function canMoveTo(destX, destY) {
-       // myImage = canvas.toDataURL("image/png"); 
-       var imgData = context.getImageData(destX, destY, 17, 17);
-       var data = imgData.data;
-            var canMove = 1; // 1 means: the rectangle can move
-            if (destX >= 0 && destX <= mazeWidth - 15 && destY >= 0 && destY <= mazeHeight - 15) {
-            	for (var i = 0; i < 4 * 17* 17; i += 4) {
-                    if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0) { // black
-                        canMove = 0; // 0 means: the rectangle can't move
-                        break;
-                    }
-                    /*else if (data[i] === 0 && data[i + 1] === 255 && data[i + 2] === 0) { // #00FF00
-                        canMove = 2; // 2 means: the end point is reached
-                        break;*/
-                        else if (data[i] === 184 && data[i + 1] === 0 && data[i + 2] === 138){ // #B8008A fuschiac
-                        canMove = 2; // 2 means: the end point is reached
-                        break;
-                    }
-                              else if (data[i] === 255 && data[i + 1] === 153 && data[i + 2] === 0 && answered === 0 && ask === 0){ // #FF9900 orange
-                              //  alert('REACHED ORANGE');
-                             // myImage = canvas.toDataURL("image/png"); 
-
-                             canMove = 3;
-                             ask = 1;
-                             if (first === 1){
-                             	displayQuestion();
-                             	first =0;}
-                             	else{
-
-                             		setTimeout(function(){changeQuestion()},1000); }
-                             		 //new Audio('/assets/boing.wav').play();
-                                     textq=answersBank[questionNumber][0];
-                                     //getSpeech(textq);
-                                     //getSpeechy(textq);
-                                     speak(textq);
-                                     //new Audio('/assets/lalazy.mp3').play();
-                                     //playAudio("/assets/boing.wav");                              
+    } else {
+    	canMove = ON_BORDER;
+    }
 
 
-                       // 2 means: the Question point is reached
-                       break;
-                   }
-                   else if (data[i] === 255 && data[i + 1] === 153 && data[i + 2] === 0 && answered === 1 && ask ===1){ 
-                     // #FF9900 orange
+    displayScore();
 
-                     canMove = 1;
+    return canMove;
+}
 
-                     ask = 0;
-                        // 2 means: the Question point is reached
-                        break;
-                    }
+function isOnWall(data, i) {
+    return data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 0;
+}
 
+function isOnQuestion (data, i) {
+    return data[i] === 255 && data[i + 1] === 153 && data[i + 2] === 0;
+}
 
-                }
-            }
-            else {
+function isOnEndMaze(data, i) {
+    return data[i] === 184 && data[i + 1] === 0 && data[i + 2] === 138;
+}
 
-            	canMove = 0;
-            }
-            if(canMove === 0 && answered === 1){
-            	answered =0;
-            }
-
-
-            displayScore();
-            return canMove;
-        }
-
-
+function isInMazeBounds(destX, destY) {
+    return destX >= 0 && destX <= mazeWidth - 15 && destY >= 0 && destY <= mazeHeight - 15;
+}
 
        /* function createTimer(seconds) {
             intervalVar = setInterval(function () {
@@ -628,101 +627,109 @@ function makeWhite(x, y, w, h) {
 	context.rect(x, y, w, h);
 	context.closePath();
 	context.fillStyle ='rgba(255, 255, 255,0.5)';
-	context.fill(); }
-	function makeWhito(x, y, w, h) {
+	context.fill();
+}
 
-		ctx.beginPath();
-		ctx.rect(x, y, w, h);
-		ctx.closePath();
-		ctx.fillStyle ='rgba(255, 255, 255,0.5)';
-		ctx.fill(); 
+function makeWhito(x, y, w, h) {
+
+	ctx.beginPath();
+	ctx.rect(x, y, w, h);
+	ctx.closePath();
+	ctx.fillStyle ='rgba(255, 255, 255,0.5)';
+	ctx.fill(); 
+}
+var imo = new Image();
+
+
+function unMakeWhite() {
+
+	imo.src = myImage; 
+	ctx.clearRect ( 0, 0, canvas.width, canvas.height );
+    //context.drawImage(imo,0,0);
+    //drawMazeAndRectangle(currRectX, currRectY);
+
+}
+
+
+
+
+
+drawMazeAndRectangle(242, 7);
+
+window.addEventListener("keydown", moveRect, true);
+
+    //createTimer(120*10); // 20 minutes
+
+ 
+
+
+var questionNumber=0;
+var questionBank=new Array();
+var stage="#game1";
+var stage2=new Object;
+var questionLock=false;
+var numberOfQuestions;
+var answersBank=new Array();
+
+$.getJSON('/assets/maze/activity'+mazeletter+'.json', function(data) {
+    // THE NAME OF THE FILE IS THE ONE WHO DECIDES ACTUALLY ! (MAZELETTER)
+
+	for(i=0;i<data.quizlist.length;i++){ 
+		questionBank[i]=new Array;
+		questionBank[i][0]=data.quizlist[i].question;
+		questionBank[i][1]=data.quizlist[i].option1;
+		questionBank[i][2]=data.quizlist[i].option2;
+		questionBank[i][3]=data.quizlist[i].option3;
 	}
-	var imo = new Image();
+	numberOfQuestions=questionBank.length; 
+
+	// if (ask > 0){
+
+	// 	displayQuestion();}
+
+})//gtjson
 
 
-	function unMakeWhite() {
+   // fillDB();
+$.getJSON('/assets/maze/activityanswers'+mazeletter+'.json', function(data) {
+//WE ONLY CARE ABOUT THE FIRST ANSWER (AUDIO)
 
-		imo.src = myImage; 
-		ctx.clearRect ( 0, 0, canvas.width, canvas.height );
-        //context.drawImage(imo,0,0);
-        //drawMazeAndRectangle(currRectX, currRectY);
-
+    for(i=0;i<data.answerslist.length;i++){ 
+        answersBank[i]=new Array;
+        answersBank[i][0]=data.answerslist[i].question;
+        answersBank[i][1]=data.answerslist[i].option1;
+        answersBank[i][2]=data.answerslist[i].option2;
+        answersBank[i][3]=data.answerslist[i].option3;
     }
+    //numberOfQuestions=questionBank.length; 
+
+    //if (ask > 0){
+
+        //displayQuestion();}
+
+})//gtjson
 
 
+fillDB();
 
 
-
-    drawMazeAndRectangle(242, 7);
-    
-    window.addEventListener("keydown", moveRect, true);
-        //createTimer(120*10); // 20 minutes
-
-        /******************* SECOND HAAAALFFFFFFF***************/
-
-
-        var questionNumber=0;
-        var questionBank=new Array();
-        var stage="#game1";
-        var stage2=new Object;
-        var questionLock=false;
-        var numberOfQuestions;
-        var answersBank=new Array();
-
-        $.getJSON('/assets/activity.json', function(data) {
-
-        	for(i=0;i<data.quizlist.length;i++){ 
-        		questionBank[i]=new Array;
-        		questionBank[i][0]=data.quizlist[i].question;
-        		questionBank[i][1]=data.quizlist[i].option1;
-        		questionBank[i][2]=data.quizlist[i].option2;
-        		questionBank[i][3]=data.quizlist[i].option3;
-        	}
-        	numberOfQuestions=questionBank.length; 
-
-        	if (ask > 0){
-
-        		displayQuestion();}
-
-        })//gtjson
+function displayQuestion(){
+	var rnd=Math.random()*3;
+	rnd=Math.ceil(rnd);
+	var q1;
+	var q2;
+	var q3;
+    var q0= questionBank[questionNumber][0];
 
 
-       // fillDB();
- $.getJSON('/assets/activityanswers.json', function(data) {
+	if(rnd==1){q1=questionBank[questionNumber][1];q2=questionBank[questionNumber][2];q3=questionBank[questionNumber][3];}
+	if(rnd==2){q2=questionBank[questionNumber][1];q3=questionBank[questionNumber][2];q1=questionBank[questionNumber][3];}
+	if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
 
-            for(i=0;i<data.answerslist.length;i++){ 
-                answersBank[i]=new Array;
-                answersBank[i][0]=data.answerslist[i].question;
-                answersBank[i][1]=data.answerslist[i].option1;
-                answersBank[i][2]=data.answerslist[i].option2;
-                answersBank[i][3]=data.answerslist[i].option3;
-            }
-            //numberOfQuestions=questionBank.length; 
+    $(stage).append('<div class="pixie"><img src="/assets/maze/l'+mazeletter+'/'+q0+'"></div>');
+    $(stage).append('<div id="1" class="pix"><img src="/assets/maze/l'+mazeletter+'/'+q1+'"></div><div id="2" class="pix"><img src="/assets/maze/l'+mazeletter+'/'+q2+'"></div><div id="3" class="pix"><img src="/assets/maze/l'+mazeletter+'/'+q3+'"></div>');
 
-            //if (ask > 0){
-
-                //displayQuestion();}
-
-        })//gtjson
-
-
-        fillDB();
-
-
-        function displayQuestion(){
-        	var rnd=Math.random()*3;
-        	rnd=Math.ceil(rnd);
-        	var q1;
-        	var q2;
-        	var q3;
-
-
-        	if(rnd==1){q1=questionBank[questionNumber][1];q2=questionBank[questionNumber][2];q3=questionBank[questionNumber][3];}
-        	if(rnd==2){q2=questionBank[questionNumber][1];q3=questionBank[questionNumber][2];q1=questionBank[questionNumber][3];}
-        	if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
-
-
-        	$(stage).append('<div  class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="pix"><img src="/assets/'+q1+'"></div><div id="2" class="pix"><img src="/assets/'+q2+'"></div><div id="3" class="pix"><img src="/assets/'+q3+'"></div>');
+        	/*$(stage).append('<div  class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="pix"><img src="/assets/'+q1+'"></div><div id="2" class="pix"><img src="/assets/'+q2+'"></div><div id="3" class="pix"><img src="/assets/'+q3+'"></div>');*/
          
         
            /*  $(document).ready(function(){
@@ -745,16 +752,40 @@ $('.pix').click(function(){
   	$(stage).append('<div class="feedback1">CORRECT</div>');
   	unMakeWhite();
   	answered = 1;
-  	
+    correctAnswers ++;
+    // COLORING THE CORRECTLY ANSWERED QUESTION
+  	    context.beginPath();
+        context.arc(obstaclesArray[questionNumber][0], obstaclesArray[questionNumber][1], 9, 0, 2 * Math.PI, false);
+        context.closePath();
+        context.fillStyle = '#75A319';//orange
+        context.fill();
   	score=score+subscore;
   	subscore=10;
 
+ // if(correctAnswers %3 === 0){
+ //     new Audio('/assets/applause.mp3').play();}
 
+ if(correctAnswers === 15){
+            clearInterval(intervalVar);
+        makeWhite(0, 0, canvas.width, canvas.height);
+        context.font = "40px Arial";
+        context.fillStyle = "#B8008A";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+        //displayFinalSlide();
+        new Audio('/assets/applause.mp3').play();
+        window.removeEventListener("keydown", moveRect, true);
+        clearTimeout(timer);
+
+ }
  
   	window.addEventListener("keydown", moveRect, true);
 
   	movingAllowed =0;
-  	questionNumber++;
+    questionBank[questionNumber].answered = true;
+  	// questionNumber++;
  
 
   }
@@ -770,7 +801,7 @@ $('.pix').click(function(){
   }
  // setTimeout(function(){changeQuestion()},1000); 
 }});
- 
+
 }//display question
 
 

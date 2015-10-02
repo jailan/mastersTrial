@@ -5,6 +5,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html>
 <head>
+<%= content_tag :div, class: "temp_information", data: {temp: @tempmatch} do %>
+<% end %>
 	<title>Flipping Cards Game</title>
 	<style>
 
@@ -37,9 +39,140 @@ body article#game {
 #board {
 	padding-top: 10px;
     margin-left: 140px;
-    width: 570px;
-    height: 450px;
+    width: 340px;
+    height: 240px;
 	background-color: rgb(228, 223, 208);
+}
+.btnBlue {
+  background: #3baaf5;
+  background-image: -webkit-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -moz-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -ms-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -o-linear-gradient(top, #3baaf5, #1021de);
+  background-image: linear-gradient(to bottom, #3baaf5, #1021de);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnBlue:hover {
+  background: #0a1bcc;
+  background-image: -webkit-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -moz-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -ms-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -o-linear-gradient(top, #0a1bcc, #042985);
+  background-image: linear-gradient(to bottom, #0a1bcc, #042985);
+  text-decoration: none;
+}
+.btnGreen {
+  background: #5cb524;
+  background-image: -webkit-linear-gradient(top, #5cb524, #255705);
+  background-image: -moz-linear-gradient(top, #5cb524, #255705);
+  background-image: -ms-linear-gradient(top, #5cb524, #255705);
+  background-image: -o-linear-gradient(top, #5cb524, #255705);
+  background-image: linear-gradient(to bottom, #5cb524, #255705);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnGreen:hover {
+  background: #0acc11;
+  background-image: -webkit-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -moz-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -ms-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -o-linear-gradient(top, #0acc11, #257a1d);
+  background-image: linear-gradient(to bottom, #0acc11, #257a1d);
+  text-decoration: none;
+}
+.btnYellow {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -moz-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -ms-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -o-linear-gradient(top, #ffff00, #ffd500);
+  background-image: linear-gradient(to bottom, #ffff00, #ffd500);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnYellow:hover {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -moz-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -ms-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -o-linear-gradient(top, #ffff00, #f5b105);
+  background-image: linear-gradient(to bottom, #ffff00, #f5b105);
+  text-decoration: none;
+}
+.btnOrange{
+
+  background: #ff7700;
+  background-image: -webkit-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -moz-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -ms-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -o-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: linear-gradient(to bottom, #ff7700, #ff9b05);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnOrange:hover {
+  background: #fa8d3a;
+  background-image: -webkit-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -moz-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -ms-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -o-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: linear-gradient(to bottom, #fa8d3a, #ffb12b);
+  text-decoration: none;
+}
+.btnRed {
+  background: #ff000d;
+  background-image: -webkit-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -moz-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -ms-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -o-linear-gradient(top, #ff000d, #8c1414);
+  background-image: linear-gradient(to bottom, #ff000d, #8c1414);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnRed:hover {
+  background: #c70000;
+  background-image: -webkit-linear-gradient(top, #c70000, #ff4929);
+  background-image: -moz-linear-gradient(top, #c70000, #ff4929);
+  background-image: -ms-linear-gradient(top, #c70000, #ff4929);
+  background-image: -o-linear-gradient(top, #c70000, #ff4929);
+  background-image: linear-gradient(to bottom, #c70000, #ff4929);
+  text-decoration: none;
 }
 
 .button {
@@ -116,12 +249,61 @@ body article#game {
     margin-left:970px;
 }
 
+#level1{
+    width:20px;
+    height:30px;
 
+}
+#level2{
+    width:20px;
+    height:30px;
 
+}
+#level3{
+    width:20px;
+    height:30px;
+
+}
+#level4{
+    width:20px;
+    height:30px;
+
+}
+#level5{
+    width:20px;
+    height:30px;
+
+}
+.btnPurple {
+  background: #d100b5;
+  background-image: -webkit-linear-gradient(top, #d100b5, #87059e);
+  background-image: -moz-linear-gradient(top, #d100b5, #87059e);
+  background-image: -ms-linear-gradient(top, #d100b5, #87059e);
+  background-image: -o-linear-gradient(top, #d100b5, #87059e);
+  background-image: linear-gradient(to bottom, #d100b5, #87059e);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnPurple:hover {
+  background: #ba08c7;
+  background-image: -webkit-linear-gradient(top, #ba08c7, #990594);
+  background-image: -moz-linear-gradient(top, #ba08c7, #990594);
+  background-image: -ms-linear-gradient(top, #ba08c7, #990594);
+  background-image: -o-linear-gradient(top, #ba08c7, #990594);
+  background-image: linear-gradient(to bottom, #ba08c7, #990594);
+  text-decoration: none;
+}
 #startGameButton
 {
 	
-	width: 170px;
+	width: 150px;
 	padding-bottom: 10px;
 	text-align: center;
 	margin: 0.2em 0 0 300px;
@@ -142,7 +324,7 @@ body article#game {
 #flipAgainButton
 {
     
-    width: 170px;
+    width: 150px;
     padding-bottom: 10px;
     text-align: center;
     margin: 0.2em 0 0 300px;
@@ -181,8 +363,8 @@ body article#game {
 .tile img {
 	display: block;
 	margin: 0 auto;
-	padding-top: 25px;
-	width: 50px;
+	padding-top: 9px;
+	width: 80px;
 }
 
 .tileColor1 {
@@ -227,13 +409,17 @@ body article#game {
 
 		</section>
 		
-		
+
 
 	
 	</article>
 	<a  href='#' class="button fuschia" id="startGameButton">New Game</a>
 	<a  href='#' class="button fuschia" id="flipAgainButton">Peek Cards</a>
-	
+	<a  href='#' class="btnBlue" id="level1">1</a>
+    <a  href='#' class="btnGreen" id="level2">2</a>
+    <a  href='#' class="btnYellow" id="level3">3</a>
+    <a  href='#' class="btnOrange" id="level4">4</a>
+    <a  href='#' class="btnRed" id="level5">5</a>
 	<audio id="audioEngine">
 	  <source src="mp3/applause.mp3" type="audio/mpeg">
 	Your browser does not support the audio element.

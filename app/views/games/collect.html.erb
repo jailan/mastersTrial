@@ -2,7 +2,7 @@
 <html lang="en"> 
 <head> 
 	<meta charset="UTF-8" />
-    <title>Phaser - Making your first game, part 9</title>
+
 <div id="dialogoverlay"></div>
 <div id="dialogbox">
   <div>
@@ -11,15 +11,49 @@
     <div id="dialogboxfoot"></div>
   </div>
 </div>
+<ul>
+  <li><a href="#" class="round green" onclick="collectStar('ص')">ص<span class="round">ص</span></a></li>
+  <li><a href="#" class="round red" onclick="collectStar('ش')">ش<span class="round">ش</span></a></li>
+  <li><a href="#" class="round yellow" onclick="collectStar('س')">س<span class="round">س</span></a></li>
+    <li><a href="#" class="round green" onclick="collectStar('ز')">ز<span class="round">ز</span></a></li>
+  <li><a href="#" class="round red" onclick="collectStar('ر')">ر<span class="round">ر</span></a></li>
+  <li><a href="#" class="round yellow" onclick="collectStar('ذ')">ذ<span class="round">ذ</span></a></li>
+    <li><a href="#" class="round green" onclick="collectStar('د')" on>د<span class="round">د</span></a></li>
+  <li><a href="#" class="round red" onclick="collectStar('خ')">خ<span class="round">خ</span></a></li>
+  <li><a href="#" class="round yellow" onclick="collectStar('ح')">ح<span class="round">ح</span></a></li>
+    <li><a href="#" class="round green" onclick="collectStar('ج')">ج<span class="round">ج</span></a></li>
+  <li><a href="#" class="round red" onclick="collectStar('ث')">ث<span class="round">ث</span></a></li>
+  <li><a href="#" class="round yellow" onclick="collectStar('ت')">ت<span class="round">ت</span></a></li>
+    <li><a href="#" class="round green" onclick="collectStar('ب')">ب<span class="round">ب</span></a></li>
+  <li><a href="#" class="round red" onclick="collectStar('أ')">أ<span class="round">أ</span></a></li>
+</ul> 
+<ul>
+  <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ي')">ي<span class="round" >ي</span></a></li>
+    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('و')">و<span class="round">و</span></a></li>
+   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ه')">ه<span class="round">ه</span></a></li>
+     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ن')">ن<span class="round" >ن</span></a></li>
+    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('م')">م<span class="round">م</span></a></li>
+   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ل')">ل<span class="round">ل</span></a></li> 
+     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ك')">ك<span class="round" >ك</span></a></li>
+    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('ق')">ق<span class="round">ق</span></a></li>
+   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ف')">ف<span class="round">ف</span></a></li> 
+     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('غ')">غ<span class="round" >غ</span></a></li>
+    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('ع')">ع<span class="round">ع</span></a></li>
+   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ظ')">ظ<span class="round">ظ</span></a></li> 
+     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ط')">ط<span class="round" >ط</span></a></li>
+    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('ض')">ض<span class="round">ض</span></a></li>
 
-<button onclick="Alert.render('And you also smell very nice.')">Custom Alert 2</button>
-<%= content_tag :div, class: "temp_information", data: {temp: $game} do %>
+
+
+</ul>
+
+
+
+<%= content_tag :div, class: "temp_information", data: {temp: @temphome} do %>
 <% end %>
 	<script type="text/javascript" src="/assets/pjs/phaser.min.js"></script>
     <style type="text/css">
-        body {
-            margin: 0;
-        }
+
 
 #dialogoverlay{
     display: none;
@@ -39,6 +73,170 @@
     width:550px;
     z-index: 10;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: "helvetica neue", helvetica, arial, sans-serif;
+    font-size: 13px;
+    text-align: center;
+    background: #333 url('http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/low_contrast_linen.png');
+  }
+
+  ul {
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  li {
+    list-style: none;
+    position: relative;
+    margin-left: 25px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
+
+  @-moz-keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-360deg);}
+  }
+
+  @-webkit-keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-360deg);}
+  }
+
+  @-o-keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-360deg);}
+  }
+
+  @keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-360deg);}
+  }
+
+  .round {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 1px;    
+    text-decoration: none;    
+    text-align: center;
+    font-size: 25px;    
+    text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    letter-spacing: -.065em;
+    font-family: "Hammersmith One", sans-serif;   
+    -webkit-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+    box-shadow: 2px 2px 7px rgba(0,0,0,.2);
+    border-radius: 300px;
+    z-index: 1;
+    border-width: 4px;
+    border-style: solid;
+  }
+#mama{
+  top: 300px;
+}
+
+  .round:hover {
+    width: 130%;
+    height: 130%;
+    left: -15%;
+    top: -15%;
+    font-size: 33px;
+    padding-top: 3px;
+    -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+    -o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+    -moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+    box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+    z-index: 2;
+    border-size: 10px;
+    -webkit-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+  }
+
+  a.red {
+    background-color: rgba(239,57,50,1);
+    color: rgba(133,32,28,1);
+    border-color: rgba(133,32,28,.2);
+  }
+
+  a.red:hover {
+    color: rgba(239,57,50,1);
+  }
+
+  a.green {
+    background-color: rgba(1,151,171,1);
+    color: rgba(0,63,71,1);
+    border-color: rgba(0,63,71,.2);
+  }
+
+  a.green:hover {
+    color: rgba(1,151,171,1);
+  }
+
+  a.yellow {
+    background-color: rgba(252,227,1,1);
+    color: rgba(153,38,0,1);
+    border-color: rgba(153,38,0,.2);
+  }
+
+  a.yellow:hover {
+    color: rgba(252,227,1,1);
+  }
+
+  .round span.round {
+    display: block;
+    opacity: 0;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    font-size: 1px;
+    border: none;
+    padding: 40% 20% 0 20%;
+    color: #fff;
+  }
+
+  .round span:hover {
+    opacity: .85;
+    font-size: 16px;
+    -webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    -moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    -o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    text-shadow: 0 1px 1px rgba(0,0,0,.5);  
+  }
+
+  .green span {
+    background: rgba(0,63,71,.7);   
+  }
+
+  .red span {
+    background: rgba(133,32,28,.7);   
+  }
+
+  .yellow span {
+    background: rgba(161,145,0,.7); 
+
+  }
 #dialogbox > div{ background:#FFF; margin:8px; }
 #dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
 #dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
@@ -50,277 +248,6 @@
 
 
 <script type="text/javascript">
-
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-
-function preload() {
-
-    game.load.image('sky', '/assets/phaserassets/cloud.png');
-    game.load.image('ground', '/assets/phaserassets/platform.png');
-    game.load.image('star', '/assets/phaserassets/star.png');
-    game.load.image('seen', '/assets/phaserassets/seen.png');
-    game.load.image('sheen', '/assets/phaserassets/sheen.png');
-    game.load.image('sad', '/assets/phaserassets/sad.png');
-    game.load.image('dad', '/assets/phaserassets/dad.png');
-    game.load.image('qaf', '/assets/phaserassets/qaf.png');
-    game.load.image('lam', '/assets/phaserassets/lam.png');
-    game.load.image('noon', '/assets/phaserassets/noon.png');
-
-     game.load.image('alef', '/assets/phaserassets/alef.png');
-     game.load.image('dal', '/assets/phaserassets/dal.png');
-     game.load.image('thal', '/assets/phaserassets/thal.png');
-     game.load.image('ra2', '/assets/phaserassets/ra2.png');
-     game.load.image('zen', '/assets/phaserassets/zen.png');
-     game.load.image('waw', '/assets/phaserassets/waw.png');
-
-     game.load.image('geem', '/assets/phaserassets/geem.png');
-     game.load.image('ha2', '/assets/phaserassets/ha2.png');
-     game.load.image('kha2', '/assets/phaserassets/kha2.png');
-     game.load.image('een', '/assets/phaserassets/een.png');
-     game.load.image('gheen', '/assets/phaserassets/gheen.png');
-
-     game.load.image('ba2', '/assets/phaserassets/ba2.png');
-     game.load.image('ta2', '/assets/phaserassets/ta2.png');
-     game.load.image('tha2', '/assets/phaserassets/tha2.png');
-     game.load.image('fa2', '/assets/phaserassets/fa2.png');
-
-     game.load.image('kaf', '/assets/phaserassets/kaf.png');
-     game.load.image('meem', '/assets/phaserassets/meem.png');
-     game.load.image('ya2', '/assets/phaserassets/ya2.png');
-
-
-     game.load.image('tah', '/assets/phaserassets/tah.png');
-     game.load.image('zah', '/assets/phaserassets/zah.png');
-     game.load.image('heh', '/assets/phaserassets/heh.png');
-
-    game.load.spritesheet('dude', '/assets/phaserassets/dude.png', 32, 48);
-
-}
-
-var player;
-var platforms;
-var cursors;
-
-var stars;
-var score = 0;
-var scoreText;
-
-function create() {
-
-    //  We're going to be using physics, so enable the Arcade Physics system
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    //  A simple background for our game
-    game.add.sprite(0, 0, 'sky');
-
-    //  The platforms group contains the ground and the 2 ledges we can jump on
-    platforms = game.add.group();
-
-    //  We will enable physics for any object that is created in this group
-    platforms.enableBody = true;
-
-    // Here we create the ground.
-    var ground = platforms.create(0, game.world.height - 24, 'ground');
-
-    //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-    ground.scale.setTo(2, 2);
-
-    //  This stops it from falling away when you jump on it
-    ground.body.immovable = true;
-
-    //  Now let's create two ledges
-
-   var ledge = platforms.create(90+50, 450+30, 'ground');
-    ledge.scale.setTo(1.2, 0.6);
-    ledge.body.immovable = true;
-    ledge = platforms.create(135+50, 380+30, 'ground');
-    ledge.scale.setTo(1.0, 0.6);
-    ledge.body.immovable = true;
-
-    ledge = platforms.create(165+50, 310+30, 'ground');
-    ledge.scale.setTo(0.8, 0.6);
-    ledge.body.immovable = true;
-
-    ledge = platforms.create(180+90, 240+30, 'ground');
-    ledge.scale.setTo(0.5, 0.6);
-    ledge.body.immovable = true;
-
-    ledge = platforms.create(195+100, 170+30, 'ground');
-       ledge.scale.setTo(0.4, 0.6);
-    ledge.body.immovable = true;
-
-    ledge = platforms.create(230+80, 100+30, 'ground');
-       ledge.scale.setTo(0.3, 0.6);
-    ledge.body.immovable = true;
-
-    ledge = platforms.create(280+50, 30+30, 'ground');
-       ledge.scale.setTo(0.2, 0.6);
-    ledge.body.immovable = true;
-
-    // The player and its settings
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
-
-    //  We need to enable physics on the player
-    game.physics.arcade.enable(player);
-
-    //  Player physics properties. Give the little guy a slight bounce.
-    player.body.bounce.y = 0.2;
-    player.body.gravity.y = 300;
-    player.body.collideWorldBounds = true;
-
-    //  Our two animations, walking left and right.
-    player.animations.add('left', [0, 1, 2, 3], 10, true);
-    player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-    //  Finally some stars to collect
-    stars = game.add.group();
-
-    //  We will enable physics for any star that is created in this group
-    stars.enableBody = true;
-
-    var star= stars.create(560, 440, 'seen');
-    star.text="س";
-    star = stars.create(490, 435, 'sheen');
-    star.text="ش";
-    star = stars.create(420, 442, 'sad');
-    star.text="ص";
-    star = stars.create(350, 440, 'dad');
-    star.text="ض";
-    star = stars.create(280, 440, 'qaf');
-    star.text="ق";
-    star.scale.setTo(0.9,0.9);
-    star = stars.create(210, 440, 'lam');
-    star.text="ل";
-    star.scale.setTo(0.9,0.9);
-    star = stars.create(140, 440, 'noon');
-    star.text="ن";
-    star.scale.setTo(0.9,0.9);
-    //////////////////// 2ND LEVEL
-   star = stars.create(520, 365, 'alef');
-   star.text="ا";
-   star =stars.create(460, 375, 'dal');
-   star.text="د";
-   star =stars.create(400, 370, 'thal');
-   star.text="ذ";
-   star =stars.create(340, 370, 'ra2');
-   star.text="ر";
-   star =stars.create(280, 365, 'zen');
-   star.text="ز";
-   star =stars.create(220, 365, 'waw');
-   star.text="و";
-   //////////////////// 3RD LEVEL
-    star =stars.create(480, 300, 'geem');
-    star.text="ج";
-    star.scale.setTo(0.9,0.9);
-
-    star =stars.create(420, 300, 'ha2');
-    star.text="ح";
-    star.scale.setTo(0.9,0.9);
-    star =stars.create(360, 298-5, 'kha2');
-    star.text="خ";
-    star =stars.create(300, 295, 'een');
-    star.text="ع";
-    star =stars.create(240, 295, 'gheen');
-    star.text="غ";
-    ///////////////4TH Level
-
-    star =stars.create(460-20, 240-10, 'ba2');
-    star.text="ب";
-    star =stars.create(400-20, 240-5, 'ta2');
-    star.text="ت";
-    star =stars.create(340-20, 240-5, 'tha2');
-    star.text="ث";
-    star =stars.create(280-20, 240-5, 'fa2');
-    star.text="ف";
-//////////5th
-  star =stars.create(460-35, 160, 'kaf');
-  star.text="ك";
-    star =stars.create(400-35, 160, 'meem');
-    star.text="م";
-    star =stars.create(340-35, 160, 'ya2');
-    star.text="ي";
-////6th
-
-    star =stars.create(380, 100-10, 'tah');
-    star.text="ط";
-    star =stars.create(320, 100-10, 'zah');
-    star.text="ظ";
-//7th
-    star =stars.create(355, 40-10, 'heh');
-    star.text="ه";
-
-
-
-    //  Here we'll create 12 of them evenly spaced apart
-    for (var i = 0; i < 12; i++)
-    {
-        //  Create a star inside of the 'stars' group
-       var star = stars.create(i * 70, 0, 'star');
-        
-        //  Let gravity do its thing
-        //star.body.gravity.y = 300;
-        //star.body.gravity.y = 150;
-
-        //  This just gives each star a slightly random bounce value
-        //star.body.bounce.y = 0.7 + Math.random() * 0.2;
-        //star.body.bounce.y = 0.3 + Math.random() * 0.2;
-
-    }
-
-    //  The score
-    scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-
-    //  Our controls.
-    cursors = game.input.keyboard.createCursorKeys();
-    
-}
-
-function update() {
-      
-
-    //  Collide the player and the stars with the platforms
-    game.physics.arcade.collide(player, platforms);
-    game.physics.arcade.collide(stars, platforms);
-
-    //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-    game.physics.arcade.overlap(player, stars, collectStar, null, this);
-
-    //  Reset the players velocity (movement)
-  
-    player.body.velocity.x = 0;
-  
-
-    if (cursors.left.isDown && disable === 0)
-    {
-        //  Move to the left
-        player.body.velocity.x = -150;
-
-        player.animations.play('left');
-    }
-    else if (cursors.right.isDown && disable === 0)
-    {
-        //  Move to the right
-        player.body.velocity.x = 150;
-
-        player.animations.play('right');
-    }
-    else
-    {
-        //  Stand still
-        player.animations.stop();
-
-        player.frame = 4;
-    }
-    
-    //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down && disable === 0)
-    {
-        player.body.velocity.y = -350;
-    }
-
-
-}
-
 
 
       function speak(word){
@@ -335,7 +262,7 @@ msg.onend = function(e) {
   console.log('Finished in ' + event.elapsedTime + ' seconds.');
 };
 
-speechSynthesis.speak(msg);
+//speechSynthesis.speak(msg); ***UNCOMMENT THIS IF YOU WANT IT TO TALK***
 }
 var disable = 0;
 
@@ -353,63 +280,82 @@ function CustomAlert(){
         disable=1;
         document.getElementById('dialogboxhead').innerHTML = "Are You Ready ? :D";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>'; //**********ALEEH EL 3EEN**********
        
     }
     this.ok = function(){
         document.getElementById('dialogbox').style.display = "none";
         document.getElementById('dialogoverlay').style.display = "none";
-        disable=0;
-        var game= $('.temp_information').data('temp'); 
-        var link='balala';
-        switch (game) {
-    case 10:
+        disable = 0;
+        gamzo = $('.temp_information').data('temp'); 
+        link ='balala';
+    
+        switch (gamzo) {
+    case 0:
         link = 'games_hangman_path';
         break;
-    case 11:
+    case 1:
         link = 'games_shooting_path';
         break;
-    case 12:
+    case 2:
         link = 'games_matching_path';
         break;
-    case 13:
+    case 3:
         link = 'games_maze_path';
         break;
-    case 14:
+    case 4:
         link = 'games_writing_path';
         break;
-    case 15:
+    case 5:
         link = 'games_puzzle_path';
         break;
-    case 16:
+    case 6:
         link = 'games_drag_path';
         break;
-    case 17:
+    case 7:
         link = 'games_preschooler_path';
         break;                   
 }
-     
-       window.open(link, "_self")
+    // alert(gamzo+" ");
+     window.open(link, "_self"); //**********ALEEH EL 3EEN**********
+   //alert("game : "+gamzo+"  Link: "+link);
         //$.get('hangman', function(data) {});
 
     }
 }
 var Alert = new CustomAlert();
+ var starnew;
+var abcflags = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  var abc = ['أ', 'ب', 'ت', 'ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
 
-function collectStar (player, star) {
-    
-    // Removes the star from the screen
-    star.kill();
-    speak(star.text);
-    
-    Alert.render('Welcome to '+star.text+ ' Kingdom, Hero !')
+function collectStar (Myletter) {
+
  
 
-    //  Add and update the score
-    score += 10;
-    scoreText.text = 'Score: ' + score;
+   var letterid = abc.indexOf(Myletter)+1;
+    // Removes the star from the screen
+    if(abcflags[letterid-1] === 0){
+    speak(abc[letterid-1]);
+    Alert.render('Welcome to '+abc[letterid-1]+ ' Kingdom, Hero !'); 
+    //chooseLetter(letterid); This should be uncommented to play in this certain letter (NOT NOW)
+    chooseLetter(2);
+    abcflags[letterid-1] =1;
+
+}   
 
 }
+
+     function chooseLetter(fieldClicked) {
+    $.ajax({
+        url: 'collect',
+        type: 'get',
+        contentType: 'application/json; charset=UTF-8',
+        accept: 'application/json',
+        dataType: 'json',
+        data: {letter:fieldClicked}
+    
+    });
+};
 
 </script>
 

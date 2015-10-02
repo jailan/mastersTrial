@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html manifest="letterpaint.manifest" lang="en-US">
 <head>
+  <%= content_tag :div, class: "temp_information", data: {temp: @tempwrite} do %>
+<% end %>
   <meta name="viewport" content="width=device-width">
   <meta charset="UTF-8">
   <title>letterpaint</title>
@@ -74,6 +76,15 @@ canvas {
   padding: 10px;
   font-size: 6vw;
 }
+#paintStage{
+   text-align: center;
+   /*color: #FF6600;*/
+  color: #000066;
+  z-index: 2;
+  padding: 10px;
+  font-size: 16vw; 
+}
+
 .navbutton {
   position: absolute;
   top: 50px;
@@ -210,10 +221,18 @@ canvas {
 
     <h1 class="toppanel">letterpaint</h1>
 
-    <div id="intro" class="cover">
+ <!--    <div id="intro" class="cover">
       <p>Paint over the letter you see on the screen. Can you write it without going outside of it?</p>
       <button class="actionbutton">➜</button>
+    </div> -->
+
+       <div id="intro" class="cover">
+      <p>READY ?</p>
+      <p id="paintStage"></p>
+      <button class="actionbutton">➜</button>
     </div>
+
+
   <button class="actionbutton undo" id="reload">!</button>
     <button id="sound" class="navbutton">♬</button>
     <button id="infos" class="inlinebutton">h</button>
@@ -236,9 +255,10 @@ canvas {
   </div>
 
   <!-- http://freesound.org/people/NenadSimic/sounds/150879/ -->
-  <audio src="/assets/win.ogg" id="winsound"></audio>
+  <audio src="/assets/Audio/win.ogg" id="winsound"></audio>
+  <audio src="/assets/Audio/boing.wav" id="applausesound"></audio>
   <!-- http://freesound.org/people/Autistic%20Lucario/sounds/142608/ -->
-  <audio src="/assets/error.ogg" id="errorsound"></audio>
+  <audio src="/assets/Audio/error.ogg" id="errorsound"></audio>
 
   <script src="/assets/letterpaint.js"></script>
 </body>

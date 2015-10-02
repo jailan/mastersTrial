@@ -1,5 +1,7 @@
 //this game will have only 1 state
 var word = "خيار";
+var preschoolerletter = $('.temp_information').data('temp'); 
+//alert(preschoolerletter);
    function getSpeech(fieldClicked) {
     $.ajax({
         url: 'ool',
@@ -25,12 +27,12 @@ var GameState = {
 
   //load the game assets before the game starts
   preload: function() {    
-    this.load.image('background', '/assets/imagesphaser/paper3.jpg');
-    this.load.image('arrow', '/assets/imagesphaser/arrow.png');
-    this.load.spritesheet('chicken', '/assets/imagesphaser/chicken_spritesheet.png', 131, 200, 3);
-    this.load.spritesheet('horse', '/assets/imagesphaser/horse_spritesheet.png', 212, 200, 3);
-    this.load.spritesheet('pig', '/assets/imagesphaser/pig_spritesheet.png', 297, 200, 3);
-    this.load.spritesheet('sheep', '/assets/imagesphaser/sheep_spritesheet.png', 244, 200, 3);
+    this.load.image('background', '/assets/imagesphaser/p'+preschoolerletter+'/paper3.jpg');
+    this.load.image('arrow', '/assets/imagesphaser/p'+preschoolerletter+'/arrow.png');
+    this.load.spritesheet('chicken', '/assets/imagesphaser/p'+preschoolerletter+'/chicken_spritesheet.png', 131, 200, 3);
+    this.load.spritesheet('horse', '/assets/imagesphaser/p'+preschoolerletter+'/horse_spritesheet.png', 212, 200, 3);
+    this.load.spritesheet('pig', '/assets/imagesphaser/p'+preschoolerletter+'/pig_spritesheet.png', 297, 200, 3);
+    this.load.spritesheet('sheep', '/assets/imagesphaser/p'+preschoolerletter+'/sheep_spritesheet.png', 244, 200, 3);
     this.load.audio('chickenSound', ['/assets/audiophaser/chicken.ogg', '/assets/audiophaser/assets/audio/chicken.mp3']);
     this.load.audio('horseSound', ['/assets/audiophaser/horse.ogg', '/assets/audiophaser/assets/audio/horse.mp3']);
     this.load.audio('pigSound', ['/assets/audiophaser/pig.ogg', '/assets/audiophaser/assets/audio/pig.mp3']);

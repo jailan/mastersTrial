@@ -4,6 +4,9 @@
 	<meta charset="utf-8" />
 	<title>Shooting Game</title>
 	<%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+    <%= content_tag :div, class: "temp_information", data: {temp:@tempshoot, stagy: @shootstageno} do %>
+    
+<% end %>
 </head>
 	<style>
 
@@ -11,6 +14,8 @@
 		background-image: url("/assets/paper.jpg");
 
 	}
+
+
 	}#home{
     position:absolute;
     top:100px;
@@ -29,11 +34,144 @@
 
 		/*background-color: 	#A30052;*/
 		border: 3px solid #99CC00;
-		background-image: url("/assets/images3/rainbow.png");
+		background-image: url("/assets/shooting/rainbowopacity.png");
 		background-size: 650px 400px;
 		background-repeat: no-repeat;
 
 	}
+
+	.btnBlue {
+  background: #3baaf5;
+  background-image: -webkit-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -moz-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -ms-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -o-linear-gradient(top, #3baaf5, #1021de);
+  background-image: linear-gradient(to bottom, #3baaf5, #1021de);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnBlue:hover {
+  background: #0a1bcc;
+  background-image: -webkit-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -moz-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -ms-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -o-linear-gradient(top, #0a1bcc, #042985);
+  background-image: linear-gradient(to bottom, #0a1bcc, #042985);
+  text-decoration: none;
+}
+.btnGreen {
+  background: #5cb524;
+  background-image: -webkit-linear-gradient(top, #5cb524, #255705);
+  background-image: -moz-linear-gradient(top, #5cb524, #255705);
+  background-image: -ms-linear-gradient(top, #5cb524, #255705);
+  background-image: -o-linear-gradient(top, #5cb524, #255705);
+  background-image: linear-gradient(to bottom, #5cb524, #255705);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnGreen:hover {
+  background: #0acc11;
+  background-image: -webkit-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -moz-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -ms-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -o-linear-gradient(top, #0acc11, #257a1d);
+  background-image: linear-gradient(to bottom, #0acc11, #257a1d);
+  text-decoration: none;
+}
+.btnYellow {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -moz-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -ms-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -o-linear-gradient(top, #ffff00, #ffd500);
+  background-image: linear-gradient(to bottom, #ffff00, #ffd500);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnYellow:hover {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -moz-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -ms-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -o-linear-gradient(top, #ffff00, #f5b105);
+  background-image: linear-gradient(to bottom, #ffff00, #f5b105);
+  text-decoration: none;
+}
+.btnOrange{
+
+  background: #ff7700;
+  background-image: -webkit-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -moz-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -ms-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -o-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: linear-gradient(to bottom, #ff7700, #ff9b05);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnOrange:hover {
+  background: #fa8d3a;
+  background-image: -webkit-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -moz-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -ms-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -o-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: linear-gradient(to bottom, #fa8d3a, #ffb12b);
+  text-decoration: none;
+}
+.btnRed {
+  background: #ff000d;
+  background-image: -webkit-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -moz-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -ms-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -o-linear-gradient(top, #ff000d, #8c1414);
+  background-image: linear-gradient(to bottom, #ff000d, #8c1414);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnRed:hover {
+  background: #c70000;
+  background-image: -webkit-linear-gradient(top, #c70000, #ff4929);
+  background-image: -moz-linear-gradient(top, #c70000, #ff4929);
+  background-image: -ms-linear-gradient(top, #c70000, #ff4929);
+  background-image: -o-linear-gradient(top, #c70000, #ff4929);
+  background-image: linear-gradient(to bottom, #c70000, #ff4929);
+  text-decoration: none;
+}
+
 
 	.button {
 		display: inline-block;
@@ -119,6 +257,97 @@
 	display: block;*/
 
 }
+#level1{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level1{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level2{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level3{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level4{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level5{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level5a{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
+#level5b{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+
+}
+#level5c{
+
+		padding-bottom: 10px;
+		text-align: center;
+		margin: 0.2em 0 0 13px;
+		position:relative;
+		transition: .5s ease;
+		top: 432px;
+		left: 300px;
+}
 #score {
 	position:relative;
 	height:550px;
@@ -147,16 +376,21 @@ div.img {
 
 </style>
 
-
-
 <body>
+<canvas id="canvas" width="650" height="400"> </canvas>
+<a  href='#' class="button orange" id="startGameButton" onclick="window.location.reload()">New Game</a>
 
 
-	<canvas id="canvas" width="650" height="400"></canvas>
-	<a  href='#' class="button orange" id="startGameButton" onclick="window.location.reload()">New Game</a>
+	  <a  href='#' class="btnBlue" id="level1">1</a>
+    <a  href='#' class="btnGreen" id="level2">2</a>
+    <a  href='#' class="btnYellow" id="level3">3</a>
+    <a  href='#' class="btnOrange" id="level4">4</a>
+    <a  href='#' class="btnRed" id="level5a">5a</a> 
+    <a  href='#' class="btnRed" id="level5b">5b</a> 
+    <a  href='#' class="btnRed" id="level5c">5c</a> 
+
 
 <canvas id="score" width="400" height="600"></canvas>
-
 
 
 
@@ -168,8 +402,19 @@ div.img {
     var targetX = 0, targetY = 0, shots = 0, hits = 0, accuracy = 0, correctShots=0,
     wrongShots=0, n=0, frames;
     var order=0;
-    var flags=[10,10,10,10,10,10,10];
-    var a = new Array("تمساح","تفاح","توت", "تَمْر","تمثال", "تِلِيفُون" ,"تلميذ");
+    var flags=[10,10,10];
+    var shootletter = $('.temp_information').data('temp'); 
+var yalla = $('.temp_information').data('stagy'); 
+
+    var shootstagy = yalla;
+    var shootstage = setStagy(shootstagy);
+
+    var shootsubstage5= setsubStage();
+
+    //THIS IS THE ONE FOR SOUNDS ONLY
+  //  var a = new Array("تمساح","تفاح","توت", "تَمْر","تمثال", "تِلِيفُون" ,"تلميذ");
+  var a = new Array("بَطّة","بِنْت","بُرتقالة");
+
 
 
     window.requestAnimFrame = (function() {
@@ -189,8 +434,8 @@ div.img {
     	this.y = y;	
     	this.mapX = mapX;
     	this.mapY = mapY;
-    	this.height = 50;
-    	this.width = 100;
+    	this.height = 80;// JUST ZZOMING IN/OUT THE CUTTED IMAGE
+    	this.width = 80;
     	this.direction = Math.floor((Math.random()*359));
     	this.speed = Math.floor((Math.random()*10) + 5);
     	this.canvas = canvas;
@@ -206,9 +451,9 @@ div.img {
     	if(this.hit === false) {
 
     		ctx.drawImage(sprite, this.getMapX(), this.getMapY(),
-    			170, 170, 
+    			280, 280, 
     			this.getX(), this.getY(), 
-    			this.getWidth(), this.getHeight());
+    			this.getWidth(), this.getHeight()); /// HERE WE CONTROL HOW TO CUT
     	}
 
     	return this;
@@ -349,29 +594,47 @@ Explosion.prototype.checkHits = function(things) {
 
 		    //alert('ID: '+things[i].letter);
 		    //var identity=things[i].getLetter();
-		    if(things[i].letter <=6){
+		    if(shootstage <5){
+		    if(things[i].letter <=2){
 		    	n=i;
 		    	flags[order]=i;
 		    	order=order+1;
 		    	correctShots++;
 		    	var textq=a[things[i].letter];
-                //getSpeech(textq);
-                speak(textq);
+          speak(textq);
 		    	
-		    	if(correctShots==7){
+		    	if(correctShots==3){
 		    		done =1;
-		    		new Audio('/assets/applause.mp3').play();
+		    		new Audio('/assets/Audio/applause.mp3').play();
+		    		setTimeout(function(){ UpdateShootStage(); }, 5000);
+		    		
 		    	}
-		    //placeholders = placeholders +20;
-
-		    //cvx.drawImage(target,10,10);
-		    //cvx.fillText("KHARAAAABYYYYYYYYYYYYY",180,230);
-
 		}
 		else{
 			wrongShots++;
-			new Audio('/assets/no.mp3').play();
+			new Audio('/assets/Audio/no.mp3').play();
 		}
+	}
+	else{
+				    if(things[i].letter === shootsubstage5-1){
+		    	n=i;
+		    	flags[order]=i;
+		    	order=order+1;
+		    	correctShots++;
+		    	var textq=a[things[i].letter];
+          speak(textq);
+		    	
+		    	if(correctShots===1){
+		    		done =1;
+		    		new Audio('/assets/Audio/applause.mp3').play();
+		    		setTimeout(function(){ UpdateShootStage(); }, 5000);
+		    	}
+		}
+		else{
+			wrongShots++;
+			new Audio('/assets/Audio/no.mp3').play();
+		}
+	}
 		things[i].setHit();
 
 	}
@@ -408,45 +671,60 @@ Explosion.prototype.draw = function(ctx, explosion) {
 
 
 
-
 function loadSprite() {
 
 	sprite = new Image();
-	sprite.src = '/assets/images3/trial134.png';
+	//sprite.src = '/assets/shooting/trial134.png'; wrong one
+	//sprite.src = '/assets/shooting/trial'+shootletter+'.png'; CORRECT ONE
+	//sprite.src = '/assets/shooting/yaRab.png'; 
+
+ 
+sprite.src = '/assets/shooting/l'+shootletter+'/spritewords'+shootstage+'.png';
+	
 	sprite2 = new Image();
-	sprite2.src = '/assets/images3/trial5.png';
+	sprite2.src = '/assets/shooting/l'+shootletter+'/trial5.png';
 
 	target = new Image();
-	target.src = '/assets/images3/target.gif';
+	target.src = '/assets/shooting/target.gif';
 
 	explosion = new Image();
-	explosion.src = '/assets/images3/explosion.png';
+	explosion.src = '/assets/shooting/explosion.png';
 
 	targetLetter = new Image();
-	targetLetter.src = '/assets/images3/letto3.png';
+	targetLetter.src = '/assets/shooting/l'+shootletter+'/targetba2.png';
+
+	/*target1 = new Image();
+	target1.src = '/assets/shooting/1.jpg';
+
+	target2 = new Image();
+	target2.src = '/assets/shooting/2.jpg';
+
+	target3= new Image();
+	target3.src = '/assets/shooting/3.jpg';*/
 
 	frame = new Image();
-	frame.src = '/assets/images3/frame3.png';
+	frame.src = '/assets/shooting/frame3.png';
 
 	frames = new Image();
-	frames.src = '/assets/images3/frames.png';
+	frames.src = '/assets/shooting/frames.png';
 
 
 
 }
 
 function createThings() {
-
+//*MAAAAAP
 	var i;
 	    /*spriteMap =  [
 	    [820, 550],[300, 350],[600, 350],[1100, 350],[1350, 350],[600,150],[1100, 150],
 	    [300, 550],[600, 550],[1100,550],[1350, 550],
 	    [820, 350],[300, 150],[820,150],[1350, 150]];*/
+    // spriteMap =  [
+	   //  [830, 885],[60, 450],[850, 450],[1600, 455],[470,25],[1290, 25]];
 
-	    spriteMap =  [
-	    [850, 550],[360, 350],[620, 350],[1100, 350],[1350, 350],[620,150],[1100, 150],
-	    [300, 550],[600, 550],[1100,550],[1350, 550],
-	    [820, 350],[300, 150],[820,150],[1350, 150]];
+spriteMap =  [
+	   [1600, 455],[60, 450],[830, 885], [850, 450],[470,25],[1290, 25]];
+
 
 	   /*THE FINAL CUT  spriteMap =  [
 	    [600, 550],[300, 350],[820, 350],[1100, 350],[1350, 350],[300, 150],[820, 150],
@@ -467,11 +745,8 @@ function createThings() {
 	    [300, 150],[600, 150],[820, 150] ,[1100, 150],[1350, 150]
 	    ];*/
 
-	    for(i = 0; i < 15; i++) {
+	    for(i = 0; i < 6; i++) { //15
 	    	sprites.push(createThing(spriteMap,i));
-
-
-
 	    }
 	}
 		//var placeholders=20;
@@ -592,9 +867,29 @@ ctx.fillText("Score: "+totalScore,253,280);
 
 function resetBoard(n){
 	var j=260;
-	var m=310;
+	var m=360;
 
-	for(i = 0; i <flags.length; i++) {
+for(i = 0; i <flags.length; i++) {
+		if(flags[i]<10){
+
+ // cvx.drawImage(targetShotCorrectly,170,170,310,420,90,60);
+
+	var targetShotCorrectly =new Image();
+	if (shootstage ===5){
+		targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'p.png';
+		 	cvx.drawImage(targetShotCorrectly,160,403,70,70);
+	}
+	else if(shootstage ===2 || shootstage ===2 ){
+	targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'w.png';
+ 	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100),403,70,70);}
+	else{
+		targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'p.png';
+		 	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100),403,70,70);
+	}
+
+	//cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,m,420,90,60);
+		}
+	/*for(i = 0; i <flags.length; i++) {
 		if(flags[i]<10){
            if(i<3){
 			cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,j,290,90,60);
@@ -605,18 +900,18 @@ function resetBoard(n){
 
 			}
 
-		}
+		} THIS WAS USED WHEN WE USED TO CUT THE TARGET AND PUT IT DOWN IN FRAME*/
 
 
 	}
-	if (flags[6]<10){
+	if (flags[2]<10){
 		done=1;
 	}
 }
 
 function resetBoardFinal(){
 
-	if (flags[6]<10){
+	if (flags[2]<10){
 		done=1;
 	}
 }
@@ -678,18 +973,44 @@ cvx.fillStyle ="orangered";
 cvx.fillText("Wrong Shots: " +  wrongShots ,180,150-10);
 cvx.fillStyle = " #000033";
 cvx.fillText("Accuracy: " + accuracy ,180,190-10);
-cvx.drawImage(targetLetter,15,53,80,80);
+cvx.drawImage(targetLetter,15-15,53-10,110,110);
 cvx.drawImage(frame,0,38,115,115);
 var d = 260;
+if (shootstage === 1 || shootstage===2 ){
 for (t=0;t<3;t++){
 	cvx.drawImage(frames,d,280,80,80);
+	targetshoot= new Image();
+	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+(t+1)+'.jpg';
+	cvx.drawImage(targetshoot,d+5,285,70,70);
 	d-=100;
+}}
+
+else{ 
+	if (shootstage === 3 || shootstage=== 4){
+
+	cvx.drawImage(frames,135+10,280,100,100);
+	targetshoot= new Image();
+	targetshoot.src = '/assets/shooting/l'+shootletter+'/letterba2.jpg';
+	cvx.drawImage(targetshoot,140+10,285,90,90);
+
+
 }
-var f = 310;
-for (t=0;t<4;t++){
+else{ // IN CASE OF STAGE 5
+		cvx.drawImage(frames,135+10,280,100,100);
+	targetshoot= new Image();
+	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'d.jpg';
+	cvx.drawImage(targetshoot,140+10,285,90,90);
+}
+}
+if(shootstage === 5){
+		cvx.drawImage(frames,160,400,80,80);
+}
+else{
+var f = 260;
+for (t=0;t<3;t++){
 	cvx.drawImage(frames,f,400,80,80);
 	f-=100;
-}
+}}
 if(done>0){
 	congratsy();
 }
@@ -704,6 +1025,7 @@ if(done>0){
 	    requestAnimFrame(start);
 	    
 	}
+
 
 	function resizeCanvas() {
 
@@ -736,16 +1058,111 @@ if(done>0){
 
 	function fire() {
 
-		explosions.push(new Explosion(targetX, targetY, new Audio('/assets/bang.wav')));
+		explosions.push(new Explosion(targetX, targetY, new Audio('/assets/Audio/bang.wav')));
 		shots++;
 
 	}
+	     function chooseShootStage(fieldClicked) {
+    $.ajax({
+        url: 'shooting',
+        type: 'get',
+        contentType: 'application/json; charset=UTF-8',
+        accept: 'application/json',
+        dataType: 'json',
+        data: {myshootstage:fieldClicked}
+    
+    });
+};
+
+	function sendStage(stageNo){
+chooseShootStage(stageNo);
+
+}
+
+function UpdateShootStage(){
+	
+	if (shootstagy<6){
+		shootstagy++;
+
+
+	}
+	else{
+				shootstagy=1;
+
+	}
+	//window.location.reload()
+				sendStage(shootstagy);
+		yalla= $('.temp_information').data('stagy');
+		location.reload();
+}
+	function setsubStage(){
+		if(shootstagy === 5)
+return 1;
+		if(shootstagy === 6)
+return 2;
+		if(shootstagy === 7)
+return 3;
+
+}
+	function setStagy(number){
+		if(number >= 5)
+			return 5;
+		else{
+			return number;
+		}
+
+
+}
 
 	
 	// resize the canvas to fill browser window dynamically
 	window.addEventListener('resize', resizeCanvas, false);
-	
+var yalla;
+	$('#level1').click(function() {
+		sendStage(1);
+		yalla= $('.temp_information').data('stagy');
+		location.reload();
+		//alert(shootstage); 
 
+	});
+		$('#level2').click(function() {
+		sendStage(2);
+	   		yalla= $('.temp_information').data('stagy');
+		location.reload();
+	
+	});
+		$('#level3').click(function() {
+		sendStage(3);
+		yalla= $('.temp_information').data('stagy');
+		location.reload();
+	});
+		$('#level4').click(function() {
+		sendStage(4);
+		yalla= $('.temp_information').data('stagy');
+		location.reload();
+	});
+		$('#level5a').click(function() {
+sendStage(5);
+
+		yalla= $('.temp_information').data('stagy');		
+		  location.reload();
+
+	});
+				$('#level5b').click(function() {
+sendStage(6);
+
+		yalla= $('.temp_information').data('stagy');
+		location.reload();
+
+	});
+						$('#level5c').click(function() {
+sendStage(7);
+
+		yalla= $('.temp_information').data('stagy');
+
+		location.reload();
+
+	});
 	// Start the process
 
 	window.onload = function() {
@@ -755,6 +1172,8 @@ if(done>0){
 	};
 
 	
+
+		
 
 
 

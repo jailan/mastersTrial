@@ -5,7 +5,8 @@
 <title>Hangman</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/assets/hangman.css" rel="stylesheet" type="text/css">
-
+<%= content_tag :div, class: "temp_information", data: {temp: @temphang} do %>
+<% end %>
 <style>
 @charset "UTF-8";
 body {
@@ -22,12 +23,13 @@ h1 {
 #frame{
     position:absolute;
    margin-top: 25px;
-    margin-left: 75px; 
+    margin-left: 390px; 
 }
 
 #hint{
-   margin-top: 30px;
-    margin-left: 80px; 
+    position: absolute;
+  margin-top: 29px;
+    margin-left: 395px; 
 }
 .button {
     display: inline-block;
@@ -104,7 +106,7 @@ h1 {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-image: url(/assets/images4/icons.png);
+    background-image: url(/assets/hangman/icons.png);
     background-position: 2px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -115,7 +117,7 @@ h1 {
   position: absolute;
     top: 300px;
    left: 665px;
-    background-image: url(/assets/images4/icons.png);
+    background-image: url(/assets/hangman/icons.png);
     background-position: 2px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -144,7 +146,7 @@ h1 {
     top: -20px;
     right: -20px;
     z-index: 10;
-    background-image: url(/assets/images4/icons.png);
+    background-image: url(/assets/hangman/icons.png);
     background-position: -48px 2px;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -295,6 +297,143 @@ h1 {
     }
 }
 
+.btnBlue {
+  background: #3baaf5;
+  background-image: -webkit-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -moz-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -ms-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -o-linear-gradient(top, #3baaf5, #1021de);
+  background-image: linear-gradient(to bottom, #3baaf5, #1021de);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnBlue:hover {
+  background: #0a1bcc;
+  background-image: -webkit-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -moz-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -ms-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -o-linear-gradient(top, #0a1bcc, #042985);
+  background-image: linear-gradient(to bottom, #0a1bcc, #042985);
+  text-decoration: none;
+}
+.btnGreen {
+  background: #5cb524;
+  background-image: -webkit-linear-gradient(top, #5cb524, #255705);
+  background-image: -moz-linear-gradient(top, #5cb524, #255705);
+  background-image: -ms-linear-gradient(top, #5cb524, #255705);
+  background-image: -o-linear-gradient(top, #5cb524, #255705);
+  background-image: linear-gradient(to bottom, #5cb524, #255705);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnGreen:hover {
+  background: #0acc11;
+  background-image: -webkit-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -moz-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -ms-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -o-linear-gradient(top, #0acc11, #257a1d);
+  background-image: linear-gradient(to bottom, #0acc11, #257a1d);
+  text-decoration: none;
+}
+.btnYellow {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -moz-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -ms-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -o-linear-gradient(top, #ffff00, #ffd500);
+  background-image: linear-gradient(to bottom, #ffff00, #ffd500);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnYellow:hover {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -moz-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -ms-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -o-linear-gradient(top, #ffff00, #f5b105);
+  background-image: linear-gradient(to bottom, #ffff00, #f5b105);
+  text-decoration: none;
+}
+.btnOrange{
+
+  background: #ff7700;
+  background-image: -webkit-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -moz-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -ms-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -o-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: linear-gradient(to bottom, #ff7700, #ff9b05);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnOrange:hover {
+  background: #fa8d3a;
+  background-image: -webkit-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -moz-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -ms-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -o-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: linear-gradient(to bottom, #fa8d3a, #ffb12b);
+  text-decoration: none;
+}
+.btnRed {
+  background: #ff000d;
+  background-image: -webkit-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -moz-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -ms-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -o-linear-gradient(top, #ff000d, #8c1414);
+  background-image: linear-gradient(to bottom, #ff000d, #8c1414);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnRed:hover {
+  background: #c70000;
+  background-image: -webkit-linear-gradient(top, #c70000, #ff4929);
+  background-image: -moz-linear-gradient(top, #c70000, #ff4929);
+  background-image: -ms-linear-gradient(top, #c70000, #ff4929);
+  background-image: -o-linear-gradient(top, #c70000, #ff4929);
+  background-image: linear-gradient(to bottom, #c70000, #ff4929);
+  text-decoration: none;
+}
+.levelzo{
+    margin-top: 280px;
+    margin-left: 330px;
+}
+
+
 </style>
 <script src="/assets/modernizr.hangman.js"></script>
 <script>
@@ -326,14 +465,21 @@ Modernizr.load({
 <div id="word"></div>
 
 <div id="letters"></div>
-<img id="frame" src="/assets/images4/frame.png" height="79px" width="79px">
-<img id="hint" src="/assets/images4/9.jpg" height="70px" width="70px">
+<img id="frame" src="/assets/hangman/frame.png" height="79px" width="79px">
+<img id="hint" src="/assets/hangman/9.jpg" height="70px" width="70px">
 <div href="#" class="button orange" id="listen">Listen</div>
 
 <div id="listen2"></div>
+
 </body>
 <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
 
-
+<div class='levelzo'>
+    <a  href='#' class="btnBlue" id="level1">1</a>
+    <a  href='#' class="btnGreen" id="level2">2</a>
+    <a  href='#' class="btnYellow" id="level3">3</a>
+    <a  href='#' class="btnOrange" id="level4">4</a>
+    <a  href='#' class="btnRed" id="level5">5</a>
+</div>
 </html>
 

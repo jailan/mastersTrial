@@ -15,19 +15,21 @@
 
   /* Get sounds */
   var winsound = document.querySelector('#winsound');
+   var applausesound = document.querySelector('#applausesound');
   var errorsound = document.querySelector('#errorsound');
 
   /* Prepare canvas */
   var c = document.querySelector('canvas');
   var cx = c.getContext('2d');
-  var letter = null;
+  var letter = null; //UNCOMMENT THIS TO WORK PROPERLY
   var fontsize = 300;
   var paintcolour = [240, 240, 240];
  // var textcolour = [255, 30, 20]; red
- var textcolour = [153, 0, 102];
+  var textcolour = [153, 0, 102];
   var xoffset = 0;
   var yoffset = 0;
   var linewidth = 20;
+  //var linewidth = 2;
   var pixels = 0;
   var letterpixels = 0;
 
@@ -41,14 +43,46 @@
   var state = 'intro';
   var sound = true;
   var currentstate;
+  var writingletter =2;
+var FONTO = 0.9;
+
+
+ var THICKNESS =15 ; 
+var PaintLevel =1 ;
+ document.getElementById("paintStage").innerHTML= PaintLevel;
+ function UpdatePaintLevel(){
+  if (PaintLevel <5 ){
+    PaintLevel ++ ;
+    FONTO = FONTO+0.3;
+    THICKNESS = THICKNESS +5;
+  }
+  else{
+    FONTO = 0.9;
+    THICKNESS = 15;
+    PaintLevel =1;
+  }
+  xoffset = 0;
+  yoffset = 0;
+  linewidth = 20;
+  pixels = 0;
+  letterpixels = 0;
+  mousedown = false;
+  touched = false;
+  oldx = 0;
+  oldy = 0;
+  sound = true;
+  init();
+  document.getElementById("paintStage").innerHTML= PaintLevel;
+ }
 
   function init() {
     xoffset = container.offsetLeft;
     yoffset = container.offsetTop;
-    fontsize = container.offsetHeight / 1.5;
-    linewidth = container.offsetHeight / 25;
+    fontsize = container.offsetHeight / FONTO;
+    linewidth = container.offsetHeight / THICKNESS;
     paintletter();
     setstate('intro');
+    writingletter = $('.temp_information').data('temp'); 
   }
 
   function togglesound() {
@@ -105,8 +139,9 @@
   }
   function paintletter(retryletter) {
     var chars = charscontainer.innerHTML.split('');
-    letter = retryletter ||
-             chars[parseInt(Math.random() * chars.length,10)];
+    //letter = retryletter ||
+             //chars[parseInt(Math.random() * chars.length,10)];
+    letter = chars[writingletter-1];         
     c.width = container.offsetWidth;
     c.height = container.offsetHeight;
     cx.font = 'bold ' + fontsize + 'px Open Sans';
@@ -123,8 +158,8 @@
     cx.fillText(
       letter,
       (c.width - cx.measureText(letter).width) / 2,
-      (c.height / 1.3)
-    );
+      (c.height / 1.6)
+    ); //PLACE OF THE LETTER POSITION
     pixels = cx.getImageData(0, 0, c.width, c.height);
     letterpixels = getpixelamount(
       textcolour[0],
@@ -152,13 +187,14 @@
     return amount;
   }
 var errorcount=0;
+var ERRORS_THRESHOLD = 30;
   function paint(x, y) {
     var rx = x - xoffset;
     var ry = y - yoffset;
     var colour = pixelcolour(x, y);
     if( colour.r === 0 && colour.g === 0 && colour.b === 0) {
       errorcount++;
-      if(errorcount > 20){
+      if(errorcount > ERRORS_THRESHOLD){
       showerror();
       errorcount=0;}
     } else {
@@ -183,21 +219,30 @@ var errorcount=0;
       a:pixels.data[index + 3]
     };
   }
-
+var PAINT_THRESHOLD = 0.45;
   function pixelthreshold() {
     if (state !== 'error') {
       if (getpixelamount(
         paintcolour[0],
         paintcolour[1],
         paintcolour[2]
-      ) / letterpixels > 0.45) {
+      ) / letterpixels > PAINT_THRESHOLD) {
         // getSpeech(letter);
       speak(letter);
        setstate('win');
-       if (sound) {
+if (sound){
+  if (PaintLevel === 5 ){
+     new Audio('/assets/applause.mp3').play();
+  }
+     else { 
          winsound.play();
        }
+}
+
+    
+        UpdatePaintLevel();
       }
+
     }
   }
 

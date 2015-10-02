@@ -1,4 +1,5 @@
 // Global variables
+
 var canvas = document.getElementById('stage'),
 word = document.getElementById('word'),
 letters = document.getElementById('letters'),
@@ -7,8 +8,9 @@ wordLength,
 badGuesses,
 randWord,
 correctGuesses;
-   var hints = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+   var hints = new Array(1,2,3);
      var textq;
+     var hangletter = $('.temp_information').data('temp'); 
 
 function init() {
 	var helptext = $('#helptext'),
@@ -43,14 +45,33 @@ function init() {
 
 
 }
+var index =1 ;
 function getRandomImageHint() {
 
-    var index = Math.floor((Math.random() * hints.length)),
-    index=randWord;
-    // iRandomImage = hints[index];
+  /*var index = Math.floor((Math.random() * hints.length)),
+   index=randWord;    (WHEN WE WERE RANDOM)*/
 
-    var imgName = index+".jpg";
-    $("#hint").attr("src","/assets/images4/"+imgName);
+ 
+    // iRandomImage = hints[index];
+     
+    var imgName ;
+switch(wholeStage){
+  case 1:
+  case 4:
+  imgName = index+".jpg";
+  break;
+    case 2:  
+  imgName = index+"w.jpg";
+  break;
+    case 3:
+    case 5:
+  imgName = index+"p.jpg";
+  break;
+
+}
+    $("#hint").attr("src","/assets/hangman/l"+hangletter+"/"+imgName);
+
+    //index++;
     // tileImages2.splice(index,1);
     // return iRandomImage;
 }
@@ -68,26 +89,56 @@ function getRandomImageHint() {
 };
 
 
+    var abc1 = ['أَ','بَ','تَ','ثَ','جَ','حَ','خَ','دَ','ذَ','رَ','زَ','سَ','شَ','صَ','ضَ','طَ'
+  ,'ظَ','عَ','غَ','فَ','قَ','كَ','لَ','مَ','نَ','هَ','وَ','يَ'];
+  
+var abc2 = ['أِ','بِ','تِ','ثِ','جِ','حِ','خِ','دِ','ذِ','رِ','زِ','سِ','شِ','صِ','ضِ','طِ'
+  ,'ظِ','عِ','غِ','فِ','قِ','كِ','لِ','مِ','نِ','هِ','وِ','يِ'];
 
+  var abc3 =['أُ','بُ','تُ','ثُ','جُ','حُ','خُ','دُ','ذُ','رُ','زُ','سُ','شُ','صُ','ضُ','طُ'
+  ,'ظُ','عُ','غُ','فُ','قُ','كُ','لُ','مُ','نُ','هُ','وُ','يُ'];
+
+var placeholders;
 function newGame() {
-	var placeholders = '',
+placeholders = '',
 	frag = document.createDocumentFragment(),
-	abc = ['خ','ح','ج','ث','ت','ب','أ','ص','ش','س','ز','ر','ذ',
-	'د','ق','ف','غ','ع','ظ','ط','ض','ي','و','ه','ن','م','ل','ك','ا','ة'];
-    hints = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20); 
+  //   abc = ['خ','ح','ج','ث','ت','ب','أ','ص','ش','س','ز','ر','ذ',
+  // 'د','ق','ف','غ','ع','ظ','ط','ض','ي','و','ه','ن','م','ل','ك','ا','ة']; 
+  //THE OLD ONE WITH TEH MARBOOTA AND ALEF MADD
+
+    hints = new Array(1,2,3); 
 	badGuesses = 0;
 	correctGuesses = 0;
 	wordToGuess = getWord();
     getRandomImageHint();
 	wordLength = wordToGuess.length;
+  placeholders +='_';
+  var abc;
+
+if (wholeStage < 4){
+  abc = ['خ','ح','ج','ث','ت','ب','أ','ص','ش','س','ز','ر','ذ',
+  'د','ق','ف','غ','ع','ظ','ط','ض','ي','و','ه','ن','م','ل','ك'];
+}
+else{
+      var v = hangletter-1;
+     abc = [abc1[v],abc2[v],abc3[v]];
+
+
+}
+    /*  var abc = ['خ','ح','ج','ث','ت','ب','أ','ص','ش','س','ز','ر','ذ',
+  'د','ق','ف','غ','ع','ظ','ط','ض','ي','و','ه','ن','م','ل','ك'];
+*/
+
 		// create row of underscores the same length as letters to guess
-		for (var i = 0; i < wordLength; i++) {
-			placeholders += '_';
+		for (var i = 1; i < wordLength; i++) {
+			placeholders += wordToGuess[i];
 		}
+    // fill the whole word except for the first letter
+
 		word.innerHTML = placeholders;
 // create an alphabet pad to select letters
 letters.innerHTML = '';
-for (i = 0; i < 30; i++) {
+for (i = 0; i < abc.length; i++) {
 	var div = document.createElement('div');
 	div.style.cursor = 'pointer';
 	div.innerHTML = abc[i];
@@ -113,9 +164,11 @@ function checkLetter(letter) {
    // split the placeholders into an array
    placeholders = placeholders.split('');
    // loop through the array
-   for (var i = 0; i < wordLength; i++) {
+  
       // if the selected letter matches one in the word to guess,
       // replace the underscore and increase the number of correct guesses
+      if(wholeStage < 4){
+         for (var i = 0; i < wordLength; i++) {
       if (wordToGuess.charAt(i) == letter.toLowerCase()) {
       	placeholders[i] = letter;
       	wrongGuess = false;
@@ -123,12 +176,59 @@ function checkLetter(letter) {
       
       	correctGuesses++;
          // redraw the canvas only if all letters have been guessed
-         if (correctGuesses == wordLength) {
+         if (correctGuesses == 1) {
+           
          	drawCanvas();
+          setTimeout(upgradeLevel, 2000);
 
          }
      }
- }
+   }
+   }
+
+     else {
+
+
+        switch (index){
+          case 1:
+        if (letter === abc1[hangletter-1])  {
+        placeholders[0] = letter;
+        wrongGuess = false;
+        new Audio('/assets/applause.mp3').play();
+         correctGuesses++;
+         if (correctGuesses == 1) {
+          drawCanvas();
+          setTimeout(upgradeLevel, 2000);}
+     }
+          break;
+          case 2:
+        if (letter === abc2[hangletter-1])  {
+        placeholders[0] = letter;
+        wrongGuess = false;
+        new Audio('/assets/applause.mp3').play();
+         correctGuesses++;
+         if (correctGuesses == 1) {
+          drawCanvas();
+          setTimeout(upgradeLevel, 2000);}
+     }
+          break;
+          case 3:
+                if (letter === abc3[hangletter-1])  {
+        placeholders[0] = letter;
+        wrongGuess = false;
+        new Audio('/assets/applause.mp3').play();
+         correctGuesses++;
+         if (correctGuesses == 1) {
+          drawCanvas();
+          setTimeout(upgradeLevel, 2000);}
+     }
+          break;                    
+        }
+
+
+
+     }
+
    // if the guess was incorrect, increment the number of bad
    // guesses and redraw the canvas
    if (wrongGuess) {
@@ -139,7 +239,24 @@ function checkLetter(letter) {
    // convert the array to a string and display it again
    word.innerHTML = placeholders.join('');
 }
+wholeStage=1;
 
+function upgradeLevel(n){
+ if(index < 3){
+    index ++;
+    lettoindex++;
+        newGame();}
+        else{
+          if(wholeStage < 5){
+          wholeStage ++; }
+          else{
+            wholeStage =1;
+          }/*IN CASE OF AUTOMATIC CHANGE*/
+            index =1;
+    lettoindex=0;
+        newGame();
+        }
+}
 // Draw the canvas
 function drawCanvas() {
 	var c = canvas.getContext('2d');
@@ -289,13 +406,59 @@ function resetScore() {
     localStorage.setItem('hangmanLose', '0');
     showScore();
 }
+
+function sendHangStage(n){
+
+wholeStage =n;
+index =1;
+lettoindex=0;
+newGame();
+}
+
+
+    $('#level1').click(function() {
+    sendHangStage(1);
+  });
+    $('#level2').click(function() {
+    sendHangStage(2);
+  });
+    $('#level3').click(function() {
+    sendHangStage(3);
+  });
+    $('#level4').click(function() {
+    sendHangStage(4);
+  });
+    $('#level5').click(function() {
+    sendHangStage(5);
+  });
+
+
 // Select random word to guess
+var lettoindex=0;
 function getWord() {
+  //var abjad = var game = $('.temp_information').data('temp'); 
+  // abjad = $('.temp_information').data('temp'); 
+  // HERE , WE CHECK ON THE LETTER AND ACCORDINGLY DECIDE THE WORDS !
+  // we handle pictures in line 56 (HANGLETTER)
+  var a = new Array ("أسد");
+          switch (hangletter) {
+    case 1:
+        a = new Array("أسد");
+        break;
+    case 2:
+        a = new Array("بطة","بنت","برتقالة");
+        break;
+    case 3:
+        a = new Array("تمساح");
+        break;
+                 
+}
 	//var a = new Array('abate','aberrant','abscond','accolade','acerbic','acumen','adulation','adulterate','aesthetic','aggrandize','alacrity','alchemy','amalgamate','ameliorate','amenable','anachronism','anomaly','approbation','archaic','arduous','ascetic','assuage','astringent','audacious','austere','avarice','aver','axiom','bolster','bombast','bombastic','bucolic','burgeon','cacophony','canon','canonical','capricious','castigation','catalyst','caustic','censure','chary','chicanery','cogent','complaisance','connoisseur','contentious','contrite','convention','convoluted','credulous','culpable','cynicism','dearth','decorum','demur','derision','desiccate','diatribe','didactic','dilettante','disabuse','discordant','discretion','disinterested','disparage','disparate','dissemble','divulge','dogmatic','ebullience','eccentric','eclectic','effrontery','elegy','eloquent','emollient','empirical','endemic','enervate','enigmatic','ennui','ephemeral','equivocate','erudite','esoteric','eulogy','evanescent','exacerbate','exculpate','exigent','exonerate','extemporaneous','facetious','fallacy','fawn','fervent','filibuster','flout','fortuitous','fulminate','furtive','garrulous','germane','glib','grandiloquence','gregarious','hackneyed','halcyon','harangue','hedonism','hegemony','heretical','hubris','hyperbole','iconoclast','idolatrous','imminent','immutable','impassive','impecunious','imperturbable','impetuous','implacable','impunity','inchoate','incipient','indifferent','inert','infelicitous','ingenuous','inimical','innocuous','insipid','intractable','intransigent','intrepid','inured','inveigle','irascible','laconic','laud','loquacious','lucid','luminous','magnanimity','malevolent','malleable','martial','maverick','mendacity','mercurial','meticulous','misanthrope','mitigate','mollify','morose','mundane','nebulous','neologism','neophyte','noxious','obdurate','obfuscate','obsequious','obstinate','obtuse','obviate','occlude','odious','onerous','opaque','opprobrium','oscillation','ostentatious','paean','parody','pedagogy','pedantic','penurious','penury','perennial','perfidy','perfunctory','pernicious','perspicacious','peruse','pervade','pervasive','phlegmatic','pine','pious','pirate','pith','pithy','placate','platitude','plethora','plummet','polemical','pragmatic','prattle','precipitate','precursor','predilection','preen','prescience','presumptuous','prevaricate','pristine','probity','proclivity','prodigal','prodigious','profligate','profuse','proliferate','prolific','propensity','prosaic','pungent','putrefy','quaff','qualm','querulous','query','quiescence','quixotic','quotidian','rancorous','rarefy','recalcitrant','recant','recondite','redoubtable','refulgent','refute','relegate','renege','repudiate','rescind','reticent','reverent','rhetoric','salubrious','sanction','satire','sedulous','shard','solicitous','solvent','soporific','sordid','sparse','specious','spendthrift','sporadic','spurious','squalid','squander','static','stoic','stupefy','stymie','subpoena','subtle','succinct','superfluous','supplant','surfeit','synthesis','tacit','tenacity','terse','tirade','torpid','torque','tortuous','tout','transient','trenchant','truculent','ubiquitous','unfeigned','untenable','urbane','vacillate','variegated','veracity','vexation','vigilant','vilify','virulent','viscous','vituperate','volatile','voracious','waver','zealous');
     //var a = new Array("حمار","أسبوع","سنة","شهر","يوم","قطة","كلب","دب","تمساح","تفاح","تمر","أسد","عصفور","منضدة","كرسي","سيارة","طفل","حصان","نمر","ساعة","موز","يوسفي","برتقال");
-    var a = new Array("فيل","قطة","كلب","دب","تمساح","تُفّاح","قرد","أسد","عصفور","سمكة","كرسي","شجرة","حصان","زرافة","ساعة","موز","أناناس","برتقال");
+   //THIS IS THE ONE 
+   // var a = new Array("فيل","قطة","كلب","دب","تمساح","تُفّاح","قرد","أسد","عصفور","سمكة","كرسي","شجرة","حصان","زرافة","ساعة","موز","أناناس","برتقال");
 
-randWord=parseInt(Math.random()* a.length);
-
-	return a[randWord];
+//randWord=parseInt(Math.random()* a.length);
+//lettoindex++;
+	return a[lettoindex];
 }
