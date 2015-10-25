@@ -26,7 +26,7 @@
       <a class="button orange" id="up" onClick='move(1);'>Up</a>
       <a class="button orange" id="down" onClick='move(2);'>Down</a>
       <a class="button orange" id="left" onClick='move(3);'>Left</a>
-      <a class="button orange" id="right" onClick='move(4);'>Right</a>
+      <a class="button orange" id="right" ontouch='move(4);'>Right</a>
 
     <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
 
@@ -924,8 +924,32 @@ $('.pix').click(function(){
  // setTimeout(function(){changeQuestion()},1000); 
 }});
 
-}//display question
+}//display questionvar timeout, clicker = $('#down');
 
+var timeout, clicker = $('#down');
+$(document).ready(function() {
+
+    $('#down').click(function() {
+        move(2);
+    });
+    });
+
+
+
+// clicker.mousedown(function(){
+//     timeout = setInterval(function(){
+//         move(2);
+//     }, 500);
+
+//     return false;
+// });
+
+// $(document).mouseup(function(){
+//     clearInterval(timeout);
+//     return false;
+// });
+
+// }
 
 function changeQuestion(){
 
