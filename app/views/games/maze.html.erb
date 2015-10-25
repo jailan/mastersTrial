@@ -22,6 +22,12 @@
 	<div id="score"></div>
 	<div> <img class="alarm"src="/assets/maze/alarm.png"  height="40" width="40"><div id="time"></div> </div>
 
+
+      <a class="button orange" id="up" onClick='move(1);'>Up</a>
+      <a class="button orange" id="down" onClick='move(2);'>Down</a>
+      <a class="button orange" id="left" onClick='move(3);'>Left</a>
+      <a class="button orange" id="right" onClick='move(4);'>Right</a>
+
     <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
 
 
@@ -42,6 +48,31 @@
     margin-top: 80px;
 }
 
+    #down{
+    position:absolute;
+    top:100px;
+    left:800px;
+    margin-top: 300px;
+}
+
+    #up{
+    position:absolute;
+    top:100px;
+    left:800px;
+    margin-top: 250px;
+}
+    #left{
+    position:absolute;
+    top:100px;
+    left:700px;
+    margin-top: 300px;
+}
+    #right{
+    position:absolute;
+    top:100px;
+    left:900px;
+    margin-top: 300px;
+}
 
     .button {
         display: inline-block;
@@ -311,6 +342,8 @@
 
     		var answered =0;
     		var first = 1;
+            var balala =1 ;
+            var foofoo =1;
     		var score = 0;
     		var subscore = 10;
             var textq="كرة";
@@ -436,6 +469,100 @@
 
         }
             var correctAnswers =0;
+          
+function move(direction){
+    var newX=currRectX;
+    var newY=currRectY;
+    var location;
+        switch (direction) {
+        case 1:   // arrow up key
+        newX = currRectX;
+        newY = currRectY - 3;
+        break;
+        case 3: //left
+        newX = currRectX - 3;
+        newY = currRectY;
+        break;
+        case 2: //down
+        newX = currRectX;
+        newY = currRectY + 3;
+        break;
+        case 4: //right
+        newX = currRectX +3;
+        newY = currRectY;
+        break;
+    }
+   
+location = canMoveTo(newX, newY);
+
+
+    if (location === ON_BLANK_SPACE) {      // 1 means 'the rectangle can move'
+        if(currentQuestionIsAnswered()) {
+            questionNumber++;
+        }
+    } else if (correctAnswers === 15) { // 2 means 'the rectangle reached the end point'
+    alert("khalasnaaa");
+        clearInterval(intervalVar);
+        makeWhite(0, 0, canvas.width, canvas.height);
+        context.font = "40px Arial";
+        context.fillStyle = "#B8008A";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+        //displayFinalSlide();
+
+        window.removeEventListener("keydown", moveRect, true);
+     
+        // window.removeEventListener('click', listener , false);
+        //   window.removeEventListener('click', listener, false);
+        clearTimeout(timer);
+    } else if (location === ON_QUESTION || location === ON_END_OF_MAZE) { // 3 means 'the rectangle reached the question orange point'
+        if(!currentQuestionIsAnswered()) {
+
+            if (first === 1){
+                displayQuestion();
+                first =0;
+              
+            } else{
+                if(foofoo === 1){
+
+                setTimeout(function(){changeQuestion()},1000); }
+            }
+          
+      if (foofoo === 1){
+          
+            textq=answersBank[questionNumber][0];
+            speak(textq);
+           clearInterval(intervalVar);
+           ctx.font = "200px Arial";
+           ctx.fillStyle = "#B8008A";
+           ctx.textAlign = "center";
+           ctx.textBaseline = "middle";
+           ctx.fillText("?", canvas.width / 2, canvas.height / 2);
+           makeWhito(0, 0, canvas.width, canvas.height);
+
+       }
+               foofoo = 3;
+          window.removeEventListener("click", listener, true);
+   
+           myImage = canvas.toDataURL("image/png");
+           window.removeEventListener("keydown", moveRect, true);
+             alert("foofoo" + foofoo);
+           // window.removeEventListener('click', listener, false);
+           //window.removeEventListener("keydown", move, true);
+           //window.removeEventListener('click', move, false);
+           // window.removeEventListener('click', listener , false);
+
+        }
+    }
+
+    if (isOnMovable(location)) {
+        movePiece(newX, newY)
+    }     
+
+}
+
 function moveRect(e) {
 	var newX=currRectX;
 	var newY=currRectY;
@@ -484,6 +611,7 @@ function moveRect(e) {
         //displayFinalSlide();
 
         window.removeEventListener("keydown", moveRect, true);
+
         clearTimeout(timer);
     } else if (location === ON_QUESTION || location === ON_END_OF_MAZE) { // 3 means 'the rectangle reached the question orange point'
         if(!currentQuestionIsAnswered()) {
@@ -491,8 +619,8 @@ function moveRect(e) {
                 displayQuestion();
                 first =0;
             } else{
-
-                setTimeout(function(){changeQuestion()},1000);
+          
+             setTimeout(function(){changeQuestion()},1000);
             }
             textq=answersBank[questionNumber][0];
             speak(textq);
@@ -504,19 +632,10 @@ function moveRect(e) {
            ctx.fillStyle = "#B8008A";
            ctx.textAlign = "center";
            ctx.textBaseline = "middle";
-           var str1 = "انتي جاية اشتغلي ايه ?";
            ctx.fillText("?", canvas.width / 2, canvas.height / 2);
-
-
            myImage = canvas.toDataURL("image/png"); 
-
-            /*makeWhite(0, 0, canvas.width, canvas.height);
-            context.font = "200px Arial";
-            context.fillStyle = "#B8008A";
-            context.textAlign = "center";
-            context.textBaseline = "middle";
-            context.fillText("?", canvas.width / 2, canvas.height / 2);*/
-            window.removeEventListener("keydown", moveRect, true);
+           window.removeEventListener("keydown", moveRect, true);
+           //window.removeEventListener("click", move, true);
         }
     }
 
@@ -657,6 +776,7 @@ function unMakeWhite() {
 drawMazeAndRectangle(242, 7);
 
 window.addEventListener("keydown", moveRect, true);
+//window.addEventListener('click', listener, true);
 
     //createTimer(120*10); // 20 minutes
 
@@ -753,6 +873,8 @@ $('.pix').click(function(){
   	unMakeWhite();
   	answered = 1;
     correctAnswers ++;
+    foofoo = 1;
+    //foofoo =1;
     // COLORING THE CORRECTLY ANSWERED QUESTION
   	    context.beginPath();
         context.arc(obstaclesArray[questionNumber][0], obstaclesArray[questionNumber][1], 9, 0, 2 * Math.PI, false);
@@ -777,17 +899,17 @@ $('.pix').click(function(){
         //displayFinalSlide();
         new Audio('/assets/applause.mp3').play();
         window.removeEventListener("keydown", moveRect, true);
+       // window.removeEventListener('click', move, false);
         clearTimeout(timer);
 
  }
  
   	window.addEventListener("keydown", moveRect, true);
+    //window.addEventListener('click', listener, true);
 
   	movingAllowed =0;
     questionBank[questionNumber].answered = true;
   	// questionNumber++;
- 
-
   }
   //wrong answer    
   if(this.id!=rnd){
@@ -815,13 +937,9 @@ function changeQuestion(){
 	
 	$(stage2).animate({"right": "+=800px"},"slow", function() {$(stage2).css('right','-800px');$(stage2).empty();});
 	$(stage).animate({"right": "+=800px"},"slow", function() {questionLock=false;});
-    }//change question
-
-    
-
-
-    
-    function displayFinalSlide(){
+    }//change question    
+ 
+function displayFinalSlide(){
 
         //$(stage).append('<div class="questionText">You can Go!<br><br>Total questions: '+numberOfQuestions+'<br>Correct answers: '+score+'</div>');
         $(stage).append('<div id="score" class="resultText">You can Go!<br><br>Score: '+score+'/'+numberOfQuestions);
@@ -829,14 +947,13 @@ function changeQuestion(){
         
     }//display final slide
 
-    function displayScore(){
+function displayScore(){
     	var scoreField = document.getElementById('score');
     	scoreField.innerHTML = 'Score: '+score+' / '+'70';
 
-
     }
 
-     function getSpeech(fieldClicked) {
+function getSpeech(fieldClicked) {
     $.ajax({
         url: 'ool',
         type: 'get',
@@ -847,6 +964,8 @@ function changeQuestion(){
     
     });
 };
+
+
 
 function speak(word){
 var msg = new SpeechSynthesisUtterance();
@@ -864,7 +983,8 @@ speechSynthesis.speak(msg);
 }
 
 
-    </script>
+
+</script>
 
     <script src="soundmanager2.js"></script>
 <script>
