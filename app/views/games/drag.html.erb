@@ -371,7 +371,7 @@ if(dragstage ===4 || dragstage ===5){
 function establecerPropiedades(){
     var res =$(".respuesta");
     res.draggable();
-    res.bind( "touchend", function(e){
+    res.bind( "dragstart", function(e){
        downRespuesta();
 });
     //res.mousedown(downRespuesta);
