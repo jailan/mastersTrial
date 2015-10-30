@@ -372,9 +372,9 @@ function establecerPropiedades(){
     var res =$(".respuesta");
     res.draggable();
     res.bind( "touchend", function(e){
-       downRespuesta;
+       downRespuesta();
 });
-    res.mousedown(downRespuesta);
+    //res.mousedown(downRespuesta);
     $(".preg, .pregMonumento").droppable({drop:dropPregunta});
     
 
