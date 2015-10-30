@@ -428,6 +428,42 @@ $(document).bind( "touchend", function(e){
 });
 
 
+      $('#up').mousedown(function(){
+    timeout = setInterval(function(){
+        move(1);
+    }, 50);
+
+    return false;
+});
+        $('#down').mousedown(function(){
+    timeout = setInterval(function(){
+        move(2);
+    }, 50);
+
+    return false;
+});
+
+  $('#left').mousedown(function(){
+    timeout = setInterval(function(){
+        move(3);
+    }, 50);
+
+    return false;
+});
+    $('#right').mousedown(function(){
+    timeout = setInterval(function(){
+        move(4);
+    }, 50);
+
+    return false;
+});
+
+$(document).mouseup(function(){
+    clearInterval(timeout);
+    return false;
+});
+
+
 
 
     		/* TIMER ************************************/
