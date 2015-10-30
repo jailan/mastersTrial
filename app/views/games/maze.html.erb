@@ -392,14 +392,14 @@
     //    move(4);
     // });
 
-      $('#up').mousedown(function(){
+      $('#up').bind( "touchstart", function(e){
     timeout = setInterval(function(){
         move(1);
     }, 50);
 
     return false;
 });
-        $('#down').mousedown(function(){
+        $('#down').bind( "touchstart", function(e){
     timeout = setInterval(function(){
         move(2);
     }, 50);
@@ -407,14 +407,14 @@
     return false;
 });
 
-  $('#left').mousedown(function(){
+  $('#left').bind( "touchstart", function(e){
     timeout = setInterval(function(){
         move(3);
     }, 50);
 
     return false;
 });
-    $('#right').mousedown(function(){
+    $('#right').bind( "touchstart", function(e){
     timeout = setInterval(function(){
         move(4);
     }, 50);
@@ -422,7 +422,7 @@
     return false;
 });
 
-$(document).mouseup(function(){
+$(document).bind( "touchend", function(e){
     clearInterval(timeout);
     return false;
 });
