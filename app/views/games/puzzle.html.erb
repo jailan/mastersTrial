@@ -442,7 +442,7 @@ if (puzzleLevel === 4){
         SetImageBlock();
 
         DrawGame();
-           alert("baba");
+
     }
 
 
@@ -485,10 +485,11 @@ if (puzzleLevel === 4){
 
   
     function DrawGame() {
-
+       
         clear(ctx);
         drawLines();
         drawAllImages();
+            alert("baba");
 
         if (selectedBlock) {
             drawImageBlock(selectedBlock);
