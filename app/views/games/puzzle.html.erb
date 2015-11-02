@@ -603,7 +603,7 @@ if (puzzleLevel === 4){
         ctx.restore();
     }
 
-    
+
 
     function drawImage(image) {
     
@@ -863,7 +863,10 @@ if (puzzleLevel === 4){
 
         $('#img44').click(function() {
  
-      LoadNewImage('img3');
+   var c = document.getElementById("canJigsaw");
+    var ctox = c.getContext("2d");
+    var imgox = document.getElementById("img3");
+    ctox.drawImage(imgox, 20, 20,100,100);
 
     });
 
