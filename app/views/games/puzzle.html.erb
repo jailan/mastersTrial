@@ -1,23 +1,1004 @@
 <!DOCTYPE html>
 <html>
-<body>
 
-<p>Image to use:</p>
-<img id="scream" width="220" height="277" src="/assets/puzzle/frame.png" alt="The Scream">
+<head>
 
-<p>Canvas:</p>
-<canvas id="myCanvas" width="240" height="297" style="border:1px solid #d3d3d3;">
-Your browser does not support the HTML5 canvas tag.
-</canvas>
+    <%= content_tag :div, class: "temp_information", data: {temp: @temppuzzle} do %>
+<% end %>
+<style>
+body{
+background-image: url("/assets/paper.jpg");
 
-<script>
-window.onload = function() {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var img = document.getElementById("scream");
-    ctx.drawImage(img, 20, 20,50,50);
+    } 
+        .button {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: .5em 2em .55em;
+        text-shadow: 0 1px 1px rgba(0,0,0,.3);
+        -webkit-border-radius: .5em; 
+        -moz-border-radius: .5em;
+        border-radius: .5em;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        float:right;
+        margin-right: 20px;
+        width:90px;
+
+
+
+    }
+    .orange {
+        color: #fef4e9;
+        border: solid 1px #da7c0c;
+        background: #f78d1d;
+        background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+        background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    }
+    .orange:hover {
+        background: #f47c20;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+        background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+    }
+    .orange:active {
+        color: #fcd3a5;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+        background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+    }
+
+
+    .button:hover {
+        text-decoration: none;
+    }
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+
+    .btnBlue {
+  background: #3baaf5;
+  background-image: -webkit-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -moz-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -ms-linear-gradient(top, #3baaf5, #1021de);
+  background-image: -o-linear-gradient(top, #3baaf5, #1021de);
+  background-image: linear-gradient(to bottom, #3baaf5, #1021de);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
 }
-</script>
 
+.btnBlue:hover {
+  background: #0a1bcc;
+  background-image: -webkit-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -moz-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -ms-linear-gradient(top, #0a1bcc, #042985);
+  background-image: -o-linear-gradient(top, #0a1bcc, #042985);
+  background-image: linear-gradient(to bottom, #0a1bcc, #042985);
+  text-decoration: none;
+}
+.btnGreen {
+  background: #5cb524;
+  background-image: -webkit-linear-gradient(top, #5cb524, #255705);
+  background-image: -moz-linear-gradient(top, #5cb524, #255705);
+  background-image: -ms-linear-gradient(top, #5cb524, #255705);
+  background-image: -o-linear-gradient(top, #5cb524, #255705);
+  background-image: linear-gradient(to bottom, #5cb524, #255705);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnGreen:hover {
+  background: #0acc11;
+  background-image: -webkit-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -moz-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -ms-linear-gradient(top, #0acc11, #257a1d);
+  background-image: -o-linear-gradient(top, #0acc11, #257a1d);
+  background-image: linear-gradient(to bottom, #0acc11, #257a1d);
+  text-decoration: none;
+}
+.btnYellow {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -moz-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -ms-linear-gradient(top, #ffff00, #ffd500);
+  background-image: -o-linear-gradient(top, #ffff00, #ffd500);
+  background-image: linear-gradient(to bottom, #ffff00, #ffd500);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnYellow:hover {
+  background: #ffff00;
+  background-image: -webkit-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -moz-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -ms-linear-gradient(top, #ffff00, #f5b105);
+  background-image: -o-linear-gradient(top, #ffff00, #f5b105);
+  background-image: linear-gradient(to bottom, #ffff00, #f5b105);
+  text-decoration: none;
+}
+.btnOrange{
+
+  background: #ff7700;
+  background-image: -webkit-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -moz-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -ms-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -o-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: linear-gradient(to bottom, #ff7700, #ff9b05);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnOrange:hover {
+  background: #fa8d3a;
+  background-image: -webkit-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -moz-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -ms-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -o-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: linear-gradient(to bottom, #fa8d3a, #ffb12b);
+  text-decoration: none;
+}
+.btnRed {
+  background: #ff000d;
+  background-image: -webkit-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -moz-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -ms-linear-gradient(top, #ff000d, #8c1414);
+  background-image: -o-linear-gradient(top, #ff000d, #8c1414);
+  background-image: linear-gradient(to bottom, #ff000d, #8c1414);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btnRed:hover {
+  background: #c70000;
+  background-image: -webkit-linear-gradient(top, #c70000, #ff4929);
+  background-image: -moz-linear-gradient(top, #c70000, #ff4929);
+  background-image: -ms-linear-gradient(top, #c70000, #ff4929);
+  background-image: -o-linear-gradient(top, #c70000, #ff4929);
+  background-image: linear-gradient(to bottom, #c70000, #ff4929);
+  text-decoration: none;
+}
+</style>
+ 
+    <script type="text/javascript">
+        var game = null;
+        var imageID;
+        var totalRows = 3;
+        var totalColumns = 3;
+        var imagePrevID = "imgprev";
+        var puzzleLevel;
+        var puzzleSubLevel;
+
+        function InitGame(level, sublevel) {
+         //LoadNewImage('img3');
+          puzzleLevel = level;
+          puzzleSubLevel = sublevel;
+         // LoadNewImage('img3');
+          LoadNewImage(imageID);
+          init();
+         //setTimeout(function(){ LoadNewImage('img2'); }, 5000);
+        }
+
+        function LoadNewImage(imgID) {
+            imageID = imgID;
+            
+            SetRowsColumn();
+            
+            LoadGame();
+        }
+        
+        function LoadGame() {
+            var canvasID = "canJigsaw";
+
+            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+
+            game.initDrawing();
+           // ShowPreview();
+
+        }
+
+        function ShowPreview() {
+            if (game) {
+
+                game.showPreview();
+
+            }
+        }
+
+        function SetRowsColumn() {
+           /* var r1 = document.getElementById("rd1");
+            var r2 = document.getElementById("rd2");
+            var r3 = document.getElementById("rd3");
+
+            if (r1.checked) {
+                totalRows = 2;
+                totalColumns = 2;
+
+            }
+            else if (r2.checked) {
+                totalRows = 3;
+                totalColumns = 3;
+
+            }
+            else if (r3.checked) {
+                totalRows = 4;
+                totalColumns = 4;
+
+            }*/ //WHEN WE HAD 3 LEVELS 
+
+            totalRows = 2;
+                totalColumns = 2;
+
+
+        }
+var puzzleletter = $('.temp_information').data('temp'); 
+
+
+
+function imageBlock(no, x, y) {
+
+    this.no = no;
+    this.x = x;
+    this.y = y;
+    this.isSelected = false;
+}
+
+function touchHandler(event) {
+    var touch = event.changedTouches[0];
+
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function init() {
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);
+}
+
+function listen(word){
+      textq=word;
+     //getSpeech(textq);
+     speak(textq);
+}
+function speak(word){
+var msg = new SpeechSynthesisUtterance();
+msg.volume = 1; // 0 to 1
+msg.rate = 1; // 0.1 to 10
+msg.pitch = 1; //0 to 2
+msg.text = word;
+msg.lang = 'ar';
+
+msg.onend = function(e) {
+  console.log('Finished in ' + event.elapsedTime + ' seconds.');
+};
+
+speechSynthesis.speak(msg);
+}
+
+
+function jigsaw(canvasID, imageID, rows,columns) {
+    //handlng the major image
+    if(puzzleLevel ===1 )
+           { document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/letterba2.jpg" ;}
+
+if(puzzleLevel > 1 && puzzleLevel < 5){
+         document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"w.jpg" ;
+
+}
+
+    if(puzzleLevel ===5){
+ document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg" ;}
+   
+//handling the three puzzle
+
+    if( puzzleLevel < 3){
+
+   document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1.jpg" ;
+   document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2.jpg" ;
+   document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+}
+
+if (puzzleLevel === 3 || puzzleLevel === 5){
+
+   document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1p.jpg" ;
+   document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2p.jpg" ;
+   document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3p.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ; 
+}
+
+if (puzzleLevel === 4){
+
+   document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1d.jpg" ;
+   document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2d.jpg" ;
+   document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+}
+   // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
+   // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
+
+
+    var MAIN_IMG_WIDTH = 600;
+    var MAIN_IMG_HEIGHT = 600;
+
+
+    var BLOCK_IMG_WIDTH = 600;
+    var BLOCK_IMG_HEIGHT = 450;
+
+
+    var TOTAL_ROWS = rows;// 4;
+    var TOTAL_COLUMNS = columns;  //4;
+
+    var TOTAL_PIECES = TOTAL_ROWS * TOTAL_COLUMNS;
+
+    var IMG_WIDTH = Math.round(MAIN_IMG_WIDTH / TOTAL_COLUMNS);
+    var IMG_HEIGHT = Math.round(MAIN_IMG_HEIGHT / TOTAL_ROWS);
+
+
+    var BLOCK_WIDTH = 0; // Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
+    var BLOCK_HEIGHT = 0; // Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
+
+
+
+    var image1;
+    var canvas;
+    var ctx;
+    var imagePrev;
+
+    this.canvasID = canvasID;
+    this.imageID = imageID;
+
+    this.top = 0;
+    this.left = 0;
+
+    this.imageBlockList = new Array();
+
+
+    this.blockList = new Array();
+
+    this.selectedBlock = null;
+
+
+    this.mySelf = this;
+
+
+    this.initDrawing = function () {
+        mySelf = this;
+        selectedBlock = null;
+        canvas = document.getElementById(canvasID);
+
+        ctx = canvas.getContext('2d');
+      
+        // register events
+        //canvas.ondblclick = handleOnMouseDbClick;
+        canvas.onmousedown = handleOnMouseDown;
+        canvas.onmouseup = handleOnMouseUp;
+        canvas.onmouseout = handleOnMouseOut;
+        canvas.onmousemove = handleOnMouseMove;
+
+        image1 = document.getElementById(imageID);
+        imagePrev = document.getElementById("imgprev");
+
+
+        initializeNewGame();
+    };
+    
+    function initializeNewGame() {
+
+        // Set block 
+        BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
+        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
+
+
+        // Draw image
+        SetImageBlock();
+
+        DrawGame();
+
+    }
+
+
+    this.showPreview = function () {
+
+        var x1 = 20;
+        var y1 = 20;
+        var width = BLOCK_IMG_WIDTH - (x1 * 2);
+        var height = BLOCK_IMG_HEIGHT - (y1 * 2)
+
+        ctx.save();
+       image1 = document.getElementById(imageID);
+        var puzzoImg = new Image();
+        if (puzzleLevel !=4){
+        puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png";}
+        else{
+          puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg";
+        }
+       ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
+
+        //imagePrev = document.getElementById("imgprev").src;
+       // ctx.drawImage(imagePrev, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
+
+        //ctx.drawimage("/assets/puzzle/l"+puzzleletter+"/opac1.png", 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
+
+        // DRAE RECTANGLE
+
+        ctx.fillStyle = '#00f'; // blue
+        ctx.strokeStyle = '#f00'; // red
+        ctx.lineWidth = 2;
+
+
+        ctx.strokeRect(x1 - 2, y1 - 2, width + 8, height + 8);
+
+
+        ctx.restore();
+
+
+    };
+
+  
+    function DrawGame() {
+       
+        clear(ctx);
+        drawLines();
+
+        drawAllImages();
+
+
+        if (selectedBlock) {
+            drawImageBlock(selectedBlock);
+        }
+    }
+      var notRandomX = 620;
+      var notRandomY = 5;
+    function SetImageBlock() {
+
+        var total = TOTAL_PIECES;
+        imageBlockList = new Array();
+        blockList = new Array();
+
+        var x1 = BLOCK_IMG_WIDTH -80;
+        var x2 = canvas.width - 600;
+        var y2 = BLOCK_IMG_HEIGHT;
+        for (var i = 0; i < total; i++) {
+
+            var randomX = randomXtoY(x1, x2, 2);
+            var randomY = randomXtoY(0, y2, 2);
+            if(i===0){
+             notRandomX = 620;
+             notRandomY = 5;  
+            }
+               if(i===1){
+             notRandomX = 925;
+             notRandomY = 235;  
+            }
+               if(i===3){
+             notRandomX = 620;
+             notRandomY = 235;  
+            }
+               if(i===2){
+             notRandomX = 925;
+             notRandomY = 5;  
+            }
+       
+           // var imgBlock = new imageBlock(i, randomX, randomY);
+     
+
+          var imgBlock = new imageBlock(i, notRandomX, notRandomY);
+          // notRandomY = (notRandomY + 230)%920;
+
+            imageBlockList.push(imgBlock);
+
+            var x = (i % TOTAL_COLUMNS) * BLOCK_WIDTH;
+            var y = Math.floor(i / TOTAL_COLUMNS) * BLOCK_HEIGHT;
+
+            var block = new imageBlock(i, x, y);
+            blockList.push(block);
+
+        }
+
+    }
+
+    function drawLines() {
+       
+       ctx.strokeStyle = "#e9e9e9";
+        
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        
+        // draw verticle lines
+        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+            var x = BLOCK_WIDTH * i;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 450);
+        }
+
+        // draw horizontal lines
+        for (var i = 0; i <= TOTAL_ROWS; i++) {
+            var y = BLOCK_HEIGHT * i;
+            ctx.moveTo(0, y);
+            ctx.lineTo(600, y);
+        }
+
+
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    function drawAllImages() {
+
+        for (var i = 0; i < imageBlockList.length; i++) {
+            var imgBlock = imageBlockList[i];
+            if (imgBlock.isSelected == false) {
+
+                drawImageBlock(imgBlock);
+            }
+        }
+    }
+
+    function drawImageBlock(imgBlock) {
+        
+        drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+    }
+//var imgpo = document.getElementById('img3');
+    function drawFinalImage(index, destX, destY, destWidth, destHeight) {
+
+        ctx.save();
+
+        var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
+          
+        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
+
+
+    ctx.drawImage(image1,20,20,100,100);
+      
+        ctx.restore();
+    }
+
+    
+
+    function drawImage(image) {
+    
+
+        ctx.save();
+           
+        ctx.drawImage(image, 0, 0, BLOCK_WIDTH, BLOCK_WIDTH, 10, 10, BLOCK_WIDTH, BLOCK_WIDTH);
+
+        ctx.restore();
+    }
+
+    var interval = null;
+    var remove_width;
+    var remove_height;
+    
+    function OnFinished() {
+
+  
+
+        remove_width = BLOCK_WIDTH;
+        remove_height = BLOCK_HEIGHT;
+        // Clear Board
+        interval = setInterval(function () { mySelf.ClearGame(); }, 100);
+    }
+
+    this.ClearGame = function () {
+        //   alert("f");
+        remove_width -= 30;
+        remove_height -= 20;
+
+        if (remove_width > 0 && remove_height > 0) {
+
+            clear(ctx);
+
+            for (var i = 0; i < imageBlockList.length; i++) {
+                var imgBlock = imageBlockList[i];
+
+                imgBlock.x += 10;
+                imgBlock.y += 10;
+
+                drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, remove_width, remove_height);
+            }
+
+            // DrawGame();
+        } else {
+
+            clearInterval(interval);
+           
+            // Restart game
+            initializeNewGame(); 
+          //  alert("Congrats....");
+
+        }
+    };
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// EVENTS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function handleOnMouseDbClick(e) {
+
+        
+        selectedBlock = GetImageBlock(e.pageX, e.pageY);
+        //alert("clicked");
+
+    }
+
+
+    function handleOnMouseOut(e) {
+
+        // remove old selected
+        if (selectedBlock != null) {
+
+            imageBlockList[selectedBlock.no].isSelected = false;
+            selectedBlock = null;
+            DrawGame();
+
+        }
+
+    }
+
+    function handleOnMouseDown(e) {
+
+        // remove old selected
+        if (selectedBlock != null) {
+
+            imageBlockList[selectedBlock.no].isSelected = false;
+
+        }
+
+        selectedBlock = GetImageBlock(imageBlockList, e.pageX, e.pageY);
+
+        if (selectedBlock) {
+            imageBlockList[selectedBlock.no].isSelected = true;
+        }
+
+    }
+ var flagsCorrecta = [0,0,0,0];
+        var audioElementCorrect = document.createElement('audio');
+        //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
+    function handleOnMouseUp(e) {
+
+        if (selectedBlock) {
+            var index = selectedBlock.no;
+            //   alert(index);
+
+            var block = GetImageBlock(blockList, e.pageX, e.pageY);
+            if (block) {
+
+                var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+                if (blockOldImage == null) {
+                    imageBlockList[index].x = block.x;
+                    imageBlockList[index].y = block.y;
+                }
+            }
+            else {
+                imageBlockList[index].x = selectedBlock.x;
+                imageBlockList[index].y = selectedBlock.y;
+            }
+
+            imageBlockList[index].isSelected = false;
+            selectedBlock = null;
+            DrawGame();
+
+      for (var m = 0; m < TOTAL_PIECES; m++) {
+
+            var img = imageBlockList[m];
+            var block = blockList[m];
+
+            if (
+                (img.x == block.x) &&
+                (img.y == block.y) &&
+                (flagsCorrecta[m] === 0)
+                ) {
+
+                flagsCorrecta[m]=1;
+                audioElementCorrect.play();
+            }
+
+        }
+            if (isFinished()) {
+                setTimeout(function(){UpdateSubStage();}, 2000);
+                setTimeout(function(){LoadNewImage();}, 3000);
+                OnFinished();            
+            }
+
+        }
+    }
+
+    function handleOnMouseMove(e) {
+
+        if (selectedBlock) {
+
+            selectedBlock.x = e.pageX  - 200;
+            selectedBlock.y = e.pageY  - 200;
+
+            DrawGame();
+
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// HELPER METHODS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function clear(c) {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function randomXtoY(minVal, maxVal, floatVal) {
+        var randVal = minVal + (Math.random() * (maxVal - minVal));
+        var val = typeof floatVal == 'undefined' ? Math.round(randVal) : randVal.toFixed(floatVal);
+
+        return Math.round(val);
+    }
+
+
+    function GetImageBlock(list, x, y) {
+
+        //for (var i = 0; i < list.length; i++) {
+        for (var i = list.length - 1; i >= 0; i--) {
+            var imgBlock = list[i];
+
+            var x1 = imgBlock.x;
+            var x2 = x1 + BLOCK_WIDTH;
+
+            var y1 = imgBlock.y;
+            var y2 = y1 + BLOCK_HEIGHT;
+
+            if (
+                (x >= x1 && x <= x2) &&
+                (y >= y1 && y <= y2)
+            ) {
+                //alert("found: " + imgBlock.no);
+
+                var img = new imageBlock(imgBlock.no, imgBlock.x, imgBlock.y);
+                //drawImageBlock(img);
+                return img;
+
+            }
+        }
+
+        return null;
+    }
+
+    function sendStage(n){
+        puzzleLevel=n;
+    }
+        function UpdateSubStage(){
+            if (puzzleSubLevel<3){
+        puzzleSubLevel++;}
+    else{
+              var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '/assets/Audio/finish.mp3');
+        audioElement.play();
+       updateLevel();
+     
+
+    }
+  }
+
+    function updateLevel(){
+        if (puzzleLevel<5){
+        puzzleLevel++;}
+    else{
+     puzzleLevel = 1;
+
+    }
+    InitGame(puzzleLevel,1);
+
+    }
+       
+   // InitGame(puzzleLevel,puzzleSubLevel);
+    
+
+
+        $('#level1').click(function() {
+     
+        InitGame(1,1);
+    });
+        $('#level2').click(function() {
+      
+        InitGame(2,1)
+    });
+        $('#level3').click(function() {
+    
+        InitGame(3,1);
+    });
+        $('#level4').click(function() {
+    
+        InitGame(4,1);
+    });
+        $('#level5').click(function() {
+ 
+        InitGame(5,1);
+    });
+
+        $('#img44').click(function() {
+ 
+      LoadNewImage('img3');
+
+    });
+
+    function GetImageBlockOnEqual(list, x, y) {
+
+
+        for (var i = 0; i < list.length; i++) {
+            var imgBlock = list[i];
+
+            var x1 = imgBlock.x;
+            var y1 = imgBlock.y;
+
+            if (
+                (x == x1) &&
+                (y == y1)
+            ) {
+
+                var img = new imageBlock(imgBlock.no, imgBlock.x, imgBlock.y);
+                //drawImageBlock(img);
+                return img;
+
+            }
+        }
+
+        return null;
+    }
+
+
+
+    function isFinished() {
+    //ShowPreview();
+    var total = TOTAL_PIECES;
+
+  for (var i = 0; i < total; i++) {
+
+            var img = imageBlockList[i];
+            var block = blockList[i];
+
+            if (
+                (img.x != block.x) ||
+                (img.y != block.y)
+                ) {
+
+                return false;
+            }
+
+        }
+        var nameofID = "img"+puzzleSubLevel;
+       if (nameofID === imageID){
+                var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '/assets/Audio/applause.mp3');
+        audioElement.play();
+
+        return true;}
+        else{
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', '/assets/Audio/boing.wav');
+        audioElement.play();
+
+          return false;
+        }
+        
+         
+        
+    }
+
+}
+
+
+
+//var puzzleLevel = $('.temp_information').data('stagy'); 
+ //document.getElementById("img1").src= "/assets/puzzle/'l2'/apple.jpg" ;
+
+
+    </script>
+</head>
+ <style>
+ canvas{
+    position: absolute;
+     left: 20px;
+
+ }
+ </style>
+<body onload="InitGame(1,1);" style="zoom:100%">
+
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <table cellpadding="0" cellspacing="0" width="100%" >
+                        <tr>
+
+                            <td width="450px">
+                                <span >
+                                    <input type="button" class="button orange" value="Peek" onclick="ShowPreview()"/>
+                                        <a  href='#' class="btnBlue" id="level1">1</a>
+    <a  href='#' class="btnGreen" id="level2">2</a>
+    <a  href='#' class="btnYellow" id="level3">3</a>
+    <a  href='#' class="btnOrange" id="level4">4</a>
+    <a  href='#' class="btnRed" id="level5">5</a>
+                                </span>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <canvas id="canJigsaw" width="1230" height="450" style="border: black solid 2px;">
+            
+                    </canvas>
+                       </div>
+                   
+                   
+                      <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
+                         
+                        <img id="img0" width="130" height="130" style="position: absolute; top: 570px; left: 475px;"></img>
+
+                      <img id="img1" width="80" height="80" onclick="LoadNewImage(this.id);" style="position: absolute; top: 595px; left: 724px;"></img>
+
+                        <img id="img2" width="80" height="80" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 595px; left: 821px;"></img>
+
+                     <img id="img3" width="80" height="80" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 595px; left: 923px;"></img>
+
+
+
+                     <img width="130" height="130"src="/assets/puzzle/frame.png" style="position: absolute; top: 570px; left: 475px;"></img>
+
+                       <img width="80" height="80"src="/assets/puzzle/arrow2.png" style="position: absolute; top: 600px; left: 620px;"></img>
+
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 717px;" onclick="LoadNewImage('img1'); listen('بَطّة');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 817px;" onclick="LoadNewImage('img2'); listen('بْنت');"></img>
+                     
+                     <img id="img44" width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 917px;" onclick="listen('برتقالة');"></img>
+                    
+ 
+    </table>
 </body>
 </html>
