@@ -594,7 +594,7 @@ if (puzzleLevel === 4){
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-           alert("baba");
+       
         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
 
         ctx.restore();
@@ -603,7 +603,7 @@ if (puzzleLevel === 4){
     function drawImage(image) {
 
         ctx.save();
-
+            alert("baba");
         ctx.drawImage(image, 0, 0, BLOCK_WIDTH, BLOCK_WIDTH, 10, 10, BLOCK_WIDTH, BLOCK_WIDTH);
 
         ctx.restore();
