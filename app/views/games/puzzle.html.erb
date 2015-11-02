@@ -488,7 +488,7 @@ if (puzzleLevel === 4){
        
         clear(ctx);
         drawLines();
-             alert("baba");
+
         drawAllImages();
 
 
@@ -594,7 +594,7 @@ if (puzzleLevel === 4){
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-
+           alert("baba");
         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
 
         ctx.restore();
