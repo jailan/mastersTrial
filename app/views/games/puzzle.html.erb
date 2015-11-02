@@ -205,11 +205,13 @@ background-image: url("/assets/paper.jpg");
         var puzzleSubLevel;
 
         function InitGame(level, sublevel) {
+         //LoadNewImage('img3');
           puzzleLevel = level;
           puzzleSubLevel = sublevel;
+         // LoadNewImage('img3');
           LoadNewImage(imageID);
           init();
-          //LoadNewImage('img2');
+         //setTimeout(function(){ LoadNewImage('img2'); }, 5000);
         }
 
         function LoadNewImage(imgID) {
@@ -851,8 +853,8 @@ if (puzzleLevel === 4){
 
         $('#img44').click(function() {
  
-      //LoadNewImage('img3');
-      alert("babaa");
+      LoadNewImage('img3');
+
     });
 
     function GetImageBlockOnEqual(list, x, y) {
