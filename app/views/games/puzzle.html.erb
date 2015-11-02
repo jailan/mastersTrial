@@ -613,6 +613,16 @@ if (puzzleLevel === 4){
         ctx.restore();
     }
 
+    function ohlala(){
+
+    var c = document.getElementById("canJigsaw");
+    var ctox = c.getContext("2d");
+    var imgox = document.getElementById("scream");
+    ctox.drawImage(imgox, 20, 20,50,50);
+
+      
+    }
+
     var interval = null;
     var remove_width;
     var remove_height;
@@ -945,7 +955,7 @@ if (puzzleLevel === 4){
 
  }
  </style>
-<body onload="InitGame(1,1);" style="zoom:100%">
+<body onload="ohlala();" style="zoom:100%">
 
     <table>
         <tr>
@@ -969,6 +979,16 @@ if (puzzleLevel === 4){
                     </table>
                 </div>
                 <div>
+
+
+
+
+                
+<img id="scream" width="220" height="277" src="/assets/puzzle/l2/letterba2.jpg" alt="The Scream">
+
+
+
+
                     <canvas id="canJigsaw" width="1230" height="450" style="border: black solid 2px;">
             
                     </canvas>
