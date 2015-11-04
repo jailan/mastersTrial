@@ -589,21 +589,22 @@ if (puzzleLevel === 4){
     }
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
+       var c = document.getElementById("canJigsaw");
+    var ctox = c.getContext("2d");
+    var imgox = document.getElementById("img3");
+    ctox.drawImage(imgox, 20, 20,100,100);
 
-        //ctx.save();
+        ctx.save();
         //alert("baba");
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
           
         //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
-  var c = document.getElementById("canJigsaw");
-    var ctox = c.getContext("2d");
-    var imgox = document.getElementById("img3");
-    ctox.drawImage(imgox, 20, 20,100,100);
+ 
 
     //ctx.drawImage(image1,20,20,100,100);
       
-        //ctx.restore();
+        ctx.restore();
     }
 
 
