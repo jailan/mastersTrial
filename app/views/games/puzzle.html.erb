@@ -587,12 +587,20 @@ if (puzzleLevel === 4){
         
         drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
     }
-//var imgpo = document.getElementById('img3');
-    function drawFinalImage(index, destX, destY, destWidth, destHeight) {
-       var c = document.getElementById("canJigsaw");
+
+
+    function ohlala(){
+    var c = document.getElementById("canJigsaw");
     var ctox = c.getContext("2d");
     var imgox = document.getElementById("img3");
     ctox.drawImage(imgox, 20, 20,100,100);
+    }
+//var imgpo = document.getElementById('img3');
+    function drawFinalImage(index, destX, destY, destWidth, destHeight) {
+    //    var c = document.getElementById("canJigsaw");
+    // var ctox = c.getContext("2d");
+    // var imgox = document.getElementById("img3");
+    // ctox.drawImage(imgox, 20, 20,100,100);
 
         ctx.save();
         //alert("baba");
@@ -839,6 +847,7 @@ if (puzzleLevel === 4){
     InitGame(puzzleLevel,1);
 
     }
+
        
    // InitGame(puzzleLevel,puzzleSubLevel);
     
@@ -867,7 +876,8 @@ if (puzzleLevel === 4){
 
         $('#img44').click(function() {
  
-LoadNewImage("img3");
+       //LoadNewImage("img3");
+       ohlala();
 
     });
 
