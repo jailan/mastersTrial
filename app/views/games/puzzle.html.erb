@@ -215,11 +215,27 @@ background-image: url("/assets/paper.jpg");
         }
 
 
+
+    //ctxo.drawImage(imgxo, 20, 20,100,100);
+
+
+
+var callback = function(image,co,imgxo,ctxo) {
+   if(!image) image = this;
+
+   ctxo.drawImage(image, 10, 10,100,100);
+}
 function hoppa() {
+
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
+if(imgxo.complete) { //check if image was already loaded by the browser
+   callback(imgxo,co,imgxo,ctxo);
+}else {
+   imgxo.onload = callback;
+}
+
 }
 
         function LoadNewImage(imgID) {
@@ -871,11 +887,8 @@ if (puzzleLevel === 4){
         $('#img44').click(function() {
  
       //LoadNewImage('img3');
-     // hoppa();
-          var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
+      hoppa();
+ 
 
     });
 
@@ -959,7 +972,7 @@ if (puzzleLevel === 4){
 
  }
  </style>
-<body onload="InitGame(1,1);" style="zoom:100%">
+<body onload="InitGame(2,1);" style="zoom:100%">
 
     <table>
         <tr>
