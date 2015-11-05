@@ -599,11 +599,12 @@ if (puzzleLevel === 4){
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
 
         ctx.save();
+        hoppa();
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
           
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
+        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
 
 
     //ctx.drawImage(imgpo,10,10);
@@ -869,8 +870,8 @@ if (puzzleLevel === 4){
 
         $('#img44').click(function() {
  
-      //LoadNewImage('img3');
-      hoppa();
+      LoadNewImage('img3');
+      //hoppa();
 
     });
 
