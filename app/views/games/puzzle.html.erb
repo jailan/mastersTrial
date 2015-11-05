@@ -871,7 +871,11 @@ if (puzzleLevel === 4){
         $('#img44').click(function() {
  
       //LoadNewImage('img3');
-      hoppa();
+     // hoppa();
+          var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
+    var imgxo = document.getElementById("img3");
+    ctxo.drawImage(imgxo, 20, 20,100,100);
 
     });
 
