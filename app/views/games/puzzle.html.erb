@@ -204,6 +204,13 @@ background-image: url("/assets/paper.jpg");
         var puzzleLevel;
         var puzzleSubLevel;
 
+            function ohlalu() {
+    var c = document.getElementById("canJigsaw");
+    var ctox = c.getContext("2d");
+    var imgox = document.getElementById("img3");
+    ctox.drawImage(imgox, 20, 20,100,100);
+    }
+
         function InitGame(level, sublevel) {
          //LoadNewImage('img3');
           puzzleLevel = level;
@@ -589,12 +596,7 @@ if (puzzleLevel === 4){
     }
 
 
-    function ohlala(){
-    var c = document.getElementById("canJigsaw");
-    var ctox = c.getContext("2d");
-    var imgox = document.getElementById("img3");
-    ctox.drawImage(imgox, 20, 20,100,100);
-    }
+
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
      //    var c = document.getElementById("canJigsaw");
@@ -602,11 +604,8 @@ if (puzzleLevel === 4){
      // var imgox = document.getElementById("img3");
      // ctox.drawImage(imgox, 20, 20,100,100);
         ctx.save();
-         alert("hahaha");
-          var c = document.getElementById("canJigsaw");
-    var ctox = c.getContext("2d");
-    var imgox = document.getElementById("img3");
-    ctox.drawImage(imgox, 20, 20,100,100);
+        // alert("hahaha");
+
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
           
@@ -877,9 +876,9 @@ if (puzzleLevel === 4){
 
        $('#img44').click(function() {
  
-       LoadNewImage("img3");
+      // LoadNewImage("img3");
       
-     // ohlala();
+      ohlalu();
 
     });
 
@@ -963,7 +962,7 @@ if (puzzleLevel === 4){
 
  }
  </style>
-<body onload="InitGame(1,1);" style="zoom:100%">
+<body onload="InitGame(2,1);" style="zoom:100%">
 
     <table>
         <tr>
