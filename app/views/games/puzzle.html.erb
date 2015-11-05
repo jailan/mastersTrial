@@ -10,8 +10,10 @@
 Your browser does not support the HTML5 canvas tag.
 </canvas>
 
+    <input type="button" value="Peek" onclick="hoppa()"/>
+
 <script>
-window.onload = function() {
+function hoppa() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     var img = document.getElementById("scream");
