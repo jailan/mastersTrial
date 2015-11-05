@@ -220,22 +220,19 @@ background-image: url("/assets/paper.jpg");
 
 
 
-var callback = function(image,co,imgxo,ctxo) {
-   if(!image) image = this;
-
-   ctxo.drawImage(image, 10, 10,100,100);
-}
 function hoppa() {
 
-    var co = document.getElementById("canJigsaw");
+
+var logoImg = new Image();
+   var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
-if(imgxo.complete) { //check if image was already loaded by the browser
-   callback(imgxo,co,imgxo,ctxo);
-}else {
-   imgxo.onload = callback;
-}
+logoImg.onload = function() {
 
+ ctxo.drawImage(logoImg,20,20,100,100);
+
+};
+  logoImg.src = "/assets/puzzle/arrow2.png";
 }
 
         function LoadNewImage(imgID) {
