@@ -223,11 +223,13 @@ function hoppa() {
 }
 
         function LoadNewImage(imgID) {
+          hoppa();
             imageID = imgID;
             
             SetRowsColumn();
             
             LoadGame();
+
         }
         
         function LoadGame() {
@@ -597,7 +599,7 @@ if (puzzleLevel === 4){
     }
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
-         hoppa();
+      
         ctx.save();
        
 
