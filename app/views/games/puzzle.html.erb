@@ -210,7 +210,7 @@ background-image: url("/assets/paper.jpg");
           puzzleSubLevel = sublevel;
          // LoadNewImage('img3');
           LoadNewImage(imageID);
-          init();
+          //init();
          //setTimeout(function(){ LoadNewImage('img2'); }, 5000);
         }
 
@@ -234,34 +234,14 @@ function hoppa() {
 
              function LoadNewImage2(imgID) {
            
-        hoppa();
+  
           imageID = imgID;
+               SetRowsColumn();
             
-            SetRowsColumn();
-             var canvasID = "canJigsaw";
-
-            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
-                  mySelf = game;
-        selectedBlock = null;
-        canvas = document.getElementById(canvasID);
-
-        ctx = canvas.getContext('2d');
-      
-        // register events
-        //canvas.ondblclick = handleOnMouseDbClick;
-        canvas.onmousedown = handleOnMouseDown;
-        canvas.onmouseup = handleOnMouseUp;
-        canvas.onmouseout = handleOnMouseOut;
-        canvas.onmousemove = handleOnMouseMove;
-
-        image1 = document.getElementById(imageID);
-        imagePrev = document.getElementById("imgprev");
-               BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
-        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
-
-
-        // Draw image
-        SetImageBlock();
+            LoadGame();
+        
+               hoppa();
+   
 
         }
         
