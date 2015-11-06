@@ -256,6 +256,12 @@ function hoppa() {
 
         image1 = document.getElementById(imageID);
         imagePrev = document.getElementById("imgprev");
+               BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
+        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
+
+
+        // Draw image
+        SetImageBlock();
 
         }
         
