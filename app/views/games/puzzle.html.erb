@@ -215,11 +215,18 @@ background-image: url("/assets/paper.jpg");
         }
 
 
+
+    //ctxo.drawImage(imgxo, 20, 20,100,100);
+
+
+
 function hoppa() {
-    var c = document.getElementById("canJigsaw");
-    var ctxo = c.getContext("2d");
+
+   var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
+
+ ctxo.drawImage(imgxo,20,20,100,100);
 }
 
         function LoadNewImage(imgID) {
@@ -599,11 +606,12 @@ if (puzzleLevel === 4){
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
 
         ctx.save();
+        //hoppa();
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
           
-        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
+        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
 
 
     //ctx.drawImage(imgpo,10,10);
@@ -871,6 +879,7 @@ if (puzzleLevel === 4){
  
       //LoadNewImage('img3');
       hoppa();
+ 
 
     });
 
@@ -954,7 +963,7 @@ if (puzzleLevel === 4){
 
  }
  </style>
-<body onload="InitGame(1,1);" style="zoom:100%">
+<body onload="InitGame(2,1);" style="zoom:100%">
 
     <table>
         <tr>
@@ -971,6 +980,8 @@ if (puzzleLevel === 4){
     <a  href='#' class="btnYellow" id="level3">3</a>
     <a  href='#' class="btnOrange" id="level4">4</a>
     <a  href='#' class="btnRed" id="level5">5</a>
+
+
                                 </span>
 
                             </td>
@@ -983,8 +994,7 @@ if (puzzleLevel === 4){
                     </canvas>
                        </div>
                    
-              
-
+                   
                       <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                          
                         <img id="img0" width="130" height="130" style="position: absolute; top: 570px; left: 475px;"></img>
@@ -1010,6 +1020,7 @@ if (puzzleLevel === 4){
     </table>
 </body>
 </html>
+
 
 
 
