@@ -597,9 +597,9 @@ if (puzzleLevel === 4){
     }
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
-
+         hoppa();
         ctx.save();
-        hoppa();
+       
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
