@@ -214,6 +214,14 @@ background-image: url("/assets/paper.jpg");
          //setTimeout(function(){ LoadNewImage('img2'); }, 5000);
         }
 
+
+function hoppa() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    var img = document.getElementById("scream");
+    ctx.drawImage(img, 20, 20,50,50);
+}
+
         function LoadNewImage(imgID) {
             imageID = imgID;
             
@@ -591,11 +599,16 @@ if (puzzleLevel === 4){
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
 
         ctx.save();
-         //hoppa();
+
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
-       ctx.restore();
+          
+        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
     }
 
     function drawImage(image) {
@@ -828,13 +841,6 @@ if (puzzleLevel === 4){
     InitGame(puzzleLevel,1);
 
     }
-
-    function hoppa() {
-    var c = document.getElementById("canJigsaw");
-    var ctx = c.getContext("2d");
-    var img = document.getElementById("img3");
-    ctx.drawImage(img, 20, 20,100,100);
-}
        
    // InitGame(puzzleLevel,puzzleSubLevel);
     
@@ -863,7 +869,7 @@ if (puzzleLevel === 4){
 
         $('#img44').click(function() {
  
-     // LoadNewImage('img3');
+      //LoadNewImage('img3');
       hoppa();
 
     });
@@ -1004,16 +1010,6 @@ if (puzzleLevel === 4){
 </body>
 </html>
 
-<!-- 
 
-    <input type="button" value="Peek" onclick="hoppa()"/>
 
-<script>
-function hoppa() {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var img = document.getElementById("scream");
-    ctx.drawImage(img, 20, 20,50,50);
-}
-</script>
- -->
+
