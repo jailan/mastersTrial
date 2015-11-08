@@ -233,7 +233,7 @@ function hoppa() {
         }
 
              function LoadNewImage2(imgID) {
-            
+         
   
            imageID = imgID;
           
@@ -621,9 +621,10 @@ if (puzzleLevel === 4){
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-          hoppa();
-          
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
+         var imgxo = document.getElementById("img3");
+    //ctxo.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(imgxo, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
 
 
     //ctx.drawImage(imgpo,10,10);
