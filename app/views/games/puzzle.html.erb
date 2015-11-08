@@ -238,11 +238,17 @@ function hoppa() {
           imageID = imgID;
                SetRowsColumn();
             
-            LoadGame();
-        
-               hoppa();
+             var canvasID = "canJigsaw";
+
+            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
    
 
+        game.initDrawing();
+        // canvas.onmousedown = handleOnMouseDown;
+        // canvas.onmouseup = handleOnMouseUp;
+        // canvas.onmouseout = handleOnMouseOut;
+        // canvas.onmousemove = handleOnMouseMove;
+               hoppa();
         }
         
         function LoadGame() {
