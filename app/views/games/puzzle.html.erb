@@ -488,9 +488,11 @@ if (puzzleLevel === 4){
           puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg";
         }
        // ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
-          var co = document.getElementById("canJigsaw");
+
+    var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
+    puzzoImg.src= "/assets/puzzle/l2/1d.jpg";
     ctxo.drawImage(puzzoImg, 20, 20,100,100);
 
         //imagePrev = document.getElementById("imgprev").src;
