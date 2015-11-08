@@ -233,21 +233,25 @@ function hoppa() {
         }
 
              function LoadNewImage2(imgID) {
-           
+            
   
-          imageID = imgID;
-            
+           imageID = imgID;
+          
             SetRowsColumn();
-            
-            LoadGame();
+
+                  
+              LoadGame();
+                 
            
         }
         
         function LoadGame() {
+               
             var canvasID = "canJigsaw";
-            hoppa();
+
 
             game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+
 
             game.initDrawing();
            // ShowPreview();
@@ -617,6 +621,7 @@ if (puzzleLevel === 4){
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
+          hoppa();
           
         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
 
