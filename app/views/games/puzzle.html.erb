@@ -229,6 +229,7 @@ function hoppa() {
             SetRowsColumn();
             
             LoadGame();
+          
 
         }
 
@@ -388,6 +389,8 @@ if (puzzleLevel === 4){
    document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
 }
+
+ document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
    // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
    // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
 
@@ -493,8 +496,7 @@ if (puzzleLevel === 4){
 
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
-   var imgxo = document.getElementById("img3");
-
+    var imgxo = document.getElementById("balala");
     ctx.drawImage(imgxo, 0, 0,MAIN_IMG_WIDTH,MAIN_IMG_HEIGHT,20,20, width, height);
           //ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
     
@@ -1015,7 +1017,7 @@ if (puzzleLevel === 4){
             
                     </canvas>
                        </div>
-                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;" src= "/assets/puzzle/frame.png"></img> 
+                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                    
                       <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                          
