@@ -482,7 +482,7 @@ if (puzzleLevel === 4){
         ctx.save();
        image1 = document.getElementById(imageID);
         var puzzoImg = new Image();
-          var imgxo = document.getElementById("balala");
+         
         if (puzzleLevel !=4){
         puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png";}
         else{
@@ -493,8 +493,8 @@ if (puzzleLevel === 4){
 
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
-  
-  imgxo.src= "/assets/puzzle/frame.png";
+   var imgxo = document.getElementById("balala");
+  //imgxo.src= "/assets/puzzle/frame.png";
     ctxo.drawImage(imgxo, 20, 20,100,100);
 
         //imagePrev = document.getElementById("imgprev").src;
@@ -1013,7 +1013,7 @@ if (puzzleLevel === 4){
             
                     </canvas>
                        </div>
-                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
+                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;" src= "/assets/puzzle/frame.png"></img> 
                    
                       <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                          
