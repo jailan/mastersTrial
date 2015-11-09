@@ -252,9 +252,16 @@ function hoppa() {
 
 
             game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+                 canvas = document.getElementById(canvasID);
 
+        ctx = canvas.getContext('2d');
+            var liloz = document.getElementById("img1");
 
-            game.initDrawing();
+         ctx.drawImage(liloz,0,0,300,300,620,5,300,225);
+       ctx.drawImage(liloz,300,0,300,300,925,235,300,225);
+        ctx.drawImage(liloz,0,300,300,300,925,5,300,225);
+         ctx.drawImage(liloz,300,300,300,300,620,235,300,225);
+           // game.initDrawing();
            // ShowPreview();
 
         }
@@ -450,11 +457,8 @@ if (puzzleLevel === 4){
         canvas = document.getElementById(canvasID);
 
         ctx = canvas.getContext('2d');
-            var liloz = document.getElementById("img1");
-              ctx.drawImage(liloz,0,0,300,300,620,5,300,225);
-       ctx.drawImage(liloz,300,0,300,300,925,235,300,225);
-        ctx.drawImage(liloz,0,300,300,300,925,5,300,225);
-         ctx.drawImage(liloz,300,300,300,300,620,235,300,225);
+
+     
       
         // register events
        // canvas.ondblclick = handleOnMouseDbClick;
