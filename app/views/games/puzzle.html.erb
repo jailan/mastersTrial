@@ -902,7 +902,37 @@ ctx.drawImage(lilo, 20, 20,100,100);
         InitGame(5,1);
     });
 
-        $('#img44').click(function() {
+      $('#img11').click(function() {
+      //     switch(imgBlock.no){
+      //   case 0:
+      //   drawFinalImage(0, 620, 5, 300,225);
+      //   case 1:
+      //   drawFinalImage(1, 925, 235, 300,225);
+      //   case 2:
+      //   drawFinalImage(2, 925, 5, 300,225);
+      //   case 3:
+      //   drawFinalImage(3, 620, 235, 300,225);
+
+      // }
+
+        var srcX = (0 % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(0 / TOTAL_COLUMNS) * IMG_HEIGHT;
+ 
+    var liloz = document.getElementById("img1");
+      //ctx.drawImage(liloz, srcX, srcY, 600, 600, 620, 5, 300,225);
+      ctx.drawImage(liloz,10,10,100,100);
+   
+
+    });
+       $('#img22').click(function() {
+ 
+      //LoadNewImage('img3');
+     var liloz = document.getElementById(imageID);
+      ctx.drawImage(liloz, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight);
+
+    });
+
+        $('#img33').click(function() {
  
       //LoadNewImage('img3');
       hoppa();
@@ -1037,10 +1067,10 @@ ctx.drawImage(lilo, 20, 20,100,100);
 
                        <img width="80" height="80"src="/assets/puzzle/arrow2.png" style="position: absolute; top: 600px; left: 620px;"></img>
 
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 717px;" onclick="LoadNewImage2('img1'); listen('بَطّة');"></img>
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 817px;" onclick="LoadNewImage2('img2'); listen('بْنت');"></img>
+                     <img id="img11" width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 717px;" onclick="listen('بَطّة');"></img>
+                     <img id="img22" width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 817px;" onclick="LoadNewImage2('img2'); listen('بْنت');"></img>
                      
-                     <img id="img44" width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 917px;" onclick="listen('برتقالة');"></img>
+                     <img id="img33" width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 917px;" onclick="listen('برتقالة');"></img>
 
                     
  
