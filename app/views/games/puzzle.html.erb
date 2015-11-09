@@ -637,12 +637,9 @@ if (puzzleLevel === 4){
         ctx.save();
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-        var imgxo = document.getElementById("img3");
-        var lilo = document.getElementById(imageID);
-ctx.drawImage(lilo, 20, 20,100,100); 
-//ctx.drawImage(lilo, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight); 
-        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight); ZIS IIIZ ZEE ONE ! 
-//ctx.drawImage(imgpo,10,10);
+
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight);
+
         ctx.restore();
     }
 
@@ -903,32 +900,21 @@ ctx.drawImage(lilo, 20, 20,100,100);
     });
 
       $('#img11').click(function() {
-      //     switch(imgBlock.no){
-      //   case 0:
-      //   drawFinalImage(0, 620, 5, 300,225);
-      //   case 1:
-      //   drawFinalImage(1, 925, 235, 300,225);
-      //   case 2:
-      //   drawFinalImage(2, 925, 5, 300,225);
-      //   case 3:
-      //   drawFinalImage(3, 620, 235, 300,225);
-
-      // }
-
-        var srcX = (0 % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(0 / TOTAL_COLUMNS) * IMG_HEIGHT;
  
     var liloz = document.getElementById("img1");
       //ctx.drawImage(liloz, srcX, srcY, 600, 600, 620, 5, 300,225);
-      ctx.drawImage(liloz,10,10,100,100);
+      ctx.drawImage(liloz,0,0,300,300,620,5,300,225);
+       ctx.drawImage(liloz,300,0,300,300,925,235,300,225);
+        ctx.drawImage(liloz,0,300,300,300,925,5,300,225);
+         ctx.drawImage(liloz,300,300,300,300,620,235,300,225);
    
 
     });
        $('#img22').click(function() {
  
-      //LoadNewImage('img3');
-     var liloz = document.getElementById(imageID);
-      ctx.drawImage(liloz, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight);
+      LoadNewImage('img2');
+     // var liloz = document.getElementById(imageID);
+     //  ctx.drawImage(liloz, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight);
 
     });
 
