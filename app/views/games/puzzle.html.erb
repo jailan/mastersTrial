@@ -390,9 +390,8 @@ if (puzzleLevel === 4){
    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
 }
 
- document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
-   // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
-   // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
+ // document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+
 
 
     var MAIN_IMG_WIDTH = 600;
@@ -496,7 +495,7 @@ if (puzzleLevel === 4){
 
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("balala");
+    var imgxo = document.getElementById("imgprev1");
     ctx.drawImage(imgxo, 0, 0,MAIN_IMG_WIDTH,MAIN_IMG_HEIGHT,20,20, width, height);
           //ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
     
