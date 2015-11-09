@@ -462,8 +462,8 @@ if (puzzleLevel === 4){
     function initializeNewGame() {
 
         // Set block 
-        BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
-        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
+        BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);//600/2
+        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);//450/2
 
 
         // Draw image
@@ -491,15 +491,9 @@ if (puzzleLevel === 4){
           puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg";
         }
      
-     
-
-    var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("imgprev1");
     ctx.drawImage(imgxo, 0, 0,MAIN_IMG_WIDTH,MAIN_IMG_HEIGHT,20,20, width, height);
           //ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
-    
-
         //imagePrev = document.getElementById("imgprev").src;
        // ctx.drawImage(imagePrev, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
 
@@ -510,16 +504,11 @@ if (puzzleLevel === 4){
         ctx.fillStyle = '#00f'; // blue
         ctx.strokeStyle = '#f00'; // red
         ctx.lineWidth = 2;
-
-
         ctx.strokeRect(x1 - 2, y1 - 2, width + 8, height + 8);
-
-
         ctx.restore();
 
 
     };
-
   
     function DrawGame() {
        
@@ -621,29 +610,37 @@ if (puzzleLevel === 4){
     }
 
     function drawImageBlock(imgBlock) {
+
+      // switch(imgBlock.no){
+      //   case 0:
+      //   drawFinalImage(0, 620, 5, 300,225);
+      //   case 1:
+      //   drawFinalImage(1, 925, 235, 300,225);
+      //   case 2:
+      //   drawFinalImage(2, 925, 5, 300,225);
+      //   case 3:
+      //   drawFinalImage(3, 620, 235, 300,225);
+
+      // }
         
-        drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+        drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH,BLOCK_HEIGHT);
     }
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
       
         ctx.save();
-       
-
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
+        var imgxo = document.getElementById("img3");
+        var lilo = document.getElementById(imageID);
+//ctx.drawImage(imgxo, 20, 20,100,100); 
+ctx.drawImage(lilo, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight); 
+        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight); ZIS IIIZ ZEE ONE ! 
+//ctx.drawImage(imgpo,10,10);
         ctx.restore();
     }
 
-    function drawImage(image) {
+    function drawImage(image){
     
 
         ctx.save();
@@ -1016,7 +1013,7 @@ if (puzzleLevel === 4){
             
                     </canvas>
                        </div>
-                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
+                 
                    
                       <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                          
