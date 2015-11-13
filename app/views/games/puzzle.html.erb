@@ -236,17 +236,8 @@ function hoppa() {
          function LoadNewImage2(imgID) {
            imageID = imgID;
            SetRowsColumn();
-          // LoadGame();
-           alert("yaRab");
+           LoadGame();
 
-              var canvasID = "canJigsaw";
- 
-            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
-                 canvas = document.getElementById(canvasID);
-
-        ctx = canvas.getContext('2d');
-
-             game.initDrawing();
         }
         
         function LoadGame() {
