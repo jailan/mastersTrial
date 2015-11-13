@@ -470,7 +470,7 @@ if (puzzleLevel === 4){
 
         // Draw image
         SetImageBlock();
-          alert("dddd");
+
 
         DrawGame();
 
@@ -530,7 +530,7 @@ if (puzzleLevel === 4){
         drawLines();
 
         drawAllImages();
-
+         
 
         if (selectedBlock) {
             drawImageBlock(selectedBlock);
@@ -617,8 +617,9 @@ if (puzzleLevel === 4){
         for (var i = 0; i < imageBlockList.length; i++) {
             var imgBlock = imageBlockList[i];
             if (imgBlock.isSelected == false) {
-
+                
                 drawImageBlock(imgBlock);
+                   alert("dddd");
             }
         }
     }
