@@ -237,11 +237,8 @@ function hoppa() {
          
   
            imageID = imgID;
-          
-            SetRowsColumn();
-
-                  
-              LoadGame();
+           SetRowsColumn();
+           LoadGame();
                  
            
         }
@@ -255,13 +252,8 @@ function hoppa() {
                  canvas = document.getElementById(canvasID);
 
         ctx = canvas.getContext('2d');
-            var liloz = document.getElementById("img1");
-
-         ctx.drawImage(liloz,0,0,300,300,620,5,300,225);
-       ctx.drawImage(liloz,300,0,300,300,925,235,300,225);
-        ctx.drawImage(liloz,0,300,300,300,925,5,300,225);
-         ctx.drawImage(liloz,300,300,300,300,620,235,300,225);
-           // game.initDrawing();
+        
+            game.initDrawing();
            // ShowPreview();
 
         }
@@ -480,7 +472,7 @@ if (puzzleLevel === 4){
         // Set block 
         BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);//600/2
         BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);//450/2
-
+           init();
 
         // Draw image
         SetImageBlock();
@@ -626,7 +618,6 @@ if (puzzleLevel === 4){
     }
 
     function drawImageBlock(imgBlock) {
-
       // switch(imgBlock.no){
       //   case 0:
       //   drawFinalImage(0, 620, 5, 300,225);
@@ -635,10 +626,7 @@ if (puzzleLevel === 4){
       //   case 2:
       //   drawFinalImage(2, 925, 5, 300,225);
       //   case 3:
-      //   drawFinalImage(3, 620, 235, 300,225);
-
-      // }
-        
+      //   drawFinalImage(3, 620, 235, 300,225);}
         drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH,BLOCK_HEIGHT);
     }
 //var imgpo = document.getElementById('img3');
@@ -647,10 +635,7 @@ if (puzzleLevel === 4){
         ctx.save();
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
-
         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight);
-
-
         ctx.restore();
     }
 
@@ -924,7 +909,7 @@ if (puzzleLevel === 4){
     });
        $('#img22').click(function() {
  
-      LoadNewImage('img2');
+      LoadNewImage2('img2');
      // var liloz = document.getElementById(imageID);
      //  ctx.drawImage(liloz, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth,destHeight);
 
