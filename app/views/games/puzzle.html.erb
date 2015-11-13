@@ -619,18 +619,19 @@ if (puzzleLevel === 4){
             if (imgBlock.isSelected == false) {
                 
                 drawImageBlock(imgBlock);
-                   alert("dddd");
+
             }
         }
     }
 
     function drawImageBlock(imgBlock) {
+      
         
         drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
     }
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
-      
+        alert("dddd");
         ctx.save();
        
 
