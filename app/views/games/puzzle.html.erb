@@ -233,14 +233,19 @@ function hoppa() {
 
         }
 
-             function LoadNewImage2(imgID) {
-         
-  
+         function LoadNewImage2(imgID) {
            imageID = imgID;
            SetRowsColumn();
-           LoadGame();
-                 
-           
+          // LoadGame();
+              var canvasID = "canJigsaw";
+
+
+            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+                 canvas = document.getElementById(canvasID);
+
+        ctx = canvas.getContext('2d');
+        alert("hshhshs");
+             game.initDrawing();
         }
         
         function LoadGame() {
@@ -915,7 +920,7 @@ if (puzzleLevel === 4){
 
     });
 
-        $('#img33').click(function() {
+        $('#img33').click(function(){
  
       //LoadNewImage('img3');
       hoppa();
@@ -923,7 +928,6 @@ if (puzzleLevel === 4){
     });
 
     function GetImageBlockOnEqual(list, x, y) {
-
 
         for (var i = 0; i < list.length; i++) {
             var imgBlock = list[i];
