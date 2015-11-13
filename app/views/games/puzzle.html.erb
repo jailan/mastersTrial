@@ -463,6 +463,11 @@ if (puzzleLevel === 4){
             ctx.lineTo(600, yo);
         }
 
+    var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
+    var imgxo = document.getElementById("img3");
+    ctxo.drawImage(imgxo, 20, 20,100,100); 
+
 
         ctx.closePath();
         ctx.stroke();
@@ -476,10 +481,7 @@ if (puzzleLevel === 4){
         var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
         //var imgxo = document.getElementById("img3"); 
         // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-    var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);    
+      
         ctx.restore();
 
            // }
