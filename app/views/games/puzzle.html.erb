@@ -625,23 +625,25 @@ if (puzzleLevel === 4){
     }
 
     function drawImageBlock(imgBlock) {
-      
+
         
         drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
     }
 //var imgpo = document.getElementById('img3');
     function drawFinalImage(index, destX, destY, destWidth, destHeight) {
-        alert("dddd");
+       
         ctx.save();
        
 
         var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
          var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
+   
+ //ctx.drawImage(imgxo, 20, 20,100,100);
+
          
         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
-
+              alert("hes");
 
     //ctx.drawImage(imgpo,10,10);
       
