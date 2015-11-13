@@ -434,7 +434,7 @@ if (puzzleLevel === 4){
             }
 
           var imgBlock = new imageBlock(i, notRandomX, notRandomY); 
-            imageBlockList.push(imgBlock);
+          imageBlockList.push(imgBlock);
 
             var x = (i % TOTAL_COLUMNS) * BLOCK_WIDTH;
             var y = Math.floor(i / TOTAL_COLUMNS) * BLOCK_HEIGHT;
@@ -468,27 +468,33 @@ if (puzzleLevel === 4){
         ctx.stroke();
 
   
-          for (var i = 0; i < imageBlockList.length; i++) {
-        var imgBlock = imageBlockList[i];
+        for (var i = 0; i < imageBlockList.length; i++) {
+        imgBlock = imageBlockList[i];
         //if (imgBlock.isSelected == false) {
         ctx.save();
         var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
-        var imgxo = document.getElementById("img3"); 
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+        //var imgxo = document.getElementById("img3"); 
+        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+    var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
+    var imgxo = document.getElementById("img3");
+    ctxo.drawImage(imgxo, 20, 20,100,100);    
         ctx.restore();
+
            // }
         }
 
 
-       // if (selectedBlock) {
-        ctx.save();
-        srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-        imgxo = document.getElementById("img3");
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);      
-        ctx.restore();
-       // }
+        // if (selectedBlock) {
+        // ctx.save();
+        // srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        // srcY = Math.floor(imgBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+        // imgxo = document.getElementById("img3");
+        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT); 
+
+
+        // }
 
        
     
