@@ -222,74 +222,43 @@ function hoppa() {
     ctxo.drawImage(imgxo, 20, 20,100,100);
 }
 
-        function LoadNewImage(imgID) {
+function LoadNewImage(imgID) {
 
             imageID = imgID;
-            
             SetRowsColumn();
-            
             LoadGame();
           
 
         }
 
-             function LoadNewImage2(imgID) {
-         
-  
+function LoadNewImage2(imgID) {
            imageID = imgID;
-          
-            SetRowsColumn();
-
-               
-              LoadGame();
+           SetRowsColumn();
+           LoadGame();
                  
            
         }
         
-        function LoadGame() {
+function LoadGame() {
                
             var canvasID = "canJigsaw";
-
-
             game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
-                
-
             game.initDrawing();
            // ShowPreview();
 
         }
 
-        function ShowPreview() {
+function ShowPreview() {
             if (game) {
-
                 game.showPreview();
 
             }
         }
 
-        function SetRowsColumn() {
-           /* var r1 = document.getElementById("rd1");
-            var r2 = document.getElementById("rd2");
-            var r3 = document.getElementById("rd3");
-
-            if (r1.checked) {
-                totalRows = 2;
-                totalColumns = 2;
-
-            }
-            else if (r2.checked) {
-                totalRows = 3;
-                totalColumns = 3;
-
-            }
-            else if (r3.checked) {
-                totalRows = 4;
-                totalColumns = 4;
-
-            }*/ //WHEN WE HAD 3 LEVELS 
+function SetRowsColumn() {
 
             totalRows = 2;
-                totalColumns = 2;
+            totalColumns = 2;
 
 
         }
@@ -348,6 +317,8 @@ msg.onend = function(e) {
 
 speechSynthesis.speak(msg);
 }
+
+
 
 
 function jigsaw(canvasID, imageID, rows,columns) {
@@ -447,8 +418,7 @@ if (puzzleLevel === 4){
         ctx = canvas.getContext('2d');
       
         // register events
-        //canvas.ondblclick = handleOnMouseDbClick; alert("dddd");
-
+        //canvas.ondblclick = handleOnMouseDbClick;
         canvas.onmousedown = handleOnMouseDown;
         canvas.onmouseup = handleOnMouseUp;
         canvas.onmouseout = handleOnMouseOut;
@@ -456,25 +426,134 @@ if (puzzleLevel === 4){
 
         image1 = document.getElementById(imageID);
         imagePrev = document.getElementById("imgprev");
+        // ////////////////////*********** //initializeNewGame ();
 
-      
-        initializeNewGame();
-    };
-    
-    function initializeNewGame() {
-
-        // Set block 
         BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
         BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
 
 
         // Draw image
-        SetImageBlock();
+       //***************************** SetImageBlock();
 
 
-        DrawGame();
+        var total = TOTAL_PIECES;
+        imageBlockList = new Array();
+        blockList = new Array();
 
-    }
+        var x1 = BLOCK_IMG_WIDTH -80;
+        var x2 = canvas.width - 600;
+        var y2 = BLOCK_IMG_HEIGHT;
+        for (var i = 0; i < total; i++) {
+
+            var randomX = randomXtoY(x1, x2, 2);
+            var randomY = randomXtoY(0, y2, 2);
+            if(i===0){
+             notRandomX = 620;
+             notRandomY = 5;  
+            }
+               if(i===1){
+             notRandomX = 925;
+             notRandomY = 235;  
+            }
+               if(i===3){
+             notRandomX = 620;
+             notRandomY = 235;  
+            }
+               if(i===2){
+             notRandomX = 925;
+             notRandomY = 5;  
+            }
+       
+           // var imgBlock = new imageBlock(i, randomX, randomY);
+     
+
+          var imgBlock = new imageBlock(i, notRandomX, notRandomY);
+          // notRandomY = (notRandomY + 230)%920;
+
+            imageBlockList.push(imgBlock);
+
+            var x = (i % TOTAL_COLUMNS) * BLOCK_WIDTH;
+            var y = Math.floor(i / TOTAL_COLUMNS) * BLOCK_HEIGHT;
+
+            var block = new imageBlock(i, x, y);
+            blockList.push(block);
+
+        }
+        ////////////////////*********** //DrawGame();
+        clear(ctx);
+        //////////////////************************//drawLines();
+               ctx.strokeStyle = "#e9e9e9";
+        
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        
+        // draw verticle lines
+        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+            var x = BLOCK_WIDTH * i;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 450);
+        }
+
+        // draw horizontal lines
+        for (var i = 0; i <= TOTAL_ROWS; i++) {
+            var y = BLOCK_HEIGHT * i;
+            ctx.moveTo(0, y);
+            ctx.lineTo(600, y);
+        }
+
+
+        ctx.closePath();
+        ctx.stroke();
+
+       //////////////////*************** drawAllImages();
+              for (var i = 0; i < imageBlockList.length; i++) {
+            var imgBlock = imageBlockList[i];
+            if (imgBlock.isSelected == false) {
+
+               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
+      
+        ctx.save();
+       
+
+        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+            }
+        }
+
+
+        if (selectedBlock) {
+            //drawImageBlock(selectedBlock);
+            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+            ctx.save();
+       
+
+        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+        }
+
+       
+    
+    };
+    
+
 
 
     this.showPreview = function () {
@@ -523,22 +602,46 @@ if (puzzleLevel === 4){
 
     };
 
-  
-    function DrawGame() {
-       
-        clear(ctx);
-        drawLines();
-
-        drawAllImages();
-         
-
-        if (selectedBlock) {
-            drawImageBlock(selectedBlock);
-        }
-    }
+ 
       var notRandomX = 620;
       var notRandomY = 5;
-    function SetImageBlock() {
+      var interval = null;
+      var remove_width;
+      var remove_height;
+    
+
+
+    this.ClearGame = function () {
+        //   alert("f");
+        remove_width -= 30;
+        remove_height -= 20;
+
+        if (remove_width > 0 && remove_height > 0) {
+
+            clear(ctx);
+
+            for (var i = 0; i < imageBlockList.length; i++) {
+                var imgBlock = imageBlockList[i];
+
+                imgBlock.x += 10;
+                imgBlock.y += 10;
+
+                drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, remove_width, remove_height);
+            }
+
+            // DrawGame();
+        } else {
+
+            clearInterval(interval);
+           
+            // Restart game
+           BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
+        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
+
+
+        // Draw image
+       //***************************** SetImageBlock();
+
 
         var total = TOTAL_PIECES;
         imageBlockList = new Array();
@@ -583,12 +686,10 @@ if (puzzleLevel === 4){
             blockList.push(block);
 
         }
-
-    }
-
-    function drawLines() {
-       
-       ctx.strokeStyle = "#e9e9e9";
+        ////////////////////*********** //DrawGame();
+        clear(ctx);
+        //////////////////************************//drawLines();
+               ctx.strokeStyle = "#e9e9e9";
         
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -610,100 +711,51 @@ if (puzzleLevel === 4){
 
         ctx.closePath();
         ctx.stroke();
-    }
 
-    function drawAllImages() {
-
-        for (var i = 0; i < imageBlockList.length; i++) {
+       //////////////////*************** drawAllImages();
+              for (var i = 0; i < imageBlockList.length; i++) {
             var imgBlock = imageBlockList[i];
             if (imgBlock.isSelected == false) {
-                
-                drawImageBlock(imgBlock);
 
-            }
-        }
-    }
-
-    function drawImageBlock(imgBlock) {
-
-        
-        drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
-    }
-//var imgpo = document.getElementById('img3');
-    function drawFinalImage(index, destX, destY, destWidth, destHeight) {
-       
+               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
+      
         ctx.save();
        
 
-        var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
+        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
          var imgxo = document.getElementById("img3");
-   
- //ctx.drawImage(imgxo, 20, 20,100,100);
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
 
-         alert("hes essal3awa");
-             var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
-
-        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
-              
 
     //ctx.drawImage(imgpo,10,10);
       
         ctx.restore();
-    }
-
-    function drawImage(image) {
-    
-
-        ctx.save();
-           
-        ctx.drawImage(image, 0, 0, BLOCK_WIDTH, BLOCK_WIDTH, 10, 10, BLOCK_WIDTH, BLOCK_WIDTH);
-
-        ctx.restore();
-    }
-
-    var interval = null;
-    var remove_width;
-    var remove_height;
-    
-    function OnFinished() {
-
-  
-
-        remove_width = BLOCK_WIDTH;
-        remove_height = BLOCK_HEIGHT;
-        // Clear Board
-        interval = setInterval(function () { mySelf.ClearGame(); }, 100);
-    }
-
-    this.ClearGame = function () {
-        //   alert("f");
-        remove_width -= 30;
-        remove_height -= 20;
-
-        if (remove_width > 0 && remove_height > 0) {
-
-            clear(ctx);
-
-            for (var i = 0; i < imageBlockList.length; i++) {
-                var imgBlock = imageBlockList[i];
-
-                imgBlock.x += 10;
-                imgBlock.y += 10;
-
-                drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, remove_width, remove_height);
             }
+        }
 
-            // DrawGame();
-        } else {
 
-            clearInterval(interval);
-           
-            // Restart game
-            initializeNewGame(); 
+        if (selectedBlock) {
+            //drawImageBlock(selectedBlock);
+            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+            ctx.save();
+       
+
+        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+        }
+
           //  alert("Congrats....");
 
         }
@@ -729,7 +781,75 @@ if (puzzleLevel === 4){
 
             imageBlockList[selectedBlock.no].isSelected = false;
             selectedBlock = null;
-            DrawGame();
+            clear(ctx);
+        //////////////////************************//drawLines();
+               ctx.strokeStyle = "#e9e9e9";
+        
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        
+        // draw verticle lines
+        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+            var x = BLOCK_WIDTH * i;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 450);
+        }
+
+        // draw horizontal lines
+        for (var i = 0; i <= TOTAL_ROWS; i++) {
+            var y = BLOCK_HEIGHT * i;
+            ctx.moveTo(0, y);
+            ctx.lineTo(600, y);
+        }
+
+
+        ctx.closePath();
+        ctx.stroke();
+
+       //////////////////*************** drawAllImages();
+              for (var i = 0; i < imageBlockList.length; i++) {
+            var imgBlock = imageBlockList[i];
+            if (imgBlock.isSelected == false) {
+
+               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
+      
+        ctx.save();
+       
+
+        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+            }
+        }
+
+
+        if (selectedBlock) {
+            //drawImageBlock(selectedBlock);
+            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+            ctx.save();
+       
+
+        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+        }
+
 
         }
 
@@ -776,7 +896,75 @@ if (puzzleLevel === 4){
 
             imageBlockList[index].isSelected = false;
             selectedBlock = null;
-            DrawGame();
+           clear(ctx);
+        //////////////////************************//drawLines();
+               ctx.strokeStyle = "#e9e9e9";
+        
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        
+        // draw verticle lines
+        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+            var x = BLOCK_WIDTH * i;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 450);
+        }
+
+        // draw horizontal lines
+        for (var i = 0; i <= TOTAL_ROWS; i++) {
+            var y = BLOCK_HEIGHT * i;
+            ctx.moveTo(0, y);
+            ctx.lineTo(600, y);
+        }
+
+
+        ctx.closePath();
+        ctx.stroke();
+
+       //////////////////*************** drawAllImages();
+              for (var i = 0; i < imageBlockList.length; i++) {
+            var imgBlock = imageBlockList[i];
+            if (imgBlock.isSelected == false) {
+
+               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
+      
+        ctx.save();
+       
+
+        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+            }
+        }
+
+
+        if (selectedBlock) {
+            //drawImageBlock(selectedBlock);
+            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+            ctx.save();
+       
+
+        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+        }
+
 
       for (var m = 0; m < TOTAL_PIECES; m++) {
 
@@ -797,7 +985,11 @@ if (puzzleLevel === 4){
             if (isFinished()) {
                 setTimeout(function(){UpdateSubStage();}, 2000);
                 setTimeout(function(){LoadNewImage();}, 3000);
-                OnFinished();            
+                //OnFinished();  
+                       remove_width = BLOCK_WIDTH;
+        remove_height = BLOCK_HEIGHT;
+        // Clear Board
+        interval = setInterval(function () { mySelf.ClearGame(); }, 100);          
             }
 
         }
@@ -810,7 +1002,75 @@ if (puzzleLevel === 4){
             selectedBlock.x = e.pageX  - 200;
             selectedBlock.y = e.pageY  - 200;
 
-            DrawGame();
+           clear(ctx);
+        //////////////////************************//drawLines();
+               ctx.strokeStyle = "#e9e9e9";
+        
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        
+        // draw verticle lines
+        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+            var x = BLOCK_WIDTH * i;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 450);
+        }
+
+        // draw horizontal lines
+        for (var i = 0; i <= TOTAL_ROWS; i++) {
+            var y = BLOCK_HEIGHT * i;
+            ctx.moveTo(0, y);
+            ctx.lineTo(600, y);
+        }
+
+
+        ctx.closePath();
+        ctx.stroke();
+
+       //////////////////*************** drawAllImages();
+              for (var i = 0; i < imageBlockList.length; i++) {
+            var imgBlock = imageBlockList[i];
+            if (imgBlock.isSelected == false) {
+
+               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
+      
+        ctx.save();
+       
+
+        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+            }
+        }
+
+
+        if (selectedBlock) {
+            //drawImageBlock(selectedBlock);
+            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+            ctx.save();
+       
+
+        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+        }
+
 
         }
     }
