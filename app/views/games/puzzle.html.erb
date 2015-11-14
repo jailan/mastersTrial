@@ -234,22 +234,21 @@ function LoadNewImage2(imgID) {
 
             var canvasID = "canJigsaw";
 
-
-
            LoadGame();
                  
            
         }
         
 function LoadGame() {
+
 var canvasID = "canJigsaw";
 game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
 
-            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
- var co = document.getElementById("canJigsaw");
+    var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
+    ctxo.drawImage(imgxo, 20, 20,100,100);       
+
 // game.initDrawing();
 // ShowPreview();
 
