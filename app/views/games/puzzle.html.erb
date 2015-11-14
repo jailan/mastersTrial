@@ -233,6 +233,10 @@ function LoadNewImage2(imgID) {
            SetRowsColumn();
 
             var canvasID = "canJigsaw";
+                var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
+    var imgxo = document.getElementById("img3");
+    ctxo.drawImage(imgxo, 20, 20,100,100);
 
             game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
 
@@ -242,14 +246,10 @@ function LoadNewImage2(imgID) {
         }
         
 function LoadGame() {
-
-
-               
-            var canvasID = "canJigsaw";
-
-            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
-           // game.initDrawing();
-           // ShowPreview();
+var canvasID = "canJigsaw";
+game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+// game.initDrawing();
+// ShowPreview();
 
         }
 
@@ -473,10 +473,10 @@ if (puzzleLevel === 4){
         }
 
 
-    var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
+    // var co = document.getElementById("canJigsaw");
+    // var ctxo = co.getContext("2d");
+    // var imgxo = document.getElementById("img3");
+    // ctxo.drawImage(imgxo, 20, 20,100,100);
 
         ctx.closePath();
         ctx.stroke();
