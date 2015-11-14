@@ -231,16 +231,24 @@ function LoadNewImage(imgID) {
 function LoadNewImage2(imgID) {
            imageID = imgID;
            SetRowsColumn();
-           LoadGame();
+
+            var canvasID = "canJigsaw";
+
+            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+
+           //LoadGame();
                  
            
         }
         
 function LoadGame() {
+
+
                
             var canvasID = "canJigsaw";
+
             game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
-            game.initDrawing();
+           // game.initDrawing();
            // ShowPreview();
 
         }
@@ -319,6 +327,7 @@ speechSynthesis.speak(msg);
 
 
 function jigsaw(canvasID, imageID, rows,columns) {
+
     //handlng the major image
     if(puzzleLevel ===1 )
            { document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/letterba2.jpg" ;}
@@ -393,7 +402,7 @@ if (puzzleLevel === 4){
     this.mySelf = this;
 
 
-    this.initDrawing = function () {
+
         mySelf = this;
         selectedBlock = null;
         canvas = document.getElementById(canvasID);
@@ -463,11 +472,11 @@ if (puzzleLevel === 4){
             ctx.lineTo(600, yo);
         }
 
+
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100); 
-
+    ctxo.drawImage(imgxo, 20, 20,100,100);
 
         ctx.closePath();
         ctx.stroke();
@@ -497,13 +506,6 @@ if (puzzleLevel === 4){
 
 
         // }
-
-       
-    
-    };
-    
-
-
 
     this.showPreview = function () {
 
