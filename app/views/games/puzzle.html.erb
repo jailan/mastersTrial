@@ -231,9 +231,6 @@ function LoadNewImage(imgID) {
 function LoadNewImage2(imgID) {
            imageID = imgID;
            SetRowsColumn();
-
-            var canvasID = "canJigsaw";
-
            LoadGame();
                  
            
@@ -242,12 +239,13 @@ function LoadNewImage2(imgID) {
 function LoadGame() {
 
 var canvasID = "canJigsaw";
-game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
-
-    var co = document.getElementById("canJigsaw");
+ 
+jigsaw(canvasID, imageID, totalRows, totalColumns);
+   var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100);       
+    ctxo.drawImage(imgxo, 20, 20,100,100); 
+      
 
 // game.initDrawing();
 // ShowPreview();
@@ -408,10 +406,10 @@ if (puzzleLevel === 4){
         selectedBlock = null;
         canvas = document.getElementById(canvasID);
         ctx = canvas.getContext('2d');
-        // canvas.onmousedown = handleOnMouseDown;
-        // canvas.onmouseup = handleOnMouseUp;
-        // canvas.onmouseout = handleOnMouseOut;
-        // canvas.onmousemove = handleOnMouseMove;
+        canvas.onmousedown = handleOnMouseDown;
+        canvas.onmouseup = handleOnMouseUp;
+        canvas.onmouseout = handleOnMouseOut;
+        canvas.onmousemove = handleOnMouseMove;
 
         image1 = document.getElementById(imageID);
         imagePrev = document.getElementById("imgprev");
@@ -485,7 +483,7 @@ if (puzzleLevel === 4){
   
         for (var i = 0; i < imageBlockList.length; i++) {
         imgBlock = imageBlockList[i];
-        //if (imgBlock.isSelected == false) {
+        if (imgBlock.isSelected == false) {
         ctx.save();
         var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
@@ -494,19 +492,19 @@ if (puzzleLevel === 4){
       
         ctx.restore();
 
-           // }
+            }
         }
 
 
-        // if (selectedBlock) {
-        // ctx.save();
-        // srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        // srcY = Math.floor(imgBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-        // imgxo = document.getElementById("img3");
-        // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT); 
+        if (selectedBlock) {
+        ctx.save();
+        srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        srcY = Math.floor(imgBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
+        imgxo = document.getElementById("img3");
+        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT); 
 
 
-        // }
+        }
 
     this.showPreview = function () {
 
