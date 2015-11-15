@@ -368,6 +368,12 @@ if (puzzleLevel === 4){
    // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
    // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
 
+   
+       var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
+    var imgxo = document.getElementById("img3");
+    ctxo.drawImage(imgxo, 20, 20,100,100); 
+
     var MAIN_IMG_WIDTH = 600;
     var MAIN_IMG_HEIGHT = 600;
 
@@ -476,10 +482,6 @@ if (puzzleLevel === 4){
     //     ctx.closePath();
     //     ctx.stroke();
 
-       var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100); 
 
   
         for (var i = 0; i < imageBlockList.length; i++) {
