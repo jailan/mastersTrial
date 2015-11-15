@@ -239,11 +239,8 @@ function LoadNewImage2(imgID) {
 function LoadGame() {
 
 var canvasID = "canJigsaw";
-   var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("img3");
-    ctxo.drawImage(imgxo, 20, 20,100,100); 
-      
+
+
  
 jigsaw(canvasID, imageID, totalRows, totalColumns);
 
@@ -407,10 +404,10 @@ if (puzzleLevel === 4){
         selectedBlock = null;
         canvas = document.getElementById(canvasID);
         ctx = canvas.getContext('2d');
-        canvas.onmousedown = handleOnMouseDown;
-        canvas.onmouseup = handleOnMouseUp;
-        canvas.onmouseout = handleOnMouseOut;
-        canvas.onmousemove = handleOnMouseMove;
+        // canvas.onmousedown = handleOnMouseDown;
+        // canvas.onmouseup = handleOnMouseUp;
+        // canvas.onmouseout = handleOnMouseOut;
+        // canvas.onmousemove = handleOnMouseMove;
 
         image1 = document.getElementById(imageID);
         imagePrev = document.getElementById("imgprev");
@@ -480,6 +477,11 @@ if (puzzleLevel === 4){
 
     //     ctx.closePath();
     //     ctx.stroke();
+
+       var co = document.getElementById("canJigsaw");
+    var ctxo = co.getContext("2d");
+    var imgxo = document.getElementById("img3");
+    ctxo.drawImage(imgxo, 20, 20,100,100); 
 
   
         for (var i = 0; i < imageBlockList.length; i++) {
