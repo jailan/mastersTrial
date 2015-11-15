@@ -251,10 +251,10 @@ jigsaw(canvasID, imageID, totalRows, totalColumns);
         }
 
 function ShowPreview() {
-            if (game) {
-                game.showPreview();
+          
+                showPreview();
 
-            }
+           
         }
 
 function SetRowsColumn() {
@@ -396,11 +396,11 @@ if (puzzleLevel === 4){
     this.imageBlockList = new Array();
     this.blockList = new Array();
     this.selectedBlock = null;
-    this.mySelf = this;
+    // this.mySelf = this;
 
 
 
-        mySelf = this;
+        // mySelf = this;
         selectedBlock = null;
         canvas = document.getElementById(canvasID);
         ctx = canvas.getContext('2d');
@@ -509,7 +509,7 @@ if (puzzleLevel === 4){
 
         }
 
-    this.showPreview = function () {
+    function showPreview() {
 
         var x1 = 20;
         var y1 = 20;
@@ -564,7 +564,7 @@ if (puzzleLevel === 4){
     
 
 
-    this.ClearGame = function () {
+    function ClearGame () {
         //   alert("f");
         remove_width -= 30;
         remove_height -= 20;
@@ -942,7 +942,7 @@ if (puzzleLevel === 4){
                        remove_width = BLOCK_WIDTH;
         remove_height = BLOCK_HEIGHT;
         // Clear Board
-        interval = setInterval(function () { mySelf.ClearGame(); }, 100);          
+        interval = setInterval(function () { ClearGame(); }, 100);          
             }
 
         }
