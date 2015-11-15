@@ -239,13 +239,14 @@ function LoadNewImage2(imgID) {
 function LoadGame() {
 
 var canvasID = "canJigsaw";
- 
-jigsaw(canvasID, imageID, totalRows, totalColumns);
    var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("img3");
     ctxo.drawImage(imgxo, 20, 20,100,100); 
       
+ 
+jigsaw(canvasID, imageID, totalRows, totalColumns);
+
 
 // game.initDrawing();
 // ShowPreview();
@@ -451,53 +452,53 @@ if (puzzleLevel === 4){
             blockList.push(block);
 
         }
-        clear(ctx);
-        ctx.strokeStyle = "#e9e9e9";
+    //     clear(ctx);
+    //     ctx.strokeStyle = "#e9e9e9";
         
-        ctx.lineWidth = 1;
-        ctx.beginPath();
+    //     ctx.lineWidth = 1;
+    //     ctx.beginPath();
         
-        // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
-            var xo = BLOCK_WIDTH * i;
-            ctx.moveTo(xo, 0);
-            ctx.lineTo(xo, 450);
-        }
+    //     // draw verticle lines
+    //     for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+    //         var xo = BLOCK_WIDTH * i;
+    //         ctx.moveTo(xo, 0);
+    //         ctx.lineTo(xo, 450);
+    //     }
 
-        // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
-            var yo = BLOCK_HEIGHT * i;
-            ctx.moveTo(0, yo);
-            ctx.lineTo(600, yo);
-        }
+    //     // draw horizontal lines
+    //     for (var i = 0; i <= TOTAL_ROWS; i++) {
+    //         var yo = BLOCK_HEIGHT * i;
+    //         ctx.moveTo(0, yo);
+    //         ctx.lineTo(600, yo);
+    //     }
 
 
-    // var co = document.getElementById("canJigsaw");
-    // var ctxo = co.getContext("2d");
-    // var imgxo = document.getElementById("img3");
-    // ctxo.drawImage(imgxo, 20, 20,100,100);
+    // // var co = document.getElementById("canJigsaw");
+    // // var ctxo = co.getContext("2d");
+    // // var imgxo = document.getElementById("img3");
+    // // ctxo.drawImage(imgxo, 20, 20,100,100);
 
-        ctx.closePath();
-        ctx.stroke();
+    //     ctx.closePath();
+    //     ctx.stroke();
 
   
         for (var i = 0; i < imageBlockList.length; i++) {
         imgBlock = imageBlockList[i];
         if (imgBlock.isSelected == false) {
-        ctx.save();
-        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
+        // ctx.save();
+        // var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
         //var imgxo = document.getElementById("img3"); 
         // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
       
-        ctx.restore();
+        // ctx.restore();
 
             }
         }
 
 
         if (selectedBlock) {
-        ctx.save();
+        // ctx.save();
         srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
         srcY = Math.floor(imgBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
         imgxo = document.getElementById("img3");
