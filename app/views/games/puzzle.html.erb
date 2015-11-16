@@ -231,23 +231,16 @@ function LoadNewImage(imgID) {
 function LoadNewImage2(imgID) {
            imageID = imgID;
            SetRowsColumn();
-           hoppa();
-           //LoadGame();
+         // hoppa();
+           LoadGame();
         }
         
 function LoadGame() {
 
-var canvasID = "canJigsaw";
- 
+var canvasID = "canJigsaw"; 
 game = jigsaw(canvasID, imageID, totalRows, totalColumns);
-   // var co = document.getElementById("canJigsaw");
-   //  var ctxo = co.getContext("2d");
-   //  var imgxo = document.getElementById("img3");
-   //  ctxo.drawImage(imgxo, 20, 20,100,100); 
-      
+hoppa();
 
-// game.initDrawing();
-// ShowPreview();
 
         }
 
@@ -327,7 +320,7 @@ speechSynthesis.speak(msg);
 function jigsaw(canvasID, imageID, rows,columns) {
 
     //handlng the major image
-    if(puzzleLevel ===1 )
+        if(puzzleLevel ===1 )
            { document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/letterba2.jpg" ;}
 
 if(puzzleLevel > 1 && puzzleLevel < 5){
@@ -366,8 +359,11 @@ if (puzzleLevel === 4){
 }
 
  document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+
    // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
    // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
+
+
 
     var MAIN_IMG_WIDTH = 600;
     var MAIN_IMG_HEIGHT = 600;
@@ -482,7 +478,7 @@ if (puzzleLevel === 4){
         var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
         var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
 
-         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+         //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
       
         ctx.restore();
 
@@ -495,7 +491,7 @@ if (puzzleLevel === 4){
         srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
         srcY = Math.floor(imgBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
        
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT); 
+        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT); 
 
 
         }
@@ -626,7 +622,7 @@ if (puzzleLevel === 4){
          var imgxo = document.getElementById("img3");
     //ctx.drawImage(imgxo, 20, 20,100,100);
          
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+        //ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
 
 
     //ctx.drawImage(imgpo,10,10);
@@ -647,7 +643,7 @@ if (puzzleLevel === 4){
          var imgxo = document.getElementById("img3");
     //ctx.drawImage(imgxo, 20, 20,100,100);
          
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
+       // ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
 
 
     //ctx.drawImage(imgpo,10,10);
