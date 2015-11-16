@@ -323,6 +323,8 @@ speechSynthesis.speak(msg);
 }
 
 function jigomigo (canvasID, imageID, totalRows, totalColumns){
+  hoppa();
+
   if(puzzleLevel ===1 )
            { document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/letterba2.jpg" ;}
 
@@ -362,7 +364,6 @@ if (puzzleLevel === 4){
 }
 
  document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
- hoppa();
 
     // var MAIN_IMG_WIDTH = 600;
     // var MAIN_IMG_HEIGHT = 600;
