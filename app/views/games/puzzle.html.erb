@@ -203,17 +203,15 @@ background-image: url("/assets/paper.jpg");
         var imagePrevID = "imgprev";
         var puzzleLevel;
         var puzzleSubLevel;
-      var notRandomX = 620;
-      var notRandomY = 5;
-      var interval = null;
-      var remove_width;
-      var remove_height;
 
-function InitGame(level, sublevel) {
+        function InitGame(level, sublevel) {
+         //LoadNewImage('img3');
           puzzleLevel = level;
           puzzleSubLevel = sublevel;
+         // LoadNewImage('img3');
           LoadNewImage(imageID);
           init();
+         //setTimeout(function(){ LoadNewImage('img2'); }, 5000);
         }
 
 
@@ -223,51 +221,57 @@ function hoppa() {
     var imgxo = document.getElementById("img3");
     ctxo.drawImage(imgxo, 20, 20,100,100);
 }
-function hoppaz() {
-    var co = document.getElementById("canJigsaw");
-    var ctxo = co.getContext("2d");
-    var imgxo = document.getElementById("balaly");
-    ctxo.drawImage(imgxo, 20, 20,100,100);
-}
 
-function LoadNewImage(imgID) {
+        function LoadNewImage(imgID) {
 
             imageID = imgID;
+            
             SetRowsColumn();
-            //hoppa();
+            
             LoadGame();
           
 
         }
 
-function LoadNewImage2(imgID) {
-           imageID = imgID;
-           SetRowsColumn();
+             function LoadNewImage2(imgID) {
          
-           LoadGame();
+  
+           imageID = imgID;
+          
+            SetRowsColumn();
+
+                  
+              LoadGame();
+                 
+           
         }
         
-function LoadGame() {
+        function LoadGame() {
+               
+            var canvasID = "canJigsaw";
 
-var canvasID = "canJigsaw";
+
+            game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
+
+
+            game.initDrawing();
  
-jigsaw(canvasID, imageID, totalRows, totalColumns);
- //hoppaz();
-
 
         }
 
-function ShowPreview() {
+        function ShowPreview() {
             if (game) {
+
                 game.showPreview();
 
             }
         }
 
-function SetRowsColumn() {
+        function SetRowsColumn() {
+
 
             totalRows = 2;
-            totalColumns = 2;
+                totalColumns = 2;
 
 
         }
@@ -312,8 +316,6 @@ function listen(word){
      //getSpeech(textq);
      speak(textq);
 }
-
-
 function speak(word){
 var msg = new SpeechSynthesisUtterance();
 msg.volume = 1; // 0 to 1
@@ -330,11 +332,9 @@ speechSynthesis.speak(msg);
 }
 
 
-
-
-
-function jigsaw (canvasID, imageID, rows,columns) {
-  if(puzzleLevel ===1 )
+function jigsaw(canvasID, imageID, rows,columns) {
+    //handlng the major image
+    if(puzzleLevel ===1 )
            { document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/letterba2.jpg" ;}
 
 if(puzzleLevel > 1 && puzzleLevel < 5){
@@ -373,22 +373,31 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
 // }
 
  document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+   // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
+   // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
+
 
     var MAIN_IMG_WIDTH = 600;
     var MAIN_IMG_HEIGHT = 600;
 
+
     var BLOCK_IMG_WIDTH = 600;
     var BLOCK_IMG_HEIGHT = 450;
 
+
     var TOTAL_ROWS = rows;// 4;
     var TOTAL_COLUMNS = columns;  //4;
+
     var TOTAL_PIECES = TOTAL_ROWS * TOTAL_COLUMNS;
 
     var IMG_WIDTH = Math.round(MAIN_IMG_WIDTH / TOTAL_COLUMNS);
     var IMG_HEIGHT = Math.round(MAIN_IMG_HEIGHT / TOTAL_ROWS);
 
+
     var BLOCK_WIDTH = 0; // Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
     var BLOCK_HEIGHT = 0; // Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
+
+
 
     var image1;
     var canvas;
@@ -397,19 +406,30 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
 
     this.canvasID = canvasID;
     this.imageID = imageID;
+
     this.top = 0;
     this.left = 0;
+
     this.imageBlockList = new Array();
+
+
     this.blockList = new Array();
+
     this.selectedBlock = null;
+
+
     this.mySelf = this;
 
 
-
+    this.initDrawing = function () {
         mySelf = this;
         selectedBlock = null;
         canvas = document.getElementById(canvasID);
+
         ctx = canvas.getContext('2d');
+      
+        // register events
+        //canvas.ondblclick = handleOnMouseDbClick;
         canvas.onmousedown = handleOnMouseDown;
         canvas.onmouseup = handleOnMouseUp;
         canvas.onmouseout = handleOnMouseOut;
@@ -417,564 +437,24 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
 
         image1 = document.getElementById(imageID);
         imagePrev = document.getElementById("imgprev");
+
+
+        initializeNewGame();
+    };
+    
+    function initializeNewGame() {
+
+        // Set block 
         BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
-        BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
-        var total = TOTAL_PIECES;
-        imageBlockList = new Array();
-        blockList = new Array();
-
-        var x1 = BLOCK_IMG_WIDTH -80;
-        var x2 = canvas.width - 600;
-        var y2 = BLOCK_IMG_HEIGHT;
-        for (var i = 0; i < total; i++) {
-
-            if(i===0){
-             notRandomX = 620;
-             notRandomY = 5;  
-            }
-               if(i===1){
-             notRandomX = 925;
-             notRandomY = 235;  
-            }
-               if(i===3){
-             notRandomX = 620;
-             notRandomY = 235;  
-            }
-               if(i===2){
-             notRandomX = 925;
-             notRandomY = 5;  
-            }
-
-          var imgBlock = new imageBlock(i, notRandomX, notRandomY); 
-          imageBlockList.push(imgBlock);
-
-            var x = (i % TOTAL_COLUMNS) * BLOCK_WIDTH;
-            var y = Math.floor(i / TOTAL_COLUMNS) * BLOCK_HEIGHT;
-
-            var block = new imageBlock(i, x, y);
-            blockList.push(block);
-
-        }
-        clear(ctx);
-        ctx.strokeStyle = "#e9e9e9";
-        
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        
-        // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
-            var xo = BLOCK_WIDTH * i;
-            ctx.moveTo(xo, 0);
-            ctx.lineTo(xo, 450);
-        }
-
-        // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
-            var yo = BLOCK_HEIGHT * i;
-            ctx.moveTo(0, yo);
-            ctx.lineTo(600, yo);
-        }
-
-
-        ctx.closePath();
-        ctx.stroke();
-
-  
-        for (var i = 0; i < imageBlockList.length; i++) {
-        imgBlock = imageBlockList[i];
-        if (imgBlock.isSelected == false) {
-        ctx.save();
-        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
-
-         ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-      
-        ctx.restore();
-
-            }
-        }
-
-
-        if (selectedBlock) {
-        ctx.save();
-        srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        srcY = Math.floor(imgBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-       
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT); 
-
-
-        }
-
-    
- 
-      var notRandomX = 620;
-      var notRandomY = 5;
-      var interval = null;
-      var remove_width;
-      var remove_height;
-    
-
-
-    this.ClearGame = function () {
-        //   alert("f");
-        remove_width -= 30;
-        remove_height -= 20;
-
-        if (remove_width > 0 && remove_height > 0) {
-
-            clear(ctx);
-
-            for (var i = 0; i < imageBlockList.length; i++) {
-                var imgBlock = imageBlockList[i];
-
-                imgBlock.x += 10;
-                imgBlock.y += 10;
-
-                drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, remove_width, remove_height);
-            }
-
-            // DrawGame();
-        } else {
-
-            clearInterval(interval);
-           
-            // Restart game
-           BLOCK_WIDTH = Math.round(BLOCK_IMG_WIDTH / TOTAL_COLUMNS);
         BLOCK_HEIGHT = Math.round(BLOCK_IMG_HEIGHT / TOTAL_ROWS);
 
 
         // Draw image
-       //***************************** SetImageBlock();
+        SetImageBlock();
 
-
-        var total = TOTAL_PIECES;
-        imageBlockList = new Array();
-        blockList = new Array();
-
-        var x1 = BLOCK_IMG_WIDTH -80;
-        var x2 = canvas.width - 600;
-        var y2 = BLOCK_IMG_HEIGHT;
-        for (var i = 0; i < total; i++) {
-
-            var randomX = randomXtoY(x1, x2, 2);
-            var randomY = randomXtoY(0, y2, 2);
-            if(i===0){
-             notRandomX = 620;
-             notRandomY = 5;  
-            }
-               if(i===1){
-             notRandomX = 925;
-             notRandomY = 235;  
-            }
-               if(i===3){
-             notRandomX = 620;
-             notRandomY = 235;  
-            }
-               if(i===2){
-             notRandomX = 925;
-             notRandomY = 5;  
-            }
-       
-           // var imgBlock = new imageBlock(i, randomX, randomY);
-     
-
-          var imgBlock = new imageBlock(i, notRandomX, notRandomY);
-          // notRandomY = (notRandomY + 230)%920;
-
-            imageBlockList.push(imgBlock);
-
-            var x = (i % TOTAL_COLUMNS) * BLOCK_WIDTH;
-            var y = Math.floor(i / TOTAL_COLUMNS) * BLOCK_HEIGHT;
-
-            var block = new imageBlock(i, x, y);
-            blockList.push(block);
-
-        }
-        ////////////////////*********** //DrawGame();
-        clear(ctx);
-        //////////////////************************//drawLines();
-               ctx.strokeStyle = "#e9e9e9";
-        
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        
-        // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
-            var x = BLOCK_WIDTH * i;
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 450);
-        }
-
-        // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
-            var y = BLOCK_HEIGHT * i;
-            ctx.moveTo(0, y);
-            ctx.lineTo(600, y);
-        }
-
-
-        ctx.closePath();
-        ctx.stroke();
-
-       //////////////////*************** drawAllImages();
-              for (var i = 0; i < imageBlockList.length; i++) {
-            var imgBlock = imageBlockList[i];
-            if (imgBlock.isSelected == false) {
-
-               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
-      
-        ctx.save();
-       
-
-        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-            }
-        }
-
-
-        if (selectedBlock) {
-
-            ctx.save();
-        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-      
-        ctx.restore();
-        }
-
-
-
-        }
-    };
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////// EVENTS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    function handleOnMouseDbClick(e) {
-
-        
-        selectedBlock = GetImageBlock(e.pageX, e.pageY);
-        //alert("clicked");
+        DrawGame();
 
     }
-
-
-    function handleOnMouseOut(e) {
-
-        // remove old selected
-        if (selectedBlock != null) {
-
-            imageBlockList[selectedBlock.no].isSelected = false;
-            selectedBlock = null;
-            clear(ctx);
-        //////////////////************************//drawLines();
-               ctx.strokeStyle = "#e9e9e9";
-        
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        
-        // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
-            var x = BLOCK_WIDTH * i;
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 450);
-        }
-
-        // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
-            var y = BLOCK_HEIGHT * i;
-            ctx.moveTo(0, y);
-            ctx.lineTo(600, y);
-        }
-
-
-        ctx.closePath();
-        ctx.stroke();
-
-       //////////////////*************** drawAllImages();
-              for (var i = 0; i < imageBlockList.length; i++) {
-            var imgBlock = imageBlockList[i];
-            if (imgBlock.isSelected == false) {
-
-               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
-      
-        ctx.save();
-       
-
-        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-            }
-        }
-
-
-        if (selectedBlock) {
-            //drawImageBlock(selectedBlock);
-            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
-            ctx.save();
-       
-
-        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-        }
-
-
-        }
-
-    }
-
-    function handleOnMouseDown(e) {
-
-        // remove old selected
-        if (selectedBlock != null) {
-
-            imageBlockList[selectedBlock.no].isSelected = false;
-
-        }
-
-        selectedBlock = GetImageBlock(imageBlockList, e.pageX, e.pageY);
-
-        if (selectedBlock) {
-            imageBlockList[selectedBlock.no].isSelected = true;
-        }
-
-    }
- var flagsCorrecta = [0,0,0,0];
-        var audioElementCorrect = document.createElement('audio');
-        //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
-    function handleOnMouseUp(e) {
-
-        if (selectedBlock) {
-            var index = selectedBlock.no;
-            //   alert(index);
-
-            var block = GetImageBlock(blockList, e.pageX, e.pageY);
-            if (block) {
-
-                var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-                if (blockOldImage == null) {
-                    imageBlockList[index].x = block.x;
-                    imageBlockList[index].y = block.y;
-                }
-            }
-            else {
-                imageBlockList[index].x = selectedBlock.x;
-                imageBlockList[index].y = selectedBlock.y;
-            }
-
-            imageBlockList[index].isSelected = false;
-            selectedBlock = null;
-           clear(ctx);
-        //////////////////************************//drawLines();
-               ctx.strokeStyle = "#e9e9e9";
-        
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        
-        // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
-            var x = BLOCK_WIDTH * i;
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 450);
-        }
-
-        // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
-            var y = BLOCK_HEIGHT * i;
-            ctx.moveTo(0, y);
-            ctx.lineTo(600, y);
-        }
-
-
-        ctx.closePath();
-        ctx.stroke();
-
-       //////////////////*************** drawAllImages();
-              for (var i = 0; i < imageBlockList.length; i++) {
-            var imgBlock = imageBlockList[i];
-            if (imgBlock.isSelected == false) {
-
-               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
-      
-        ctx.save();
-       
-
-        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-            }
-        }
-
-
-        if (selectedBlock) {
-            //drawImageBlock(selectedBlock);
-            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
-            ctx.save();
-       
-
-        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-        }
-
-
-      for (var m = 0; m < TOTAL_PIECES; m++) {
-
-            var img = imageBlockList[m];
-            var block = blockList[m];
-
-            if (
-                (img.x == block.x) &&
-                (img.y == block.y) &&
-                (flagsCorrecta[m] === 0)
-                ) {
-
-                flagsCorrecta[m]=1;
-                audioElementCorrect.play();
-            }
-
-        }
-            if (isFinished()) {
-                setTimeout(function(){UpdateSubStage();}, 2000);
-                setTimeout(function(){LoadNewImage();}, 3000);
-                //OnFinished();  
-                       remove_width = BLOCK_WIDTH;
-        remove_height = BLOCK_HEIGHT;
-        // Clear Board
-        interval = setInterval(function () { mySelf.ClearGame(); }, 100);          
-            }
-
-        }
-    }
-
-    function handleOnMouseMove(e) {
-
-        if (selectedBlock) {
-
-            selectedBlock.x = e.pageX  - 200;
-            selectedBlock.y = e.pageY  - 200;
-
-           clear(ctx);
-        //////////////////************************//drawLines();
-               ctx.strokeStyle = "#e9e9e9";
-        
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        
-        // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
-            var x = BLOCK_WIDTH * i;
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, 450);
-        }
-
-        // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
-            var y = BLOCK_HEIGHT * i;
-            ctx.moveTo(0, y);
-            ctx.lineTo(600, y);
-        }
-
-
-        ctx.closePath();
-        ctx.stroke();
-
-       //////////////////*************** drawAllImages();
-              for (var i = 0; i < imageBlockList.length; i++) {
-            var imgBlock = imageBlockList[i];
-            if (imgBlock.isSelected == false) {
-
-               // drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT); 
-      
-        ctx.save();
-       
-
-        var srcX = (imgBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(imgBlock.no / TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, imgBlock.x, imgBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-            }
-        }
-
-
-        if (selectedBlock) {
-            //drawImageBlock(selectedBlock);
-            //drawFinalImage(selectedBlock.no, selectedBlock.x, selectedBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
-            ctx.save();
-       
-
-        var srcX = (selectedBlock.no % TOTAL_COLUMNS) * IMG_WIDTH;
-        var srcY = Math.floor(selectedBlock.no/ TOTAL_COLUMNS) * IMG_HEIGHT;
-         var imgxo = document.getElementById("img3");
-    //ctx.drawImage(imgxo, 20, 20,100,100);
-         
-        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, selectedBlock.x, selectedBlock.y,  BLOCK_WIDTH, BLOCK_HEIGHT);
-
-
-    //ctx.drawImage(imgpo,10,10);
-      
-        ctx.restore();
-        }
-
-
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////// HELPER METHODS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     this.showPreview = function () {
@@ -1023,6 +503,292 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
 
     };
 
+  
+    function DrawGame() {
+       
+        clear(ctx);
+        drawLines();
+
+        drawAllImages();
+
+
+        if (selectedBlock) {
+            drawImageBlock(selectedBlock);
+        }
+    }
+      var notRandomX = 620;
+      var notRandomY = 5;
+    function SetImageBlock() {
+
+        var total = TOTAL_PIECES;
+        imageBlockList = new Array();
+        blockList = new Array();
+
+        var x1 = BLOCK_IMG_WIDTH -80;
+        var x2 = canvas.width - 600;
+        var y2 = BLOCK_IMG_HEIGHT;
+        for (var i = 0; i < total; i++) {
+
+            var randomX = randomXtoY(x1, x2, 2);
+            var randomY = randomXtoY(0, y2, 2);
+            if(i===0){
+             notRandomX = 620;
+             notRandomY = 5;  
+            }
+               if(i===1){
+             notRandomX = 925;
+             notRandomY = 235;  
+            }
+               if(i===3){
+             notRandomX = 620;
+             notRandomY = 235;  
+            }
+               if(i===2){
+             notRandomX = 925;
+             notRandomY = 5;  
+            }
+       
+           // var imgBlock = new imageBlock(i, randomX, randomY);
+     
+
+          var imgBlock = new imageBlock(i, notRandomX, notRandomY);
+          // notRandomY = (notRandomY + 230)%920;
+
+            imageBlockList.push(imgBlock);
+
+            var x = (i % TOTAL_COLUMNS) * BLOCK_WIDTH;
+            var y = Math.floor(i / TOTAL_COLUMNS) * BLOCK_HEIGHT;
+
+            var block = new imageBlock(i, x, y);
+            blockList.push(block);
+
+        }
+
+    }
+
+    function drawLines() {
+       
+       ctx.strokeStyle = "#e9e9e9";
+        
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        
+        // draw verticle lines
+        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+            var x = BLOCK_WIDTH * i;
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, 450);
+        }
+
+        // draw horizontal lines
+        for (var i = 0; i <= TOTAL_ROWS; i++) {
+            var y = BLOCK_HEIGHT * i;
+            ctx.moveTo(0, y);
+            ctx.lineTo(600, y);
+        }
+
+
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    function drawAllImages() {
+
+        for (var i = 0; i < imageBlockList.length; i++) {
+            var imgBlock = imageBlockList[i];
+            if (imgBlock.isSelected == false) {
+
+                drawImageBlock(imgBlock);
+            }
+        }
+    }
+
+    function drawImageBlock(imgBlock) {
+        
+        drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+    }
+//var imgpo = document.getElementById('img3');
+    function drawFinalImage(index, destX, destY, destWidth, destHeight) {
+      
+        ctx.save();
+       
+
+        var srcX = (index % TOTAL_COLUMNS) * IMG_WIDTH;
+        var srcY = Math.floor(index / TOTAL_COLUMNS) * IMG_HEIGHT;
+         var imgxo = document.getElementById("img3");
+    //ctx.drawImage(imgxo, 20, 20,100,100);
+         
+        ctx.drawImage(image1, srcX, srcY, IMG_WIDTH, IMG_HEIGHT, destX, destY, destWidth, destHeight);
+
+
+    //ctx.drawImage(imgpo,10,10);
+      
+        ctx.restore();
+    }
+
+    function drawImage(image) {
+    
+
+        ctx.save();
+           
+        ctx.drawImage(image, 0, 0, BLOCK_WIDTH, BLOCK_WIDTH, 10, 10, BLOCK_WIDTH, BLOCK_WIDTH);
+
+        ctx.restore();
+    }
+
+    var interval = null;
+    var remove_width;
+    var remove_height;
+    
+    function OnFinished() {
+
+  
+
+        remove_width = BLOCK_WIDTH;
+        remove_height = BLOCK_HEIGHT;
+        // Clear Board
+        interval = setInterval(function () { mySelf.ClearGame(); }, 100);
+    }
+
+    this.ClearGame = function () {
+        //   alert("f");
+        remove_width -= 30;
+        remove_height -= 20;
+
+        if (remove_width > 0 && remove_height > 0) {
+
+            clear(ctx);
+
+            for (var i = 0; i < imageBlockList.length; i++) {
+                var imgBlock = imageBlockList[i];
+
+                imgBlock.x += 10;
+                imgBlock.y += 10;
+
+                drawFinalImage(imgBlock.no, imgBlock.x, imgBlock.y, remove_width, remove_height);
+            }
+
+            // DrawGame();
+        } else {
+
+            clearInterval(interval);
+           
+            // Restart game
+            initializeNewGame(); 
+          //  alert("Congrats....");
+
+        }
+    };
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// EVENTS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    function handleOnMouseDbClick(e) {
+
+        
+        selectedBlock = GetImageBlock(e.pageX, e.pageY);
+        //alert("clicked");
+
+    }
+
+
+    function handleOnMouseOut(e) {
+
+        // remove old selected
+        if (selectedBlock != null) {
+
+            imageBlockList[selectedBlock.no].isSelected = false;
+            selectedBlock = null;
+            DrawGame();
+
+        }
+
+    }
+
+    function handleOnMouseDown(e) {
+
+        // remove old selected
+        if (selectedBlock != null) {
+
+            imageBlockList[selectedBlock.no].isSelected = false;
+
+        }
+
+        selectedBlock = GetImageBlock(imageBlockList, e.pageX, e.pageY);
+
+        if (selectedBlock) {
+            imageBlockList[selectedBlock.no].isSelected = true;
+        }
+
+    }
+ var flagsCorrecta = [0,0,0,0];
+        var audioElementCorrect = document.createElement('audio');
+        //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
+    function handleOnMouseUp(e) {
+
+        if (selectedBlock) {
+            var index = selectedBlock.no;
+            //   alert(index);
+
+            var block = GetImageBlock(blockList, e.pageX, e.pageY);
+            if (block) {
+
+                var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+                if (blockOldImage == null) {
+                    imageBlockList[index].x = block.x;
+                    imageBlockList[index].y = block.y;
+                }
+            }
+            else {
+                imageBlockList[index].x = selectedBlock.x;
+                imageBlockList[index].y = selectedBlock.y;
+            }
+
+            imageBlockList[index].isSelected = false;
+            selectedBlock = null;
+            DrawGame();
+
+      for (var m = 0; m < TOTAL_PIECES; m++) {
+
+            var img = imageBlockList[m];
+            var block = blockList[m];
+
+            if (
+                (img.x == block.x) &&
+                (img.y == block.y) &&
+                (flagsCorrecta[m] === 0)
+                ) {
+
+                flagsCorrecta[m]=1;
+                audioElementCorrect.play();
+            }
+
+        }
+            if (isFinished()) {
+                setTimeout(function(){UpdateSubStage();}, 2000);
+                setTimeout(function(){LoadNewImage();}, 3000);
+                OnFinished();            
+            }
+
+        }
+    }
+
+    function handleOnMouseMove(e) {
+
+        if (selectedBlock) {
+
+            selectedBlock.x = e.pageX  - 200;
+            selectedBlock.y = e.pageY  - 200;
+
+            DrawGame();
+
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////// HELPER METHODS
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function clear(c) {
         c.clearRect(0, 0, canvas.width, canvas.height);
@@ -1116,7 +882,12 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
         InitGame(5,1);
     });
 
+        $('#img44').click(function() {
  
+      //LoadNewImage('img3');
+      hoppa();
+
+    });
 
     function GetImageBlockOnEqual(list, x, y) {
 
@@ -1228,16 +999,15 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
             
                     </canvas>
                        </div>
-                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;" src="/assets/puzzle/arrow2.png"></img> 
-                   <img id="balaly" width="0" height="0" style="position: absolute; top: 100px; left: 123px;" src="/assets/puzzle/arrow2.png"></img> 
+                   <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                    
                       <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                          
                         <img id="img0" width="130" height="130" style="position: absolute; top: 570px; left: 475px;"></img>
 
-                      <img id="img1" width="80" height="80" src="/assets/puzzle/l2/1.jpg" onclick="LoadNewImage(this.id);" style="position: absolute; top: 595px; left: 724px;"></img>
+                      <img id="img1" width="80" height="80" src="/assets/puzzle/l2/1.jpg"onclick="LoadNewImage(this.id);" style="position: absolute; top: 595px; left: 724px;"></img>
 
-                        <img id="img2" width="80" height="80" src="/assets/puzzle/l2/2.jpg"  onclick="LoadNewImage(this.id);"  style="position: absolute; top: 595px; left: 821px;"></img>
+                        <img id="img2" width="80" height="80" src="/assets/puzzle/l2/2.jpg" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 595px; left: 821px;"></img>
 
                      <img id="img3" width="80" height="80" src="/assets/puzzle/l2/3.jpg" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 595px; left: 923px;"></img>
 
@@ -1250,7 +1020,7 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
                      <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 717px;" onclick="LoadNewImage2('img1'); listen('بَطّة');"></img>
                      <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 817px;" onclick="LoadNewImage2('img2'); listen('بْنت');"></img>
                      
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 917px;" onclick="listen('برتقالة');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 590px; left: 917px;" onclick="LoadNewImage2('img2'); listen('برتقالة');"></img>
 
                     
  
