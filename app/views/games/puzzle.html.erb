@@ -208,7 +208,7 @@ background-image: url("/assets/paper.jpg");
           puzzleLevel = level;
           puzzleSubLevel = sublevel;
           LoadNewImage(imageID);
-          //init();
+          initTouch();
         }
 
 
@@ -410,6 +410,12 @@ if(puzzleLevel ===5){
         canvas.onmouseout = handleOnMouseOut;
         canvas.onmousemove = handleOnMouseMove;
 
+        canvas.ontouchstart = handleOnMouseDown;
+        canvas.ontouchend = handleOnMouseUp;
+        canvas.ontouchcancel = handleOnMouseOut;
+        canvas.ontouchmove = handleOnMouseMove;
+
+    
         image1 = document.getElementById(imageID);
         imagePrev = document.getElementById("imgprev");
 
