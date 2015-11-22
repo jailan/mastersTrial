@@ -356,8 +356,8 @@ if(puzzleLevel ===5){
     var MAIN_IMG_HEIGHT = 600;
 
 
-    var BLOCK_IMG_WIDTH = 600;
-    var BLOCK_IMG_HEIGHT = 450;
+    var BLOCK_IMG_WIDTH = 600/1.3;
+    var BLOCK_IMG_HEIGHT = 450/1.3;
 
 
     var TOTAL_ROWS = rows;// 4;
@@ -502,19 +502,19 @@ function SetImageBlock() {
             var randomX = randomXtoY(x1, x2, 2);
             var randomY = randomXtoY(0, y2, 2);
             if(i===0){
-             notRandomX = 620;
+             notRandomX = 620-150;
              notRandomY = 5;  
             }
                if(i===1){
-             notRandomX = 925;
+             notRandomX = 925-210;
              notRandomY = 235;  
             }
                if(i===3){
-             notRandomX = 620;
+             notRandomX = 620-150;
              notRandomY = 235;  
             }
                if(i===2){
-             notRandomX = 925;
+             notRandomX = 925-210;
              notRandomY = 5;  
             }
        
@@ -683,7 +683,7 @@ function SetImageBlock() {
 
         }
 
-        selectedBlock = GetImageBlock(imageBlockList, e.pageX, e.pageY);
+        selectedBlock = GetImageBlock(imageBlockList, e.pageX  , e.pageY);
 
         if (selectedBlock) {
             imageBlockList[selectedBlock.no].isSelected = true;
@@ -699,7 +699,7 @@ function SetImageBlock() {
             var index = selectedBlock.no;
             //   alert(index);
 
-            var block = GetImageBlock(blockList, e.pageX, e.pageY);
+            var block = GetImageBlock(blockList, e.pageX +100, e.pageY+200);
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
@@ -746,7 +746,7 @@ function SetImageBlock() {
 
         if (selectedBlock) {
 
-            selectedBlock.x = e.pageX  - 200;
+            selectedBlock.x = e.pageX  - 100;
             selectedBlock.y = e.pageY  - 200;
 
             DrawGame();
@@ -963,7 +963,7 @@ function SetImageBlock() {
                     </table>
                 </div>
                 <div>
-                    <canvas id="canJigsaw" width="1230" height="450" style="border: black solid 2px;">
+                    <canvas id="canJigsaw" width="950" height="450" style="border: black solid 2px;">
             
                     </canvas>
                        </div>
