@@ -203,6 +203,10 @@ background-image: url("/assets/paper.jpg");
         var imagePrevID = "imgprev";
         var puzzleLevel;
         var puzzleSubLevel;
+        var xPos;
+var yPos;
+var xxpos;
+var yypos;
 
 
         function InitGame(level, sublevel) {
@@ -263,8 +267,14 @@ function imageBlock(no, x, y) {
     this.isSelected = false;
 }
 
+
 function touchHandler(event) {
     var touch = event.changedTouches[0];
+    xPos = event.originalEvent.touches[0].pageX;
+    yPos = event.originalEvent.touches[0].pageY;
+    xxpos= event.changedTouches[0].pageX;
+    yypos=event.changedTouches[0].pageY;
+
 
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
@@ -698,7 +708,6 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-  //   var yPos = e.originalEvent.touches[0].pageY;
 
         if (selectedBlock) {
             var index = selectedBlock.no;
@@ -708,7 +717,7 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-                //alert("x: "+xPos+", y: "+ yPos+"..... bx: "+block.x+", by: "+ block.y);
+                alert("x: "+xPos+", y: "+ yPos+"..... bx: "+block.x+", by: "+ block.y);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
