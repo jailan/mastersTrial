@@ -208,15 +208,15 @@ background-image: url("/assets/paper.jpg");
 //   var xPos =e.originalEvent.touches[0].pageX;
 //   alert(xPos);
 // });
-                $(document).on('touchend',function(e) {
-  var xxPos = e.originalEvent.changedTouches[0].pageX;
-  alert(xxPos);
-});
+//                 $(document).on('touchend',function(e) {
+//   var xxPos = e.originalEvent.changedTouches[0].pageX;
+//   alert(xxPos);
+// });
 
-   $(document).on('touchmove',function(e) {
-  var xxxPos = e.originalEvent.changedTouches[0].pageX;
-  alert(xxxPos);
-});
+//    $(document).on('touchmove',function(e) {
+//   var xxxPos = e.originalEvent.changedTouches[0].pageX;
+//   alert(xxxPos);
+// });
 
 
 
@@ -277,11 +277,12 @@ function imageBlock(no, x, y) {
     this.y = y;
     this.isSelected = false;
 }
-
+var touchLousy =0;
 function touchHandler(event) {
-    var touch = event.changedTouches[0];
-     // var touchLousy  = event.originalEvent.touches[0].pageX;
-     // alert(touchLousy);
+    var touch = event.originalEvent.changedTouches[0];
+
+      touchLousy  = touch.pageX;
+      alert(touchLousy);
 
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
