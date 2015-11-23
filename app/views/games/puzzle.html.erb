@@ -209,12 +209,12 @@ background-image: url("/assets/paper.jpg");
 //   alert(xPos);
 // });
                 $(document).on('touchend',function(e) {
-  var xxPos = e.originalEvent.touches[0].pageX;
+  var xxPos = e.originalEvent.changedTouches[0].pageX;
   alert(xxPos);
 });
 
-                                $(document).on('touchmove',function(e) {
-  var xxxPos = e.originalEvent.touches[0].pageX;
+   $(document).on('touchmove',function(e) {
+  var xxxPos = e.originalEvent.changedTouches[0].pageX;
   alert(xxxPos);
 });
 
