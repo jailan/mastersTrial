@@ -208,10 +208,10 @@ background-image: url("/assets/paper.jpg");
 //   var xPos =e.originalEvent.touches[0].pageX;
 //   alert(xPos);
 // });
-//                 $(document).on('touchstart',function(e) {
-//   var xxPos = e.originalEvent.touches[0].pageX;
-//   alert(xxPos);
-// });
+                $(document).on('touchend',function(e) {
+  var xxPos = e.originalEvent.touches[0].pageX;
+  alert(xxPos);
+});
 
 
         function InitGame(level, sublevel) {
@@ -274,8 +274,8 @@ function imageBlock(no, x, y) {
 
 function touchHandler(event) {
     var touch = event.changedTouches[0];
-     var touchLousy  = event.originalEvent.touches[0].pageX;
-     alert(touchLousy);
+     // var touchLousy  = event.originalEvent.touches[0].pageX;
+     // alert(touchLousy);
 
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
@@ -284,7 +284,8 @@ function touchHandler(event) {
         touchend: "mouseup",
         touchcancel: "mouseout"
     }[event.type], true, true, window, 1,
-        touch.screenX, touch.screenY, touch.pageX, touch.pageY, touch.clientX, touch.clientY, false,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
         false, false, false, 0, null);
 
     touch.target.dispatchEvent(simulatedEvent);
