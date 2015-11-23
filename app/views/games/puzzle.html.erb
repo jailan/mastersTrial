@@ -684,7 +684,7 @@ function SetImageBlock() {
 
         }
 
-        selectedBlock = GetImageBlock(imageBlockList, e.pageX  , e.pageY);
+        selectedBlock = GetImageBlock(imageBlockList, e.pageX-50  , e.pageY-50);
 
         if (selectedBlock) {
             imageBlockList[selectedBlock.no].isSelected = true;
@@ -748,8 +748,8 @@ function SetImageBlock() {
 
         if (selectedBlock) {
 
-            selectedBlock.x = e.pageX  - 100;
-            selectedBlock.y = e.pageY  - 200;
+            selectedBlock.x = e.pageX -100;
+            selectedBlock.y = e.pageY -100;
 
             DrawGame();
 
