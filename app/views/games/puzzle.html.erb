@@ -702,9 +702,11 @@ function SetImageBlock() {
 //   var xPos = e.originalEvent.touches[0].pageX;
 //   alert(xPos);
 // });
-var xPos =e.pageX;
-var posD = touch.pageX;
-alert (xPos+ "gggggg "+posD);
+ // var xPos = e.originalEvent.touches[0].pageX;
+ // alert (xPos);
+ var mama = e.originalEvent.changedTouches[0].pageX;
+ alert (mama);
+
 
         // remove old selected
         if (selectedBlock != null) {
@@ -725,11 +727,11 @@ alert (xPos+ "gggggg "+posD);
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-    //var yPos = e.touches[0].pageY;
+;
 
         if (selectedBlock) {
             var index = selectedBlock.no;
-            //alert(index);
+   
 
             var block = GetImageBlock(blockList, e.pageX , e.pageY);
             if (block) {
