@@ -204,10 +204,10 @@ background-image: url("/assets/paper.jpg");
         var puzzleLevel;
         var puzzleSubLevel;
 
-//         $(document).on('touchend',function(e) {
-//   var xPos = e.originalEvent.touches[0].pageX;
-//   alert(xPos);
-// });
+        $(document).on('touchstart',function(e) {
+  var xPos = e.changedTouches[0].pageX;
+  alert(xPos);
+});
 //                 $(document).on('touchstart',function(e) {
 //   var xxPos = e.originalEvent.touches[0].pageX;
 //   alert(xxPos);
@@ -273,8 +273,8 @@ function imageBlock(no, x, y) {
 }
 
 function touchHandler(event) {
-   // var touch = event.changedTouches[0];
-     var touch  = event.originalEvent.touches[0];
+    var touch = event.changedTouches[0];
+    // var touch  = event.originalEvent.touches[0];
 
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
