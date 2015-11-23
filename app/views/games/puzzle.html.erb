@@ -203,6 +203,11 @@ background-image: url("/assets/paper.jpg");
         var imagePrevID = "imgprev";
         var puzzleLevel;
         var puzzleSubLevel;
+        var xPos;
+        var yPos;
+        var xxPos;
+        var yyPos;
+
 
 //         $(document).on('touchstart',function(e) {
 //   var xPos =e.originalEvent.touches[0].pageX;
@@ -433,14 +438,20 @@ if(puzzleLevel ===5){
         canvas.ontouchcancel = handleOnMouseOut;
         canvas.ontouchmove = handleOnMouseMove;
              $(document).on('touchend',function(e) {
-             var xPos = e.originalEvent.touches[0].pageX;
-             //var bobo = e.pageX;
-   alert(xPos);
+             xPos = e.originalEvent.touches[0].pageX;
+             yPos = e.originalEvent.touches[0].pageY;
+             alert(xPos+" ... "+yPos);
  });
-             // $(document).on('touchstart',function(e) {
-//   var xPos =e.originalEvent.touches[0].pageX;
-//   alert(xPos);
-// });
+ //             $(document).on('touchstart',function(e) {
+ //             xxPos = e.originalEvent.touches[0].pageX;
+ //             yyPos = e.originalEvent.touches[0].pageY;
+ //             alert(xxPos+" ... "+yyPos);
+ // });
+ //             $(document).on('touchend',function(e) {
+ //            var xxxPos = e.originalEvent.touches[0].pageX;
+ //            var yyyPos = e.originalEvent.touches[0].pageY;
+ //             alert(xxxPos+" ... "+yyyPos);
+ // });
 
     
         image1 = document.getElementById(imageID);
