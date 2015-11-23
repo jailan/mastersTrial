@@ -204,14 +204,14 @@ background-image: url("/assets/paper.jpg");
         var puzzleLevel;
         var puzzleSubLevel;
 
-        $(document).on('touchend',function(e) {
-  var xPos = e.originalEvent.touches[0].pageX;
-  alert(xPos);
-});
-                $(document).on('touchstart',function(e) {
-  var xxPos = e.originalEvent.touches[0].pageX;
-  alert(xxPos);
-});
+//         $(document).on('touchend',function(e) {
+//   var xPos = e.originalEvent.touches[0].pageX;
+//   alert(xPos);
+// });
+//                 $(document).on('touchstart',function(e) {
+//   var xxPos = e.originalEvent.touches[0].pageX;
+//   alert(xxPos);
+// });
 
 
         function InitGame(level, sublevel) {
@@ -686,6 +686,8 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
+      var xPos = e.originalEvent.touches[0].pageX;
+      alert(xPos);
 
         // remove old selected
         if (selectedBlock != null) {
