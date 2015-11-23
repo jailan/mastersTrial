@@ -273,7 +273,8 @@ function imageBlock(no, x, y) {
 }
 
 function touchHandler(event) {
-    var touch = event.changedTouches[0];
+   // var touch = event.changedTouches[0];
+     var touch  = event.originalEvent.touches[0];
 
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
@@ -686,8 +687,10 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
-      var xPos = e.originalEvent.touches[0].pageX;
-      alert(xPos);
+//         $(document).on('touchend',function(e) {
+//   var xPos = e.originalEvent.touches[0].pageX;
+//   alert(xPos);
+// });
 
         // remove old selected
         if (selectedBlock != null) {
