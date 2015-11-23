@@ -705,7 +705,9 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-                if (blockOldImage == null) {
+                alert(block.x+"gggg"+ block.y);
+               
+                if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
                     imageBlockList[index].y = block.y;
                 }
