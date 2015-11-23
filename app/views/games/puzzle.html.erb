@@ -204,6 +204,11 @@ background-image: url("/assets/paper.jpg");
         var puzzleLevel;
         var puzzleSubLevel;
 
+        $(document).on('touchend',function(e) {
+  var xPos = e.originalEvent.touches[0].pageX;
+  alert(xPos);
+});
+
 
         function InitGame(level, sublevel) {
           puzzleLevel = level;
@@ -707,7 +712,7 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-               alert("x: "+e.screenX+", y: "+ e.pageY);
+              // alert("x: "+xPos+", y: "+ e.pageY);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
