@@ -204,6 +204,7 @@ background-image: url("/assets/paper.jpg");
         var puzzleLevel;
         var puzzleSubLevel;
 
+
         function InitGame(level, sublevel) {
           puzzleLevel = level;
           puzzleSubLevel = sublevel;
@@ -273,7 +274,7 @@ function touchHandler(event) {
         touchcancel: "mouseout"
     }[event.type], true, true, window, 1,
         touch.screenX, touch.screenY,
-        touch.clientX, touch.clientY, false,
+        touch.pageX, touch.pageY, false,
         false, false, false, 0, null);
 
     touch.target.dispatchEvent(simulatedEvent);
@@ -697,6 +698,8 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
+  //   var yPos = e.originalEvent.touches[0].pageY;
+
         if (selectedBlock) {
             var index = selectedBlock.no;
             //   alert(index);
@@ -705,7 +708,7 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-                alert("x: "+e.pageX+", y: "+ e.pageY+"..... bx: "+block.x+", by: "+ block.y);
+                //alert("x: "+xPos+", y: "+ yPos+"..... bx: "+block.x+", by: "+ block.y);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
