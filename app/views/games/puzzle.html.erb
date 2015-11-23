@@ -700,7 +700,7 @@ function SetImageBlock() {
             var index = selectedBlock.no;
             //   alert(index);
 
-            var block = GetImageBlock(blockList, e.pageX , e.pageY);
+            var block = GetImageBlock(blockList, e.pageX-50 , e.pageY-50);
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
