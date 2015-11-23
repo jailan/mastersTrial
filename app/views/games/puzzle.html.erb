@@ -204,14 +204,20 @@ background-image: url("/assets/paper.jpg");
         var puzzleLevel;
         var puzzleSubLevel;
 
-//         $(document).on('touchstart',function(e) {
-//   var xPos =e.originalEvent.touches[0].pageX;
-//   alert(xPos);
-// });
+        $(document).on('touchstart',function(e) {
+  var xPos =e.originalEvent.touches[0].pageX;
+  alert(xPos);
+});
                 $(document).on('touchend',function(e) {
   var xxPos = e.originalEvent.touches[0].pageX;
   alert(xxPos);
 });
+
+                                $(document).on('touchmove',function(e) {
+  var xxxPos = e.originalEvent.touches[0].pageX;
+  alert(xxxPos);
+});
+
 
 
         function InitGame(level, sublevel) {
@@ -428,6 +434,10 @@ if(puzzleLevel ===5){
         canvas.ontouchend = handleOnMouseUp;
         canvas.ontouchcancel = handleOnMouseOut;
         canvas.ontouchmove = handleOnMouseMove;
+             // $(document).on('touchstart',function(e) {
+//   var xPos =e.originalEvent.touches[0].pageX;
+//   alert(xPos);
+// });
 
     
         image1 = document.getElementById(imageID);
