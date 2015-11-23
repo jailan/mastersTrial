@@ -203,10 +203,6 @@ background-image: url("/assets/paper.jpg");
         var imagePrevID = "imgprev";
         var puzzleLevel;
         var puzzleSubLevel;
-        var xPos;
-var yPos;
-var xxpos;
-var yypos;
 
 
         function InitGame(level, sublevel) {
@@ -266,11 +262,9 @@ function imageBlock(no, x, y) {
     this.y = y;
     this.isSelected = false;
 }
-var touch;
 
 function touchHandler(event) {
-     touch = event.changedTouches[0];
-
+    var touch = event.changedTouches[0];
 
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
@@ -279,8 +273,7 @@ function touchHandler(event) {
         touchend: "mouseup",
         touchcancel: "mouseout"
     }[event.type], true, true, window, 1,
-        touch.screenX, touch.screenY,
-        touch.pageX, touch.pageY, false,
+        touch.screenX, touch.screenY, touch.pageX, touch.pageY, touch.clientX, touch.clientY, false,
         false, false, false, 0, null);
 
     touch.target.dispatchEvent(simulatedEvent);
@@ -704,17 +697,17 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-xxpos = touch.pageX;
-yypos= touch.pageY;
+    //var yPos = e.touches[0].pageY;
+
         if (selectedBlock) {
             var index = selectedBlock.no;
-            //   alert(index);
+            //alert(index);
 
             var block = GetImageBlock(blockList, e.pageX , e.pageY);
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-                alert("x: "+xxpos+", y: "+ yypos+"..... bx: "+block.x+", by: "+ block.y);
+               alert("x: "+e.pageX+", y: "+ e.pageY);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
