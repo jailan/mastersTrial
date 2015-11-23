@@ -440,7 +440,7 @@ if(puzzleLevel ===5){
              $(document).on('touchend',function(e) {
              xPos = e.originalEvent.touches[0].pageX;
              yPos = e.originalEvent.touches[0].pageY;
-             alert(xPos+" ... "+yPos);
+             //alert(xPos+" ... "+yPos);
  });
  //             $(document).on('touchstart',function(e) {
  //             xxPos = e.originalEvent.touches[0].pageX;
@@ -749,7 +749,7 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-              // alert("x: "+xPos+", y: "+ e.pageY);
+               alert("x: "+xPos+", y: "+ yPos);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
