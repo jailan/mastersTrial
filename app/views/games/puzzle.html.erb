@@ -538,23 +538,24 @@ function SetImageBlock() {
 
     function drawLines() {
        
-       ctx.strokeStyle = "#e9e9e9";
+       //ctx.strokeStyle = "#e9e9e9";
+        ctx.strokeStyle = "#000000";
         
         ctx.lineWidth = 1;
         ctx.beginPath();
         
         // draw verticle lines
-        for (var i = 0; i <= TOTAL_COLUMNS; i++) {
+        for (var i = 0; i <= 2; i++) {
             var x = BLOCK_WIDTH * i;
             ctx.moveTo(x, 0);
-            ctx.lineTo(x, 450);
+            ctx.lineTo(x, 347);
         }
 
         // draw horizontal lines
-        for (var i = 0; i <= TOTAL_ROWS; i++) {
+        for (var i = 0; i <= 2; i++) {
             var y = BLOCK_HEIGHT * i;
             ctx.moveTo(0, y);
-            ctx.lineTo(600, y);
+            ctx.lineTo(462, y);
         }
 
 
@@ -699,7 +700,7 @@ function SetImageBlock() {
             var index = selectedBlock.no;
             //   alert(index);
 
-            var block = GetImageBlock(blockList, e.pageX +100, e.pageY+200);
+            var block = GetImageBlock(blockList, e.pageX , e.pageY);
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
@@ -729,6 +730,7 @@ function SetImageBlock() {
                 ) {
 
                 flagsCorrecta[m]=1;
+              alert(flagsCorrecta);
                 audioElementCorrect.play();
             }
 
@@ -746,8 +748,8 @@ function SetImageBlock() {
 
         if (selectedBlock) {
 
-            selectedBlock.x = e.pageX  - 100;
-            selectedBlock.y = e.pageY  - 200;
+            selectedBlock.x = e.pageX ;
+            selectedBlock.y = e.pageY ;
 
             DrawGame();
 
