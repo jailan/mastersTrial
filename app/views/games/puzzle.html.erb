@@ -432,6 +432,11 @@ if(puzzleLevel ===5){
         canvas.ontouchend = handleOnMouseUp;
         canvas.ontouchcancel = handleOnMouseOut;
         canvas.ontouchmove = handleOnMouseMove;
+             $(document).on('touchend',function(e) {
+             var xPos = e.originalEvent.touches[0].pageX;
+             var bobo = e.pageX;
+   alert(bobo);
+ });
              // $(document).on('touchstart',function(e) {
 //   var xPos =e.originalEvent.touches[0].pageX;
 //   alert(xPos);
@@ -702,11 +707,6 @@ function SetImageBlock() {
 //   var xPos = e.originalEvent.touches[0].pageX;
 //   alert(xPos);
 // });
- // var xPos = e.originalEvent.touches[0].pageX;
- // alert (xPos);
- var mama = e.originalEvent.changedTouches[0].pageX;
- alert (mama);
-
 
         // remove old selected
         if (selectedBlock != null) {
@@ -716,6 +716,7 @@ function SetImageBlock() {
         }
 
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
+        //alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
             imageBlockList[selectedBlock.no].isSelected = true;
