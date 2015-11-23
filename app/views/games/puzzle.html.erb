@@ -707,7 +707,7 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-               alert("x: "+e.pageX+", y: "+ e.pageY);
+               alert("x: "+e.screenX+", y: "+ e.pageY);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
