@@ -266,14 +266,10 @@ function imageBlock(no, x, y) {
     this.y = y;
     this.isSelected = false;
 }
-
+var touch;
 
 function touchHandler(event) {
-    var touch = event.changedTouches[0];
-    xPos = event.originalEvent.touches[0].pageX;
-    yPos = event.originalEvent.touches[0].pageY;
-    xxpos= event.changedTouches[0].pageX;
-    yypos=event.changedTouches[0].pageY;
+     touch = event.changedTouches[0];
 
 
     var simulatedEvent = document.createEvent("MouseEvent");
@@ -708,7 +704,8 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-
+xxpos = touch.pageX;
+yypos= touch.pageY;
         if (selectedBlock) {
             var index = selectedBlock.no;
             //   alert(index);
@@ -717,7 +714,7 @@ function SetImageBlock() {
             if (block) {
 
                 var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-                alert("x: "+xPos+", y: "+ yPos+"..... bx: "+block.x+", by: "+ block.y);
+                alert("x: "+xxpos+", y: "+ yypos+"..... bx: "+block.x+", by: "+ block.y);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
