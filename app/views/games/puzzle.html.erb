@@ -721,7 +721,7 @@ function SetImageBlock() {
         }
 
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
-        alert(e.pageX+ "............"+ e.pageY);
+       // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
             imageBlockList[selectedBlock.no].isSelected = true;
@@ -738,18 +738,13 @@ function SetImageBlock() {
  //             //handleOnMouseUp(e);
  //             alert(xPos+" ... "+yPos);
  // });
- //                $(document).on('touchcancel',function(e) {
- //             xPos = e.originalEvent.touches[0].pageX;
- //             yPos = e.originalEvent.touches[0].pageY;
- //             //handleOnMouseUp(e);
- //             alert(xPos+" ... "+yPos);
- // });
+
 
         if (selectedBlock) {
             var index = selectedBlock.no;
             var block = GetImageBlock(blockList, e.pageX, e.pageY);
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-            //alert("x: "+xPos+", y: "+ yPos);
+            alert("x: "+e.pageX", y: "+ e.pageY);
            
             if (block) {
                 if (blockOldImage === null) {
