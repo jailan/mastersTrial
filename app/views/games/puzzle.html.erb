@@ -744,15 +744,16 @@ function SetImageBlock() {
         yPos=0;
       }
 
-        alert("x: "+xPos+", y: "+ yPos+"...... bx: "+block.x+"by: "+block.y);
+     
 
         if (selectedBlock) {
             var index = selectedBlock.no;
-            var block = GetImageBlock(blockList, xPos, yPos);
+            var block = GetImageBlock(blockList, e.pageX, e.pageY);
             if (block) {
         
 
           var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+             alert("x: "+xPos+", y: "+ yPos+"...... bx: "+block.x+"by: "+block.y);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
