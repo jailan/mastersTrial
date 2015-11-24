@@ -745,10 +745,10 @@ var block;
               //alert("x: "+e.pageX+", y: "+ e.pageY);
             if((e.pageX >0) && (e.pageY >0)){
             block = GetImageBlock(blockList, e.pageX, e.pageY);
-            alert("ana barraaaa");}
+            alert("ana barraaaa"+e.pageX+"..."+e.pageY );}
             else{
-               block = GetImageBlock(blockList, 830, 135);
-              alert("ana gowaaa");
+               block = GetImageBlock(blockList, 830, 175);
+              alert("ana gowaaa"+e.pageX +"..."+e.pageY);
             }
 
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
