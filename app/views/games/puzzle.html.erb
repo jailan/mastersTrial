@@ -732,29 +732,21 @@ function SetImageBlock() {
  var audioElementCorrect = document.createElement('audio');
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
- //        $(document).on('touchend',function(e) {
- //             xPos = e.originalEvent.touches[0].pageX;
- //             yPos = e.originalEvent.touches[0].pageY;
- //             //handleOnMouseUp(e);
- //             alert(xPos+" ... "+yPos);
- // });
-var lala;
-var lolo;
-    if(typeof xPos === 'undefined'){
-              lala = 0;
-              lolo = 0;
-            }
-            else{
+
+var lala =0;
+var lolo=0;
+    if(xPos){
+
               lala = xPos;
-              lolo = yPos;
-            }
+              lolo = yPos;}
+         
 
         if (selectedBlock) {
             var index = selectedBlock.no;
-             var block = GetImageBlock(blockList, lala, lolo);
+             var block = GetImageBlock(blockList,e.pageX, e.pageY);
               //alert("x: "+e.pageX+", y: "+ e.pageY);
         
-         }
+         
          
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
           
