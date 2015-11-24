@@ -735,19 +735,12 @@ function SetImageBlock() {
 
 var lala =0;
 var lolo=0;
-    if(xPos){
-
+    if(typeof xPos === 'undefined'){
               lala = xPos;
               lolo = yPos;}
-         
-
         if (selectedBlock) {
             var index = selectedBlock.no;
-             var block = GetImageBlock(blockList,lala, lolo);
-              //alert("x: "+e.pageX+", y: "+ e.pageY);
-        
-         
-         
+            var block = GetImageBlock(blockList,lala, lolo);
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
           
            
