@@ -440,11 +440,11 @@ if(puzzleLevel ===5){
  //             yyPos = e.originalEvent.touches[0].pageY;
  //             alert(xxPos+" ... "+yyPos);
  // });
- //             $(document).on('touchend',function(e) {
- //            var xxxPos = e.originalEvent.touches[0].pageX;
- //            var yyyPos = e.originalEvent.touches[0].pageY;
- //             alert(xxxPos+" ... "+yyyPos);
- // });
+             $(document).on('touchend',function(e) {
+            xPos = e.originalEvent.touches[0].pageX;
+            yPos = e.originalEvent.touches[0].pageY;
+             //alert(xPos+" ... "+yPos);
+ });
 
     
         image1 = document.getElementById(imageID);
@@ -735,7 +735,7 @@ function SetImageBlock() {
 
 var lala =0;
 var lolo=0;
-    if(typeof xPos === 'undefined'){
+    if(xPos){
               lala = xPos;
               lolo = yPos;}
         if (selectedBlock) {
