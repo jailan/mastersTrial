@@ -738,19 +738,24 @@ function SetImageBlock() {
  //             //handleOnMouseUp(e);
  //             alert(xPos+" ... "+yPos);
  // });
-var block;
+var lala;
+var lolo;
+    if(typeof xPos === 'undefined'){
+              var lala = 0;
+              var lolo = 0;
+            }
+            else{
+              lala = xPos;
+              lolo = yPos;
+            }
 
         if (selectedBlock) {
             var index = selectedBlock.no;
+             var block = GetImageBlock(blockList, lala, lolo);
               //alert("x: "+e.pageX+", y: "+ e.pageY);
-            if((e.pageX >0) && (e.pageY >0)){
-            block = GetImageBlock(blockList, e.pageX, e.pageY);}
-            //alert("ana barraaaa"+e.pageX+"..."+e.pageY );}
-            else{
-               block = GetImageBlock(blockList, 327, 283);
-              //alert("ana gowaaa"+e.pageX +"..."+e.pageY);
-            }
-
+        
+         }
+         
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
           
            
