@@ -739,29 +739,15 @@ function SetImageBlock() {
  var audioElementCorrect = document.createElement('audio');
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
-      if (xPos == null || yPos == null){
-        xPos =0;
-        yPos=0;
-      }
-
      
 
         if (selectedBlock) {
             var index = selectedBlock.no;
-               if(xPos >0 && yPos >0){
-             
-                     var block = GetImageBlock(blockList, xPos, yPos);
-         }
-          else{
-             var block = GetImageBlock(blockList, e.pageX, e.pageY);
-          
-          }
-
+            var block = GetImageBlock(blockList, e.pageX, e.pageY);
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+            alert("x: "+xPos+", y: "+ yPos);
            
             if (block) {
-         alert("x: "+xPos+", y: "+ yPos+"...... bx: "+block.x+"by: "+block.y);
-               
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
                     imageBlockList[index].y = block.y;
