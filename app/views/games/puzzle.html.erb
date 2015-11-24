@@ -742,9 +742,15 @@ function SetImageBlock() {
 
         if (selectedBlock) {
             var index = selectedBlock.no;
-            var block = GetImageBlock(blockList, e.pageX, e.pageY);
+              alert("x: "+e.pageX+", y: "+ e.pageY);
+            if(e.pageX >0 && e.pageY >0){
+            var block = GetImageBlock(blockList, e.pageX, e.pageY);}
+            else{
+              var block = GetImageBlock(blockList, 830, 135);
+            }
+
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-            alert("x: "+e.pageX+", y: "+ e.pageY);
+          
            
             if (block) {
                 if (blockOldImage === null) {
