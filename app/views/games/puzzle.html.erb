@@ -739,7 +739,7 @@ function SetImageBlock() {
  var audioElementCorrect = document.createElement('audio');
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
-      if (xPos === null || yPos === null){
+      if (xPos == null || yPos == null){
         xPos =0;
         yPos=0;
       }
@@ -748,12 +748,19 @@ function SetImageBlock() {
 
         if (selectedBlock) {
             var index = selectedBlock.no;
-            var block = GetImageBlock(blockList, e.pageX, e.pageY);
-            if (block) {
-        
+               if(xPos >0 && yPos >0){
+             
+                     var block = GetImageBlock(blockList, xPos, yPos);
+         }
+          else{
+             var block = GetImageBlock(blockList, e.pageX, e.pageY);
+          
+          }
 
-          var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-             alert("x: "+xPos+", y: "+ yPos+"...... bx: "+block.x+"by: "+block.y);
+            var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+           
+            if (block) {
+         alert("x: "+xPos+", y: "+ yPos+"...... bx: "+block.x+"by: "+block.y);
                
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
