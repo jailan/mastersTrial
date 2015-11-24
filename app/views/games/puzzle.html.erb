@@ -708,8 +708,9 @@ function SetImageBlock() {
 
     function handleOnMouseDown(e) {
 //         $(document).on('touchend',function(e) {
-//   var xPos = e.originalEvent.touches[0].pageX;
-//   alert(xPos);
+//   xPos = e.originalEvent.touches[0].pageX;
+//   yPos = e.originalEvent.touches[0].pageY;
+
 // });
 
         // remove old selected
@@ -720,7 +721,7 @@ function SetImageBlock() {
         }
 
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
-        //alert(e.pageX+ "............"+ e.pageY);
+        alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
             imageBlockList[selectedBlock.no].isSelected = true;
@@ -731,12 +732,18 @@ function SetImageBlock() {
  var audioElementCorrect = document.createElement('audio');
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
-        $(document).on('touchend',function(e) {
-             xPos = e.originalEvent.touches[0].pageX;
-             yPos = e.originalEvent.touches[0].pageY;
-             //handleOnMouseUp(e);
-             alert(xPos+" ... "+yPos);
- });
+ //        $(document).on('touchend',function(e) {
+ //             xPos = e.originalEvent.touches[0].pageX;
+ //             yPos = e.originalEvent.touches[0].pageY;
+ //             //handleOnMouseUp(e);
+ //             alert(xPos+" ... "+yPos);
+ // });
+ //                $(document).on('touchcancel',function(e) {
+ //             xPos = e.originalEvent.touches[0].pageX;
+ //             yPos = e.originalEvent.touches[0].pageY;
+ //             //handleOnMouseUp(e);
+ //             alert(xPos+" ... "+yPos);
+ // });
 
         if (selectedBlock) {
             var index = selectedBlock.no;
