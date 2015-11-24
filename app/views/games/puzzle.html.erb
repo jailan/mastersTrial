@@ -205,11 +205,23 @@ background-image: url("/assets/paper.jpg");
         var puzzleSubLevel;
         var xPos=0;
         var yPos=0;
-             $(document).on('touchend',function(e) {
-            xPos = e.originalEvent.touches[0].pageX;
-            yPos = e.originalEvent.touches[0].pageY;
-             //alert(xPos+" ... "+yPos);
- });
+ //             $(document).on('touchend',function(e) {
+ //            xPos = e.originalEvent.touches[0].pageX;
+ //            yPos = e.originalEvent.touches[0].pageY;
+ //             //alert(xPos+" ... "+yPos);
+ // });
+
+ //         $(document).on('mouseup',function(e) {
+ //            xPos = e.pageX;
+ //            yPos = e.pageY;
+ //             //alert(xPos+" ... "+yPos);
+ // });
+
+         document.body.onmouseup = function(e) {
+
+    xPos = e.pageX;
+    yPos  = e.pageY;
+};
 
 
 
@@ -725,11 +737,17 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
+      var touchz = e.touches[0];
+// xPos = e.pageX;
+// yPos = e.pageY;
 
-    alert(xPos+",,,,"+yPos);
+    //alert(xPos+",,,,"+yPos);
         if (selectedBlock) {
             var index = selectedBlock.no;
-            var block = GetImageBlock(blockList,xPos, yPos);
+            alert(touchz.pageX+"...."+touchz.pageY);
+            var block = GetImageBlock(blockList,touchz.pageX, touchz.pageY);
+
+
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
           
            
