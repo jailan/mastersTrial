@@ -725,6 +725,7 @@ function SetImageBlock() {
         }
 
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
+         alert(e.pageX+",,,,,,"+e.pageY);
        // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
@@ -737,11 +738,7 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
- e.preventDefault();
-   var touchz = e.touches[0];
-var startTouchX = touchz.pageX;
-var startTouchY = touchz.pageY;
-alert(startTouchX+"...."+startTouchY);
+
         if (selectedBlock) {
             var index = selectedBlock.no;
             
@@ -796,8 +793,9 @@ alert(startTouchX+"...."+startTouchY);
 
         if (selectedBlock) {
 
-            selectedBlock.x = e.pageX -100;
-            selectedBlock.y = e.pageY -100;
+            selectedBlock.x = e.pageX-100 ;
+            selectedBlock.y = e.pageY-100;
+
 
             DrawGame();
 
