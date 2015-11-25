@@ -217,11 +217,7 @@ background-image: url("/assets/paper.jpg");
  //             //alert(xPos+" ... "+yPos);
  // });
 
-         document.body.onmousedown = function(e) {
 
-    xPos = e.pageX;
-    yPos  = e.pageY;
-};
 
 
 
@@ -444,13 +440,13 @@ if(puzzleLevel ===5){
  //             yyPos = e.originalEvent.touches[0].pageY;
  //             alert(xxPos+" ... "+yyPos);
  // });
-             $(document).on('touchend',function(e) {
-            // xPos = e.originalEvent.touches[0].pageX;
-            // yPos = e.originalEvent.touches[0].pageY;
-            xPos=e.originalEvent.changedTouches[0].pageX;
-            yPos=e.originalEvent.changedTouches[0].pageY;
-             //alert(xPos+" ... "+yPos);
- });
+ //             $(document).on('touchend',function(e) {
+ //            // xPos = e.originalEvent.touches[0].pageX;
+ //            // yPos = e.originalEvent.touches[0].pageY;
+ //            xPos=e.originalEvent.changedTouches[0].pageX;
+ //            yPos=e.originalEvent.changedTouches[0].pageY;
+ //             //alert(xPos+" ... "+yPos);
+ // });
 
     
         image1 = document.getElementById(imageID);
@@ -718,6 +714,11 @@ function SetImageBlock() {
 //   yPos = e.originalEvent.touches[0].pageY;
 
 // });
+// canvas.onmousedown = function(e) {
+
+//     xPos = e.pageX;
+//     yPos  = e.pageY;
+// };
 
         // remove old selected
         if (selectedBlock != null) {
@@ -741,6 +742,11 @@ function SetImageBlock() {
     function handleOnMouseUp(e) {
 
 //alert(xPos+",,,"+yPos);
+canvas.ontouchend = function(e) {
+
+    xPos = e.pageX;
+     yPos  = e.pageY;
+ };
         if (selectedBlock) {
             var index = selectedBlock.no;
             
