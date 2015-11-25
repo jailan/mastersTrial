@@ -205,11 +205,11 @@ background-image: url("/assets/paper.jpg");
         var puzzleSubLevel;
         var xPos=0;
         var yPos=0;
-             $(document).on('touchend',function(e) {
-            xPos = e.changedTouches[0].pageX;
-            yPos = e.changedTouches[0].pageY;
-             //alert(xPos+" ... "+yPos);
- });
+ //             $(document).on('touchend',function(e) {
+ //            xPos = e.originalEvent.touches[0].pageX;
+ //            yPos = e.originalEvent.touches[0].pageY;
+ //             //alert(xPos+" ... "+yPos);
+ // });
 
  //         $(document).on('mouseup',function(e) {
  //            xPos = e.pageX;
@@ -440,13 +440,13 @@ if(puzzleLevel ===5){
  //             yyPos = e.originalEvent.touches[0].pageY;
  //             alert(xxPos+" ... "+yyPos);
  // });
- //             $(document).on('touchend',function(e) {
- //            // xPos = e.originalEvent.touches[0].pageX;
- //            // yPos = e.originalEvent.touches[0].pageY;
- //            xPos=e.originalEvent.changedTouches[0].pageX;
- //            yPos=e.originalEvent.changedTouches[0].pageY;
- //             //alert(xPos+" ... "+yPos);
- // });
+             $(document).on('touchend',function(e) {
+            // xPos = e.originalEvent.touches[0].pageX;
+            // yPos = e.originalEvent.touches[0].pageY;
+            xPos=e.originalEvent.changedTouches[0].pageX;
+            yPos=e.originalEvent.changedTouches[0].pageY;
+             //alert(xPos+" ... "+yPos);
+ });
 
     
         image1 = document.getElementById(imageID);
@@ -714,11 +714,6 @@ function SetImageBlock() {
 //   yPos = e.originalEvent.touches[0].pageY;
 
 // });
-// canvas.onmousedown = function(e) {
-
-//     xPos = e.pageX;
-//     yPos  = e.pageY;
-// };
 
         // remove old selected
         if (selectedBlock != null) {
@@ -742,16 +737,10 @@ function SetImageBlock() {
     function handleOnMouseUp(e) {
 
 //alert(xPos+",,,"+yPos);
-// canvas.ontouchend = function(e) {
-
-//     xPos = e.pageX;
-//      yPos  = e.pageY;
-//  };
         if (selectedBlock) {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
-            alert(xPos+ "............"+ yPos);
 
 
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
