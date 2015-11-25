@@ -206,8 +206,8 @@ background-image: url("/assets/paper.jpg");
         var xPos=0;
         var yPos=0;
              $(document).on('touchend',function(e) {
-            xPos = e.originalEvent.changedTouches[0].pageX;
-            yPos = e.originalEvent.changedTouches[0].pageY;
+            xPos = e.originalEvent.changedTouches[changedTouches.lenght-1].pageX;
+            yPos = e.originalEvent.changedTouches[changedTouches.lenght-1].pageY;
              //alert(xPos+" ... "+yPos);
  });
 
