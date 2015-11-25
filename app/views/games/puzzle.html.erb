@@ -205,9 +205,9 @@ background-image: url("/assets/paper.jpg");
         var puzzleSubLevel;
         var xPos=0;
         var yPos=0;
-             $(document).on('touchmove',function(e) {
-            xPos = e.changedTouches[e.changedTouches.length-1].pageX;
-            yPos = e.changedTouches[e.changedTouches.length-1].pageY;
+             $(document).on('touchend',function(e) {
+            xPos = e.changedTouches[0].pageX;
+            yPos = e.changedTouches[0].pageY;
              //alert(xPos+" ... "+yPos);
  });
 
