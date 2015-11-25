@@ -444,11 +444,13 @@ if(puzzleLevel ===5){
  //             yyPos = e.originalEvent.touches[0].pageY;
  //             alert(xxPos+" ... "+yyPos);
  // });
- //             $(document).on('touchend',function(e) {
- //            xPos = e.originalEvent.touches[0].pageX;
- //            yPos = e.originalEvent.touches[0].pageY;
- //             //alert(xPos+" ... "+yPos);
- // });
+             $(document).on('touchend',function(e) {
+            // xPos = e.originalEvent.touches[0].pageX;
+            // yPos = e.originalEvent.touches[0].pageY;
+            xPos=e.originalEvent.changedTouches[0].pageX;
+            yPos=e.originalEvent.changedTouches[0].pageY;
+             //alert(xPos+" ... "+yPos);
+ });
 
     
         image1 = document.getElementById(imageID);
@@ -725,7 +727,7 @@ function SetImageBlock() {
         }
 
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
-         alert(e.pageX+",,,,,,"+e.pageY);
+        // alert(e.pageX+",,,,,,"+e.pageY);
        // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
@@ -738,7 +740,7 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-
+alert(xPos+",,,"yPos);
         if (selectedBlock) {
             var index = selectedBlock.no;
             
