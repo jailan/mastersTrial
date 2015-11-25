@@ -740,11 +740,11 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-alert(xPos+",,,"+yPos);
+//alert(xPos+",,,"+yPos);
         if (selectedBlock) {
             var index = selectedBlock.no;
             
-            var block = GetImageBlock(blockList,e.pageX, e.pageY);
+            var block = GetImageBlock(blockList,xPos, yPos);
 
 
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
