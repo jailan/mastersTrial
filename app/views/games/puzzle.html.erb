@@ -736,11 +736,14 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-//alert(xPos+",,,"+yPos);
+
         if (selectedBlock) {
             var index = selectedBlock.no;
             
-            var block = GetImageBlock(blockList,xPos, yPos);
+           // var block = GetImageBlock(blockList,xPos, yPos);
+           var block = GetImageBlock(blockList,xPos, yPos);
+           //alert(xPos+",,,"+yPos);
+           //alert(e.pageX+",,,"+e.pageY);
 
 
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
@@ -753,8 +756,9 @@ function SetImageBlock() {
                 }
             }
             else {
-                imageBlockList[index].x = selectedBlock.x;
-                imageBlockList[index].y = selectedBlock.y;
+                 imageBlockList[index].x = selectedBlock.x;
+                 imageBlockList[index].y = selectedBlock.y;
+
             }
 
             imageBlockList[index].isSelected = false;
@@ -775,6 +779,8 @@ function SetImageBlock() {
                 flagsCorrecta[m]=1;
               alert(flagsCorrecta);
                 audioElementCorrect.play();
+          
+       
             }
 
         }
@@ -788,10 +794,11 @@ function SetImageBlock() {
     }
 
     function handleOnMouseMove(e) {
+ 
 
-        if (selectedBlock) {
+        if (selectedBlock && flagsCorrecta[selectedBlock.no] === 0) {
 
-            selectedBlock.x = e.pageX-100 ;
+            selectedBlock.x = e.pageX-200 ;
             selectedBlock.y = e.pageY-100;
 
 
