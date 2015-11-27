@@ -534,11 +534,11 @@ function SetImageBlock() {
 
             var randomX = randomXtoY(x1, x2, 2);
             var randomY = randomXtoY(0, y2, 2);
-            if(i===0){
+            if(i===1){
              notRandomX = 620-150;
              notRandomY = 5;  
             }
-               if(i===1){
+               if(i===2){
              notRandomX = 925-210;
              notRandomY = 170;  
             }
@@ -546,7 +546,7 @@ function SetImageBlock() {
              notRandomX = 620-150;
              notRandomY = 170;  
             }
-               if(i===2){
+               if(i===0){
              notRandomX = 925-210;
              notRandomY = 5;  
             }
@@ -743,7 +743,7 @@ function SetImageBlock() {
               if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
-            var block = GetImageBlock(blockList,xPos+200, yPos+200);
+            var block = GetImageBlock(blockList,xPos, yPos);
            //var block = GetImageBlock(blockList,e.pageX, e.pageY);
            //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
