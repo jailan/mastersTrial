@@ -726,7 +726,7 @@ function SetImageBlock() {
         // alert(e.pageX+",,,,,,"+e.pageY);
        // alert(e.pageX+ "............"+ e.pageY);
 
-        if (selectedBlock) {
+        if (selectedBlock && flagsCorrecta[selectedBlock.no] === 0) {
             imageBlockList[selectedBlock.no].isSelected = true;
         }
 
@@ -741,7 +741,7 @@ function SetImageBlock() {
             var index = selectedBlock.no;
             
            // var block = GetImageBlock(blockList,xPos, yPos);
-           var block = GetImageBlock(blockList,xPos, yPos);
+           var block = GetImageBlock(blockList,e.pageX, e.pageY);
            //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
 
@@ -756,8 +756,8 @@ function SetImageBlock() {
                 }
             }
             else {
-                 imageBlockList[index].x = selectedBlock.x;
-                 imageBlockList[index].y = selectedBlock.y;
+                 imageBlockList[index].x = block.x;
+                 imageBlockList[index].y = block.y;
 
             }
 
