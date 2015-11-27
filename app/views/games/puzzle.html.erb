@@ -726,9 +726,11 @@ function SetImageBlock() {
         // alert(e.pageX+",,,,,,"+e.pageY);
        // alert(e.pageX+ "............"+ e.pageY);
 
-        if (selectedBlock && flagsCorrecta[selectedBlock.no] === 0) {
+        if (selectedBlock) {
+              if (flagsCorrecta[selectedBlock.no] === 0) {
             imageBlockList[selectedBlock.no].isSelected = true;
         }
+      }
 
     }
  var flagsCorrecta = [0,0,0,0];
@@ -738,6 +740,7 @@ function SetImageBlock() {
 
 
         if (selectedBlock) {
+              if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
@@ -778,9 +781,7 @@ function SetImageBlock() {
 
                 flagsCorrecta[m]=1;
               alert(flagsCorrecta);
-                audioElementCorrect.play();
-          
-       
+                audioElementCorrect.play(); 
             }
 
         }
@@ -789,6 +790,7 @@ function SetImageBlock() {
                 setTimeout(function(){LoadNewImage();}, 3000);
                 OnFinished();            
             }
+          }
 
         }
     }
@@ -796,13 +798,15 @@ function SetImageBlock() {
     function handleOnMouseMove(e) {
  
 
-        if (selectedBlock && flagsCorrecta[selectedBlock.no] === 0) {
+        if (selectedBlock){
+        if (flagsCorrecta[selectedBlock.no] === 0) {
 
             selectedBlock.x = e.pageX-200 ;
             selectedBlock.y = e.pageY-100;
 
 
             DrawGame();
+          }
 
         }
     }
