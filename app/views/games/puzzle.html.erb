@@ -748,7 +748,7 @@ function SetImageBlock() {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
-           //var block = GetImageBlock(blockList,e.pageX, e.pageY);
+          // var block = GetImageBlock(blockList,e.pageX, e.pageY);
             //alert(block);
            //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
@@ -759,9 +759,9 @@ function SetImageBlock() {
              var seekax;
              var seekay;
              var hoola =0;
-             
-           
-            if (block!== 88) {
+
+
+            if (block) {
              hoola = 1;
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
@@ -771,7 +771,7 @@ function SetImageBlock() {
                   alert("yammaa");
                 }
             }
-            if (block === 88){
+            else{
                hoola =2;
             
               // alert(selectedBlock.x+"....."+selectedBlock.y);
@@ -801,6 +801,49 @@ function SetImageBlock() {
 
             }
             alert(hoola);
+
+             
+           
+            // if (block!== 88) {
+            //  hoola = 1;
+            //     if (blockOldImage === null) {
+            //         imageBlockList[index].x = block.x;
+            //         imageBlockList[index].y = block.y;
+            //     }
+            //     else{
+            //       alert("yammaa");
+            //     }
+            // }
+            // if (block === 88){
+            //    hoola =2;
+            
+            //   // alert(selectedBlock.x+"....."+selectedBlock.y);
+            //   //go back to sqaure zero
+            //   if(seeka === 0){
+            //  seekax = 620-150;
+            //  seekay = 5;  
+            // }
+            //    if(seeka === 1){
+            // seekax = 925-210;
+            // seekay = 170;  
+            // }
+            //    if(seeka === 3){
+            //  seekax = 620-150;
+            //  seekay = 170;  
+            // }
+            //    if(seeka === 2){
+            //  seekax= 925-210;
+            //  seekay = 5;  
+            // }
+       
+            // imageBlockList[index].x = seekax;
+            // imageBlockList[index].y = seekay;
+            // // DrawGame();
+           
+
+
+            // }
+            // alert(hoola);
 
 
             imageBlockList[index].isSelected = false;
@@ -891,7 +934,7 @@ function SetImageBlock() {
             }
         }
 
-        return 88;
+        return null;
     }
 
     function sendStage(n){
