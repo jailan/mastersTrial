@@ -205,8 +205,6 @@ background-image: url("/assets/paper.jpg");
         var puzzleSubLevel;
         var xPos=0;
         var yPos=0;
-                var xxPos=0;
-        var yyPos=0;
  //             $(document).on('touchend',function(e) {
  //            xPos = e.originalEvent.touches[0].pageX;
  //            yPos = e.originalEvent.touches[0].pageY;
@@ -707,11 +705,11 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
-        $(document).on('touchstart',function(e) {
-  xxPos = e.originalEvent.touches[0].pageX;
-  yyPos = e.originalEvent.touches[0].pageY;
+//         $(document).on('touchend',function(e) {
+//   xPos = e.originalEvent.touches[0].pageX;
+//   yPos = e.originalEvent.touches[0].pageY;
 
-});
+// });
 
         // remove old selected
         if (selectedBlock != null) {
@@ -720,7 +718,7 @@ function SetImageBlock() {
 
         }
 
-        selectedBlock = GetImageBlock(imageBlockList, xxPos , yyPos);
+        selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
         // alert(e.pageX+",,,,,,"+e.pageY);
        // alert(e.pageX+ "............"+ e.pageY);
 
