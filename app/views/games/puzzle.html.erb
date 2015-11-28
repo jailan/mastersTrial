@@ -705,11 +705,14 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
-//         $(document).on('touchend',function(e) {
-//   xPos = e.originalEvent.touches[0].pageX;
-//   yPos = e.originalEvent.touches[0].pageY;
+                         $(document).on('touchend',function(e) {
+            // xPos = e.originalEvent.touches[0].pageX;
+            // yPos = e.originalEvent.touches[0].pageY;
+            xPos=e.originalEvent.changedTouches[0].pageX;
+            yPos=e.originalEvent.changedTouches[0].pageY;
 
-// });
+             //alert(xPos+" ... "+yPos);
+ });
 
         // remove old selected
         if (selectedBlock != null) {
@@ -743,6 +746,7 @@ function SetImageBlock() {
             // yPos = e.originalEvent.touches[0].pageY;
             xPos=e.originalEvent.changedTouches[0].pageX;
             yPos=e.originalEvent.changedTouches[0].pageY;
+
              //alert(xPos+" ... "+yPos);
  });
         if (selectedBlock) {
