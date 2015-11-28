@@ -763,11 +763,11 @@ function SetImageBlock() {
 
             if (block!== 88) {
              hoola = 1;
-                if (blockOldImage === null) {
+                if (blockOldImage === 99) {
                     imageBlockList[index].x = block.x;
                     imageBlockList[index].y = block.y;
                 }
-                else{
+                if(blockOldImage !== 99){
                   alert("yammaa");
                 }
             }
@@ -1017,7 +1017,7 @@ function SetImageBlock() {
             }
         }
 
-        return null;
+        return 99;
     }
 
 
