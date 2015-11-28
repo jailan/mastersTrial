@@ -709,11 +709,7 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
-//         $(document).on('touchend',function(e) {
-//   xPos = e.originalEvent.touches[0].pageX;
-//   yPos = e.originalEvent.touches[0].pageY;
 
-// });
 
         // remove old selected
         if (selectedBlock != null) {
@@ -727,11 +723,13 @@ function SetImageBlock() {
        // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
-              if (flagsCorrecta[selectedBlock.no] === 0) {
-            imageBlockList[selectedBlock.no].isSelected = true;
-        }
-      }
+            
 
+            imageBlockList[selectedBlock.no].isSelected = true;
+     
+    
+      }
+   
     }
  var flagsCorrecta = [0,0,0,0];
  var audioElementCorrect = document.createElement('audio');
@@ -744,7 +742,7 @@ function SetImageBlock() {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
-           //var block = GetImageBlock(blockList,e.pageX, e.pageY);
+          // var block = GetImageBlock(blockList,e.pageX, e.pageY);
             //alert(block);
            //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
@@ -757,7 +755,7 @@ function SetImageBlock() {
              var hoola =0;
              
            
-            if (block!=0) {
+            if (block!== 88) {
              hoola = 1;
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
@@ -767,7 +765,7 @@ function SetImageBlock() {
                   alert("yammaa");
                 }
             }
-            if (block === 0){
+            if (block === 88){
                hoola =2;
             
               // alert(selectedBlock.x+"....."+selectedBlock.y);
@@ -887,7 +885,7 @@ function SetImageBlock() {
             }
         }
 
-        return 0;
+        return 88;
     }
 
     function sendStage(n){
