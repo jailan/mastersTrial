@@ -534,11 +534,11 @@ function SetImageBlock() {
 
             var randomX = randomXtoY(x1, x2, 2);
             var randomY = randomXtoY(0, y2, 2);
-            if(i===1){
+            if(i===0){
              notRandomX = 620-150;
              notRandomY = 5;  
             }
-               if(i===2){
+               if(i===1){
              notRandomX = 925-210;
              notRandomY = 170;  
             }
@@ -546,7 +546,7 @@ function SetImageBlock() {
              notRandomX = 620-150;
              notRandomY = 170;  
             }
-               if(i===0){
+               if(i===2){
              notRandomX = 925-210;
              notRandomY = 5;  
             }
@@ -743,26 +743,61 @@ function SetImageBlock() {
               if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
-            var block = GetImageBlock(blockList,xPos, yPos);
-           //var block = GetImageBlock(blockList,e.pageX, e.pageY);
+            //var block = GetImageBlock(blockList,xPos, yPos);
+           var block = GetImageBlock(blockList,e.pageX, e.pageY);
+            //alert(block);
            //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
 
 
             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
-          
+             var seeka = selectedBlock.no;
+             var seekax;
+             var seekay;
+             var hoola =0;
+             
            
-            if (block) {
+            if (block!=0) {
+             hoola = 1;
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
                     imageBlockList[index].y = block.y;
                 }
+                else{
+                  alert("yammaa");
+                }
             }
-            else {
-                 imageBlockList[index].x = block.x;
-                 imageBlockList[index].y = block.y;
+            if (block === 0){
+               hoola =2;
+            
+              // alert(selectedBlock.x+"....."+selectedBlock.y);
+              //go back to sqaure zero
+              if(seeka === 0){
+             seekax = 620-150;
+             seekay = 5;  
+            }
+               if(seeka === 1){
+            seekax = 925-210;
+            seekay = 170;  
+            }
+               if(seeka === 3){
+             seekax = 620-150;
+             seekay = 170;  
+            }
+               if(seeka === 2){
+             seekax= 925-210;
+             seekay = 5;  
+            }
+       
+            imageBlockList[index].x = seekax;
+            imageBlockList[index].y = seekay;
+            // DrawGame();
+           
+
 
             }
+            alert(hoola);
+
 
             imageBlockList[index].isSelected = false;
             selectedBlock = null;
@@ -852,7 +887,7 @@ function SetImageBlock() {
             }
         }
 
-        return null;
+        return 0;
     }
 
     function sendStage(n){
