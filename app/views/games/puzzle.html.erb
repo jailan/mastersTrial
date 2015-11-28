@@ -737,15 +737,14 @@ function SetImageBlock() {
  var audioElementCorrect = document.createElement('audio');
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
-                               $(document).on('touchmove',function(e) {
+
+                         $(document).on('touchend',function(e) {
             // xPos = e.originalEvent.touches[0].pageX;
             // yPos = e.originalEvent.touches[0].pageY;
-            xPos=e.originalEvent.changedTouches[changedTouches.length-1].pageX;
-            yPos=e.originalEvent.changedTouches[changedTouches.length-1].pageY;
+            xPos=e.originalEvent.changedTouches[0].pageX;
+            yPos=e.originalEvent.changedTouches[0].pageY;
              //alert(xPos+" ... "+yPos);
  });
-
-
         if (selectedBlock) {
               if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
