@@ -709,7 +709,11 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
+//         $(document).on('touchend',function(e) {
+//   xPos = e.originalEvent.touches[0].pageX;
+//   yPos = e.originalEvent.touches[0].pageY;
 
+// });
 
         // remove old selected
         if (selectedBlock != null) {
@@ -723,13 +727,15 @@ function SetImageBlock() {
        // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
-            
+             
 
             imageBlockList[selectedBlock.no].isSelected = true;
-     
-    
+
       }
-   
+      else{
+              alert("ana mesh block");
+      }
+
     }
  var flagsCorrecta = [0,0,0,0];
  var audioElementCorrect = document.createElement('audio');
@@ -738,7 +744,7 @@ function SetImageBlock() {
 
 
         if (selectedBlock) {
-              //if (flagsCorrecta[selectedBlock.no] === 0) {
+              if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
@@ -825,7 +831,7 @@ function SetImageBlock() {
             }
           }
 
-        
+        }
     }
 
     function handleOnMouseMove(e) {
