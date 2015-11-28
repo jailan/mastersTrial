@@ -780,6 +780,9 @@ function SetImageBlock() {
         if (selectedBlock) {
               if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
+            setTimeout(function(){
+    //do what you need here
+}, 5000);
             
             var block = GetImageBlock(blockList,xPos, yPos);
            //var block = GetImageBlock(blockList,e.pageX, e.pageY);
