@@ -744,7 +744,7 @@ function SetImageBlock() {
 
 
         if (selectedBlock) {
-              if (flagsCorrecta[selectedBlock.no] === 0) {
+            ///  if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
@@ -872,7 +872,7 @@ function SetImageBlock() {
                 setTimeout(function(){LoadNewImage();}, 3000);
                 OnFinished();            
             }
-          }
+          
 
         }
     }
