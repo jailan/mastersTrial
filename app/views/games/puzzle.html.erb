@@ -723,9 +723,11 @@ function SetImageBlock() {
        // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
-          
+            
+
             imageBlockList[selectedBlock.no].isSelected = true;
      
+    
       }
    
     }
@@ -736,12 +738,12 @@ function SetImageBlock() {
 
 
         if (selectedBlock) {
-              if (flagsCorrecta[selectedBlock.no] === 0) {
+              //if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
-          // var block = GetImageBlock(blockList,e.pageX, e.pageY);
-            alert(block);
+           //var block = GetImageBlock(blockList,e.pageX, e.pageY);
+            //alert(block);
            //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
 
@@ -823,7 +825,7 @@ function SetImageBlock() {
             }
           }
 
-        }
+        
     }
 
     function handleOnMouseMove(e) {
