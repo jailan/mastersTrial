@@ -723,11 +723,12 @@ function SetImageBlock() {
        // alert(e.pageX+ "............"+ e.pageY);
 
         if (selectedBlock) {
-             
+               if (flagsCorrecta[selectedBlock.no] === 0) {
 
             imageBlockList[selectedBlock.no].isSelected = true;
 
       }
+    }
       else{
               alert("ana mesh block");
       }
@@ -746,13 +747,13 @@ function SetImageBlock() {
  });
 
         if (selectedBlock) {
-            //  if (flagsCorrecta[selectedBlock.no] === 0) {
+              if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
             
             var block = GetImageBlock(blockList,xPos, yPos);
            //var block = GetImageBlock(blockList,e.pageX, e.pageY);
             //alert(block);
-            alert(xPos+",,,"+yPos);
+           //alert(xPos+",,,"+yPos);
            //alert(e.pageX+",,,"+e.pageY);
 
 
@@ -877,13 +878,14 @@ function SetImageBlock() {
           
 
         }
+      }
     }
 
     function handleOnMouseMove(e) {
  
 
         if (selectedBlock){
-       // if (flagsCorrecta[selectedBlock.no] === 0) {
+        if (flagsCorrecta[selectedBlock.no] === 0) {
 
             selectedBlock.x = e.pageX-200 ;
             selectedBlock.y = e.pageY-100;
@@ -892,7 +894,7 @@ function SetImageBlock() {
             DrawGame();
           }
 
-        //}
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
