@@ -744,9 +744,9 @@ function SetImageBlock() {
             imageBlockList[selectedBlock.no].isSelected = true;
 
       }
-      else{
-              alert("ana mesh block");
-      }
+      // else{
+      //        // alert("ana mesh block");
+      // }
 
     }
  var flagsCorrecta = [0,0,0,0];
@@ -767,8 +767,13 @@ function SetImageBlock() {
               if (selectedBlock) {
               if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
-                var block = GetImageBlock(blockList,xPos, yPos);
-           alert(xPos+",,,"+yPos);
+            var block;
+            if (xPos >0){
+               block = GetImageBlock(blockList,xPos, yPos);}
+                else{
+              block = GetImageBlock(blockList,e.pageX, e.pageY);
+                }
+          // alert(xPos+",,,"+yPos);
            var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
              var seeka = selectedBlock.no;
              var seekax;
@@ -815,7 +820,7 @@ function SetImageBlock() {
 
 
             }
-            alert(hoola);
+           // alert(hoola);
 
             imageBlockList[index].isSelected = false;
             selectedBlock = null;
@@ -833,7 +838,7 @@ function SetImageBlock() {
                 ) {
 
                 flagsCorrecta[m]=1;
-              alert(flagsCorrecta);
+              //alert(flagsCorrecta);
                 audioElementCorrect.play(); 
             }
 
@@ -1104,7 +1109,7 @@ function SetImageBlock() {
 
  }
  </style>
-<body onload="InitGame(1,1);" style="zoom:100%">
+<body onload="InitGame(2,1);" style="zoom:100%">
 
     <table>
         <tr>
@@ -1155,7 +1160,7 @@ function SetImageBlock() {
                      <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 567px;" onclick="LoadNewImage2('img1'); listen('بَطّة');"></img>
                      <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 667px;" onclick="LoadNewImage2('img2'); listen('بْنت');"></img>
                      
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 767px;" onclick="LoadNewImage2('img2'); listen('برتقالة');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 767px;" onclick="LoadNewImage2('img3'); listen('برتقالة');"></img>
 
                     
  
