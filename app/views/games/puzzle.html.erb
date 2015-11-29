@@ -362,29 +362,29 @@ if(puzzleLevel ===5){
    
 //handling the three puzzle
 
-//     if( puzzleLevel < 3){
+    if( puzzleLevel < 3){
 
-//    document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1.jpg" ;
-//    document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2.jpg" ;
-//    document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3.jpg" ;
-//    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
-// }
+   document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1.jpg" ;
+   document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2.jpg" ;
+   document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+}
 
-// if (puzzleLevel === 3 || puzzleLevel === 5){
+if (puzzleLevel === 3 || puzzleLevel === 5){
 
-//    document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1p.jpg" ;
-//    document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2p.jpg" ;
-//    document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3p.jpg" ;
-//    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ; 
-// }
+   document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1p.jpg" ;
+   document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2p.jpg" ;
+   document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3p.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ; 
+}
 
-// if (puzzleLevel === 4){
+if (puzzleLevel === 4){
 
-//    document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1d.jpg" ;
-//    document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2d.jpg" ;
-//    document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
-//    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
-// }
+   document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1d.jpg" ;
+   document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2d.jpg" ;
+   document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+}
 
  document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
    // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
@@ -718,14 +718,7 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
- //                         $(document).on('touchend',function(e) {
- //            // xPos = e.originalEvent.touches[0].pageX;
- //            // yPos = e.originalEvent.touches[0].pageY;
- //            xPos=e.originalEvent.changedTouches[0].pageX;
- //            yPos=e.originalEvent.changedTouches[0].pageY;
 
- //             //alert(xPos+" ... "+yPos);
- // });
 
         // remove old selected
         if (selectedBlock != null) {
@@ -735,8 +728,7 @@ function SetImageBlock() {
         }
 
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
-        // alert(e.pageX+",,,,,,"+e.pageY);
-       // alert(e.pageX+ "............"+ e.pageY);
+
 
         if (selectedBlock) {
              
@@ -755,12 +747,10 @@ function SetImageBlock() {
     function handleOnMouseUp(e) {
 
                          $(document).on('touchend',function(e) {
-            // xPos = e.originalEvent.touches[0].pageX;
-            // yPos = e.originalEvent.touches[0].pageY;
+        
             xPos=e.originalEvent.changedTouches[0].pageX;
             yPos=e.originalEvent.changedTouches[0].pageY;
 
-             //alert(xPos+" ... "+yPos);
  });
         
             setTimeout(function(){
@@ -773,8 +763,8 @@ function SetImageBlock() {
                 else{
               block = GetImageBlock(blockList,e.pageX, e.pageY);
                 }
-          // alert(xPos+",,,"+yPos);
-           var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+        
+             var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
              var seeka = selectedBlock.no;
              var seekax;
              var seekay;
@@ -855,56 +845,6 @@ function SetImageBlock() {
              
   
 }, 1000);
-            
-           //  var block = GetImageBlock(blockList,xPos, yPos);
-           // //var block = GetImageBlock(blockList,e.pageX, e.pageY);
-           //  //alert(block);
-           // alert(xPos+",,,"+yPos);
-           // //alert(e.pageX+",,,"+e.pageY);
-
-
-            
-           
-            // if (block!== 88) {
-            //  hoola = 1;
-            //     if (blockOldImage === null) {
-            //         imageBlockList[index].x = block.x;
-            //         imageBlockList[index].y = block.y;
-            //     }
-            //     else{
-            //       alert("yammaa");
-            //     }
-            // }
-            // if (block === 88){
-            //    hoola =2;
-            
-            //   // alert(selectedBlock.x+"....."+selectedBlock.y);
-            //   //go back to sqaure zero
-            //   if(seeka === 0){
-            //  seekax = 620-150;
-            //  seekay = 5;  
-            // }
-            //    if(seeka === 1){
-            // seekax = 925-210;
-            // seekay = 170;  
-            // }
-            //    if(seeka === 3){
-            //  seekax = 620-150;
-            //  seekay = 170;  
-            // }
-            //    if(seeka === 2){
-            //  seekax= 925-210;
-            //  seekay = 5;  
-            // }
-       
-            // imageBlockList[index].x = seekax;
-            // imageBlockList[index].y = seekay;
-            // // DrawGame();
-           
-
-
-            // }
-            // alert(hoola);
 
 
 
@@ -1167,22 +1107,4 @@ function SetImageBlock() {
     </table>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
