@@ -361,8 +361,9 @@ if(puzzleLevel ===5){
    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg" ;}
    
 //handling the three puzzle
+puzzleletter =2;
 
-    if( puzzleLevel < 3){
+    if(puzzleLevel < 3){
 
    document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1.jpg" ;
    document.getElementById("img2").src= "/assets/puzzle/l"+puzzleletter+"/2.jpg" ;
@@ -1085,11 +1086,11 @@ function SetImageBlock() {
                          
                         <img id="img0" width="130" height="130" style="position: absolute; top: 470px; left: 325px;"></img>
 
-                      <img id="img1" width="80" height="80" onclick="LoadNewImage(this.id);" style="position: absolute; top: 495px; left: 574px;"></img>
+                      <img id="img1" width="80" height="80" src="/assets/puzzle/l2/1.jpg"onclick="LoadNewImage(this.id);" style="position: absolute; top: 495px; left: 574px;"></img>
 
-                        <img id="img2" width="80" height="80"  onclick="LoadNewImage(this.id);"  style="position: absolute; top: 495px; left: 671px;"></img>
+                        <img id="img2" width="80" height="80" src="/assets/puzzle/l2/2.jpg" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 495px; left: 671px;"></img>
 
-                     <img id="img3" width="80" height="80" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 495px; left: 773px;"></img>
+                     <img id="img3" width="80" height="80" src="/assets/puzzle/l2/3.jpg" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 495px; left: 773px;"></img>
 
 
 
