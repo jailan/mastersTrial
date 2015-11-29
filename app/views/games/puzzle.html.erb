@@ -776,7 +776,7 @@ function SetImageBlock() {
              var hoola =0;
 
 
-            if (block) {
+            if (block !== 88) {
              hoola = 1;
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
@@ -786,7 +786,7 @@ function SetImageBlock() {
                 //   alert("yammaa");
                 // }
             }
-            else{
+            if (block === 88){
                hoola =2;
             
               // alert(selectedBlock.x+"....."+selectedBlock.y);
@@ -820,7 +820,7 @@ function SetImageBlock() {
             imageBlockList[index].isSelected = false;
             selectedBlock = null;
             DrawGame();
-            
+
       for (var m = 0; m < TOTAL_PIECES; m++) {
 
             var img = imageBlockList[m];
@@ -962,7 +962,7 @@ function SetImageBlock() {
             }
         }
 
-        return null;
+        return 88;
     }
 
     function sendStage(n){
