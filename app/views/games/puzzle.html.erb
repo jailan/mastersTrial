@@ -762,25 +762,14 @@ function SetImageBlock() {
 
              //alert(xPos+" ... "+yPos);
  });
-        if (selectedBlock) {
+        
+            setTimeout(function(){
+              if (selectedBlock) {
               if (flagsCorrecta[selectedBlock.no] === 0) {
             var index = selectedBlock.no;
-            setTimeout(function(){
                 var block = GetImageBlock(blockList,xPos, yPos);
-           //var block = GetImageBlock(blockList,e.pageX, e.pageY);
-            //alert(block);
            alert(xPos+",,,"+yPos);
-    //do what you need here
-}, 5000);
-            
-           //  var block = GetImageBlock(blockList,xPos, yPos);
-           // //var block = GetImageBlock(blockList,e.pageX, e.pageY);
-           //  //alert(block);
-           // alert(xPos+",,,"+yPos);
-           // //alert(e.pageX+",,,"+e.pageY);
-
-
-            var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
+           var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
              var seeka = selectedBlock.no;
              var seekax;
              var seekay;
@@ -827,8 +816,23 @@ function SetImageBlock() {
 
             }
             alert(hoola);
+            
+            imageBlockList[index].isSelected = false;
+            selectedBlock = null;
+            DrawGame();
 
              
+  
+}, 1000);
+            
+           //  var block = GetImageBlock(blockList,xPos, yPos);
+           // //var block = GetImageBlock(blockList,e.pageX, e.pageY);
+           //  //alert(block);
+           // alert(xPos+",,,"+yPos);
+           // //alert(e.pageX+",,,"+e.pageY);
+
+
+            
            
             // if (block!== 88) {
             //  hoola = 1;
@@ -872,9 +876,6 @@ function SetImageBlock() {
             // alert(hoola);
 
 
-            imageBlockList[index].isSelected = false;
-            selectedBlock = null;
-            DrawGame();
 
       for (var m = 0; m < TOTAL_PIECES; m++) {
 
