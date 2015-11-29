@@ -816,10 +816,36 @@ function SetImageBlock() {
 
             }
             alert(hoola);
-            
+
             imageBlockList[index].isSelected = false;
             selectedBlock = null;
             DrawGame();
+            
+      for (var m = 0; m < TOTAL_PIECES; m++) {
+
+            var img = imageBlockList[m];
+            var block = blockList[m];
+
+            if (
+                (img.x == block.x) &&
+                (img.y == block.y) &&
+                (flagsCorrecta[m] === 0)
+                ) {
+
+                flagsCorrecta[m]=1;
+              alert(flagsCorrecta);
+                audioElementCorrect.play(); 
+            }
+
+        }
+            if (isFinished()) {
+                setTimeout(function(){UpdateSubStage();}, 2000);
+                setTimeout(function(){LoadNewImage();}, 3000);
+                OnFinished();            
+            }
+          }
+
+        }
 
              
   
@@ -877,31 +903,6 @@ function SetImageBlock() {
 
 
 
-      for (var m = 0; m < TOTAL_PIECES; m++) {
-
-            var img = imageBlockList[m];
-            var block = blockList[m];
-
-            if (
-                (img.x == block.x) &&
-                (img.y == block.y) &&
-                (flagsCorrecta[m] === 0)
-                ) {
-
-                flagsCorrecta[m]=1;
-              alert(flagsCorrecta);
-                audioElementCorrect.play(); 
-            }
-
-        }
-            if (isFinished()) {
-                setTimeout(function(){UpdateSubStage();}, 2000);
-                setTimeout(function(){LoadNewImage();}, 3000);
-                OnFinished();            
-            }
-          }
-
-        }
     }
 
     function handleOnMouseMove(e) {
