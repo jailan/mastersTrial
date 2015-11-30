@@ -404,7 +404,7 @@ div.img {
     var order=0;
     var flags=[10,10,10];
     var shootletter = $('.temp_information').data('temp'); 
-var yalla = $('.temp_information').data('stagy'); 
+    var yalla = $('.temp_information').data('stagy'); 
 
     var shootstagy = yalla;
     var shootstage = setStagy(shootstagy);
@@ -778,10 +778,37 @@ spriteMap =  [
 		resizeCanvas();
 		loadSprite();
 		createThings();
+		initTouch();
 
 
 
 	}
+
+	function touchHandler(event) {
+    var touch = event.originalEvent.changedTouches[0];
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup",
+        touchcancel: "mouseout"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function initTouch() {
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);
+
+
+}
 
 	function speak(word){
 var msg = new SpeechSynthesisUtterance();
@@ -996,7 +1023,7 @@ else{
 
 }
 else{ // IN CASE OF STAGE 5
-		cvx.drawImage(frames,135+10,280,100,100);
+	cvx.drawImage(frames,135+10,280,100,100);
 	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'d.jpg';
 	cvx.drawImage(targetshoot,140+10,285,90,90);
