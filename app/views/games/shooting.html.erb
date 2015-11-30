@@ -482,7 +482,9 @@ div.img {
 
     		if(this.erratic) {
     			this.direction = Math.floor((Math.random()*359));
-    			this.speed = Math.floor((Math.random()*10) + 5);
+    			//this.speed = Math.floor((Math.random()*10)+5);
+    			this.speed = 8;
+
     		}
     	}
     };
@@ -778,7 +780,7 @@ spriteMap =  [
 		resizeCanvas();
 		loadSprite();
 		createThings();
-		initTouch();
+	
 
 
 
@@ -954,7 +956,10 @@ function start() {
 
 
 	for(i = 0; i < sprites.length; i++) {
-		sprites[i].draw(ctx, sprite).move();
+		if (i===3)
+	   {sprites[i].draw(ctx, sprite).move();}
+	 else{
+		sprites[i].draw(ctx, sprite);}
 		sprites[i].checkBoundaryCollision(); 
 		sprites[i].correctXY();
 
@@ -1195,6 +1200,7 @@ sendStage(7);
 	window.onload = function() {
 		init();
 		start();
+		initTouch();
 	   //new Audio('background-music.wav').play();
 	};
 
