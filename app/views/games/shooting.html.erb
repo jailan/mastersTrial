@@ -776,13 +776,12 @@ spriteMap =  [
 		canvaso = document.getElementById('score');
 		cvx = canvaso.getContext('2d');
 		canvas.onmousemove = moveTarget;
+	  //canvas.ontouchmove = moveTarget;
 		canvas.onclick = fire;
+		//canvas.ontouch = fire ;
 		resizeCanvas();
 		loadSprite();
 		createThings();
-	
-
-
 
 	}
 
