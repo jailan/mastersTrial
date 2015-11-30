@@ -417,16 +417,16 @@ div.img {
 
 
 
-    // window.requestAnimFrame = (function() {
-    // 	return window.requestAnimationFrame ||
-    // 	window.webkitRequestAnimationFrame ||
-    // 	window.mozRequestAnimationFrame ||
-    // 	window.oRequestAnimationFrame ||
-    // 	window.msRequestAnimationFrame ||
-    // 	function(callback) {
-    // 		window.setTimeout(callback, 1000 / 60);
-    // 	};
-    // })();
+    window.requestAnimFrame = (function() {
+    	return window.requestAnimationFrame ||
+    	window.webkitRequestAnimationFrame ||
+    	window.mozRequestAnimationFrame ||
+    	window.oRequestAnimationFrame ||
+    	window.msRequestAnimationFrame ||
+    	function(callback) {
+    		window.setTimeout(callback, 1000 / 60);
+    	};
+    })();
     
     function Thing(mapX, mapY, x, y, canvas, letter) {
     	this.letter=letter;
@@ -776,7 +776,7 @@ spriteMap =  [
 		canvaso = document.getElementById('score');
 		cvx = canvaso.getContext('2d');
 		canvas.onmousemove = moveTarget;
-	  //canvas.ontouchmove = moveTarget;
+	  canvas.ontouchmove = moveTarget;
 		canvas.onclick = fire;
 		//canvas.ontouch = fire ;
 		resizeCanvas();
