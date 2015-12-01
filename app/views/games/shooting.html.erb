@@ -584,10 +584,10 @@ Explosion.prototype.checkHits = function(things) {
 
 	for(i = 0; i < things.length; i++) {
 
-		if(centreX > things[i].getX() &&
-			centreX < things[i].getX() + things[i].getWidth() &&
-			centreY > things[i].getY() &&
-			centreY < things[i].getY() + things[i].getHeight() &&
+		if(centreX -50> things[i].getX() &&
+			centreX -50< things[i].getX() + things[i].getWidth() &&
+			centreY -50> things[i].getY() &&
+			centreY -50< things[i].getY() + things[i].getHeight() &&
 			things[i].getHit() === false) {
 
 			things[i].setHit();
@@ -608,7 +608,7 @@ Explosion.prototype.checkHits = function(things) {
 		    	if(correctShots==3){
 		    		done =1;
 		    		new Audio('/assets/Audio/applause.mp3').play();
-		    		setTimeout(function(){ UpdateShootStage(); }, 5000);
+		    		setTimeout(function(){ UpdateShootStage(); }, 2000);
 		    		
 		    	}
 		}
@@ -660,7 +660,7 @@ Explosion.prototype.draw = function(ctx, explosion) {
 		//Draw explostion
 		ctx.drawImage(explosion, ((this.explosionFrame % 10) -1) * 65, 0,
 			65, 65, 
-			this.x - 100, this.y - 90, 
+			this.x - 100-50, this.y - 90-50, 
 			this.width, this.height);
 
 	}
