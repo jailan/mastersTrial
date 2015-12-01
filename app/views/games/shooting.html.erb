@@ -461,35 +461,35 @@ div.img {
     	return this;
     };
 
-    //Thing.prototype.move = function() {
+    Thing.prototype.move = function() {
 
-    	//var delta = 0.2;
+    	var delta = 0.2;
 
-    	// this.x += Math.cos(this.toRad(this.direction)) * delta * this.speed;
-    	// this.y -= Math.sin(this.toRad(this.direction)) * delta * this.speed;
+    	this.x += Math.cos(this.toRad(this.direction)) * delta * this.speed;
+    	this.y -= Math.sin(this.toRad(this.direction)) * delta * this.speed;
 
-    //	this.direction+= this.gravitationalPull;
+    	this.direction+= this.gravitationalPull;
 
-    	// if(this.direction < 0) {
-    	// 	this.direction += 360;
-    	// } else if(this.direction > 360) {
-    	// 	this.direction -= 360;
-    	// }
+    	if(this.direction < 0) {
+    		this.direction += 360;
+    	} else if(this.direction > 360) {
+    		this.direction -= 360;
+    	}
 
-    	//this.tick++;
+    	this.tick++;
 
-    	// if(this.tick > this.changeAt) {
-    	// 	this.tick = 0;
-    	// 	this.gravitationalPull = Math.floor((Math.random()*6));
+    	if(this.tick > this.changeAt) {
+    		this.tick = 0;
+    		this.gravitationalPull = Math.floor((Math.random()*6));
 
-    	// 	if(this.erratic) {
-    	// 		this.direction = Math.floor((Math.random()*359));
-    	// 		//this.speed = Math.floor((Math.random()*10)+5);
-    	// 		this.speed = 8;
+    		if(this.erratic) {
+    			this.direction = Math.floor((Math.random()*359));
+    			//this.speed = Math.floor((Math.random()*10)+5);
+    			this.speed = 8;
 
-    	// 	}
-    	// }
-    //};
+    		}
+    	}
+    };
 
     Thing.prototype.toRad = function(v) {
     	return v * Math.PI / 180;
@@ -957,10 +957,10 @@ function start(){
 	for(i = 0; i < sprites.length; i++) {
 		// if (i===3)
 	 //   {
-	 	sprites[i].draw(ctx, sprite);
+	 //	sprites[i].draw(ctx, sprite);
 	 	//}
 	 // else{
-		// sprites[i].draw(ctx, sprite).move();}
+		 sprites[i].draw(ctx, sprite).move();
 		sprites[i].checkBoundaryCollision(); 
 		sprites[i].correctXY();
 
