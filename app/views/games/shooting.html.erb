@@ -417,16 +417,16 @@ div.img {
 
 
 
-    window.requestAnimFrame = (function() {
-    	return window.requestAnimationFrame ||
-    	window.webkitRequestAnimationFrame ||
-    	window.mozRequestAnimationFrame ||
-    	window.oRequestAnimationFrame ||
-    	window.msRequestAnimationFrame ||
-    	function(callback) {
-    		window.setTimeout(callback, 1000 / 60);
-    	};
-    })();
+    // window.requestAnimFrame = (function() {
+    // 	return window.requestAnimationFrame ||
+    // 	window.webkitRequestAnimationFrame ||
+    // 	window.mozRequestAnimationFrame ||
+    // 	window.oRequestAnimationFrame ||
+    // 	window.msRequestAnimationFrame ||
+    // 	function(callback) {
+    // 		window.setTimeout(callback, 1000 / 60);
+    // 	};
+    // })();
     
     function Thing(mapX, mapY, x, y, canvas, letter) {
     	this.letter=letter;
@@ -905,14 +905,14 @@ for(i = 0; i <flags.length; i++) {
 	var targetShotCorrectly =new Image();
 	if (shootstage ===5){
 		targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'p.png';
-		 	cvx.drawImage(targetShotCorrectly,160,403,70,70);
+		 	cvx.drawImage(targetShotCorrectly,160-60,403-200,70,70);
 	}
 	else if(shootstage ===2 || shootstage ===2 ){
 	targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'w.png';
- 	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100),403,70,70);}
+ 	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100)-60,403-200,70,70);}
 	else{
 		targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'p.png';
-		 	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100),403,70,70);
+		 	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100)-60,403-200,70,70);
 	}
 
 	//cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,m,420,90,60);
@@ -998,50 +998,50 @@ cvx.fillStyle = " #000033";
 
 cvx.font = "bold 16pt Arial";
 
-cvx.fillText("Shots: " + shots ,180,30-10);
-cvx.fillText("Hits: " + hits ,180,70-10);
-cvx.fillStyle ="#5200A3";
-cvx.fillText("Correct Shots: " +  correctShots ,180,110-10);
-cvx.fillStyle ="orangered";
-cvx.fillText("Wrong Shots: " +  wrongShots ,180,150-10);
-cvx.fillStyle = " #000033";
-cvx.fillText("Accuracy: " + accuracy ,180,190-10);
-cvx.drawImage(targetLetter,15-15,53-10,110,110);
-cvx.drawImage(frame,0,38,115,115);
+// cvx.fillText("Shots: " + shots ,180,30-10);
+// cvx.fillText("Hits: " + hits ,180,70-10);
+// cvx.fillStyle ="#5200A3";
+// cvx.fillText("Correct Shots: " +  correctShots ,180,110-10);
+// cvx.fillStyle ="orangered";
+// cvx.fillText("Wrong Shots: " +  wrongShots ,180,150-10);
+// cvx.fillStyle = " #000033";
+// cvx.fillText("Accuracy: " + accuracy ,180,190-10);
+// cvx.drawImage(targetLetter,15-15,53-10,110,110);
+// cvx.drawImage(frame,0,38,115,115);
 var d = 260;
 if (shootstage === 1 || shootstage===2 ){
 for (t=0;t<3;t++){
-	cvx.drawImage(frames,d,280,80,80);
+	cvx.drawImage(frames,d-60,280-200,80,80);
 	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+(t+1)+'.jpg';
-	cvx.drawImage(targetshoot,d+5,285,70,70);
+	cvx.drawImage(targetshoot,d+5-60,285-200,70,70);
 	d-=100;
 }}
 
 else{ 
 	if (shootstage === 3 || shootstage=== 4){
 
-	cvx.drawImage(frames,135+10,280,100,100);
+	cvx.drawImage(frames,135+10-60,280-200,100,100);
 	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/letterba2.jpg';
-	cvx.drawImage(targetshoot,140+10,285,90,90);
+	cvx.drawImage(targetshoot,140+10-60,285-200,90,90);
 
 
 }
 else{ // IN CASE OF STAGE 5
-	cvx.drawImage(frames,135+10,280,100,100);
+	cvx.drawImage(frames,135+10-60,280-200,100,100);
 	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'d.jpg';
-	cvx.drawImage(targetshoot,140+10,285,90,90);
+	cvx.drawImage(targetshoot,140+10-60,285-200,90,90);
 }
 }
 if(shootstage === 5){
-		cvx.drawImage(frames,160,400,80,80);
+		cvx.drawImage(frames,160-60,400-200,80,80);
 }
 else{
 var f = 260;
 for (t=0;t<3;t++){
-	cvx.drawImage(frames,f,400,80,80);
+	cvx.drawImage(frames,f-60,400-200,80,80);
 	f-=100;
 }}
 if(done>0){
