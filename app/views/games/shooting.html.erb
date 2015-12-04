@@ -942,8 +942,6 @@ function resetBoardFinal(){
 	}
 }
 
-	var targetshoot= new Image();
-
 
 function start(){
 
@@ -1010,7 +1008,7 @@ var d = 260;
 if (shootstage === 1 || shootstage===2 ){
 for (t=0;t<3;t++){
 	cvx.drawImage(frames,d-60,280-200,80,80);
-
+	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+(t+1)+'.jpg';
 	cvx.drawImage(targetshoot,d+5-60,285-200,70,70);
 	d-=100;
@@ -1020,7 +1018,7 @@ else{
 	if (shootstage === 3 || shootstage=== 4){
 
 	cvx.drawImage(frames,135+10-60,280-200,100,100);
-
+	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/letterba2.jpg';
 	cvx.drawImage(targetshoot,140+10-60,285-200,90,90);
 
@@ -1028,7 +1026,7 @@ else{
 }
 else{ // IN CASE OF STAGE 5
 	cvx.drawImage(frames,135+10-60,280-200,100,100);
-
+	targetshoot= new Image();
 	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'d.jpg';
 	cvx.drawImage(targetshoot,140+10-60,285-200,90,90);
 }
