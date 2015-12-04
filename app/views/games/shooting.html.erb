@@ -396,7 +396,7 @@ div.img {
     <script>
 
     var targetX = 0, targetY = 0, shots = 0, hits = 0, accuracy = 0, correctShots=0,
-    wrongShots=0, n=0, frames;
+    wrongShots=0, n=0, frames, targetshoot1, targetshoot2, targetshoot3, targetshoot4, targetshoot5a, targetshoot5b, targetshoot5c;
     var order=0;
     var flags=[10,10,10];
     var shootletter = $('.temp_information').data('temp'); 
@@ -708,7 +708,26 @@ sprite.src = '/assets/shooting/l'+shootletter+'/spritewords'+shootstage+'.png';
 	frames = new Image();
 	frames.src = '/assets/shooting/frames.png';
 
+targetshoot1= new Image();
+	targetshoot1.src = '/assets/shooting/l2/1.jpg';
 
+targetshoot2= new Image();
+	targetshoot2.src = '/assets/shooting/l2/2.jpg';
+
+targetshoot3= new Image();
+	targetshoot3.src = '/assets/shooting/l2/3.jpg';
+
+	targetshoot4= new Image();
+	targetshoot4.src = '/assets/shooting/l2/letterba2.jpg';
+
+	 targetshoot5a= new Image();
+	targetshoot5a.src = '/assets/shooting/l2/1d.jpg';
+
+ targetshoot5b= new Image();
+	targetshoot5b.src = '/assets/shooting/l2/2d.jpg';
+
+	 targetshoot5c= new Image();
+	targetshoot5c.src = '/assets/shooting/l2/3d.jpg';
 
 }
 
@@ -1008,9 +1027,8 @@ var d = 260;
 if (shootstage === 1 || shootstage===2 ){
 for (t=0;t<3;t++){
 	cvx.drawImage(frames,d-60,280-200,80,80);
-	targetshoot= new Image();
-	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+(t+1)+'.jpg';
-	cvx.drawImage(targetshoot,d+5-60,285-200,70,70);
+
+	cvx.drawImage(targetshoot1,d+5-60,285-200,70,70);
 	d-=100;
 }}
 
@@ -1018,17 +1036,13 @@ else{
 	if (shootstage === 3 || shootstage=== 4){
 
 	cvx.drawImage(frames,135+10-60,280-200,100,100);
-	targetshoot= new Image();
-	targetshoot.src = '/assets/shooting/l'+shootletter+'/letterba2.jpg';
-	cvx.drawImage(targetshoot,140+10-60,285-200,90,90);
+	cvx.drawImage(targetshoot4,140+10-60,285-200,90,90);
 
 
 }
 else{ // IN CASE OF STAGE 5
 	cvx.drawImage(frames,135+10-60,280-200,100,100);
-	targetshoot= new Image();
-	targetshoot.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'d.jpg';
-	cvx.drawImage(targetshoot,140+10-60,285-200,90,90);
+	cvx.drawImage(targetshoot5a,140+10-60,285-200,90,90);
 }
 }
 if(shootstage === 5){
@@ -1125,8 +1139,8 @@ function UpdateShootStage(){
 				shootstagy = 1;
 
 	}
-	//window.location.reload()
-				sendStage(shootstagy);
+	  //window.location.reload()
+		sendStage(shootstagy);
 		yalla= $('.temp_information').data('stagy');
 		location.reload();
 		alert(shootstagy +"...."+shootsubstage5);
