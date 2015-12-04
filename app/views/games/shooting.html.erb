@@ -19,7 +19,7 @@
 	}#home{
     position:absolute;
     top:100px;
-    left:800px;
+    margin-left:800px;
 
 }
 
@@ -35,7 +35,7 @@
 		/*background-color: 	#A30052;*/
 		border: 3px solid #99CC00;
 		background-image: url("/assets/shooting/rainbowopacity.png");
-		background-size: 650px 400px;
+		background-size: 500px 400px;
 		background-repeat: no-repeat;
 
 	}
@@ -55,6 +55,7 @@
   font-size: 13px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+
 }
 
 .btnBlue:hover {
@@ -275,7 +276,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #level2{
 
@@ -285,7 +286,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #level3{
 
@@ -295,7 +296,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #level4{
 
@@ -305,7 +306,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #level5{
 
@@ -315,7 +316,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #level5a{
 
@@ -325,7 +326,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #level5b{
 
@@ -335,7 +336,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 
 }
 #level5c{
@@ -346,7 +347,7 @@
 		position:relative;
 		transition: .5s ease;
 		top: 432px;
-		left: 300px;
+		left: 20px;
 }
 #score {
 	position:relative;
@@ -355,14 +356,10 @@
 
 	font-size: 20px;
 	color: #a67900;
-	margin-left: 800px;
-
-
+	margin-left: 520px;
 
 
 }
-
-
 
 div.img {
 	margin: 5px;
@@ -377,9 +374,7 @@ div.img {
 </style>
 
 <body>
-<canvas id="canvas" width="650" height="400"> </canvas>
-<a  href='#' class="button orange" id="startGameButton" onclick="window.location.reload()">New Game</a>
-
+<canvas id="canvas" width="450" height="400"> </canvas>
 
 	  <a  href='#' class="btnBlue" id="level1">1</a>
     <a  href='#' class="btnGreen" id="level2">2</a>
@@ -388,6 +383,7 @@ div.img {
     <a  href='#' class="btnRed" id="level5a">5a</a> 
     <a  href='#' class="btnRed" id="level5b">5b</a> 
     <a  href='#' class="btnRed" id="level5c">5c</a> 
+
 
 
 <canvas id="score" width="400" height="600"></canvas>
@@ -887,10 +883,10 @@ ctx.font = "bold 24pt Arial";
 //cvx.fillText("YOU WON !",130,230);
 totalScore = correctShots*10 - wrongShots*2; 
 
-ctx.fillText("YOU WON !",240,240);
+ctx.fillText("YOU WON !",160,240);
 ctx.font = "bold 20pt Arial";
 ctx.fillStyle ="orangered";
-ctx.fillText("Score: "+totalScore,253,280);
+ctx.fillText("Score: "+totalScore,253-50,280);
  //cancelAnimationFrame();
 }
 
@@ -1055,8 +1051,7 @@ if(done>0){
 	    	70, 70);
 
 	   }
-// 	  // start();
-//setInterval(start, 10);
+
 
 
   requestAnimFrame(start);
@@ -1071,7 +1066,7 @@ if(done>0){
 
 	   //ctx.canvas.width = window.innerWidth;
 	  // ctx.canvas.height = window.innerHeight;
-	  ctx.canvas.width = 650;
+	  ctx.canvas.width = 500;
 	  ctx.canvas.height = 400;
 	}
 
