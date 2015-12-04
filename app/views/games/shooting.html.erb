@@ -1116,19 +1116,20 @@ chooseShootStage(stageNo);
 
 function UpdateShootStage(){
 	
-	if (shootstagy<6){
+	if (shootstagy < 8){
 		shootstagy++;
 
 
 	}
 	else{
-				shootstagy=1;
+				shootstagy = 1;
 
 	}
 	//window.location.reload()
 				sendStage(shootstagy);
 		yalla= $('.temp_information').data('stagy');
 		location.reload();
+		alert(shootstagy +"...."+shootsubstage5);
 }
 	function setsubStage(){
 		if(shootstagy === 5)
