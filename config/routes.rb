@@ -69,6 +69,7 @@ Rails.application.routes.draw do
   get 'games/games_puzzle_path' => 'games#puzzlelink'
   get 'games/games_drag_path' => 'games#draglink'
   get 'games/games_preschooler_path' => 'games#preschoolerlink'
+    get 'games/games_collect_path' => 'games#collectlink'
 
 
   resources :users

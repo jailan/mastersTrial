@@ -8,18 +8,19 @@ and open the template in the editor.
 
 	
 
-<%= button_to "Flipping Cards", games_collect_path, {:class => "button fuschia", :id => "match"} %>
-<%= button_to "Maze", games_collect_path, {:class => "button fuschia", :id => "maze"} %>
-<%= button_to "Hangman", games_collect_path, {:class => "button orange", :id => "hang"} %>
-<%= button_to "Shooting", games_collect_path, {:class => "button orange", :id => "shoot"} %>
-<%= button_to "Puzzle", games_collect_path, {:class => "button fuschia", :id => "puzzle"} %>
-<%= button_to "Drag and Drop ", games_collect_path, {:class => "button fuschia", :id => "drag"} %>
-<%= button_to "Letter Paint", games_collect_path, {:class => "button orange", :id => "paint"} %>
-<%= button_to "Animals", games_collect_path, {:class => "button orange", :id => "preschooler"} %>
 
-<%= content_tag :div, class: "temp_information", data: {temp: @tempo} do %>
-<% end %>
+ <a  href='#' class="button fuschia" id="match">Memory</a> 
+ <a  href='#' class="button fuschia" id="maze">Maze</a> 
+ <a  href='#' class="button orange" id="hang">Hangman</a> 
+ <a  href='#' class="button orange" id="shoot">Shooting</a> 
+ <a  href='#' class="button fuschia" id="puzzle">Puzzle</a> 
+ <a  href='#' class="button fuschia" id="drag">Drag n' Drop</a> 
+ <a  href='#' class="button orange" id="paint">Painting</a> 
+ <a  href='#' class="button orange" id="preschooler">Animals</a> 
 
+
+    <%= content_tag :div, class: "temp_information", data: {temp:@tempo} do %>
+    <% end %>
 
 <style>
 @charset "UTF-8";
@@ -155,6 +156,7 @@ h1 {
 
 <body>
 <script>
+var mygamez = 99;
 
 
      function changeLevel(fieldClicked) {
@@ -164,12 +166,16 @@ h1 {
         contentType: 'application/json; charset=UTF-8',
         accept: 'application/json',
         dataType: 'json',
-        data: {level:fieldClicked}
+        data: {mygame:fieldClicked}
     
     });
 
 
 };
+
+function changelevvo(n){
+    mygamez = n;
+}
 
 
 //changeLevel(6);
@@ -188,54 +194,67 @@ $('#content').html(count);
 });
 });*/
 
-$(document).ready(function() {
+
 
   $("#hang").click(function() {
     changeLevel(0);
+
+    window.open('games_collect_path', "_self");
+
       
 });
-    });
-$(document).ready(function() {
+  
+
   $("#shoot").click(function() {
     changeLevel(1);
+      window.open('games_collect_path', "_self");
+
+
+    // var countoz= $('.temp_information').data('temp');
+    // alert(countoz);
 });
-    });
-$(document).ready(function() {
+   
+
+
   $("#match").click(function() {
     changeLevel(2);
+    window.open('games_collect_path', "_self");
 
   });
-    });
-  $(document).ready(function() {
+
+
 
   $("#maze").click(function() {
     changeLevel(3);
+    window.open('games_collect_path', "_self");
 }); 
-    });
 
-$(document).ready(function() {
+
+
   $("#paint").click(function() {
     changeLevel(4);
+    window.open('games_collect_path', "_self");
 }); 
-    });
-$(document).ready(function() {
+
+
   $("#puzzle").click(function() {
     changeLevel(5);
+    window.open('games_collect_path', "_self");
 }); 
-    });
+ 
 
-$(document).ready(function() {
   $("#drag").click(function() {
     changeLevel(6);
+     window.open('games_collect_path', "_self");
  
   });
-    });
-$(document).ready(function() {
+
   $("#preschooler").click(function() {
     changeLevel(7);
+     window.open('games_collect_path', "_self");
 });  
 
-  });
+
 
 
 </script>

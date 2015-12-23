@@ -26,6 +26,9 @@ $mydragstage = 3
     redirect_to games_drag_path
   end 
 
+    def collectlink
+    redirect_to games_collect_path
+  end 
   def preschoolerlink
     redirect_to games_preschooler_path
   end 
@@ -72,15 +75,16 @@ $mydragstage = 3
   end
 
   def collect
-    @temphome =  $mygame
+    @temphome = $mygame
     $letterz = request.filtered_parameters
     $letter = $letterz['letter']
+   
   end
 
     def home
 
     $gamez = request.filtered_parameters
-    $mygame = $gamez['level']
+    $mygame = $gamez['mygame']
     @tempo =  $mygame
 
 

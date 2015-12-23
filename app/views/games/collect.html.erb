@@ -1,7 +1,11 @@
 <!doctype html> 
 <html lang="en"> 
 <head> 
-	<meta charset="UTF-8" />
+
+ <%= content_tag :div, class: "temp_information", data: {temp: @temphome} do %>
+<% end %>
+
+  <meta charset="UTF-8" />
 
 <div id="dialogoverlay"></div>
 <div id="dialogbox">
@@ -46,11 +50,6 @@
 
 
 </ul>
-
-
-
-<%= content_tag :div, class: "temp_information", data: {temp: @temphome} do %>
-<% end %>
 	<script type="text/javascript" src="/assets/pjs/phaser.min.js"></script>
     <style type="text/css">
 
@@ -288,7 +287,8 @@ function CustomAlert(){
         document.getElementById('dialogoverlay').style.display = "none";
         disable = 0;
         gamzo = $('.temp_information').data('temp'); 
-        link ='balala';
+          //setTimeout(function(){link ='balala';}, 3000);
+   link ='balala';
     
         switch (gamzo) {
     case 0:
@@ -316,8 +316,10 @@ function CustomAlert(){
         link = 'games_preschooler_path';
         break;                   
 }
-    // alert(gamzo+" ");
-     window.open(link, "_self"); //**********ALEEH EL 3EEN**********
+     
+  //setTimeout(function(){ window.open(link, "_self"); }, 3000);
+  window.open(link, "_self");
+     //**********ALEEH EL 3EEN**********
    //alert("game : "+gamzo+"  Link: "+link);
         //$.get('hangman', function(data) {});
 
