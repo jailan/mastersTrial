@@ -151,7 +151,7 @@ function changeDragStage(n){
 $(document).ready(function() {
     $('#level1').click(function() {
     changeDragStage(1);
-    alert(dragstage);
+    //alert(dragstage);
   });
     $('#level2').click(function() {
     changeDragStage(2);

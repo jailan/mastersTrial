@@ -2,12 +2,23 @@
 <html>
 
 <head>
+      <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="css/hawaz.css" />
+    <link href="/assets/fire/fireworks.css" rel="stylesheet">
 
     <%= content_tag :div, class: "temp_information", data: {temp: @temppuzzle} do %>
 <% end %>
 <style>
 body{
-background-image: url("/assets/paper.jpg");
+background-color: #333;
+background-image: url("/assets/rsz_background2.png");
+background-size: cover;
 
     } 
         .button {
@@ -39,6 +50,7 @@ background-image: url("/assets/paper.jpg");
         background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
         background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
         filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+        border-radius : 100%;
     }
     .orange:hover {
         background: #f47c20;
@@ -193,8 +205,91 @@ background-image: url("/assets/paper.jpg");
   background-image: linear-gradient(to bottom, #c70000, #ff4929);
   text-decoration: none;
 }
+#level1,#level2,#level3, #level4, #level5{
+  top: 500px; position:relative;
+  left: 445px;
+}
+.footer{
+  top: 600px;
+  position: relative;
+}
+
+.round-button {
+  width:25%;
+}
+.round-button-circle {
+  width: 100%;
+  height:0;
+  padding-bottom: 100%;
+    border-radius: 50%;
+  border:10px solid #cfdcec;
+    overflow:hidden;
+    
+    background: #4679BD; 
+    box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+  background:#30588e;
+}
+.round-button a {
+    display:block;
+  float:left;
+  width:100%;
+  padding-top:50%;
+    padding-bottom:50%;
+  line-height:1em;
+  margin-top:-0.5em;
+    
+  text-align:center;
+  color:#e2eaf3;
+    font-family:Verdana;
+    font-size:1.2em;
+    font-weight:bold;
+    text-decoration:none;
+}
+#peekz{
+
+position: relative;
+float:right;
+    bottom: 20px;
+margin-right: 300px;
+    font-size: 5.5em;
+    cursor: pointer;
+    /* color:#00a*/
+   
+    display: block;
+
+}
+
+
+
+
+  @media screen and (max-width:1024px) { 
+     body {background-image: url('/assets/background2.png');
+  background-size: cover;}
+  #peekz{
+
+position: relative;
+float:right;
+    bottom: 20px;
+margin-right: 100px;
+    font-size: 5.5em;
+    cursor: pointer;
+    /* color:#00a*/
+   
+    display: block;
+
+}
+  }
+
 </style>
- 
+
+  <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+      <script src="/assets/fire/requestanimframe.js"></script>
+  <script src="/assets/fire/fireworks.js"></script>
     <script type="text/javascript">
         var game = null;
         var imageID;
@@ -205,6 +300,15 @@ background-image: url("/assets/paper.jpg");
         var puzzleSubLevel;
         var xPos=0;
         var yPos=0;
+        var jo = 0 ; 
+        var scoreBar = 0;
+        var barPercentage =0;
+        var lettoz=0;
+       
+
+//         document.ontouchmove = function(event){
+//     event.preventDefault();
+// }
  //             $(document).on('touchend',function(e) {
  //            xPos = e.originalEvent.touches[0].pageX;
  //            yPos = e.originalEvent.touches[0].pageY;
@@ -222,11 +326,62 @@ background-image: url("/assets/paper.jpg");
 
 
         function InitGame(level, sublevel) {
+          changeImage();
           puzzleLevel = level;
           puzzleSubLevel = sublevel;
-          LoadNewImage(imageID);
+          setTimeout(function(){ LoadNewImage(imageID); }, 1000);
+          setTimeout(function(){ changeImage(); }, 1000);
+         // LoadNewImage(imageID);
+
+        
           initTouch();
+           
         }
+
+ function changeImage() {
+//puzzleletter =26;
+puzzleletter = $('.temp_information').data('temp'); 
+var image1 = document.getElementById('img1');
+var image2 = document.getElementById('img2');
+var image3 = document.getElementById('img3');
+//image1.src= "/assets/puzzle/arrow2.png";
+
+   // image1.src= "/assets/puzzle/l"+puzzleletter+"/1d.jpg" ;
+   // image2.src= "/assets/puzzle/l"+puzzleletter+"/2d.jpg" ;
+   // image3.src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
+
+
+//    
+//puzzleletter =2;
+ lettoz = puzzleletter;
+//document.getElementById("img1").src= "/assets/puzzle/arrow2.png";
+    if(puzzleLevel < 3){
+
+   image1.src= "/assets/puzzle/l"+puzzleletter+"/1.jpg" ;
+   image2.src= "/assets/puzzle/l"+puzzleletter+"/2.jpg" ;
+   image3.src= "/assets/puzzle/l"+puzzleletter+"/3.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+}
+
+if (puzzleLevel === 3 || puzzleLevel === 5){
+
+   image1.src= "/assets/puzzle/l"+puzzleletter+"/1p.jpg" ;
+   image2.src= "/assets/puzzle/l"+puzzleletter+"/2p.jpg" ;
+   image3.src= "/assets/puzzle/l"+puzzleletter+"/3p.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ; 
+}
+
+if (puzzleLevel === 4){
+
+   image1.src= "/assets/puzzle/l"+puzzleletter+"/1d.jpg" ;
+   image2.src= "/assets/puzzle/l"+puzzleletter+"/2d.jpg" ;
+   image3.src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
+   document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+}
+
+
+
+}
 
 
 function hoppa() {
@@ -328,7 +483,11 @@ function initTouch() {
 function listen(word){
       textq=word;
      //getSpeech(textq);
-     speak(textq);
+    /* speak(textq);*/
+
+     var testAudio = word;
+       // alert(dragletter);
+    new Audio('/assets/Audio/l'+puzzleletter+'/'+testAudio+'.mp3').play();
 }
 function speak(word){
 var msg = new SpeechSynthesisUtterance();
@@ -347,6 +506,8 @@ speechSynthesis.speak(msg);
 
 
 function jigsaw(canvasID, imageID, rows,columns) {
+
+
     //handlng the major image
 if(puzzleLevel ===1 )
            { document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/letterba2.jpg" ;}
@@ -359,10 +520,12 @@ if(puzzleLevel > 1 && puzzleLevel < 5){
 if(puzzleLevel ===5){
  document.getElementById("img0").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg" ;
    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg" ;}
+
    
 //handling the three puzzle
 //puzzleletter =2;
 
+//document.getElementById("img1").src= "/assets/puzzle/arrow2.png";
 //     if(puzzleLevel < 3){
 
 //    document.getElementById("img1").src= "/assets/puzzle/l"+puzzleletter+"/1.jpg" ;
@@ -386,8 +549,17 @@ if(puzzleLevel ===5){
 //    document.getElementById("img3").src= "/assets/puzzle/l"+puzzleletter+"/3d.jpg" ;
 //    document.getElementById("imgprev1").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
 // }
+if(puzzleLevel === 4){
+   document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"dopac.png" ;}
+ 
+else{
+  if ( puzzleLevel === 3 || puzzleLevel === 5){
+ document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"popac.png" ;
 
- document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ;
+  }
+    else{
+ document.getElementById("balala").src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"opac.png" ; }}
+
    // document.getElementById("imgprev2").src= "/assets/puzzle/l"+puzzleletter+"/2opac.png" ;
    // document.getElementById("imgprev3").src= "/assets/puzzle/l"+puzzleletter+"/3opac.png" ;
 
@@ -491,7 +663,7 @@ if(puzzleLevel ===5){
           puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg";
         }
      
-     
+     new Audio("/assets/Audio/l"+puzzleletter+"/"+puzzleSubLevel+".mp3").play();
 
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
@@ -725,21 +897,24 @@ function SetImageBlock() {
         if (selectedBlock != null) {
 
             imageBlockList[selectedBlock.no].isSelected = false;
+            //alert("remove old selected");
 
         }
 
+
         selectedBlock = GetImageBlock(imageBlockList, e.pageX , e.pageY);
+
+      
 
 
         if (selectedBlock) {
              
-
+            
             imageBlockList[selectedBlock.no].isSelected = true;
+           // alert("I have already selected !! ");
 
       }
-      // else{
-      //        // alert("ana mesh block");
-      // }
+ 
 
     }
  var flagsCorrecta = [0,0,0,0];
@@ -747,7 +922,7 @@ function SetImageBlock() {
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
 
-                         $(document).on('touchend',function(e) {
+         $(document).on('touchend',function(e) {
         
             xPos=e.originalEvent.changedTouches[0].pageX;
             yPos=e.originalEvent.changedTouches[0].pageY;
@@ -755,15 +930,18 @@ function SetImageBlock() {
  });
         
             setTimeout(function(){
-              if (selectedBlock) {
+              if (selectedBlock.no < 7) {
+                //alert(selectedBlock.no);
               if (flagsCorrecta[selectedBlock.no] === 0) {
+
             var index = selectedBlock.no;
             var block;
             if (xPos >0){
-               block = GetImageBlock(blockList,xPos, yPos);}
+               block = GetImageBlock2(blockList,xPos, yPos);}
                 else{
-              block = GetImageBlock(blockList,e.pageX, e.pageY);
+              block = GetImageBlock2(blockList,e.pageX, e.pageY);
                 }
+               // alert("BLOCK NUMBERRR" + block.x);
         
              var blockOldImage = GetImageBlockOnEqual(imageBlockList, block.x, block.y);
              var seeka = selectedBlock.no;
@@ -777,6 +955,7 @@ function SetImageBlock() {
                 if (blockOldImage === null) {
                     imageBlockList[index].x = block.x;
                     imageBlockList[index].y = block.y;
+               
                 }
                 // if(blockOldImage !== 99){
                 //   alert("yammaa");
@@ -829,8 +1008,11 @@ function SetImageBlock() {
                 ) {
 
                 flagsCorrecta[m]=1;
+               new Audio('/assets/Audio/applause.mp3').play();
+        // audioElement.setAttribute('src', '/assets/Audio/applause.mp3');
+        // audioElement.play();
               //alert(flagsCorrecta);
-                audioElementCorrect.play(); 
+               // audioElementCorrect.play(); 
             }
 
         }
@@ -841,7 +1023,24 @@ function SetImageBlock() {
             }
           }
 
+          else{
+       
+
+            //alert(selectedBlock.no+" E2fesh ... "+flagsCorrecta);
+            //   imageBlockList[index].isSelected = false;
+            // selectedBlock = null;
+            // DrawGame();
+          }
+
         }
+        else{
+          //alert("welmos7af ma block");
+          //selectedBlock = 88;
+
+  
+        }
+
+   
 
              
   
@@ -854,17 +1053,15 @@ function SetImageBlock() {
     function handleOnMouseMove(e) {
  
 
-        if (selectedBlock){
-        if (flagsCorrecta[selectedBlock.no] === 0) {
+      if (selectedBlock){
+       if (flagsCorrecta[selectedBlock.no] === 0) {
 
             selectedBlock.x = e.pageX-200 ;
             selectedBlock.y = e.pageY-100;
-
-
             DrawGame();
           }
-
         }
+
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -908,19 +1105,50 @@ function SetImageBlock() {
             }
         }
 
+        return null;
+    }
+
+
+    function GetImageBlock2(list, x, y) {
+
+        //for (var i = 0; i < list.length; i++) {
+        for (var i = list.length - 1; i >= 0; i--) {
+            var imgBlock = list[i];
+
+            var x1 = imgBlock.x;
+            var x2 = x1 + BLOCK_WIDTH;
+
+            var y1 = imgBlock.y;
+            var y2 = y1 + BLOCK_HEIGHT;
+
+            if (
+                (x >= x1 && x <= x2) &&
+                (y >= y1 && y <= y2)
+            ) {
+                //alert("found: " + imgBlock.no);
+
+                var img = new imageBlock(imgBlock.no, imgBlock.x, imgBlock.y);
+                //drawImageBlock(img);
+                return img;
+
+            }
+        }
+
         return 88;
     }
 
+
     function sendStage(n){
         puzzleLevel=n;
+        //changeImage();
     }
         function UpdateSubStage(){
-            if (puzzleSubLevel<3){
+            if (puzzleSubLevel<3 && puzzleLevel>1){
         puzzleSubLevel++;}
     else{
               var audioElement = document.createElement('audio');
-        audioElement.setAttribute('src', '/assets/Audio/finish.mp3');
-        audioElement.play();
+        // audioElement.setAttribute('src', '/assets/Audio/finish.mp3');
+        // audioElement.play();
        updateLevel();
      
 
@@ -928,13 +1156,20 @@ function SetImageBlock() {
   }
 
     function updateLevel(){
+
+
         if (puzzleLevel<5){
-        puzzleLevel++;}
+        puzzleLevel++;
+
+       InitGame(puzzleLevel,1);}
     else{
-     puzzleLevel = 1;
+       // new Audio('/assets/Audio/applausy.mp3').play();
+    celebrate();
 
     }
-    InitGame(puzzleLevel,1);
+   //changeImage();
+    //setTimeout(function(){ InitGame(puzzleLevel,1); }, 4000);
+   
 
     }
        
@@ -943,9 +1178,11 @@ function SetImageBlock() {
 
 
         $('#level1').click(function() {
+    
      
         InitGame(1,1);
     });
+
         $('#level2').click(function() {
       
         InitGame(2,1)
@@ -956,6 +1193,7 @@ function SetImageBlock() {
     });
         $('#level4').click(function() {
     
+  
         InitGame(4,1);
     });
         $('#level5').click(function() {
@@ -1014,19 +1252,36 @@ function SetImageBlock() {
             }
 
         }
+
         var nameofID = "img"+puzzleSubLevel;
-       if (nameofID === imageID){
-                var audioElement = document.createElement('audio');
-        audioElement.setAttribute('src', '/assets/Audio/applause.mp3');
-        audioElement.play();
+       if (nameofID === imageID || puzzleLevel === 1){
+               
+        scoreBar++;
+        if(puzzleSubLevel === 3 ){
+          // if(puzzleLevel === 5){
+          //   new Audio('/assets/Audio/applausy.mp3').play();
+
+          // }
+
+           new Audio('/assets/Audio/tada.mp3').play();
+           new Audio('/assets/Audio/applausy.mp3').play();
+        }
+        else{
+          new Audio('/assets/Audio/applausy.mp3').play();
+      
+        }
+        barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
 
         return true;}
-        else{
-        var audioElement = document.createElement('audio');
-        audioElement.setAttribute('src', '/assets/Audio/boing.wav');
-        audioElement.play();
 
-          return false;
+
+        else{
+          new Audio('/assets/Audio/boing.mp3').play();
+          if(stagy>1){
+        
+
+          return false;}
         }
         
          
@@ -1040,6 +1295,9 @@ function SetImageBlock() {
 //var puzzleLevel = $('.temp_information').data('stagy'); 
  //document.getElementById("img1").src= "/assets/puzzle/'l2'/apple.jpg" ;
 
+$(document).bind('touchmove', false);
+   var bod=$("body").css("background-color","#333");
+
 
     </script>
 </head>
@@ -1050,62 +1308,157 @@ function SetImageBlock() {
 
  }
  </style>
-<body onload="InitGame(2,1);" style="zoom:100%">
+ <meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<body onload="InitGame(1,1);" style="zoom:100%;">
+    <div class="menu-container" style="height: 50px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+
+           <li id="site-title"><a href="home"><h3>Super Hawwaz</h3></a></li>
+
+         </ul>
+       </div>
+      </div>
+    </div>
+
+    <div id="overlay">
+
+      <div class="progress" role="progressbar" style="width: 500px; margin-left:250px; margin-top:10px" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBar" style="width: 0%"></div>
+          </div>
 
     <table>
         <tr>
-            <td>
-                <div>
-                    <table cellpadding="0" cellspacing="0" width="100%" >
-                        <tr>
-
-                            <td width="450px">
-                                <span >
-                                    <input type="button" class="button orange" value="Peek" onclick="ShowPreview()"/>
-                                        <a  href='#' class="btnBlue" id="level1">1</a>
-    <a  href='#' class="btnGreen" id="level2">2</a>
-    <a  href='#' class="btnYellow" id="level3">3</a>
-    <a  href='#' class="btnOrange" id="level4">4</a>
-    <a  href='#' class="btnRed" id="level5">5</a>
-
-
-                                </span>
-
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+            <td id="backy" style="background-image: url('/assets/background2.png');" >
+         
                 <div>
                     <canvas id="canJigsaw" width="950" height="350" style="border: black solid 2px;">
             
                     </canvas>
                        </div>
+
+
                    <img id="balala" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                    
                       <img id="imgprev1" width="0" height="0" style="position: absolute; top: 100px; left: 123px;"></img> 
                          
-                        <img id="img0" width="130" height="130" style="position: absolute; top: 470px; left: 325px;"></img>
+                        <img id="img0" width="130" height="130" style="position: absolute; top: 470px; left: 225px;"></img>
 
-                      <img id="img1" width="80" height="80" src="/assets/puzzle/l2/1.jpg"onclick="LoadNewImage(this.id);" style="position: absolute; top: 495px; left: 574px;"></img>
+                      <img id="img1" width="80" height="80" src="/assets/puzzle/l1/1.jpg"  style="position: absolute; top: 495px; left: 474px;"></img>
 
-                        <img id="img2" width="80" height="80" src="/assets/puzzle/l2/2.jpg" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 495px; left: 671px;"></img>
+                        <img id="img2" width="80" height="80" src="/assets/puzzle/l1/2.jpg"  style="position: absolute; top: 495px; left: 571px;"></img>
 
-                     <img id="img3" width="80" height="80" src="/assets/puzzle/l2/3.jpg" onclick="LoadNewImage(this.id);"  style="position: absolute; top: 495px; left: 773px;"></img>
+                     <img id="img3" width="80" height="80" src="/assets/puzzle/l1/3.jpg"  style="position: absolute; top: 495px; left: 673px;"></img>
 
 
 
-                     <img width="130" height="130"src="/assets/puzzle/frame.png" style="position: absolute; top: 470px; left: 325px;"></img>
+                     <img width="150" height="150"src="/assets/puzzle/frame.png" style="position: absolute; top: 460px; left: 215px;"></img>
 
-                       <img width="80" height="80"src="/assets/puzzle/arrow2.png" style="position: absolute; top: 500px; left: 470px;"></img>
+                          <a><i style="position: absolute; top: 500px; left: 400px; font-size: 4.3em;color: #ff6600;" class="icon-right-open"></i><i style="position: absolute; top: 500px; left: 370px; font-size: 4.3em; color: #ff6600;" class="icon-right-open" ></i></a>
 
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 567px;" onclick="LoadNewImage2('img1'); listen('بَطّة');"></img>
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 667px;" onclick="LoadNewImage2('img2'); listen('بْنت');"></img>
+
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 470px;" onclick="LoadNewImage2('img1'); listen('1');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 567px;" onclick="LoadNewImage2('img2'); listen('2');"></img>
                      
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 767px;" onclick="LoadNewImage2('img3'); listen('برتقالة');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 667px;" onclick="LoadNewImage2('img3'); listen('3');"></img>
 
-                    
- 
+
     </table>
+                    
+         <a  href='#' class="btnBlue" id="level1">1</a>
+    <a  href='#' class="btnGreen" id="level2">2</a>
+    <a  href='#' class="btnYellow" id="level3">3</a>
+    <a  href='#' class="btnOrange" id="level4">4</a>
+    <a  href='#' class="btnRed" id="level5">5</a>
+     <a><i style="right: 45px; position: relative; top: 350px;  color: #FF7519; " class="icon-star-filled" onclick="ShowPreview()" id="peekz"></i></a>
+
+   </div>
+
+
+
+
+    <div class="footer" id="footy">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+       <aside id="hamada" width="1200" height="500">
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </aside>
+
+
+      <script src="/assets/fire/fireworks.js"></script>
 </body>
 </html>
+
+
+
 

@@ -1,11 +1,14 @@
-(function(){
+
+  (function(){
 
   /* Get container elements */
   var container = document.querySelector('#container');
   var charscontainer = document.querySelector('#chars');
 
+
   /* Get buttons */
   var startbutton = document.querySelector('#intro button');
+  var barbutton = document.querySelector('#bar button');
   var infobutton = document.querySelector('#infos');
   var installbutton = document.querySelector('#install');
   var winbutton = document.querySelector('#win button');
@@ -24,14 +27,16 @@
   var letter = null; //UNCOMMENT THIS TO WORK PROPERLY
   var fontsize = 300;
   var paintcolour = [240, 240, 240];
- // var textcolour = [255, 30, 20]; red
-  var textcolour = [153, 0, 102];
+ var textcolour = [255, 92, 0]; 
+  //var textcolour = [153, 0, 102]; fuschiaaaa
   var xoffset = 0;
   var yoffset = 0;
   var linewidth = 20;
   //var linewidth = 2;
   var pixels = 0;
   var letterpixels = 0;
+  var scoreBar = 0;
+var barPercentage = 0;
 
   /* Mouse and touch events */
   var mousedown = false;
@@ -43,25 +48,21 @@
   var state = 'intro';
   var sound = true;
   var currentstate;
-  var writingletter =2;
-var FONTO = 0.9;
+var writingletter = $('.temp_information').data('temp'); 
+var FONTO = 1.5;
 
 
- var THICKNESS =15 ; 
+ var THICKNESS = 20 ; 
 var PaintLevel =1 ;
  document.getElementById("paintStage").innerHTML= PaintLevel;
+ 
+
  function UpdatePaintLevel(){
   if (PaintLevel <5 ){
     PaintLevel ++ ;
     FONTO = FONTO+0.3;
     THICKNESS = THICKNESS +5;
-  }
-  else{
-    FONTO = 0.9;
-    THICKNESS = 15;
-    PaintLevel =1;
-  }
-  xoffset = 0;
+      xoffset = 0;
   yoffset = 0;
   linewidth = 20;
   pixels = 0;
@@ -72,7 +73,25 @@ var PaintLevel =1 ;
   oldy = 0;
   sound = true;
   init();
+
   document.getElementById("paintStage").innerHTML= PaintLevel;
+    barPercentage = (scoreBar*100)/5;
+        document.getElementById('myBar').style.width = barPercentage+'%';
+        document.getElementById('myBary').style.width = barPercentage+'%';
+  }
+  else{
+    // FONTO = 0.9;
+    // THICKNESS = 15;
+    // PaintLevel =1;
+
+var elemo2 = document.getElementById("footy");
+elemo2.parentNode.removeChild(elemo2);
+var elemo3 = document.getElementById("yamama");
+elemo3.parentNode.removeChild(elemo3);
+
+Fireworks.initialize();
+  }
+
  }
 
   function init() {
@@ -82,7 +101,12 @@ var PaintLevel =1 ;
     linewidth = container.offsetHeight / THICKNESS;
     paintletter();
     setstate('intro');
+
     writingletter = $('.temp_information').data('temp'); 
+    lettoz = writingletter;
+    // yamama
+
+    //writingletter = 26;
   }
 
   function togglesound() {
@@ -97,6 +121,18 @@ var PaintLevel =1 ;
 
   function showerror() {
     setstate('error');
+    if (sound) {
+      new Audio('/assets/Audio/error.mp3').play();
+      //errorsound.play();
+    }
+    if (navigator.vibrate) {
+      navigator.vibrate(100);
+    }
+  }
+
+  function showbar(){
+
+    setstate('bar');
     if (sound) {
       errorsound.play();
     }
@@ -138,10 +174,15 @@ var PaintLevel =1 ;
     paintletter();
   }
   function paintletter(retryletter) {
+    //alert(writingletter);
     var chars = charscontainer.innerHTML.split('');
     //letter = retryletter ||
              //chars[parseInt(Math.random() * chars.length,10)];
-    letter = chars[writingletter-1];         
+      if(writingletter === 26){
+         letter = chars[25]+"ـ";   
+
+      }       
+    else{letter = chars[writingletter-1]; }        
     c.width = container.offsetWidth;
     c.height = container.offsetHeight;
     cx.font = 'bold ' + fontsize + 'px Open Sans';
@@ -155,11 +196,35 @@ var PaintLevel =1 ;
     cx.textBaseline = 'baseline';
     cx.lineWidth = linewidth;
     cx.lineCap = 'round';
+// if(writingletter === 1){
+//         cx.fillText(
+//       letter,
+//       (c.width - cx.measureText(letter).width) / 2,
+//       (c.height / 1.3)
+//     ); 
+//       }
+
+      // else{ 
+
+       if(writingletter === 1){        
+        cx.fillText(
+      letter,
+      (c.width - cx.measureText(letter).width) / 2,
+      (c.height / 1.3)
+    ); 
+       
+     }
+
+            else{
     cx.fillText(
       letter,
       (c.width - cx.measureText(letter).width) / 2,
-      (c.height / 1.6)
-    ); //PLACE OF THE LETTER POSITION
+      (c.height / 1.5)
+    ); }
+
+      
+
+    //PLACE OF THE LETTER POSITION
     pixels = cx.getImageData(0, 0, c.width, c.height);
     letterpixels = getpixelamount(
       textcolour[0],
@@ -195,7 +260,10 @@ var ERRORS_THRESHOLD = 30;
     if( colour.r === 0 && colour.g === 0 && colour.b === 0) {
       errorcount++;
       if(errorcount > ERRORS_THRESHOLD){
+           errorsound.play();
       showerror();
+
+      //showbar();
       errorcount=0;}
     } else {
       cx.beginPath();
@@ -227,20 +295,25 @@ var PAINT_THRESHOLD = 0.45;
         paintcolour[1],
         paintcolour[2]
       ) / letterpixels > PAINT_THRESHOLD) {
+        scoreBar++;
         // getSpeech(letter);
-      speak(letter);
-       setstate('win');
+     // speak(letter);
+         // new Audio('/assets/Audio/l'+writingletter+'/letter.mp3').play();
+       //setstate('win');
 if (sound){
   if (PaintLevel === 5 ){
-     new Audio('/assets/applause.mp3').play();
+     new Audio('/assets/Audio/applausy.mp3').play();
+     new Audio('/assets/Audio/tada.mp3').play();
   }
      else { 
-         winsound.play();
+         //winsound.play();
+         new Audio('/assets/Audio/finish.mp3').play();
        }
 }
 
-    
+         
         UpdatePaintLevel();
+
       }
 
     }
@@ -354,8 +427,8 @@ speechSynthesis.speak(msg);
   c.addEventListener('touchend', ontouchend, false);
   c.addEventListener('touchmove', ontouchmove, false);
 
-  window.addEventListener('load',init, false);
-  window.addEventListener('resize',init, false);
+   window.addEventListener('load',init, false);
+   window.addEventListener('resize',init, false);
 
   /* Cache update ready? Reload the page! */
   var cache = window.applicationCache;

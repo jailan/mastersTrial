@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html lang="es">
 <head>
-    <%= content_tag :div, class: "temp_information", data: {temp: @temppage1, stagty: @dragstageno} do %>
+    <%= content_tag :div, class: "temp_information", data: {temp: @tempdrag, stagty: @dragstageno} do %>
 <% end %>
 
         <meta charset="utf-8"/>
@@ -14,13 +14,13 @@
 
         <script type="text/javascript" src="/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
                 <script type="text/javascript">
-           var dragletter = $('.temp_information').data('temp'); 
-           //alert(dragletter);
+            var dragletter = $('.temp_information').data('temp'); 
+         
            var yalla = $('.temp_information').data('stagty'); 
            //alert(yalla);
            var dragstage = yalla;
           //var dragstage = 5;
-
+              //alert(dragletter);
  
     </script>
         <link rel="stylesheet" type="text/css" href="/assets/stylesheets/css/smoothness/jquery-ui-1.9.2.custom.min.css">
@@ -257,36 +257,58 @@
     margin-left:400px;
 }
 
+.listenhintz1{
+   position: absolute;
+    margin-top: 270px;
+    margin-left:700px;
+}
+.listenhintz2{
+   position: absolute;
+    margin-top: 270px;
+    margin-left:560px;
+}
+
+.listenhintz3{
+   position: absolute;
+    margin-top: 270px;
+    margin-left:400px;
+}
+
 
 
 </style>
 
 
 <body>
-    <section id="preguntas">
-        <article class="preg" >
-           <div  onClick='listen("برتقالة");' style='width:40px; height: 40px;  position: absolute;
-   '><img id="opc3"  class="opachint"  width="100" height="100"/></div> برتقالة
-
+    <section id="preguntas" >
+        <article class="preg" alt="برتقالة" >
+           <div  onClick='listen("ear");' style='width:40px; height: 40px;  position: absolute;
+   '><img id="opc3"  class="opachint"  width="100" height="100"/>  <img  src='/assets/drag/iconlisten.png' ontouchend='listen("ear");' style='width:40px; height: 40px;  position: absolute; top: 150px; left: 40px;'/></div> 
+<var id="name3">name3</var>
         </article>
 
-        <article class="preg">
-             <div  onClick='listen("بنت");' style='width:40px; height: 40px;  position: absolute;
-   '><img id="opc2"  class="opachint" width="100" height="100"/></div>
-            بنت
+        <article class="preg" alt="بنت">
+             <div  onClick='listen("needle");' style='width:40px; height: 40px;  position: absolute;
+   '><img id="opc2"  class="opachint" width="100" height="100"/>  <img  src='/assets/drag/iconlisten.png' ontouchend='listen("needle");' style='width:40px; height: 40px;  position: absolute; top: 150px; left: 40px;'/></div>
+       <var id="name2">name2</var>
         </article>
 
-        <article class="preg">
-            <div  onClick='listen("بطة");' style='width:40px; height: 40px;  position: absolute;
-'><img id="opc1" class="opachint" width="100" height="100"/></div>
-            بطة
+        <article class="preg" alt="بطة">
+            <div  onClick='listen("rabbit");' style='width:40px; height: 40px;  position: absolute;
+'><img id="opc1" class="opachint" width="100" height="100"/>
+           <img  src='/assets/drag/iconlisten.png' ontouchend='listen("rabbit");' style='width:40px; height: 40px;  position: absolute; top: 150px; left: 40px;'/>
+</div>
+          <var id="name1">name1</var>
         </article>
        
         
     </section>
-             <a class="listenz1" id="listen2" onClick='listen("بَطّة");' style='width:40px; height: 40px;  position: absolute;'></a> 
-             <a class="listenz2" id="listen2" onClick='listen("بِنْت");' style='width:40px; height: 40px;  position: absolute;'></a>
-             <a class="listenz3" id="listen2" onClick='listen("برتقالة");' style='width:40px; height: 40px;  position: absolute;'></a>
+             <a class="listenz1" id="listen2" onClick='listen("rabbit");' style='width:40px; height: 40px;  position: absolute;'></a> 
+             <a class="listenz2" id="listen2" onClick='listen("needle");' style='width:40px; height: 40px;  position: absolute;'></a>
+             <a class="listenz3" id="listen2" onClick='listen("ear");' style='width:40px; height: 40px;  position: absolute;'></a>
+
+
+ 
   
        <div class="options">     
             <img id="img3"  class="respuesta" alt="بطة" width="100" height="100"/> 
@@ -300,6 +322,7 @@
     <a  href='#' class="btnYellow" id="level3">3</a>
     <a  href='#' class="btnOrange" id="level4">4</a>
     <a  href='#' class="btnRed" id="level5">5</a>
+
 </div>
     <div id="resultados">
 
@@ -313,18 +336,40 @@
 
 
 $(document).ready(main);
-//var dragletter = $('.temp_information').data('temp');
+  dragletter = $('.temp_information').data('temp');
 var numCorrectas=0;
 var numIncorrectas=0;
+  var a = new Array ("أسد");
+  var b = new Array ("engeleezy");
+          switch (dragletter) {
+    case 1:
+    a = new Array("أرنب","إبرة","أذن");
 
+        break;
+    case 2:
+        a = new Array("بطة","بنت","برتقالة");
+        break;
+    case 3:
+         a = new Array("تاج","تمساح","تفاح");
+           
+        break;
+                 
+}
 
+var name1= a[0];
+var name2= a[1];
+var name3= a[2];
+$("#name1").text(name1);
+$("#name2").text(name2);
+$("#name3").text(name3);
 
 function main(){
-    //var dragletter = $('.temp_information').data('temp'); 
+   dragletter = $('.temp_information').data('temp'); 
     //alert("babooo "+dragletter);
-    var dragletter=2;
-
+    init();
+  //dragletter=1;
     establecerPropiedades();
+         //alert (dragletter);
 if (dragstage === 1){ 
    document.getElementById("img3").src= "/assets/drag/l"+dragletter+"/1.jpg" ;
    document.getElementById("img4").src= "/assets/drag/l"+dragletter+"/2.jpg" ;
@@ -371,17 +416,47 @@ if(dragstage ===4 || dragstage ===5){
 function establecerPropiedades(){
     var res =$(".respuesta");
     res.draggable();
+//     res.bind( "dragstart", function(e){
+//        downRespuesta();
+// });
     res.mousedown(downRespuesta);
     $(".preg, .pregMonumento").droppable({drop:dropPregunta});
     
 
 }
 
+function touchHandler(event) {
+    var touch = event.changedTouches[0];
 
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function init() {
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);
+}
+
+      // var dragletter = $('.temp_information').data('temp'); 
 function listen(word){
       textq=word;
      //getSpeech(textq);
-     speak(textq);
+    /* speak(textq);*/
+        var testAudio = word;
+       // alert(dragletter);
+      new Audio('/assets/Audio/l'+dragletter+'/'+testAudio+'.mp3').play();
 }
 
 function speak(word){
@@ -403,7 +478,9 @@ function dropPregunta(event,ui){
     var contPregunta =$(this);
     var respuesta = ui.draggable;
 
-    var correcta = contPregunta.text().toLowerCase();
+    //var correcta = contPregunta.text().toLowerCase();
+    var correcta = contPregunta.attr("alt");
+  //  alert(contPregunta.attr("alt"));
     correcta = correcta.trim();
     var pos = contPregunta.position();
     contPregunta.css("background","#BBB");
@@ -421,7 +498,7 @@ function dropPregunta(event,ui){
     comprobarFinal();
     comprobarResultados();
     respuesta.remove();
-      new Audio('/assets/applause.mp3').play();
+      new Audio('/assets/Audio/applause.mp3').play();
       if(numCorrectas === 3){
        setTimeout(function(){updateDragStage();}, 3000);
         //chooseDragStage(dragstagy);
@@ -441,7 +518,7 @@ function dropPregunta(event,ui){
 
     comprobarFinal();
     comprobarResultados();
-      new Audio('/assets/boing.wav').play();
+      new Audio('/assets/Audio/boing.wav').play();
 
     }
     
@@ -538,6 +615,7 @@ var dragstagy=1;
       window.onload = function() {
     chooseDragStage(1);
         yalla= $('.temp_information').data('stagy');
+       dragletter = $('.temp_information').data('temp'); 
  
    
   };

@@ -1,97 +1,97 @@
 {"quizlist":[
 {
-	"question":"duck.jpg",
-	"option1":"duck.jpg",
-	"option2":"girl.jpg",
-	"option3":"orange.jpg"
+	"question":"1.jpg",
+	"option1":"1.jpg",
+	"option2":"2.jpg",
+	"option3":"3.jpg"
 	},
 	{
-	"question":"girl.jpg",
-	"option2":"duck.jpg",
-	"option1":"girl.jpg",
-	"option3":"orange.jpg"
+	"question":"2.jpg",
+	"option2":"1.jpg",
+	"option1":"2.jpg",
+	"option3":"3.jpg"
 	},
 		{
-	"question":"orange.jpg",
-	"option3":"duck.jpg",
-	"option2":"girl.jpg",
-	"option1":"orange.jpg"
+	"question":"3.jpg",
+	"option3":"1.jpg",
+	"option2":"2.jpg",
+	"option1":"3.jpg"
 	},
   
 	{
-	"question":"duckw.jpg",
-	"option1":"duckw.jpg",
-	"option2":"girlw.jpg",
-	"option3":"orangew.jpg"
+	"question":"1w.jpg",
+	"option1":"1w.jpg",
+	"option2":"2w.jpg",
+	"option3":"3w.jpg"
 	},
 		{
-	"question":"girlw.jpg",
-	"option2":"duckw.jpg",
-	"option1":"girlw.jpg",
-	"option3":"orangew.jpg"
+	"question":"2w.jpg",
+	"option2":"1w.jpg",
+	"option1":"2w.jpg",
+	"option3":"3w.jpg"
 	},
 			{
-	"question":"orangew.jpg",
-	"option2":"duckw.jpg",
-	"option3":"girlw.jpg",
-	"option1":"orangew.jpg"
+	"question":"3w.jpg",
+	"option2":"1w.jpg",
+	"option3":"2w.jpg",
+	"option1":"3w.jpg"
 	},
 	{
-	"question":"duck.jpg",
-	"option1":"duckw.jpg",
-	"option2":"girlw.jpg",
-	"option3":"orangew.jpg"
+	"question":"1.jpg",
+	"option1":"1w.jpg",
+	"option2":"2w.jpg",
+	"option3":"3w.jpg"
 	},
 		{
-	"question":"girl.jpg",
-	"option2":"duckw.jpg",
-	"option1":"girlw.jpg",
-	"option3":"orangew.jpg"
+	"question":"2.jpg",
+	"option2":"1w.jpg",
+	"option1":"2w.jpg",
+	"option3":"3w.jpg"
 	},
 		{
-	"question":"orange.jpg",
-	"option3":"duckw.jpg",
-	"option2":"girlw.jpg",
-	"option1":"orangew.jpg"
+	"question":"3.jpg",
+	"option3":"1w.jpg",
+	"option2":"2w.jpg",
+	"option1":"3w.jpg"
 	},
 	{
-	"question":"duckw.jpg",
-	"option1":"duckp.jpg",
-	"option2":"girlp.jpg",
-	"option3":"orangep.jpg"
+	"question":"1w.jpg",
+	"option1":"1p.jpg",
+	"option2":"2p.jpg",
+	"option3":"3p.jpg"
 	},
 		{
-	"question":"girlw.jpg",
-	"option2":"duckp.jpg",
-	"option1":"girlp.jpg",
-	"option3":"orangep.jpg"
+	"question":"2w.jpg",
+	"option2":"1p.jpg",
+	"option1":"2p.jpg",
+	"option3":"3p.jpg"
 	},
 			{
-	"question":"orangew.jpg",
-	"option2":"duckp.jpg",
-	"option3":"girlp.jpg",
-	"option1":"orangep.jpg"
+	"question":"3w.jpg",
+	"option2":"1p.jpg",
+	"option3":"2p.jpg",
+	"option1":"3p.jpg"
 	},
 	
 	
 	
 		{
-	"question":"duckd.jpg",
-	"option1":"duck.jpg",
-	"option2":"girl.jpg",
-	"option3":"orange.jpg"
+	"question":"1d.jpg",
+	"option1":"1.jpg",
+	"option2":"2.jpg",
+	"option3":"3.jpg"
 	},
 			{
-	"question":"girld.jpg",
-	"option2":"duck.jpg",
-	"option1":"girl.jpg",
-	"option3":"orange.jpg"
+	"question":"2d.jpg",
+	"option2":"1.jpg",
+	"option1":"2.jpg",
+	"option3":"3.jpg"
 	},
 			{
-	"question":"oranged.jpg",
-	"option3":"duck.jpg",
-	"option2":"girl.jpg",
-	"option1":"orange.jpg"
+	"question":"3d.jpg",
+	"option3":"1.jpg",
+	"option2":"2.jpg",
+	"option1":"3.jpg"
 	}
 	
 ]

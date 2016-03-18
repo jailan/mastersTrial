@@ -1,8 +1,9 @@
 class GamesController < ApplicationController
 $mygame = 1
 $letter = 2
-$myshootstage = 3
-$mydragstage = 3
+$myshootstage = 1
+$mydragstage = 1
+
 
   def hanglink
     redirect_to games_hangman_path
@@ -67,10 +68,12 @@ $mydragstage = 3
   end
 
       def drag
+
       @dragstageno = $mydragstage
       @tempdrag = $letter
      $dragz = request.filtered_parameters
     $mydragstage = $dragz['mydragstage']
+  
   
   end
 

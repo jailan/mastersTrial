@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<title>Shooting Game</title>
-	<%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+  <meta charset="utf-8" />
+      <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz| Shooting</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="css/hawaz.css" />
+    <link href="/assets/fire/fireworks.css" rel="stylesheet">
+   <script src="/assets/fire/fireworks.js"></script>
+
     <%= content_tag :div, class: "temp_information", data: {temp:@tempshoot, stagy: @shootstageno} do %>
     
 <% end %>
 </head>
-	<style>
+  <style>
 
-	body{
-		background-image: url("/assets/paper.jpg");
+  body{
+    background-color: #333;
+    background-image: url("/assets/background5.png");
+    background-size: cover;
 
-	}
+  }
 
 
-	}#home{
+  }#home{
     position:absolute;
     top:100px;
     margin-left:800px;
 
 }
 
-	#canvas {
-		position: absolute; 
-		width: 650;
-		height: 400;
-		vertical-align: bottom;
+  #canvas {
+    position: absolute; 
+    width: 650;
+    height: 400;
+    vertical-align: bottom;
 
-		/* left:175px;*/
-		cursor: none;
+    /* left:175px;*/
+    cursor: none;
 
-		/*background-color: 	#A30052;*/
-		border: 3px solid #99CC00;
-		background-image: url("/assets/shooting/rainbowopacity.png");
-		background-size: 500px 400px;
-		background-repeat: no-repeat;
+    /*background-color:   #A30052;*/
+    border: 3px solid #99CC00;
+    /*background-image: url("/assets/shooting/rainbowopacity.png");*/
+    background-size: 500px 400px;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,0.5);
 
-	}
 
-	.btnBlue {
+  }
+  .animClass{
+
+-webkit-backface-visibility: hidden;
+-webkit-perspective: 1000;
+  }
+
+  .btnBlue {
   background: #3baaf5;
   background-image: -webkit-linear-gradient(top, #3baaf5, #1021de);
   background-image: -moz-linear-gradient(top, #3baaf5, #1021de);
@@ -174,209 +192,255 @@
 }
 
 
-	.button {
-		display: inline-block;
-		outline: none;
-		cursor: pointer;
-		text-align: center;
-		text-decoration: none;
-		font: 14px/100% Arial, Helvetica, sans-serif;
-		padding: .5em 2em .55em;
-		text-shadow: 0 1px 1px rgba(0,0,0,.3);
-		-webkit-border-radius: .5em; 
-		-moz-border-radius: .5em;
-		border-radius: .5em;
-		-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-		-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-		box-shadow: 0 1px 2px rgba(0,0,0,.2);
-		float:right;
-		margin-right: 20px;
-		width:80px;
+  .button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    float:right;
+    margin-right: 20px;
+    width:80px;
 
 
 
-	}
-	.orange {
-		color: #fef4e9;
-		border: solid 1px #da7c0c;
-		background: #f78d1d;
-		background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
-		background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
-		filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
-	}
-	.orange:hover {
-		background: #f47c20;
-		background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
-		background: -moz-linear-gradient(top,  #f88e11,  #f06015);
-		filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
-	}
-	.orange:active {
-		color: #fcd3a5;
-		background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
-		background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
-		filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
-	}
+  }
+  .orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+  }
+  .orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+  }
+  .orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+  }
 
 
-	.button:hover {
-		text-decoration: none;
-	}
-	.button:active {
-		position: relative;
-		top: 1px;
-	}
+  .button:hover {
+    text-decoration: none;
+  }
+  .button:active {
+    position: relative;
+    top: 1px;
+  }
 
-	#play_button {
-		position:relative;
-		transition: .5s ease;
+  #play_button {
+    position:relative;
+    transition: .5s ease;
 
 
-	}
-	#startGameButton
-	{
+  }
+  #startGameButton
+  {
 
-		width: 150px;
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		font-size: 112.5%;
-		cursor: pointer;
-		color: #fff;
-		display: block;
-		/*background-color: #069; Baby Blue*/
-		/*background-color:#006;navy*/
-		background-color: #b3005b;
-		position:relative;
-		transition: .5s ease;
-		top: 420px;
+    width: 150px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    font-size: 112.5%;
+    cursor: pointer;
+    color: #fff;
+    display: block;
+    /*background-color: #069; Baby Blue*/
+    /*background-color:#006;navy*/
+    background-color: #b3005b;
+    position:relative;
+    transition: .5s ease;
+    top: 420px;
 
-		right: 835px;
-	/*font-family: 'Cherry Swash', cursive;
-	font-weight: 400;
-	color: rgb(20, 166, 0);
-	padding-bottom: 10px;
-	display: block;*/
+    right: 835px;
+  /*font-family: 'Cherry Swash', cursive;
+  font-weight: 400;
+  color: rgb(20, 166, 0);
+  padding-bottom: 10px;
+  display: block;*/
 
 }
 #level1{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 300px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 300px;
 }
 #level1{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #level2{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #level3{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #level4{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #level5{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #level5a{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #level5b{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 
 }
 #level5c{
 
-		padding-bottom: 10px;
-		text-align: center;
-		margin: 0.2em 0 0 13px;
-		position:relative;
-		transition: .5s ease;
-		top: 432px;
-		left: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 0.2em 0 0 13px;
+    position:relative;
+    transition: .5s ease;
+    top: 432px;
+    left: 20px;
 }
 #score {
-	position:relative;
-	height:550px;
-	width:350px;
+  position:relative;
+  height:550px;
+  width:350px;
 
-	font-size: 20px;
-	color: #a67900;
-	margin-left: 520px;
+  font-size: 20px;
+  color: #a67900;
+  margin-left: 520px;
 
 
 }
+
+
 
 div.img {
-	margin: 5px;
-	padding: 5px;
-	border: 1px solid #0000ff;
-	height: auto;
-	width: auto;
-	float: left;
-	text-align: center;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #0000ff;
+  height: auto;
+  width: auto;
+  float: left;
+  text-align: center;
 }
+
+
+  @media screen and (max-width:1024px) { 
+
+      body{
+    background-color: #333;
+    background-image: url("/assets/rsz_background5.png");
+    background-size: cover;
+
+  }
+  }
+
 
 </style>
 
 <body>
-<canvas id="canvas" width="500" height="400"> </canvas>
+  
+          <div class="menu-container" style="height: 50px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
 
-	  <a  href='#' class="btnBlue" id="level1">1</a>
+           <li id="site-title"><a href="home"><h3>Super Hawwaz</h3></a></li>
+
+         </ul>
+       </div>
+      </div>
+    </div>
+
+      <canvas id="library">
+  
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </canvas>
+   
+
+
+    <div id="overlay">
+      <div class="row">
+        <div class="large-12 columns">
+ <div class="progress" role="progressbar" style="width: 500px; margin-left:250px; margin-top:20px" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+       
+<canvas id="canvas" class="animClass" width="500" height="400"> </canvas>
+
+
+    <a  href='#' class="btnBlue" id="level1">1</a>
     <a  href='#' class="btnGreen" id="level2">2</a>
     <a  href='#' class="btnYellow" id="level3">3</a>
     <a  href='#' class="btnOrange" id="level4">4</a>
@@ -385,9 +449,85 @@ div.img {
     <a  href='#' class="btnRed" id="level5c">5c</a> 
 
 
-
 <canvas id="score" width="400" height="600"></canvas>
 
+<i  class="icon-volume-up" id="one" onclick='listen("3");' style='font-size: 2.2em; color:#FF7519;  position: absolute; top: 395px; left: 525px; cursor: pointer;'></i>
+ <i  class="icon-volume-up" id="two" onclick='listen("2");' style='font-size: 2.2em; color:#FF7519; position: absolute; top: 395px; left: 620px; cursor: pointer;'></i>
+
+ <i class="icon-volume-up" id="three" onclick='listen("1");' style='font-size: 2.2em; color:#FF7519;  position: absolute; top: 395px; left: 720px; cursor: pointer;'></i>
+
+
+
+
+
+    </div>
+
+
+    <div class="footer" style="top: 500px;" id="footy">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!--<script src='explosion1.js'></script>
@@ -399,273 +539,419 @@ div.img {
     wrongShots=0, n=0, frames, targetshoot1, targetshoot2, targetshoot3, targetshoot4, targetshoot5a, targetshoot5b, targetshoot5c, targetShotCorrectly1, targetShotCorrectly2, targetShotCorrectly3, targetShotCorrectly4, targetShotCorrectly5, targetShotCorrectly6;
     var order=0;
     var flags=[10,10,10];
+    var didWeDraw =[0,0,0];
+    /**BRING SHOOT LETTER BAACK*/
     var shootletter = $('.temp_information').data('temp'); 
+    //var shootletter = 7;
     var yalla = $('.temp_information').data('stagy'); 
+    var sa2afoolo=false;
+    var punishhim = false;
+    var celebratooh = false;
+    var en2elooh = false;
+    var scoreBar = 0;
+    var barPercentage = 0;
 
-    var shootstagy = yalla;
+    // var shootstagy = yalla;
+    // var shootstage = setStagy(shootstagy);
+
+    // var shootsubstage5= setsubStage();
+    //  var initflag = 50;
+
+    var shootstagy = 1;
     var shootstage = setStagy(shootstagy);
+    setTimeout(function(){ frameDrawing(); }, 3000);
+    //alert(shootletter);
 
-    var shootsubstage5= setsubStage();
+    //alert(shootstage);
 
+  var shootsubstage5= setsubStage();
+      var initflag = 50;
     //THIS IS THE ONE FOR SOUNDS ONLY
   //  var a = new Array("تمساح","تفاح","توت", "تَمْر","تمثال", "تِلِيفُون" ,"تلميذ");
   var a = new Array("بَطّة","بِنْت","بُرتقالة");
+    var b = new Array("1","2","3");
 
 
 
     window.requestAnimFrame = (function() {
-    	return window.requestAnimationFrame ||
-    	window.webkitRequestAnimationFrame ||
-    	window.mozRequestAnimationFrame ||
-    	window.oRequestAnimationFrame ||
-    	window.msRequestAnimationFrame ||
-    	function(callback) {
-    		window.setTimeout(callback, 1000 / 60);
-    	};
+      return window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function(/* function */ callback, /* DOMElement */ element){
+        //window.setTimeout(callback, 1000 / 60);
+        window.setTimeout(callback, 1000 / 60);
+      };
     })();
 
+function listen(word){
+      textq=word;
+     //getSpeech(textq);
+    /* speak(textq);*/
+        var testAudio = word;
+       // alert(dragletter);
+       if (shootstage > 4){
+        if(shootsubstage5 === 1){
+              new Audio('/assets/Audio/l'+shootletter+'/1.mp3').play();
+        }
+                if(shootsubstage5 === 2){
+              new Audio('/assets/Audio/l'+shootletter+'/2.mp3').play();
+        }
+                if(shootsubstage5 === 3){
+              new Audio('/assets/Audio/l'+shootletter+'/3.mp3').play();
+        }
+       }
+       else{
+        new Audio('/assets/Audio/l'+shootletter+'/'+testAudio+'.mp3').play();
+      // alert(testAudio+"  ..... "+shootletter);
+        }
 
-    
+}
+    /////////////////////////////////////////////////////////
+
+var canvastest, context, toggle;
+
+// init();
+// animate();
+
+function myStartFresh(){
+   targetX = 0; targetY = 0; shots = 0; hits = 0; accuracy = 0; correctShots=0;
+    wrongShots=0; n=0;
+
+ explosions = []; sprites = []; sprite = null; 
+ done = 0;
+   order=0;
+  flags=[10,10,10];
+  didWeDraw =[0,0,0];
+
+ animiz=null;
+
+
+       initflag = 50;
+  shootstage = setStagy(shootstagy);
+ shootsubstage5= setsubStage();
+
+    //THIS IS THE ONE FOR SOUNDS ONLY
+  //  var a = new Array("تمساح","تفاح","توت", "تَمْر","تمثال", "تِلِيفُون" ,"تلميذ");
+ a = new Array("بَطّة","بِنْت","بُرتقالة");
+}
+
+function initializeTest() {
+
+    canvastest = document.createElement( 'canvas' );
+    canvastest.width = 512;
+    canvastest.height = 512;
+
+    context = canvastest.getContext( '2d' );
+
+    document.body.appendChild( canvastest );
+
+}
+
+function animate() {
+    requestAnimFrame( animate );
+    drawTest();
+
+}
+var animiz;
+function drawTest() {
+
+    var time = new Date().getTime() * 0.002;
+    var x = Math.sin( time ) * 192 + 256;
+    var y = Math.cos( time * 0.9 ) * 192 + 256;
+    toggle = !toggle;
+
+    context.fillStyle = toggle ? 'rgb(200,200,20)' :  'rgb(20,20,200)';
+    context.beginPath();
+    context.arc( x, y, 10, 0, Math.PI * 2, true );
+    context.closePath();
+    context.fill();
+
+}
+
+///////////////////////////////////////////////////////////
+
     function Thing(mapX, mapY, x, y, canvas, letter) {
-    	this.letter=letter;
-    	this.x = x;
-    	this.y = y;	
-    	this.mapX = mapX;
-    	this.mapY = mapY;
-    	this.height = 80;// JUST ZZOMING IN/OUT THE CUTTED IMAGE
-    	this.width = 80;
-    	this.direction = Math.floor((Math.random()*359));
-    	this.speed = Math.floor((Math.random()*10) + 5);
-    	this.canvas = canvas;
-    	this.erratic = (Math.floor((Math.random()* 4) + 1) === 1);
-    	this.gravitationalPull = 0;
-    	this.tick = 0;
-    	this.changeAt = Math.floor((Math.random()*50) + 1);
-    	this.hit = false;
+      this.letter=letter;
+      this.x = x;
+      this.y = y; 
+      this.mapX = mapX;
+      this.mapY = mapY;
+      this.height = 80;// JUST ZZOMING IN/OUT THE CUTTED IMAGE
+      this.width = 80;
+      this.direction = 0;
+      //this.speed = Math.floor((Math.random()*10) + 5);
+      this.speed = 0 ;
+      this.canvas = canvas;
+      //this.erratic = (Math.floor((Math.random()* 4) + 1) === 1);
+      this.erratic = 0;
+      this.gravitationalPull = 0;
+      this.tick = 0;
+      //this.changeAt = Math.floor((Math.random()*50) + 1);
+      this.changeAt = 0;
+      this.hit = false;
     };
 
     Thing.prototype.draw = function(ctx, sprite) {
 
-    	if(this.hit === false) {
+      if(this.hit === false) {
 
-    		ctx.drawImage(sprite, this.getMapX(), this.getMapY(),
-    			280, 280, 
-    			this.getX(), this.getY(), 
-    			this.getWidth(), this.getHeight()); /// HERE WE CONTROL HOW TO CUT
-    	}
+        ctx.drawImage(sprite, this.getMapX(), this.getMapY(),
+          280, 280, 
+          this.getX(), this.getY(), 
+          this.getWidth(), this.getHeight()); /// HERE WE CONTROL HOW TO CUT
+      }
 
-    	return this;
+      return this;
     };
 
     Thing.prototype.move = function() {
 
-    	var delta = 0.2;
+      var delta = 0.2;
 
-    	this.x += Math.cos(this.toRad(this.direction)) * delta * this.speed;
-    	this.y -= Math.sin(this.toRad(this.direction)) * delta * this.speed;
+     // this.x += Math.cos(this.toRad(this.direction)) * delta * this.speed;
+      //this.y -= Math.sin(this.toRad(this.direction)) * delta * this.speed;
 
-    	this.direction+= this.gravitationalPull;
+      //this.direction+= this.gravitationalPull;
 
-    	if(this.direction < 0) {
-    		this.direction += 360;
-    	} else if(this.direction > 360) {
-    		this.direction -= 360;
-    	}
+      // if(this.direction < 0) {
+      //   this.direction += 360;
+      // } else if(this.direction > 360) {
+      //   this.direction -= 360;
+      // }
 
-    	this.tick++;
+      // this.tick++;
 
-    	if(this.tick > this.changeAt) {
-    		this.tick = 0;
-    		this.gravitationalPull = Math.floor((Math.random()*6));
+      // if(this.tick > this.changeAt) {
+      //   this.tick = 0;
+      //   this.gravitationalPull = Math.floor((Math.random()*6));
 
-    		if(this.erratic) {
-    			this.direction = Math.floor((Math.random()*359));
-    			//this.speed = Math.floor((Math.random()*10)+5);
-    			this.speed = 8;
+      //   if(this.erratic) {
+      //     this.direction = Math.floor((Math.random()*359));
+      //     //this.speed = Math.floor((Math.random()*10)+5);
+      //     this.speed = 8;
 
-    		}
-    	}
+      //   }
+      // }
+      this.speed = 0 ;
     };
 
     Thing.prototype.toRad = function(v) {
-    	return v * Math.PI / 180;
+      return v * Math.PI / 180;
     };
 
     Thing.prototype.checkBoundaryCollision = function() {
 
-    	if (this.x + this.width > this.canvas.width ||
-    		this.x < 0) {
-    		this.direction = 2 * 0 - this.direction - 180;
-    } else if(this.y < 0 ||
-    	this.y + this.height > this.canvas.height) {
-    	this.direction = 2 * 90 - this.direction - 180;
-    }
+    //   if (this.x + this.width > this.canvas.width ||
+    //     this.x < 0) {
+    //     this.direction = 2 * 0 - this.direction - 180;
+    // } else if(this.y < 0 ||
+    //   this.y + this.height > this.canvas.height) {
+    //   this.direction = 2 * 90 - this.direction - 180;
+    // }
 };
 
 Thing.prototype.correctXY = function() {
 
-	if(this.x + this.width >= this.canvas.width) {
-		this.x = this.canvas.width - this.width ;
-	} else if(this.x < 0) {
-		this.x = 0;
-	} else if(this.y < 0) {
-		this.y = 0;
-	} else if(this.y + this.height >= this.canvas.height) {
-		this.y = this.canvas.height - this.height ;
-	}
+  if(this.x + this.width >= this.canvas.width) {
+    this.x = this.canvas.width - this.width ;
+  } else if(this.x < 0) {
+    this.x = 0;
+  } else if(this.y < 0) {
+    this.y = 0;
+  } else if(this.y + this.height >= this.canvas.height) {
+    this.y = this.canvas.height - this.height ;
+  }
 };
 
 Thing.prototype.getX = function() {
-	return this.x;
+  return this.x;
 };
 
 Thing.prototype.getY = function() {
-	return this.y;
+  return this.y;
 };
 
 Thing.prototype.getMapX = function() {
-	return this.mapX;
+  return this.mapX;
 };
 
 Thing.prototype.getMapY = function() {
-	return this.mapY;
+  return this.mapY;
 };
 
 Thing.prototype.getWidth = function() {
-	return this.width;
+  return this.width;
 };
 
 Thing.prototype.getHeight = function() {
-	return this.height;
+  return this.height;
 };
 
 Thing.prototype.setHit = function() {
-	this.hit = true;
+  this.hit = true;
 };
 
 Thing.prototype.getHit = function() {
-	return this.hit;
+  return this.hit;
 };
 
 function Explosion(x, y, audio) {
 
-	this.x = x;
-	this.y = y;
-	this.drawing = true;
-	this.explosionFrame = 15;
-	this.width = 200;
-	this.height = 200;
+  this.x = x;
+  this.y = y;
+  this.drawing = true;
+  this.explosionFrame = 15;
+  this.width = 200;
+  this.height = 200;
 
-	audio.play();
+  audio.play();
 
 };
 
 Explosion.prototype.getDrawing = function() {
 
-	return this.drawing;
+  return this.drawing;
 
 };
 
 var explosions = [], ctx, canvas, sprites = [], sprite = null, cvx, canvaso,targetLetter, frame, sprite2;
 var done = 0;
 
+
 Explosion.prototype.checkHits = function(things) {
 
-	if(this.drawing === false) {
-		return 0;
-	}
+  if(this.drawing === false) {
+    return 0;
+  }
+
+  var centreX = (this.x - 100)  + (this.width / 2),
+  centreY = (this.y - 90) + (this.height / 2),
+
+  hits = 0;
+
+//   if (lala === 0){
+//   alert(centreX+"......"+centreY);
+// lala = 1;}
 
 
-	var centreX = (this.x - 100)  + (this.width / 2),
-	centreY = (this.y - 90) + (this.height / 2),
-	hits = 0;
+    for(i = 0; i < things.length; i++) {
 
-	for(i = 0; i < things.length; i++) {
+    if(centreX -40> things[i].getX() -15 &&
+      centreX -40< things[i].getX() + things[i].getWidth() +15 &&
+      centreY -140> things[i].getY() -15 &&
+      centreY -140< things[i].getY() + things[i].getHeight() +15 &&
+      things[i].getHit() === false) {
 
-		if(centreX -50> things[i].getX() &&
-			centreX -50< things[i].getX() + things[i].getWidth() &&
-			centreY -50> things[i].getY() &&
-			centreY -50< things[i].getY() + things[i].getHeight() &&
-			things[i].getHit() === false) {
+      things[i].setHit();
 
-			things[i].setHit();
+    hits++;
 
-		hits++;
 
-		    //alert('ID: '+things[i].letter);
-		    //var identity=things[i].getLetter();
-		    if(shootstage <5){
-		    if(things[i].letter <=2){
-		    	n=i;
-		    	flags[order]=i;
-		    	order=order+1;
-		    	correctShots++;
-		    	var textq=a[things[i].letter];
+        //alert('ID: '+things[i].letter);
+        //var identity=things[i].getLetter();
+        if(shootstage <5){
+        if(things[i].letter <=2){
+          n=i;
+          flags[order]=i;
+          order=order+1;
+          correctShots++;
+          scoreBar++;
+           //new Audio('/assets/Audio/applause.mp3').play();
+             barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
+          sa2afoolo = true;
+          //cvx.clearRect(0, 0, canvaso.width, canvaso.height); 
+          var textq=a[things[i].letter];
+         /* speak(textq);*/ 
+          var testAudio = b[things[i].letter];
+          //alert(testAudio);
+
+    //new Audio('/assets/Audio/l'+shootletter+'/'+testAudio+'.mp3').play();
+          if(correctShots==3){
+            done =1;
+            sa2afoolo = false;
+              en2elooh = true;
+            setTimeout(function(){ updatestageNew(); }, 3000);
+            
+          }
+
+
+
+
+    }
+    else{
+      wrongShots++;
+      punishhim = true;
+      //new Audio('/assets/Audio/boing.mp3').play();
+    }
+  }
+  else{
+            if(things[i].letter === shootsubstage5-1){
+          n=i;
+          flags[order]=i;
+          order=order+1;
+          correctShots++;
+              scoreBar++;
+             
+             barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
+          //cvx.clearRect(0, 0, canvaso.width, canvaso.height); 
+          var textq=a[things[i].letter];
           speak(textq);
-		    	
-		    	if(correctShots==3){
-		    		done =1;
-		    		new Audio('/assets/Audio/applause.mp3').play();
-		    		setTimeout(function(){ UpdateShootStage(); }, 2000);
-		    		
-		    	}
-		}
-		else{
-			wrongShots++;
-			new Audio('/assets/Audio/no.mp3').play();
-		}
-	}
-	else{
-				    if(things[i].letter === shootsubstage5-1){
-		    	n=i;
-		    	flags[order]=i;
-		    	order=order+1;
-		    	correctShots++;
-		    	var textq=a[things[i].letter];
-          speak(textq);
-		    	
-		    	if(correctShots===1){
-		    		done =1;
-		    		new Audio('/assets/Audio/applause.mp3').play();
-		    		setTimeout(function(){ UpdateShootStage(); }, 5000);
-		    	}
-		}
-		else{
-			wrongShots++;
-			new Audio('/assets/Audio/no.mp3').play();
-		}
-	}
-		things[i].setHit();
+          
+          
+          if(correctShots===1){
+            if(shootsubstage5 === 3){
+              celebratooh = true;
+            }
+            else{sa2afoolo = true;}
+            
+            done =1;
+            
+            setTimeout(function(){ updatestageNew(); }, 5000);
+          }
+    }
+    else{
+      wrongShots++;
+      punishhim=true;
+      new Audio('/assets/Audio/boing.mp3').play();
+    }
+  }
+    things[i].setHit();
 
-	}
+  }
 }
 
 return hits;
 };  
 
+
+
 Explosion.prototype.draw = function(ctx, explosion) {
 
-	if(this.drawing === false) {
-		return this;
-	}
+  if(this.drawing === false) {
+    return this;
+  }
 
-	try {
+  try {
 
-		if(this.explosionFrame-- <= 0) {
-			this.drawing = false;
-		}
+    if(this.explosionFrame-- <= 0) {
+      this.drawing = false;
+    }
 
-		//Draw explostion
-		ctx.drawImage(explosion, ((this.explosionFrame % 10) -1) * 65, 0,
-			65, 65, 
-			this.x - 100-50, this.y - 90-50, 
-			this.width, this.height);
+    //Draw explostion
+    ctx.drawImage(explosion, ((this.explosionFrame % 10) -1) * 65, 0,
+      65, 65, 
+      this.x - 150, this.y - 180, 
+      this.width, this.height);
 
-	}
-	catch(e) {
+  }
+  catch(e) {
 
-	}
-	return this;
+  }
+  return this;
 
 };
 
@@ -673,154 +959,235 @@ Explosion.prototype.draw = function(ctx, explosion) {
 
 function loadSprite() {
 
-	sprite = new Image();
-	//sprite.src = '/assets/shooting/trial134.png'; wrong one
-	//sprite.src = '/assets/shooting/trial'+shootletter+'.png'; CORRECT ONE
-	//sprite.src = '/assets/shooting/yaRab.png'; 
+  sprite = new Image();
+  //sprite.src = '/assets/shooting/trial134.png'; wrong one
+  //sprite.src = '/assets/shooting/trial'+shootletter+'.png'; CORRECT ONE
+  //sprite.src = '/assets/shooting/yaRab.png'; 
 
  
 sprite.src = '/assets/shooting/l'+shootletter+'/spritewords'+shootstage+'.png';
-	
-	sprite2 = new Image();
-	sprite2.src = '/assets/shooting/l'+shootletter+'/trial5.png';
+  
+  sprite2 = new Image();
+  sprite2.src = '/assets/shooting/l'+shootletter+'/trial5.png';
 
-	target = new Image();
-	target.src = '/assets/shooting/target.gif';
+  target = new Image();
+  target.src = '/assets/shooting/targetf.png';
 
-	explosion = new Image();
-	explosion.src = '/assets/shooting/explosion.png';
+  explosion = new Image();
+  explosion.src = '/assets/shooting/explosion.png';
 
-	targetLetter = new Image();
-	targetLetter.src = '/assets/shooting/l'+shootletter+'/targetba2.png';
+  targetLetter = new Image();
+  targetLetter.src = '/assets/shooting/l'+shootletter+'/targetba2.png';
 
-	/*target1 = new Image();
-	target1.src = '/assets/shooting/1.jpg';
+  /*target1 = new Image();
+  target1.src = '/assets/shooting/1.jpg';
 
-	target2 = new Image();
-	target2.src = '/assets/shooting/2.jpg';
+  target2 = new Image();
+  target2.src = '/assets/shooting/2.jpg';
 
-	target3= new Image();
-	target3.src = '/assets/shooting/3.jpg';*/
+  target3= new Image();
+  target3.src = '/assets/shooting/3.jpg';*/
 
-	frame = new Image();
-	frame.src = '/assets/shooting/frame3.png';
+  frame = new Image();
+  frame.src = '/assets/shooting/frame3.png';
 
-	frames = new Image();
-	frames.src = '/assets/shooting/frames.png';
+  frames = new Image();
+  frames.src = '/assets/shooting/frames.png';
 
 targetshoot1= new Image();
-	targetshoot1.src = '/assets/shooting/l2/1.jpg';
+  targetshoot1.src = '/assets/shooting/l'+shootletter+'/1.jpg';
 
 targetshoot2= new Image();
-	targetshoot2.src = '/assets/shooting/l2/2.jpg';
+  targetshoot2.src = '/assets/shooting/l'+shootletter+'/2.jpg';
 
 targetshoot3= new Image();
-	targetshoot3.src = '/assets/shooting/l2/3.jpg';
+  targetshoot3.src = '/assets/shooting/l'+shootletter+'/3.jpg';
 
-	targetshoot4= new Image();
-	targetshoot4.src = '/assets/shooting/l2/letterba2.jpg';
+  targetshoot4= new Image();
+  targetshoot4.src = '/assets/shooting/l'+shootletter+'/letterba2.jpg';
 
-	 targetshoot5a= new Image();
-	targetshoot5a.src = '/assets/shooting/l2/1d.jpg';
+   targetshoot5a= new Image();
+  targetshoot5a.src = '/assets/shooting/l'+shootletter+'/1d.jpg';
 
  targetshoot5b= new Image();
-	targetshoot5b.src = '/assets/shooting/l2/2d.jpg';
+  targetshoot5b.src = '/assets/shooting/l'+shootletter+'/2d.jpg';
 
-	 targetshoot5c= new Image();
-	targetshoot5c.src = '/assets/shooting/l2/3d.jpg';
+   targetshoot5c= new Image();
+  targetshoot5c.src = '/assets/shooting/l'+shootletter+'/3d.jpg';
 
-		targetShotCorrectly1 =new Image();
-		targetShotCorrectly1.src = '/assets/shooting/l2/1p.png';
+    targetShotCorrectly1 =new Image();
+    targetShotCorrectly1.src = '/assets/shooting/l'+shootletter+'/1p.png';
 
-				targetShotCorrectly2 =new Image();
-		targetShotCorrectly2.src = '/assets/shooting/l2/2p.png';
+        targetShotCorrectly2 =new Image();
+    targetShotCorrectly2.src = '/assets/shooting/l'+shootletter+'/2p.png';
 
-				targetShotCorrectly3 =new Image();
-		targetShotCorrectly3.src = '/assets/shooting/l2/3p.png';
+        targetShotCorrectly3 =new Image();
+    targetShotCorrectly3.src = '/assets/shooting/l'+shootletter+'/3p.png';
 
-				targetShotCorrectly4 =new Image();
-		targetShotCorrectly4.src = '/assets/shooting/l2/1w.png';
+        targetShotCorrectly4 =new Image();
+    targetShotCorrectly4.src = '/assets/shooting/l'+shootletter+'/1w.png';
 
-				targetShotCorrectly5 =new Image();
-		targetShotCorrectly5.src = '/assets/shooting/l2/2w.png';
+        targetShotCorrectly5 =new Image();
+    targetShotCorrectly5.src = '/assets/shooting/l'+shootletter+'/2w.png';
 
-				targetShotCorrectly6 =new Image();
-		targetShotCorrectly6.src = '/assets/shooting/l2/3w.png';
+        targetShotCorrectly6 =new Image();
+    targetShotCorrectly6.src = '/assets/shooting/l'+shootletter+'/3w.png';
 
 }
 
 function createThings() {
 //*MAAAAAP
-	var i;
-	    /*spriteMap =  [
-	    [820, 550],[300, 350],[600, 350],[1100, 350],[1350, 350],[600,150],[1100, 150],
-	    [300, 550],[600, 550],[1100,550],[1350, 550],
-	    [820, 350],[300, 150],[820,150],[1350, 150]];*/
+  var i;
+      /*spriteMap =  [
+      [820, 550],[300, 350],[600, 350],[1100, 350],[1350, 350],[600,150],[1100, 150],
+      [300, 550],[600, 550],[1100,550],[1350, 550],
+      [820, 350],[300, 150],[820,150],[1350, 150]];*/
     // spriteMap =  [
-	   //  [830, 885],[60, 450],[850, 450],[1600, 455],[470,25],[1290, 25]];
+     //  [830, 885],[60, 450],[850, 450],[1600, 455],[470,25],[1290, 25]];
 
 spriteMap =  [
-	   [1600, 455],[60, 450],[830, 885], [850, 450],[470,25],[1290, 25]];
+     [1600, 455],[60, 450],[830, 885], [850, 450],[470,25],[1290, 25],[470,25],[1290, 25]];
 
 
-	   /*THE FINAL CUT  spriteMap =  [
-	    [600, 550],[300, 350],[820, 350],[1100, 350],[1350, 350],[300, 150],[820, 150],
-		[300, 550],[820, 550] ,[1100, 550],[1350, 550],
-	    [600, 350],[600, 150] ,[1100, 150],[1350, 150]
-	    ];
-	    [600, 550],[300, 350],[820, 350],[1100, 350],[1350, 350],[300, 150],[820, 150],
-		[300, 550],[820, 550] ,[1100, 550],[1350, 550],
-		[600, 350],[600, 150] ,[1100, 150],[1350, 150]*/
+     /*THE FINAL CUT  spriteMap =  [
+      [600, 550],[300, 350],[820, 350],[1100, 350],[1350, 350],[300, 150],[820, 150],
+    [300, 550],[820, 550] ,[1100, 550],[1350, 550],
+      [600, 350],[600, 150] ,[1100, 150],[1350, 150]
+      ];
+      [600, 550],[300, 350],[820, 350],[1100, 350],[1350, 350],[300, 150],[820, 150],
+    [300, 550],[820, 550] ,[1100, 550],[1350, 550],
+    [600, 350],[600, 150] ,[1100, 150],[1350, 150]*/
 
 
-	    //from(0-->6)[i.e 1,5,7,8,9,10,12]
-	    //the ong one[2,5,6,8,9,11,13]
+      //from(0-->6)[i.e 1,5,7,8,9,10,12]
+      //the ong one[2,5,6,8,9,11,13]
 
-	    /*  spriteMap =  [
-		[300, 550],[600, 550],[820, 550] ,[1100, 550],[1350, 550],
-	    [300, 350],[600, 350],[820, 350] ,[1100, 350],[1350, 350],
-	    [300, 150],[600, 150],[820, 150] ,[1100, 150],[1350, 150]
-	    ];*/
+      /*  spriteMap =  [
+    [300, 550],[600, 550],[820, 550] ,[1100, 550],[1350, 550],
+      [300, 350],[600, 350],[820, 350] ,[1100, 350],[1350, 350],
+      [300, 150],[600, 150],[820, 150] ,[1100, 150],[1350, 150]
+      ];*/
 
-	    for(i = 0; i < 6; i++) { //15
-	    	sprites.push(createThing(spriteMap,i));
-	    }
-	}
-		//var placeholders=20;
+   var follat = new Array (0,0,0,0,0,0,0,0);
+      for(i = 0; i < 8; i++) { //15
+          var elRandom = parseInt(Math.random() * 8);
+          if (follat[elRandom] === 0){
+            var chosen = elRandom;
+          follat[elRandom]=1;
+          //alert(follat);
+        sprites.push(createThing(spriteMap,i,chosen));
+     }
+          else{
+            i--;
+          }
+        
 
-		function createThing(spriteMap,n) {
+      }
+
+
+
+  }
+    //var placeholders=20;
+
+
+   function createThing(spriteMap,n,chosen) {
+var exy =100;
+var wayee = 100;
+
+
+switch (chosen) {
+    case 0:
+    exy=40;
+    wayee=40;
+   
+        break;
+        case 1:
+        exy=400;
+    wayee=30;
+   
+        break;
+
+    case 2:
+       exy=80;
+    wayee=150;
+     
+        break;
+           case 3:
+       exy=320;
+    wayee=150;
+     
+        break;
+    case 4:
+    exy=40;
+    wayee=300;
+   
+        break;
+        case 5:
+        exy=400;
+    wayee=300;
+   
+        break;
+
+    case 6:
+       exy=200;
+    wayee=100;
+     
+        break;
+           case 7:
+       exy=200;
+    wayee=250;
+     
+        break;
+
+                 
+}
       // var cur, map = spriteMap[Math.floor(Math.random() * (spriteMap.length - 1))];
       var cur, map = spriteMap[n];
       cur = new Thing(
-      	map[0],
-      	map[1],
-      	Math.floor((Math.random()*canvas.width)+1),
-      	Math.floor((Math.random()*canvas.height)+1),
-      	canvas,n
-      	);
-	    //alert('IDE: '+cur.x+ "NNNN: "+n);
+        map[0],
+        map[1],
+        exy,
+        wayee,
+        canvas,n
+        );
+      //alert('IDE: '+cur.x+ "NNNN: "+n);
 
-	    return cur;
-	    
-	}
+      return cur;
+      
+  }
 
-	function init() {
 
-		canvas = document.getElementById('canvas');
-		ctx = canvas.getContext('2d');
-		canvaso = document.getElementById('score');
-		cvx = canvaso.getContext('2d');
-		canvas.onmousemove = moveTarget;
-	  canvas.ontouchmove = moveTarget;
-		canvas.onclick = fire;
-		//canvas.ontouch = fire ;
-		resizeCanvas();
-		loadSprite();
-		createThings();
 
-	}
+  function init() {
 
-	function touchHandler(event) {
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d');
+    canvaso = document.getElementById('score');
+    cvx = canvaso.getContext('2d');
+    canvas.onmousemove = moveTarget;
+    canvas.ontouchmove = moveTarget;
+    canvas.onclick = fire;
+    //canvas.ontouch = fire ;
+    resizeCanvas();
+    loadSprite();
+    createThings();
+    
+    setTimeout(function(){ frameDrawing(); }, 2000);
+
+ 
+
+
+     //canvastest = document.createElement( 'canvas' );
+     //canvastest.width = 512;
+     //canvastest.height = 512;
+     //context = canvastest.getContext( '2d' );
+     //document.body.appendChild( canvastest );
+
+
+
+  }
+
+  function touchHandler(event) {
     var touch = event.originalEvent.changedTouches[0];
     var simulatedEvent = document.createEvent("MouseEvent");
         simulatedEvent.initMouseEvent({
@@ -846,7 +1213,7 @@ function initTouch() {
 
 }
 
-	function speak(word){
+  function speak(word){
 var msg = new SpeechSynthesisUtterance();
 msg.volume = 1; // 0 to 1
 msg.rate = 1; // 0.1 to 10
@@ -860,7 +1227,7 @@ msg.onend = function(e) {
 
 speechSynthesis.speak(msg);
 }
-	 function getSpeech(fieldClicked) {
+   function getSpeech(fieldClicked) {
     $.ajax({
         url: 'ool',
         type: 'get',
@@ -871,270 +1238,352 @@ speechSynthesis.speak(msg);
     
     });
 };
-	
-	function clearCanvas() {
-		 //ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  function clearCanvas() {
 
-		 ctx.clearRect(0, 0, canvas.width, canvas.height); 
-		 cvx.clearRect(0, 0, canvaso.width, canvaso.height); 
-		 var img = document.getElementById("/assets/paper.jpg");
-		 ctx.fillStyle = img;
-   // var pat = ctx.createPattern(img, direction);
-   //ctx.fillRect(0, 0, canvas.width, canvas.height);
-    //ctx.rect(0, 0, 150, 100);
-   // ctx.fillStyle = img;
-   // ctx.fill();
- // ctx.fillRect(0, 0, canvas.width, canvas.height);
-	/*ctx.fillStyle = "#006";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);*/
+
+     ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    //cvx.clearRect(0, 0, canvaso.width, canvaso.height); 
+  
 
 }
 
-	/*function resetBoard(n){
+function checkhitsSounds(){
+      if(sa2afoolo === true){
+       new Audio('/assets/Audio/applause.mp3').play();
+       sa2afoolo = false;}
 
-		 for(i = 0; i < sprites.length; i++) {
+       if(punishhim === true){
+        new Audio('/assets/Audio/boing.mp3').play();
+       punishhim = false;
 
-		if(sprites[i].letter<=6 && sprites[i].getHit()===true){
-			
+       }
 
-		 for(j = 0; j < placeholders-20; j=j+20) {
-		 //cvx.fillText("Here" ,10,j);
-		
-		 cvx.drawImage(sprite,sprites[j/20].mapX,sprites[j/20].mapY,170,170,10,j,90,60);
+       if(en2elooh === true){
+        new Audio('/assets/Audio/applausy.mp3').play();
+          //new Audio('/assets/Audio/finish.mp3').play();
+       en2elooh = false;
 
-	}
-		 //cvx.drawImage(sprite,820,550,170,170,10,80);}
-		 //alert('placoooo: '+placeholders);
-		}
+       }
+           if(celebratooh === true){
+        new Audio('/assets/Audio/applausy.mp3').play();
+        new Audio('/assets/Audio/tada.mp3').play();
+       celebratooh = false;
 
-	}
+       }
+
+}
+
+
+
+  /*function resetBoard(n){
+
+     for(i = 0; i < sprites.length; i++) {
+
+    if(sprites[i].letter<=6 && sprites[i].getHit()===true){
+      
+
+     for(j = 0; j < placeholders-20; j=j+20) {
+     //cvx.fillText("Here" ,10,j);
+    
+     cvx.drawImage(sprite,sprites[j/20].mapX,sprites[j/20].mapY,170,170,10,j,90,60);
+
+  }
+     //cvx.drawImage(sprite,820,550,170,170,10,80);}
+     //alert('placoooo: '+placeholders);
+    }
+
+  }
 
 }*/
 var totalScore = 0;
 function congratsy(){
-	
+  
 cvx.fillStyle = "#B8005C";
 cvx.font = "bold 24pt Arial";
 ctx.fillStyle ="#5200A3";
 ctx.font = "bold 24pt Arial";
 //cvx.fillText("YOU WON !",130,230);
-totalScore = correctShots*10 - wrongShots*2; 
+//totalScore = correctShots*10 - wrongShots*2; 
 
-ctx.fillText("YOU WON !",160,240);
+//ctx.fillText("YOU WON !",160,240);
 ctx.font = "bold 20pt Arial";
 ctx.fillStyle ="orangered";
-ctx.fillText("Score: "+totalScore,253-50,280);
+//ctx.fillText("Score: "+totalScore,253-50,280);
  //cancelAnimationFrame();
 }
 
 
 function resetBoard(n){
-	var j=260;
-	var m=360;
+  if(shootstage > 4){
+         document.getElementById("one").style.visibility = 'hidden';
+        document.getElementById("three").style.visibility = 'hidden';}
+  var j=260;
+  var m=360;
 var targetShotCorrectly = new Image();
 for(i = 0; i <flags.length; i++) {
-		if(flags[i]<10){
+    if((flags[i]<10) && (didWeDraw[i]===0)){
+  //cvx.clearRect(0, 0, canvaso.width, canvaso.height); 
 
  // cvx.drawImage(targetShotCorrectly,170,170,310,420,90,60);
 
 
-	if (shootstage ===5){
-		//targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'p.png';
-		if(shootsubstage5 === 1){
+  if (shootstage ===5){
 
-		 	cvx.drawImage(targetShotCorrectly1,160-60,403-200,70,70);}
-		 			if(shootsubstage5 === 2){
+    //targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+shootsubstage5+'p.png';
+    if(shootsubstage5 === 1){
 
-		 	cvx.drawImage(targetShotCorrectly2,160-60,403-200,70,70);}
-		 			if(shootsubstage5 === 3){
+      cvx.drawImage(targetShotCorrectly1,100,203,70,70);
+     }
+          if(shootsubstage5 === 2){
 
-		 	cvx.drawImage(targetShotCorrectly3,160-60,403-200,70,70);}
-	}
-	else if(shootstage ===2 || shootstage ===2 ){
-		if (flags[i] === 0){
-				cvx.drawImage(targetShotCorrectly4,265-(flags[i]*100)-60,403-200,70,70);
+      cvx.drawImage(targetShotCorrectly2,100,203,70,70);}
+          if(shootsubstage5 === 3){
 
-		}
-			if  (flags[i] === 1){
-					cvx.drawImage(targetShotCorrectly5,265-(flags[i]*100)-60,403-200,70,70);
+      cvx.drawImage(targetShotCorrectly3,100,203,70,70);}
+  }
+  else if(shootstage ===2 || shootstage ===3 ){
+    if (flags[i] === 0){
+        cvx.drawImage(targetShotCorrectly4,265-(flags[i]*100)-60,203,70,70);
 
-		}
-			if  (flags[i] === 2){
-				cvx.drawImage(targetShotCorrectly6,265-(flags[i]*100)-60,403-200,70,70);
+    }
+      if  (flags[i] === 1){
+          cvx.drawImage(targetShotCorrectly5,265-(flags[i]*100)-60,203,70,70);
 
-		}
+    }
+      if  (flags[i] === 2){
+        cvx.drawImage(targetShotCorrectly6,265-(flags[i]*100)-60,203,70,70);
+
+    }
 
 
-	//targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'w.png';
- //	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100)-60,403-200,70,70);
+  //targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'w.png';
+ // cvx.drawImage(targetShotCorrectly,265-(flags[i]*100)-60,403-200,70,70);
 
  }
-	else{
+  else{
 
-				if (flags[i] === 0){
-				cvx.drawImage(targetShotCorrectly1,265-(flags[i]*100)-60,403-200,70,70);
+        if (flags[i] === 0){
+        cvx.drawImage(targetShotCorrectly1,265-(flags[i]*100)-60,203,70,70);
 
-		}
-			if  (flags[i] === 1){
-					cvx.drawImage(targetShotCorrectly2,265-(flags[i]*100)-60,403-200,70,70);
+    }
+      if  (flags[i] === 1){
+          cvx.drawImage(targetShotCorrectly2,265-(flags[i]*100)-60,203,70,70);
 
-		}
-			if  (flags[i] === 2){
-				cvx.drawImage(targetShotCorrectly3,265-(flags[i]*100)-60,403-200,70,70);
+    }
+      if  (flags[i] === 2){
+        cvx.drawImage(targetShotCorrectly3,265-(flags[i]*100)-60,203,70,70);
 
-		}
-		//targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'p.png';
-		 //	cvx.drawImage(targetShotCorrectly,265-(flags[i]*100)-60,403-200,70,70);
-	}
+    }
+    //targetShotCorrectly.src = '/assets/shooting/l'+shootletter+'/'+(flags[i]+1)+'p.png';
+     // cvx.drawImage(targetShotCorrectly,265-(flags[i]*100)-60,403-200,70,70);
+  }
 
-	//cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,m,420,90,60);
-		}
-	/*for(i = 0; i <flags.length; i++) {
-		if(flags[i]<10){
+  //cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,m,420,90,60);
+    didWeDraw[i]=99;
+    }
+    //didWeDraw[i]=99;
+    //alert(didWeDraw);
+  /*for(i = 0; i <flags.length; i++) {
+    if(flags[i]<10){
            if(i<3){
-			cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,j,290,90,60);
-			j = j - 100;}
-			else{
-				cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,m,420,90,60);
-			m = m - 100;
+      cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,j,290,90,60);
+      j = j - 100;}
+      else{
+        cvx.drawImage(sprite,sprites[flags[i]].mapX,sprites[flags[i]].mapY,170,170,m,420,90,60);
+      m = m - 100;
 
-			}
+      }
 
-		} THIS WAS USED WHEN WE USED TO CUT THE TARGET AND PUT IT DOWN IN FRAME*/
+    } THIS WAS USED WHEN WE USED TO CUT THE TARGET AND PUT IT DOWN IN FRAME*/
 
 
-	}
-	if (flags[2]<10){
-		done=1;
-	}
+  }
+  if (flags[2]<10){
+    done=1;
+  }
+
+
 }
 
 function resetBoardFinal(){
 
-	if (flags[2]<10){
-		done=1;
-	}
+  if (flags[2]<10){
+    done=1;
+  }
 }
 
+function frameDrawing(){
 
-function start(){
-
-	clearCanvas();
-	resetBoard(n);
-
-
-
-	for(i = 0; i < sprites.length; i++) {
-		// if (i===3)
-	 //   {
-	 //	sprites[i].draw(ctx, sprite);
-	 	//}
-	 // else{
-		 sprites[i].draw(ctx, sprite).move();
-		sprites[i].checkBoundaryCollision(); 
-		sprites[i].correctXY();
-
-		/* cvx.fillStyle = " #000033";
-	     cvx.font = "bold 16pt Arial";
-		if(sprites[i].letter<=6 && sprites[i].getHit()===true){
-		 cvx.fillText("Here goes the first correct hit !  " ,80,40);
-		 placeholders = placeholders +40;
-		 //alert('placoooo: '+placeholders);
-		}*/
-
-
-	}
-
-
-	for(i =0; i < explosions.length; i++) {
-		explosions[i].draw(ctx, explosion);
-		hits += explosions[i].checkHits(sprites);
-	}
-
-	if(shots > 0) {
-		accuracy = Math.round((hits / shots) * 100);
-	}
-
-	    //ctx.fillStyle = "#cfcfcf"; //grey
-	    ctx.fillStyle = " #000033";//navy
-	    //ctx.fillStyle = "#99CC00";green
-
-
-
-// 	    ctx.font = "bold 16pt Arial";
-// 	    ctx.fillText("Shots: " + shots + " Hits: " + hits + 
-// 	   	" Correct: " + correctShots + " Wrong: " + wrongShots , 10, 30);
-// cvx.fillStyle = " #000033";
-
-// cvx.font = "bold 16pt Arial";
-
-// cvx.fillText("Shots: " + shots ,180,30-10);
-// cvx.fillText("Hits: " + hits ,180,70-10);
-// cvx.fillStyle ="#5200A3";
-// cvx.fillText("Correct Shots: " +  correctShots ,180,110-10);
-// cvx.fillStyle ="orangered";
-// cvx.fillText("Wrong Shots: " +  wrongShots ,180,150-10);
-// cvx.fillStyle = " #000033";
-// cvx.fillText("Accuracy: " + accuracy ,180,190-10);
-// cvx.drawImage(targetLetter,15-15,53-10,110,110);
-// cvx.drawImage(frame,0,38,115,115);
+ctx.fillStyle = " #000033";//navy
+     
+// if (initflag > 0){
 var d = 260;
 if (shootstage === 1 || shootstage===2 ){
 for (t=0;t<3;t++){
-	cvx.drawImage(frames,d-60,280-200,80,80);
-	if(t === 0)
-		{cvx.drawImage(targetshoot1,d+5-60,285-200,70,70);}
-	if(t === 1)
-			{cvx.drawImage(targetshoot2,d+5-60,285-200,70,70);}
-	if(t === 2)
-	   {cvx.drawImage(targetshoot3,d+5-60,285-200,70,70);}
+  cvx.drawImage(frames,d-60,80,80,80);
+  if(t === 0)
+    {cvx.drawImage(targetshoot1,d-55,85,70,70);}
+  if(t === 1)
+      {cvx.drawImage(targetshoot2,d-55,85,70,70);}
+  if(t === 2)
+     {cvx.drawImage(targetshoot3,d-55,85,70,70);}
 
-	d-=100;
+  d-=100;
 }}
 
-else{ 
-	if (shootstage === 3 || shootstage=== 4){
 
-	cvx.drawImage(frames,135+10-60,280-200,100,100);
-	
-	cvx.drawImage(targetshoot4,140+10-60,285-200,90,90);
+else{ 
+  if (shootstage === 3 || shootstage=== 4){
+
+  cvx.drawImage(frames,85,80,100,100);
+  
+  cvx.drawImage(targetshoot4,90,85,90,90);
 
 
 }
 else{ // IN CASE OF STAGE 5
-	cvx.drawImage(frames,135+10-60,280-200,100,100);
-	if(shootsubstage5 === 1){
-	cvx.drawImage(targetshoot5a,140+10-60,285-200,90,90);}
-	if(shootsubstage5 === 2){
-	cvx.drawImage(targetshoot5b,140+10-60,285-200,90,90);}
-	if(shootsubstage5 === 3){
-	cvx.drawImage(targetshoot5c,140+10-60,285-200,90,90);}
+  cvx.drawImage(frames,135+10-60,80,100,100);
+  if(shootsubstage5 === 1){
+  cvx.drawImage(targetshoot5a,90,85,90,90);}
+  if(shootsubstage5 === 2){
+  cvx.drawImage(targetshoot5b,90,85,90,90);}
+  if(shootsubstage5 === 3){
+  cvx.drawImage(targetshoot5c,90,85,90,90);}
 }
 }
 if(shootstage === 5){
-		cvx.drawImage(frames,160-60,400-200,80,80);
+    cvx.drawImage(frames,100,200,80,80);
 }
 else{
 var f = 260;
 for (t=0;t<3;t++){
-	cvx.drawImage(frames,f-60,400-200,80,80);
-	f-=100;
-}}
+  cvx.drawImage(frames,f-60,200,80,80);
+  f-=100;
+}
+}
+
+// initflag=initflag-1;
+// }
+
+}
+
+
+function frameDrawing2(){
+
+
+var f = 260;
+for (t=0;t<3;t++){
+  cvx.drawImage(frames,f-60,200,80,80);
+  f-=100;
+}
+
+
+}
+
+function start(){
+
+
+
+clearCanvas();
+resetBoard(n);
+
+for(i = 0; i < sprites.length; i++) {
+
+    sprites[i].draw(ctx, sprite).move();
+    sprites[i].checkBoundaryCollision(); 
+    sprites[i].correctXY();
+
+  }
+
+
+
+
+  for(i =0; i < explosions.length; i++) {
+    explosions[i].draw(ctx, explosion);
+    hits += explosions[i].checkHits(sprites);
+  }
+
+  // if(shots > 0) {
+  //  accuracy = Math.round((hits / shots) * 100);
+  // }
+
+  //     ctx.fillStyle = " #000033";//navy
+     
+
+// // if (initflag > 0){
+
+// var d = 260;
+// if (shootstage === 1 || shootstage===2 ){
+// for (t=0;t<3;t++){
+//  cvx.drawImage(frames,d-60,280-200,80,80);
+//  if(t === 0)
+//    {cvx.drawImage(targetshoot1,d+5-60,285-200,70,70);}
+//  if(t === 1)
+//      {cvx.drawImage(targetshoot2,d+5-60,285-200,70,70);}
+//  if(t === 2)
+//     {cvx.drawImage(targetshoot3,d+5-60,285-200,70,70);}
+
+//  d-=100;
+// }}
+
+// else{ 
+//  if (shootstage === 3 || shootstage=== 4){
+
+  // cvx.drawImage(frames,135+10-60,280-200,100,100);
+  
+  // cvx.drawImage(targetshoot4,140+10-60,285-200,90,90);
+
+
+// }
+// else{ // IN CASE OF STAGE 5
+//  cvx.drawImage(frames,135+10-60,280-200,100,100);
+//  if(shootsubstage5 === 1){
+//  cvx.drawImage(targetshoot5a,140+10-60,285-200,90,90);}
+//  if(shootsubstage5 === 2){
+//  cvx.drawImage(targetshoot5b,140+10-60,285-200,90,90);}
+//  if(shootsubstage5 === 3){
+//  cvx.drawImage(targetshoot5c,140+10-60,285-200,90,90);}
+// }
+// }
+// if(shootstage === 5){
+//    cvx.drawImage(frames,160-60,400-200,80,80);
+// }
+// else{
+// var f = 260;
+// for (t=0;t<3;t++){
+//  cvx.drawImage(frames,f-60,400-200,80,80);
+//  f-=100;
+// }
+//}
+
+// // initflag=initflag-1;
+// // }
+// frameDrawing();
 if(done>0){
-	congratsy();
+  congratsy();
 }
 // cvx.fillText("OKAY? .. OKAY !" ,80,placo);
-	    //Draw target
-	    if(done ===0){
-	    ctx.drawImage(target, 0,0, 512, 512, 
-	    	targetX -100 , targetY-100 , 
-	    	70, 70);
+      //Draw target
+      if(done ===0){
+      // ctx.drawImage(target, 0,0, 512, 512, 
+      //   targetX-100  , targetY-100 , 
+      //   50, 50);
 
-	   }
+        ctx.drawImage(target,
+        targetX-60  , targetY-120 , 
+        60, 60);
+
+     }
+
+     /* TARGET PLACE*/
 
 
 
-  requestAnimFrame(start);
+  animiz=requestAnimFrame(start);
+
+   //drawTest();
+      // context.clearRect(0, 0, canvastest.width, canvastest.height); 
   //render();
 }
 
@@ -1142,159 +1591,174 @@ if(done>0){
 
 
 
-	function resizeCanvas() {
+  function resizeCanvas() {
 
-	   //ctx.canvas.width = window.innerWidth;
-	  // ctx.canvas.height = window.innerHeight;
-	  ctx.canvas.width = 500;
-	  ctx.canvas.height = 400;
-	}
+     //ctx.canvas.width = window.innerWidth;
+    // ctx.canvas.height = window.innerHeight;
+    ctx.canvas.width = 500;
+    ctx.canvas.height = 400;
+  }
 
-	function fixPageXY(e) {
+  function fixPageXY(e) {
 
-		if (e.pageX === null && e.clientX !== null ) {
+    if (e.pageX === null && e.clientX !== null ) {
 
-			e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
-			e.pageX -= html.clientLeft || 0;
+      e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
+      e.pageX -= html.clientLeft || 0;
 
-			e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
-			e.pageY -= html.clientTop || 0;
-		}
-	}
+      e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
+      e.pageY -= html.clientTop || 0;
+    }
+  }
+  
 
-	function moveTarget(e) {
+  function moveTarget(e) {
 
-		e = e || window.event;
-		fixPageXY(e);
-		targetX = e.pageX;
-		targetY = e.pageY;
+ 
+    e = e || window.event;
+    fixPageXY(e);
 
-	}
+      targetX = e.pageX;
+    targetY = e.pageY;
 
-	function fire() {
 
-		explosions.push(new Explosion(targetX, targetY, new Audio('/assets/Audio/bang.wav')));
-		shots++;
+  }
 
-	}
-	     function chooseShootStage(fieldClicked) {
-    $.ajax({
-        url: 'shooting',
-        type: 'get',
-        contentType: 'application/json; charset=UTF-8',
-        accept: 'application/json',
-        dataType: 'json',
-        data: {myshootstage:fieldClicked}
+  function fire() {
+    //new Audio('/assets/Audio/bang.mp3').play();
+    explosions.push(new Explosion(targetX, targetY, new Audio('/assets/Audio/bang.mp3')));
+    shots++;
+
+
+  setTimeout(function(){checkhitsSounds();}, 500);
+
     
-    });
-};
+       //checkhitsSounds();
 
-	function sendStage(stageNo){
-chooseShootStage(stageNo);
-
-}
-
-function UpdateShootStage(){
-	
-	if (shootstagy < 8){
-		shootstagy++;
+  }
 
 
-	}
-	else{
-				shootstagy = 1;
-
-	}
-	  //window.location.reload()
-		sendStage(shootstagy);
-		yalla= $('.temp_information').data('stagy');
-		location.reload();
-		//alert(shootstagy +"...."+shootsubstage5);
-}
-	function setsubStage(){
-		if(shootstagy === 5)
+  function setsubStage(){
+    if(shootstagy === 5)
 return 1;
-		if(shootstagy === 6)
+    if(shootstagy === 6)
 return 2;
-		if(shootstagy === 7)
+    if(shootstagy === 7)
 return 3;
 
 }
-	function setStagy(number){
-		if(number >= 5)
-			return 5;
-		else{
-			return number;
-		}
+  function setStagy(number){
+    if(number >= 5)
+      return 5;
+    else{
+      return number;
+    }
+
+
+}
+
+function sendstageNew(n){
+
+  shootstagy=n;
+  shootstage = setStagy(n);
+  shootsubstage5 = setsubStage();
+  
+  setTimeout(function(){startAllOver(); }, 2000);
+
+
+}
+var tootoo = 0;
+function updatestageNew(){
+
+    if (shootstagy < 7){
+    shootstagy++;
+  }
+  else{
+        celebrate();
+         //new Audio('/assets/Audio/applausy.mp3').play();
+        tootoo = 1;
+
+  }
+if(tootoo !== 1){
+  sendstageNew(shootstagy);
+  setTimeout(function(){startAllOver(); }, 2000);}
 
 
 }
 
 
-	
-	// resize the canvas to fill browser window dynamically
-	window.addEventListener('resize', resizeCanvas, false);
+  
+  // resize the canvas to fill browser window dynamically
+  window.addEventListener('resize', resizeCanvas, false);
 var yalla;
-	$('#level1').click(function() {
-		sendStage(1);
-		yalla= $('.temp_information').data('stagy');
-		location.reload();
-		//alert(shootstage); 
+  $('#level1').click(function() {
+    sendstageNew(1);
+    //needo();
 
-	});
-		$('#level2').click(function() {
-		sendStage(2);
-	   		yalla= $('.temp_information').data('stagy');
-		location.reload();
-	
-	});
-		$('#level3').click(function() {
-		sendStage(3);
-		yalla= $('.temp_information').data('stagy');
-		location.reload();
-	});
-		$('#level4').click(function() {
-		sendStage(4);
-		yalla= $('.temp_information').data('stagy');
-		location.reload();
-	});
-		$('#level5a').click(function() {
-sendStage(5);
+  });
+    $('#level2').click(function() {
 
-		yalla= $('.temp_information').data('stagy');		
-		  location.reload();
+    sendstageNew(2);
 
-	});
-				$('#level5b').click(function() {
-sendStage(6);
+  
+  });
+    $('#level3').click(function() {
 
-		yalla= $('.temp_information').data('stagy');
-		location.reload();
+    sendstageNew(3);
+  });
+    $('#level4').click(function() {
 
-	});
-						$('#level5c').click(function() {
-sendStage(7);
+    sendstageNew(4);
+  });
+    $('#level5a').click(function() {
 
-		yalla= $('.temp_information').data('stagy');
+sendstageNew(5);
 
-		location.reload();
+  });
+        $('#level5b').click(function() {
 
-	});
-	// Start the process
+sendstageNew(6);
+  });
+            $('#level5c').click(function() {
 
-	window.onload = function() {
-		init();
-		start();
-		initTouch();
-	   //new Audio('background-music.wav').play();
-	};
-
-	
-
-		
+sendstageNew(7);
 
 
+  });
+  // Start the process
 
-	</script>
+  window.onload = function() {
+    init();
+    start();
+    initTouch();
+   //Fireworks.initialize();
+//celebrate();
+
+    //new Audio('/assets/Audio/l1/2.mp3').play();
+    //alert("yalahwyy"+shootstagy);
+
+  };
+var lettoz = shootletter;
+  function startAllOver(){
+
+window.cancelAnimationFrame(animiz);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+    cvx.clearRect(0, 0, canvaso.width, canvaso.height);
+    myStartFresh();
+    init();
+    start();
+    initTouch();
+
+  }
+
+  </script>
+  <script src="/assets/fire/fireworks.js"></script>
+ 
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="/assets/fire/requestanimframe.js"></script>
+
 </body>
 </html>

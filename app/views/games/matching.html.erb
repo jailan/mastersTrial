@@ -1,32 +1,35 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html>
-<head>
-<%= content_tag :div, class: "temp_information", data: {temp: @tempmatch} do %>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="css/hawaz.css" />
+     <link href="/assets/fire/fireworks.css" rel="stylesheet">
+    <%= content_tag :div, class: "temp_information", data: {temp: @tempmatch} do %>
 <% end %>
-	<title>Flipping Cards Game</title>
-	<style>
+  <title>Memory Game</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style>
 
 
 root { 
     display: block;
 }
 
-body {
-	/*background-color: #fff;*/
-	background-image: url("/assets/paper.jpg");
 
-	margin: 20px 0px 0px 0px;
+body{
+  background-color:  #343B61;
+
 
 }
-
-body article#game {
-	width: 600px;
-	padding-left: 90px;
-    /*margin-right: 60px;*/
+.body-container {
+    background-image: url("/assets/rsz_background3.png");
 }
 
 
@@ -37,11 +40,11 @@ body article#game {
 }
 
 #board {
-	padding-top: 10px;
-    margin-left: 140px;
+  padding-top: 10px;
+    margin-left: 325px;
     width: 340px;
     height: 240px;
-	background-color: rgb(228, 223, 208);
+  background-color: rgb(228, 223, 208);
 }
 .btnBlue {
   background: #3baaf5;
@@ -194,6 +197,8 @@ body article#game {
     /*float:right;*/
   
 }
+
+
 .orange {
     color: #fef4e9;
     border: solid 1px #da7c0c;
@@ -201,6 +206,7 @@ body article#game {
     background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
     background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+    border-radius : 100%;
 }
 .orange:hover {
     background: #f47c20;
@@ -249,31 +255,15 @@ body article#game {
     margin-left:970px;
 }
 
-#level1{
+#level1, #level2, #level3, #level4, #level5{
     width:20px;
     height:30px;
+    left: 10px;
+    top: 20px;
+    position: relative;
 
 }
-#level2{
-    width:20px;
-    height:30px;
 
-}
-#level3{
-    width:20px;
-    height:30px;
-
-}
-#level4{
-    width:20px;
-    height:30px;
-
-}
-#level5{
-    width:20px;
-    height:30px;
-
-}
 .btnPurple {
   background: #d100b5;
   background-image: -webkit-linear-gradient(top, #d100b5, #87059e);
@@ -302,56 +292,61 @@ body article#game {
 }
 #startGameButton
 {
-	
-	width: 150px;
-	padding-bottom: 10px;
-	text-align: center;
-	margin: 0.2em 0 0 300px;
-	font-size: 112.5%;
-	cursor: pointer;
-	color: #fff;
-	display: block;
-	/*background-color: #069; Baby Blue*/
+  
+  width: 150px;
+  padding-bottom: 10px;
+  text-align: center;
+  margin: 0.2em 0 0 300px;
+  font-size: 112.5%;
+  cursor: pointer;
+  color: #fff;
+  display: block;
+  /*background-color: #069; Baby Blue*/
     /*background-color:#006;navy*/
     background-color: #b3005b;
     margin-left: 620px;
-	/*font-family: 'Cherry Swash', cursive;
-	font-weight: 400;
-	color: rgb(20, 166, 0);
-	padding-bottom: 10px;
-	display: block;*/
+  /*font-family: 'Cherry Swash', cursive;
+  font-weight: 400;
+  color: rgb(20, 166, 0);
+  padding-bottom: 10px;
+  display: block;*/
 }
 #flipAgainButton
 {
     
-    width: 150px;
-    padding-bottom: 10px;
+
+    bottom: 300px;
     text-align: center;
     margin: 0.2em 0 0 300px;
-    font-size: 112.5%;
+    font-size: 5.5em;
     cursor: pointer;
-    color: #fff;
+  bottom: 478px;
+  right: 83px;
     display: block;
+    position: absolute;
+
+color: #FF7519;
     /*background-color: #069; Baby Blue*/
     /*background-color:#006;navy*/
-    background-color: #b3005b;
-    margin-left: 620px;
-    /*font-family: 'Cherry Swash', cursive;
-    font-weight: 400;
-    color: rgb(20, 166, 0);
-    padding-bottom: 10px;
-    display: block;*/
-}
+
+    margin-left: 620px;}
+
+    .icon-star-filled:hover{
+     color: #FF7519; 
+
+    }
+  
+
 
 .tile {
-	float:left;
-	width: 100px;
-	height: 100px;
-	margin-left: 10px;
-	margin-bottom: 10px;
-	border: 1px solid #cfcfcf;
-	cursor: pointer;
-	    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  float:left;
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cfcfcf;
+  cursor: pointer;
+      text-shadow: 0 1px 1px rgba(0,0,0,.3);
     -webkit-border-radius: .5em; 
     -moz-border-radius: .5em;
     border-radius: .5em;
@@ -361,69 +356,196 @@ body article#game {
 }
 
 .tile img {
-	display: block;
-	margin: 0 auto;
-	padding-top: 9px;
-	width: 80px;
+  display: block;
+  margin: 0 auto;
+  padding-top: 9px;
+  width: 80px;
 }
 
 .tileColor1 {
-	 background-color: rgb(176, 235, 23);
+   background-color: rgb(176, 235, 23);
 }
 
 .tileColor2 {
-	 background-color: rgb(57, 171, 62);
+   background-color: rgb(57, 171, 62);
 }
 
 .tileColor3 {
-	 background-color: rgb(130, 189, 46);
+   background-color: rgb(130, 189, 46);
 }
 
 .tileColor4 {
-	 background-color: rgb(200, 217, 126);
+   background-color: rgb(200, 217, 126);
 }
 
 
 .tileColor5 {
-	 background-color: #82bd2d;
+   background-color: #82bd2d;
 }
 
-	</style>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
-	<script src="/assets/tile.js"></script>
-	<script src="/assets/jquery.flip.js"></script>
-	<script src="/assets/matching.js"></script>
+#prego{
+  width: 500px; margin-left:400px; margin-top:20px
+}
+
+
+  @media screen and (max-width:1024px) {
+    .body-container {
+    background-image: url("/assets/background3.png");
+}
+
+#prego{
+  width: 500px; margin-left:250px; margin-top:20px
+}
+}
 
 
 
-<body>
+  </style>
+  </head>
+  <body>
+    <div class="menu-container" style="height: 50px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+  
+          <li id="site-title"><a href="home"><h3>Super Hawwaz</h3></a></li>
+         </ul>
+       </div>
+      </div>
+    </div>
+    <div class="body-container" id="overlay" style="height: 600px;">
 
-        <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+       <div id="prego" class="progress" role="progressbar"  tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBar" style="width: 0%"></div>
+       
+      </div>
+      <div class="row">
+        <div class="large-14 columns">
 
-		<div id="score"></div>
-	<article id="game">
-		
+           
+
+  
+  <article id="game">
+    
 <section id="board">
 
-		</section>
-		
+    </section>
+    
 
 
-	
-	</article>
-	<a  href='#' class="button fuschia" id="startGameButton">New Game</a>
-	<a  href='#' class="button fuschia" id="flipAgainButton">Peek Cards</a>
-	<a  href='#' class="btnBlue" id="level1">1</a>
+  
+  </article>
+
+  <a  href='#'> <i class="icon-star-filled" id="flipAgainButton"></i></a>
+
+
+ 
+  <a  href='#' class="btnBlue" id="level1">1</a>
     <a  href='#' class="btnGreen" id="level2">2</a>
     <a  href='#' class="btnYellow" id="level3">3</a>
     <a  href='#' class="btnOrange" id="level4">4</a>
     <a  href='#' class="btnRed" id="level5">5</a>
-	<audio id="audioEngine">
-	  <source src="mp3/applause.mp3" type="audio/mpeg">
-	Your browser does not support the audio element.
-	</audio>
 
-</body>
+ <div class="row">
+ </div>
+
+  <audio id="audioEngine">
+    <source src="mp3/applause.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+  </audio>
+
+          <!--PUT YOUR GAME HERE-->
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" id="footy" >
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+       <aside id="hamada" width="1200" height="500">
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </aside>
+     <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+      <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+  <script src="/assets/tile.js"></script>
+  <script src="/assets/jquery.flip.js"></script>
+  <script src="/assets/matching.js"></script>
+    <script src="/assets/fire/requestanimframe.js"></script>
+  <script src="/assets/fire/fireworks.js"></script>
+
+  </body>
 </html>
+
+
+

@@ -1,56 +1,318 @@
-<!doctype html> 
-<html lang="en"> 
-<head> 
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
 
  <%= content_tag :div, class: "temp_information", data: {temp: @temphome} do %>
 <% end %>
 
-  <meta charset="UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz</title>
+    <link rel="stylesheet" href="home/css/foundation.css" />
+    <link rel="stylesheet" href="home/css/app.css" />
+    <link rel="stylesheet" href="home/css/fontello.css" />
+    <link rel="stylesheet" href="home/css/hawaz.css" />
+  </head>
+ 
+  <body>
+    <div class="menu-container" style="height: 50px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+           <li id="site-title"><a href="#"><h3>SuperHawaz</h3></a></li>
+         </ul>
+       </div>
+      </div>
+    </div>
+    <div id="backy" class="body-container">
+      <div class="row">
+        <div class="large-12 columns">
+     
+          <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit >
+            <ul class="orbit-container">
+              <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+              <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+              <li class="is-active orbit-slide">
+                <div>
+              <h3 class="text-center"><img src="/assets/home/l1.png" style="width: 400px; heghit: 400px;"/></h3>
+              
+                  <div class="row game-slide" id="maze" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="mazeGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                            <div>
+              <h3 class="text-center"><img src="/assets/home/l2.png" style="width: 400px; heghit: 400px;"/></h3>
+              
+                  <div class="row game-slide" id="flippingCards" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="flippingGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                       <div>
+              <h3 class="text-center"><img src="/assets/home/l3.png" style="width: 400px; heghit: 400px;"/></h3>
+              
+                  <div class="row game-slide" id="shooting" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="shootingGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+              <h3 class="text-center"><img src="/assets/home/l4.png" style="width: 400px; heghit: 400px;"/></h3>
+              
+                  <div class="row game-slide" id="hangman" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="hangmanGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+              <h3 class="text-center"><img src="/assets/home/l7.png" style="width: 400px; heghit: 400px;"/></h3>
+              
+                  <div class="row game-slide" id="puzzle" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="puzzleGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                        <div>
+              <h3 class="text-center"><img src="/assets/home/l11.png" style="width: 400px; heghit: 400px;"/></h3>
+              
+                  <div class="row game-slide" id="dragndrop" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="dragGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+              <h3 class="text-center"><img src="/assets/home/l12.png" style="width: 300px; heghit: 300px;"/></h3>
+              
+                  <div class="row game-slide" id="letterpaint" >
+                
+                 <div style="right: 425px; position: absolute;"> <a id="letterpaintGame"class="large button sites-button hide-for-small-only">GO ! </a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+              <div>
+                  <h3 class="text-center"><img src="/assets/home/l26.png" style="width: 400px; heghit: 400px;"/> </h3>
+                  <div class="row game-slide" id="animals">
+                
+                      
+             
+                 
+                     <div style="right: 425px; position: absolute;"> <a id="animalsGame" class="large button sites-button hide-for-small-only" >GO !</a></div>
+               
+                  </div>
+                </div>
 
-<div id="dialogoverlay"></div>
-<div id="dialogbox">
-  <div>
-    <div id="dialogboxhead"></div>
-    <div id="dialogboxbody"></div>
-    <div id="dialogboxfoot"></div>
-  </div>
-</div>
-<ul>
-  <li><a href="#" class="round green" onclick="collectStar('ص')">ص<span class="round">ص</span></a></li>
-  <li><a href="#" class="round red" onclick="collectStar('ش')">ش<span class="round">ش</span></a></li>
-  <li><a href="#" class="round yellow" onclick="collectStar('س')">س<span class="round">س</span></a></li>
-    <li><a href="#" class="round green" onclick="collectStar('ز')">ز<span class="round">ز</span></a></li>
-  <li><a href="#" class="round red" onclick="collectStar('ر')">ر<span class="round">ر</span></a></li>
-  <li><a href="#" class="round yellow" onclick="collectStar('ذ')">ذ<span class="round">ذ</span></a></li>
-    <li><a href="#" class="round green" onclick="collectStar('د')" on>د<span class="round">د</span></a></li>
-  <li><a href="#" class="round red" onclick="collectStar('خ')">خ<span class="round">خ</span></a></li>
-  <li><a href="#" class="round yellow" onclick="collectStar('ح')">ح<span class="round">ح</span></a></li>
-    <li><a href="#" class="round green" onclick="collectStar('ج')">ج<span class="round">ج</span></a></li>
-  <li><a href="#" class="round red" onclick="collectStar('ث')">ث<span class="round">ث</span></a></li>
-  <li><a href="#" class="round yellow" onclick="collectStar('ت')">ت<span class="round">ت</span></a></li>
-    <li><a href="#" class="round green" onclick="collectStar('ب')">ب<span class="round">ب</span></a></li>
-  <li><a href="#" class="round red" onclick="collectStar('أ')">أ<span class="round">أ</span></a></li>
-</ul> 
-<ul>
-  <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ي')">ي<span class="round" >ي</span></a></li>
-    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('و')">و<span class="round">و</span></a></li>
-   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ه')">ه<span class="round">ه</span></a></li>
-     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ن')">ن<span class="round" >ن</span></a></li>
-    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('م')">م<span class="round">م</span></a></li>
-   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ل')">ل<span class="round">ل</span></a></li> 
-     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ك')">ك<span class="round" >ك</span></a></li>
-    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('ق')">ق<span class="round">ق</span></a></li>
-   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ف')">ف<span class="round">ف</span></a></li> 
-     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('غ')">غ<span class="round" >غ</span></a></li>
-    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('ع')">ع<span class="round">ع</span></a></li>
-   <li><a href="#" class="round yellow" style="margin-top:230px;" onclick="collectStar('ظ')">ظ<span class="round">ظ</span></a></li> 
-     <li><a href="#" class="round red" style="margin-top:230px;" onclick="collectStar('ط')">ط<span class="round" >ط</span></a></li>
-    <li><a href="#" class="round green" style="margin-top:230px;" onclick="collectStar('ض')">ض<span class="round">ض</span></a></li>
+              </li>
+                   <li class="orbit-slide">
+                    <div>
+              <h3 class="text-center"><img src="/assets/home/hola.png" style="width: 400px; heghit: 400px;"/> </h3>
+                  <div class="row game-slide" id="caracas">
+                    <div class="small-6 columns" >
+            
+                    </div>
+                    <div class="small-4 columns">
+                
+                   
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+            </ul>
+            <nav class="orbit-bullets">
+             <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+             <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+             <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+             <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="4"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="5"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="6"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="7"><span class="show-for-sr">Fourth slide details.</span></button>
 
 
+           </nav>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="large-12 columns">
+          
+        </div>
+      </div> -->
+    </div>
 
-</ul>
-	<script type="text/javascript" src="/assets/pjs/phaser.min.js"></script>
+    <div class="game-cluster">
+      <div class="row">
+        <div class="large-12 columns">
+          <h3>GWAP Cluster</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
+      </div>
+      <div class="row small-up-1 medium-up-3 large-up-3">
+        <div class="column">
+          <div class="cluster-block">
+            <i class="icon-info"></i>
+            <h6>What We Do?</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+
+       <div class="column">
+          <div class="cluster-block">
+            <i class="icon-heart-1"></i>
+            <h6>Why We Do It?</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="cluster-block">
+            <i class="icon-gamepad"></i>
+            <h6>How We Do It?</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="research">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <h3>About This Research</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="row research-item">
+            <div class="large-2 columns">
+              <i class="icon-fire-station"></i>
+            </div>
+            <div class="large-10 columns">
+              <h6>How We Do It?</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="row research-item">
+            <div class="large-2 columns">
+              <i class="icon-star-filled"></i>
+            </div>
+            <div class="large-10 columns">
+              <h6>How We Do It?</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="row research-item">
+            <div class="large-2 columns">
+              <i class="icon-crown"></i>
+            </div>
+            <div class="large-10 columns">
+              <h6>How We Do It?</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <script type="text/javascript" src="/assets/pjs/phaser.min.js"></script>
     <style type="text/css">
 
 
@@ -82,48 +344,10 @@
     box-sizing: border-box;
   }
 
-  body {
-    width: 100%;
-    height: 100%;
-    font-family: "helvetica neue", helvetica, arial, sans-serif;
-    font-size: 13px;
-    text-align: center;
-    background: #333 url('http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/low_contrast_linen.png');
-  }
 
-  ul {
-    margin: 10px auto;
-    text-align: center;
-  }
-
-  li {
-    list-style: none;
-    position: relative;
-    margin-left: 25px;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-  }
-
-  @-moz-keyframes rotate {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(-360deg);}
-  }
-
-  @-webkit-keyframes rotate {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(-360deg);}
-  }
-
-  @-o-keyframes rotate {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(-360deg);}
-  }
-
-  @keyframes rotate {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(-360deg);}
-  }
+#backy {
+  background-image: url('/assets/rsz_2background4.png'); height: 700px;
+}
 
   .round {
     display: block;
@@ -153,142 +377,87 @@
   top: 300px;
 }
 
-  .round:hover {
-    width: 130%;
-    height: 130%;
-    left: -15%;
-    top: -15%;
-    font-size: 33px;
-    padding-top: 3px;
-    -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    -o-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    -moz-box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    box-shadow: 5px 5px 10px rgba(0,0,0,.3);
-    z-index: 2;
-    border-size: 10px;
-    -webkit-transform: rotate(-360deg);
-    -moz-transform: rotate(-360deg);
-    -o-transform: rotate(-360deg);
-    transform: rotate(-360deg);
-  }
 
-  a.red {
-    background-color: rgba(239,57,50,1);
-    color: rgba(133,32,28,1);
-    border-color: rgba(133,32,28,.2);
-  }
 
-  a.red:hover {
-    color: rgba(239,57,50,1);
-  }
 
-  a.green {
-    background-color: rgba(1,151,171,1);
-    color: rgba(0,63,71,1);
-    border-color: rgba(0,63,71,.2);
-  }
 
-  a.green:hover {
-    color: rgba(1,151,171,1);
-  }
 
-  a.yellow {
-    background-color: rgba(252,227,1,1);
-    color: rgba(153,38,0,1);
-    border-color: rgba(153,38,0,.2);
-  }
+  .btnOrange{
 
-  a.yellow:hover {
-    color: rgba(252,227,1,1);
-  }
+  background: #ff7700;
+  background-image: -webkit-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -moz-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -ms-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: -o-linear-gradient(top, #ff7700, #ff9b05);
+  background-image: linear-gradient(to bottom, #ff7700, #ff9b05);
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
 
-  .round span.round {
-    display: block;
-    opacity: 0;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    font-size: 1px;
-    border: none;
-    padding: 40% 20% 0 20%;
-    color: #fff;
-  }
-
-  .round span:hover {
-    opacity: .85;
-    font-size: 16px;
-    -webkit-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-    -moz-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-    -o-text-shadow: 0 1px 1px rgba(0,0,0,.5);
-    text-shadow: 0 1px 1px rgba(0,0,0,.5);  
-  }
-
-  .green span {
-    background: rgba(0,63,71,.7);   
-  }
-
-  .red span {
-    background: rgba(133,32,28,.7);   
-  }
-
-  .yellow span {
-    background: rgba(161,145,0,.7); 
-
-  }
+.btnOrange:hover {
+  background: #fa8d3a;
+  background-image: -webkit-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -moz-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -ms-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: -o-linear-gradient(top, #fa8d3a, #ffb12b);
+  background-image: linear-gradient(to bottom, #fa8d3a, #ffb12b);
+  text-decoration: none;
+}
 #dialogbox > div{ background:#FFF; margin:8px; }
 #dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
 #dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
 #dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
 
+
+  @media screen and (max-width:1024px) { 
+    #backy  {background-image: url('/assets/background4.png'); height: 700px; }
+  }
+
+
     </style>
-</head>
-<body>
+   
+     <script src="/assets/home/js/vendor/jquery.min.js"></script>
+    <script src="/assets/home/js/vendor/what-input.min.js"></script>
+    <script src="/assets/home/js/foundation.min.js"></script>
+    <script src="/assets/home/js/app.js"></script>
+
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
 
 
-<script type="text/javascript">
-
-
-      function speak(word){
-var msg = new SpeechSynthesisUtterance();
-msg.volume = 1; // 0 to 1
-msg.rate = 1; // 0.1 to 10
-msg.pitch = 1; //0 to 2
-msg.text = word;
-msg.lang = "ar";
-
-msg.onend = function(e) {
-  console.log('Finished in ' + event.elapsedTime + ' seconds.');
-};
+<script>
 
 //speechSynthesis.speak(msg); ***UNCOMMENT THIS IF YOU WANT IT TO TALK***
-}
+
 var disable = 0;
 
-function CustomAlert(){
-    this.render = function(dialog){
-        var winW = window.innerWidth;
-        var winH = window.innerHeight;
-        var dialogoverlay = document.getElementById('dialogoverlay');
-        var dialogbox = document.getElementById('dialogbox');
-        dialogoverlay.style.display = "block";
-        dialogoverlay.style.height = winH+"px";
-        dialogbox.style.left = (winW/2) - (550 * .5)+"px";
-        dialogbox.style.top = "100px";
-        dialogbox.style.display = "block";
-        disable=1;
-        document.getElementById('dialogboxhead').innerHTML = "Are You Ready ? :D";
-        document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>'; //**********ALEEH EL 3EEN**********
-       
-    }
-    this.ok = function(){
-        document.getElementById('dialogbox').style.display = "none";
-        document.getElementById('dialogoverlay').style.display = "none";
-        disable = 0;
-        gamzo = $('.temp_information').data('temp'); 
+
+ //var Alert = new CustomAlert(Myletter); ;
+ var starnew;
+var abcflags = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  var abc = ['أ', 'ب', 'ت', 'ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
+
+function collectStar (Myletter) {
+
+     var letterid = abc.indexOf(Myletter)+1;
+    // Removes the star from the screen
+    if(abcflags[letterid-1] === 0){
+
+      
+    chooseLetter(12);
+    // chooseLetter(12);
+    abcflags[letterid-1] =1; }
+
+ 
+       var gamzo = $('.temp_information').data('temp'); 
           //setTimeout(function(){link ='balala';}, 3000);
-   link ='balala';
+   var link ='balala';
+   link= 'games_shooting_path';
     
         switch (gamzo) {
     case 0:
@@ -317,33 +486,8 @@ function CustomAlert(){
         break;                   
 }
      
-  setTimeout(function(){ window.open(link, "_self"); }, 4000);
-  //window.open(link, "_self");
-     //**********ALEEH EL 3EEN**********
-   //alert("game : "+gamzo+"  Link: "+link);
-        //$.get('hangman', function(data) {});
-
-    }
-}
-var Alert = new CustomAlert();
- var starnew;
-var abcflags = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-  var abc = ['أ', 'ب', 'ت', 'ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
-
-function collectStar (Myletter) {
-
+  setTimeout(function(){ window.open(link, "_self"); }, 3000);   
  
-
-   var letterid = abc.indexOf(Myletter)+1;
-    // Removes the star from the screen
-    if(abcflags[letterid-1] === 0){
-    speak(abc[letterid-1]);
-    Alert.render('Welcome to '+abc[letterid-1]+ ' Kingdom, Hero !'); 
-    //chooseLetter(letterid); This should be uncommented to play in this certain letter (NOT NOW)
-    chooseLetter(2);
-    abcflags[letterid-1] =1;
-
-}   
 
 }
 
@@ -359,7 +503,65 @@ function collectStar (Myletter) {
     });
 };
 
+
+
+  $("#hangmanGame").click(function() {
+  collectStar("ث");
+
+      
+});
+  
+
+  $("#shootingGame").click(function() {
+ collectStar('ت');
+});
+   
+
+
+  $("#flippingGame").click(function() {
+    collectStar('ب');
+
+  });
+
+
+
+  $("#mazeGame").click(function() {
+ collectStar('أ');
+}); 
+
+
+
+  $("#paintletterGame").click(function() {
+ collectStar('ز');
+}); 
+
+
+  $("#puzzleGame").click(function() {
+  collectStar('خ');
+}); 
+ 
+
+  $("#dragGame").click(function() {
+  collectStar('س');
+ 
+  });
+
+  $("#animalsGame").click(function() {
+ collectStar('ه');
+});  
+
+
+
+
+
+
 </script>
 
-</body>
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
+
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+  </body>
 </html>

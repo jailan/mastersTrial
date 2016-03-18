@@ -1,0 +1,181 @@
+@font-face {
+  font-family: 'supercubes';
+  src: url('../fonts/SuperCube.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'supercubesbold';
+  src: url('../fonts/SuperCubeBold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'superrad';
+  src: url('../fonts/SuperRad.otf')  format('opentype');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+	font-family:'superrad';
+	color:white;
+}
+
+p,
+a{
+	font-family:'superrad';
+	color:#888;	
+}
+
+.center-vertical-parent {
+    display: table !important;
+    height: 100% !important;
+}
+
+.center-vertical {
+    display: table-cell !important;
+/*    text-align: center !important;*/
+    vertical-align: middle !important;
+}
+
+.body-container .columns,
+.game-cluster .columns,
+.research .columns,
+.footer .columns{
+	margin: 50px 0px;
+}
+
+.fullWidth {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
+}
+
+.menu-container,
+.footer{
+	background: #ff6908; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ff6908, #c0392b); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ff6908, #c0392b); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ff6908, #c0392b); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#ff6908, #c0392b); /* Standard syntax */
+}
+
+#grad {
+    
+}
+
+.menu li a{
+	color:white;
+}
+
+#site-title{
+	float:left;
+}
+
+#site-title h3{
+	font-family:'supercubes';
+	color:black;
+}
+
+#site-title h3 b{
+	font-family:'supercubesbold';
+	color:black;
+}
+
+.body-container{
+	text-align:center;
+	color:white;
+	background-color:#333;
+}
+
+.body-container h3{
+	color:white;
+}
+
+.orbit{
+	text-align: left;
+}
+
+.orbit-slide p{
+	font-size:13px;
+}
+
+.orbit-slide h3{
+	font-family:'supercubes';
+	color:#ff6908;
+}
+
+.game-cluster{
+	text-align:center;
+	background-color:#111;
+}
+
+.game-cluster p,
+.footer p,
+.footer a{
+	font-size:10px;
+}
+
+.cluster-block{
+	background-color:#333;
+	border-bottom: 3px solid #ff6908;
+}
+
+.game-cluster i{
+	font-size:125px;
+	color:#ff6908;
+}
+
+.research{
+	background-color:#333;
+	text-align: center;
+}
+
+.research .row.research-item{
+	margin-top:15px;
+	background-color:#111;
+	border-right:3px solid #ff6908;
+}
+
+.research .row.research-item p{
+	text-align:left;
+}
+
+.research p{
+	font-size:10px;
+}
+
+.research i{
+	font-size:50px;
+	color:#ff6908;
+}
+
+.footer p,
+.footer a{
+	color:#111;
+}
+
+.footer h6{
+	color:#111;
+	font-size: 15px;
+}
+
+.footer-section{
+	border-right:1px dashed #111;
+}
+
+.footer-section .row.border-top,
+.footer-section-last .row.border-top{
+	/*border-top:1px dashed #111;*/
+}
+
+.footer ul{
+	margin:0px;
+	list-style: none;
+}
+.footer a{
+	border-bottom:1px dashed #111;
+}

@@ -4,17 +4,29 @@
   <%= content_tag :div, class: "temp_information", data: {temp: @tempwrite} do %>
 <% end %>
   <meta name="viewport" content="width=device-width">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz| Painting</title>
   <meta charset="UTF-8">
-  <title>letterpaint</title>
+
   <link rel="stylesheet" type="text/css" href="letterpaint.css">
+
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="css/hawaz.css" />
+     <link href="/assets/fire/fireworks.css" rel="stylesheet">
+
 </head>
 <style>
 
 body, html {
   width: 100%;
   height: 100%;
-background-image: url("/assets/paper.jpg");
+  background-image: url("/assets/rsz_background8.png");
+  background-size: cover;
 
+/*background-color: #333;*/
   margin:0;
   padding: 0;
   
@@ -28,7 +40,7 @@ background-image: url("/assets/paper.jpg");
 
 }
 canvas {
-  background: rgba(255, 255, 255, 0.1);
+ /* background: rgba(255, 255, 255, 0.1);*/
   display: block;
   width: 100%;
   height: 100%;
@@ -36,6 +48,23 @@ canvas {
 }
 .gamedata {
   display: none;
+
+}
+
+.bar{
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  right: 10px;
+  bottom: 20px;
+  height: 40px;
+  width: 100px;
+}
+.bareen{
+  position: absolute;
+  top: 0px;
+ 
+
 
 }
 .cover {
@@ -53,10 +82,12 @@ canvas {
   transform: translate(-120%,0);
 } 
 
+
 .info #info {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
 }
+
 
 .win #win {
   -webkit-transform: translate(0, 0);
@@ -80,9 +111,17 @@ canvas {
    text-align: center;
    /*color: #FF6600;*/
   color: #000066;
+
   z-index: 2;
   padding: 10px;
   font-size: 16vw; 
+}
+
+
+
+#prego, #prege{
+  width: 500px; margin-left:400px;
+
 }
 
 .navbutton {
@@ -210,27 +249,75 @@ canvas {
   }  
 }
 
+  @media screen and (max-width:1024px) {
+    body, html {
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/background8.png");
+  background-size: cover;
+
+/*background-color: #333;*/
+  margin:0;
+  padding: 0;
+  
+}
+
+#prego, #prege {
+
+  width: 500px; margin-left:270px;
+
+
+
+}
+
+  }
+
 </style>
+
 <body>
+
+      <div class="bareen" >
+               <div class="menu-container" style="height: 50px; width: 1280px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+
+          <li id="site-title"><a href="home"><h3>Super Hawwaz</h3></a></li>
+
+         </ul>
+       </div>
+      </div>
+    </div>
+  </div>
+   
+
+
+
   <div id="container" class="container">
 
+
     <div id="chars" class="gamedata">أبتثجحخدذرزسشصضطظعغفقكلمنهوي</div>
-    
 
-    <canvas></canvas>
+    <canvas id="yamama"></canvas>
 
-    <h1 class="toppanel">letterpaint</h1>
+       <div class="bar" >
+       <div id="prego" class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBar" style="width: 0%"></div>
+          </div>
+    </div>
 
- <!--    <div id="intro" class="cover">
-      <p>Paint over the letter you see on the screen. Can you write it without going outside of it?</p>
-      <button class="actionbutton">➜</button>
-    </div> -->
 
        <div id="intro" class="cover">
-      <p>READY ?</p>
+ 
+
       <p id="paintStage"></p>
+       <div id="prege" class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBary" style="width: 0%"></div>
+          </div>
       <button class="actionbutton">➜</button>
     </div>
+
+
 
 
   <button class="actionbutton undo" id="reload">!</button>
@@ -243,22 +330,118 @@ canvas {
     </div>
 
     <div id="error" class="cover">
-      <p>You painted outside the letter!</p> 
+
+      <img width="300" height="300"src="/assets/outside.png" style="position: absolute; top: 150px; left: 450px;"></img>
+   
       <button class="actionbutton">➜</button>
-    </div>
 
     <div id="info" class="cover infopanel">
       <button id="install" class="inlinebutton"></button>
     </div>
 
+
+
+    </div>
+
   
   </div>
 
+
+
+      
+   <aside id="library">
+      <img src="/assets/fire/nightsky.png" id="nightsky" />
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </aside>
+
   <!-- http://freesound.org/people/NenadSimic/sounds/150879/ -->
-  <audio src="/assets/Audio/win.ogg" id="winsound"></audio>
-  <audio src="/assets/Audio/boing.wav" id="applausesound"></audio>
+  <audio src="/assets/Audio/win.mp3" id="winsound"></audio>
+  <audio src="/assets/Audio/boing.mp3" id="applausesound"></audio>
   <!-- http://freesound.org/people/Autistic%20Lucario/sounds/142608/ -->
-  <audio src="/assets/Audio/error.ogg" id="errorsound"></audio>
+  <audio src="/assets/Audio/error.mp3" id="errorsound"></audio>
+
+
+
+    <div class="footer" id="footy" style="top: 200px;">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+</script>
+<script>
+var lettoz = 3;
+</script>
+    <script src="/assets/fire/requestanimframe.js"></script>
+  <script src="/assets/fire/fireworks.js"></script>
+
+     <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
 
   <script src="/assets/letterpaint.js"></script>
 </body>

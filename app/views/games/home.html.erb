@@ -1,162 +1,338 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz</title>
+    <link rel="stylesheet" href="home/css/foundation.css" />
+    <link rel="stylesheet" href="home/css/app.css" />
+    <link rel="stylesheet" href="home/css/fontello.css" />
+    <link rel="stylesheet" href="home/css/hawaz.css" />
+  </head>
+  <body>
+    <div class="menu-container">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+           <li id="site-title"><a href="#"><h3>SuperHawaz</h3></a></li>
+         </ul>
+       </div>
+      </div>
+    </div>
+    <div class="body-container">
+      <div class="row">
+        <div class="large-12 columns">
+          <h4>Pick a Game!</h4>
+          <p>Browse the available games and tap on the one you would like to play!</p>
+          <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit >
+            <ul class="orbit-container">
+              <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+              <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+              <li class="is-active orbit-slide">
+                <div>
+                  <h3 class="text-center">Maze</h3>
+                  <div class="row game-slide" id="maze">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/superhawaz.png"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="mazeGame" class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Flipping Cards</h3>
+                  <div class="row game-slide" id="flippingCards">
+                    <div class="small-6 columns" >
+                      <img src=" /assets/home/superhawaz.png"/>
+
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="flippingGame" class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Shooting</h3>
+                  <div class="row game-slide" id="shooting">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/superhawaz.png"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="shootingGame" class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Hangman</h3>
+                  <div class="row game-slide" id="hangman">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/superhawaz.png"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="hangmanGame" class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Puzzle</h3>
+                  <div class="row game-slide" id="puzzle">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/superhawaz.png"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="puzzleGame"class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Drag and Drop</h3>
+                  <div class="row game-slide" id="draganddrop">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/superhawaz.png"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="dragGame" class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Letter Paint</h3>
+                  <div class="row game-slide" id="letterpaint">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/superhawaz.png"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor sit amet</p>
+                      <a id="letterpaintGame" class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="orbit-slide">
+                <div>
+                  <h3 class="text-center">Animals</h3>
+                  <div class="row game-slide" id="animals">
+                    <div class="small-6 columns" >
+                      <img src="/assets/home/cards.jpg"/>
+                    </div>
+                    <div class="small-4 columns">
+                      <p>Lorem ipsum dolor</p>
+                      <a class="large button sites-button hide-for-small-only">Play Game</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <nav class="orbit-bullets">
+             <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
+             <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+             <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+             <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="4"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="5"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="6"><span class="show-for-sr">Fourth slide details.</span></button>
+             <button data-slide="7"><span class="show-for-sr">Fourth slide details.</span></button>
+
+           </nav>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="large-12 columns">
+          
+        </div>
+      </div> -->
+    </div>
+
+    <div class="game-cluster">
+      <div class="row">
+        <div class="large-12 columns">
+          <h3>GWAP Cluster</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
+      </div>
+      <div class="row small-up-1 medium-up-3 large-up-3">
+        <div class="column">
+          <div class="cluster-block">
+            <i class="icon-info"></i>
+            <h6>What We Do?</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+
+       <div class="column">
+          <div class="cluster-block">
+            <i class="icon-heart-1"></i>
+            <h6>Why We Do It?</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="cluster-block">
+            <i class="icon-gamepad"></i>
+            <h6>How We Do It?</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="research">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <h3>About This Research</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="row research-item">
+            <div class="large-2 columns">
+              <i class="icon-fire-station"></i>
+            </div>
+            <div class="large-10 columns">
+              <h6>How We Do It?</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="row research-item">
+            <div class="large-2 columns">
+              <i class="icon-star-filled"></i>
+            </div>
+            <div class="large-10 columns">
+              <h6>How We Do It?</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+
+          <div class="row research-item">
+            <div class="large-2 columns">
+              <i class="icon-crown"></i>
+            </div>
+            <div class="large-10 columns">
+              <h6>How We Do It?</h6>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+     <script src="/assets/home/js/vendor/jquery.min.js"></script>
+    <script src="/assets/home/js/vendor/what-input.min.js"></script>
+    <script src="/assets/home/js/foundation.min.js"></script>
+    <script src="/assets/home/js/app.js"></script>
+
+     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
 
 
-	
-
-
- <a  href='#' class="button fuschia" id="match">Memory</a> 
- <a  href='#' class="button fuschia" id="maze">Maze</a> 
- <a  href='#' class="button orange" id="hang">Hangman</a> 
- <a  href='#' class="button orange" id="shoot">Shooting</a> 
- <a  href='#' class="button fuschia" id="puzzle">Puzzle</a> 
- <a  href='#' class="button fuschia" id="drag">Drag</a> 
- <a  href='#' class="button orange" id="paint">Painting</a> 
- <a  href='#' class="button orange" id="preschooler">Animals</a> 
-
-
-    <%= content_tag :div, class: "temp_information", data: {temp:@tempo} do %>
-    <% end %>
-
-<style>
-@charset "UTF-8";
-body {
-
-
-    background-image: url("http://localhost:3000/assets/paper.jpg");
-    
-}
-h1 {
-	text-align: center;
-	font-family: Tahoma, Geneva, sans-serif;
-	color:#006;
-    font-size: 40px;
-}
-.button {
-
-    display: inline-block;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    font: 20px/100% Arial, Helvetica, sans-serif;
-    padding: 2em 3em 2em;
-    text-shadow: 0 1px 1px rgba(0,0,0,.3);
-    -webkit-border-radius: .5em; 
-    -moz-border-radius: .5em;
-    border-radius: .5em;
-    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-    box-shadow: 0 1px 2px rgba(0,0,0,.2);
-    width:220px;
-}
- #maze{
- 	
-    left:400px;	
-    top:150px;
-    position:absolute;
-    }
-     #match{
-    left:800px;	
-    top:150px;
-    position:absolute;
-    }
-     #shoot{
-    left:400px;	
-    top:300px;
-    position:absolute;
-    }
-     #hang{
-    left:800px;	
-    top:300px;
-    position:absolute;
-    }
-     #puzzle{
- left:400px;  
-    top:440px;
-    position:absolute;
-    }
-      #drag{
-    left:800px;  
-    top:440px;
-    position:absolute;
-    }
-
-      #paint{
-    left:400px;  
-    top:560px;
-    position:absolute;
-    }
-      #yalahwy{
-    left:200px;  
-    top:560px;
-    position:absolute;
-    }
-          #preschooler{
-    left:800px;  
-    top:560px;
-    position:absolute;
-    }
-.orange {
-    color: #fef4e9;
-    border: solid 1px #da7c0c;
-    background: #f78d1d;
-    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
-    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
-}
-.orange:hover {
-    background: #f47c20;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
-    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
-}
-.orange:active {
-    color: #fcd3a5;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
-    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
-
-}
-.fuschia {
-    
-    color: white;
-    border: solid 1px #52003D;
-    background: #b3005b;
-    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#66004C));
-    background: -moz-linear-gradient(top,  #CC0099,  #66004C);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
-}
-.fuschia:hover {
-    background: #52003D;
-    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#A3007A));
-    background: -moz-linear-gradient(top,  #CC0099,  #A3007A);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
-}
-.fuschia:active {
-    color: #fcd3a5;
-    background: -webkit-gradient(linear, left top, left bottom, from(#CC0099), to(#A3007A));
-    background: -moz-linear-gradient(top,  #CC0099,  #A3007A);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
-}
-
-.button:hover {
-    text-decoration: none;
-}
-.button:active {
-    position: relative;
-    top: 1px;
-}
-</style>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
-
-<body>
 <script>
 var mygamez = 99;
+
 
 
      function changeLevel(fieldClicked) {
@@ -178,25 +354,9 @@ function changelevvo(n){
 }
 
 
-//changeLevel(6);
-
-/*var count = 0;
-$(document).ready(function() {
 
 
-  $("#update").click(function() {
-    //count= $('.temp_information').data('temp');
-    //$('.temp_information').data('temp') =1;
-    count= $('.temp_information').data('temp');
-    changeLevel(0);
-$('#content').html(count);
-
-});
-});*/
-
-
-
-  $("#hang").click(function() {
+  $("#hangmanGame").click(function() {
     changeLevel(0);
 
     window.open('games_collect_path', "_self");
@@ -205,7 +365,7 @@ $('#content').html(count);
 });
   
 
-  $("#shoot").click(function() {
+  $("#shootingGame").click(function() {
     changeLevel(1);
       window.open('games_collect_path', "_self");
 
@@ -216,7 +376,7 @@ $('#content').html(count);
    
 
 
-  $("#match").click(function() {
+  $("#flippingGame").click(function() {
     changeLevel(2);
     window.open('games_collect_path', "_self");
 
@@ -224,26 +384,26 @@ $('#content').html(count);
 
 
 
-  $("#maze").click(function() {
+  $("#mazeGame").click(function() {
     changeLevel(3);
     window.open('games_collect_path', "_self");
 }); 
 
 
 
-  $("#paint").click(function() {
+  $("#paintletterGame").click(function() {
     changeLevel(4);
     window.open('games_collect_path', "_self");
 }); 
 
 
-  $("#puzzle").click(function() {
+  $("#puzzleGame").click(function() {
     changeLevel(5);
     window.open('games_collect_path', "_self");
 }); 
  
 
-  $("#drag").click(function() {
+  $("#dragGame").click(function() {
     changeLevel(6);
      window.open('games_collect_path', "_self");
  
@@ -257,7 +417,9 @@ $('#content').html(count);
 
 
 
-</script>
 
-</body>
+
+
+</script>
+  </body>
 </html>

@@ -1,7 +1,20 @@
-<DOCTYPE html>
-<html lang="es">
-<head>
-    <%= content_tag :div, class: "temp_information", data: {temp: @temppage1, stagty: @dragstageno} do %>
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Hawaz|Drag and Drop</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="css/hawaz.css" />
+    <link href="/assets/fire/fireworks.css" rel="stylesheet">
+
+
+
+
+        <%= content_tag :div, class: "temp_information", data: {temp: @tempdrag, stagty: @dragstageno} do %>
 <% end %>
 
         <meta charset="utf-8"/>
@@ -14,21 +27,20 @@
 
         <script type="text/javascript" src="/assets/js/jquery-ui-1.9.2.custom.min.js"></script>
                 <script type="text/javascript">
-           var dragletter = $('.temp_information').data('temp'); 
-           //alert(dragletter);
+            var dragletter = $('.temp_information').data('temp'); 
+           // dragletter=1;
+         
            var yalla = $('.temp_information').data('stagty'); 
            //alert(yalla);
            var dragstage = yalla;
-          //var dragstage = 5;
 
+          //var dragstage = 5;
+              //alert(dragletter);
  
     </script>
         <link rel="stylesheet" type="text/css" href="/assets/stylesheets/css/smoothness/jquery-ui-1.9.2.custom.min.css">
-        <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
+  </head>
 
-
-
-</head>
 <style>
 .button {
     display: inline-block;
@@ -50,6 +62,16 @@
     position:absolute;
     top:60px;
     left:1150px;
+}
+
+#prego{
+
+  width: 500px; margin-left:390px; margin-top:20px; 
+}
+
+#name1, #name2, #name3{
+ font: 30px/100% Arial, Helvetica, sans-serif;
+
 }
 .orange {
     color: #fef4e9;
@@ -91,22 +113,23 @@
     position: relative;
     top: 36px;
     left: 20px;
-    width:100px;
+
     height: 100px;
+    min-width: 100px;
 }
 .options{
-    margin-top: 70px;
-    margin-left:420px;
+
+    margin-left:320px;
     width: 340px;
     height: 120px;
     border: 4px solid #FF7519;/*Oghanjen Zaft*/
-    padding-left: 15px;
+    padding-left: 5px;
      padding-top: 7px;
 }
 .levels{
     position: absolute;
-    margin-top: 40px;
-    margin-left:460px;
+    margin-top: 165px;
+    margin-left:360px;
 }
 .btnBlue {
   background: #3baaf5;
@@ -257,75 +280,285 @@
     margin-left:400px;
 }
 
+.listenhintz1{
+   position: absolute;
+    margin-top: 270px;
+    margin-left:700px;
+}
+.listenhintz2{
+   position: absolute;
+    margin-top: 270px;
+    margin-left:560px;
+}
+
+.listenhintz3{
+   position: absolute;
+    margin-top: 270px;
+    margin-left:400px;
+}
+
+#backy {
+  background-image: url('/assets/rsz_1rsz_4background1.png');
+
+}
+
+
+  @media screen and (max-width:1024px) { 
+    #backy { background-image: url('/assets/rsz_2background1.png');
+
+  }
+  #prego{
+
+  width: 500px; margin-left:270px; margin-top:20px; 
+}
+
+  }
+
 
 
 </style>
 
 
-<body>
-    <section id="preguntas">
-        <article class="preg" >
-           <div  onClick='listen("برتقالة");' style='width:40px; height: 40px;  position: absolute;
-   '><img id="opc3"  class="opachint"  width="100" height="100"/></div> برتقالة
+  <body>
 
-        </article>
 
-        <article class="preg">
-             <div  onClick='listen("بنت");' style='width:40px; height: 40px;  position: absolute;
-   '><img id="opc2"  class="opachint" width="100" height="100"/></div>
-            بنت
-        </article>
+    <div class="menu-container" style="height: 50px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+           <!-- <li><a href="#">One</a></li>
+           <li><a href="#">Two</a></li>
+           <li><a href="#">Three</a></li>
+           <li><a href="#">Four</a></li> -->
+           <li id="site-title"><a href="home"><h3>Super Hawwaz</h3></a></li>
+         </ul>
+       </div>
+      </div>
+    </div>
 
-        <article class="preg">
-            <div  onClick='listen("بطة");' style='width:40px; height: 40px;  position: absolute;
-'><img id="opc1" class="opachint" width="100" height="100"/></div>
-            بطة
-        </article>
-       
-        
-    </section>
-             <a class="listenz1" id="listen2" onClick='listen("بَطّة");' style='width:40px; height: 40px;  position: absolute;'></a> 
-             <a class="listenz2" id="listen2" onClick='listen("بِنْت");' style='width:40px; height: 40px;  position: absolute;'></a>
-             <a class="listenz3" id="listen2" onClick='listen("برتقالة");' style='width:40px; height: 40px;  position: absolute;'></a>
-  
+
+    <div id="overlay">
+    <div id="backy" class="body-container">
+<div style="background-color: #597999;" >
+   <div id="prego" class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBar" style="width: 0%"></div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="large-2 columns">
+     
+
        <div class="options">     
             <img id="img3"  class="respuesta" alt="بطة" width="100" height="100"/> 
              <img id="img5"  class="respuesta" alt="برتقالة" width="100" height="100" />
             <img id="img4"  class="respuesta" alt="بنت" width="100" height="100"/>
 
         </div>
-           <div class="levels">
-            <a  href='#' class="btnBlue" id="level1">1</a>
-    <a  href='#' class="btnGreen" id="level2">2</a>
-    <a  href='#' class="btnYellow" id="level3">3</a>
-    <a  href='#' class="btnOrange" id="level4">4</a>
-    <a  href='#' class="btnRed" id="level5">5</a>
+
+
+          <!--PUT YOUR GAME HERE-->
+
+
+
+              <section id="preguntas">
+        <article class="preg" alt="برتقالة" >
+           <div  onClick='listen("3");' style='width:40px; height: 40px;  position: absolute;
+   '><img id="opc3"  class="opachint" /><i class="icon-volume-up" ontouchend='listen("3");' style='font-size: 2.3em; color:#FF7519; background-color: white; position: absolute; top: 150px; left: 40px;'/></i></div> 
+
+
+
+<var id="name3">name3</var>
+        </article>
+
+        <article class="preg" alt="بنت">
+             <div  onClick='listen("2");' style='width:40px; height: 40px;  position: absolute;
+   '><img id="opc2"  class="opachint" width="100" height="100"/>  <i class="icon-volume-up"  ontouchend='listen("2");' style='font-size: 2.3em; color:#FF7519; background-color: white; position: absolute; top: 150px; left: 40px;'/></i></div>
+       <var id="name2">name2</var>
+        </article>
+
+        <article class="preg" alt="بطة">
+            <div  onClick='listen("1");' style='width:40px; height: 40px;  position: absolute;
+'><img id="opc1" class="opachint" width="100" height="100"/>
+           <i class="icon-volume-up"  ontouchend='listen("1");' style='font-size: 2.3em; color:#FF7519; background-color: white;  position: absolute; top: 150px; left: 40px;'/></i>
 </div>
+          <var id="name1">name1</var>
+        </article>
+       
+        
+    </section>
+             <a class="listenz1" id="listen2" onClick='listen("1");' style='width:40px; height: 40px;  position: absolute;'></a> 
+             <a class="listenz2" id="listen2" onClick='listen("2");' style='width:40px; height: 40px;  position: absolute;'></a>
+             <a class="listenz3" id="listen2" onClick='listen("3");' style='width:40px; height: 40px;  position: absolute;'></a>
+
+
+  
+  
+           <div class="levels">
+            <a  href='#' class="btnBlue" id="level1" ontouchend="bara(1);">1</a>
+    <a  href='#' class="btnGreen" id="level2" ontouchend="bara(2);">2</a>
+    <a  href='#' class="btnYellow" id="level3" ontouchend="bara(3);">3</a>
+    <a  href='#' class="btnOrange" id="level4" ontouchend="bara(4);">4</a>
+    <a  href='#' class="btnRed" id="level5" ontouchend="bara(5);">5</a>
+
+
+</div>
+
+
+
     <div id="resultados">
 
     </div>
-    
+
+       <canvas id="hamada" >
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </canvas>
+
+          <!-- END OF GAME -->
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+   
+
+    <div class="footer" id="footy">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
 </body>
 </html>
+
+     <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
 <script>
 
 
 
 $(document).ready(main);
-//var dragletter = $('.temp_information').data('temp');
+  dragletter = $('.temp_information').data('temp');
+  //dragletter=1;
 var numCorrectas=0;
 var numIncorrectas=0;
+  var a = new Array ("أسد");
+  var b = new Array ("engeleezy");
+          switch (dragletter) {
+    case 1:
+    a = new Array("أرنب","إبرة","أذن");
 
+        break;
+    case 2:
+        a = new Array("بطة", "بنت","برتقالة");
+        break;
+    case 3:
+         a = new Array("تاج","تمساح","تفاح");
+    case 7:
+         a = new Array("خروف","خيار","خبز");
+           
+        break;
+    case 11:
+         a = new Array("زرافة","زينة","زجاجة");
+           
+        break;  
+       case 12:
+         a = new Array("سمكة","سنجاب","سكر");
+           
+        break; 
+   case 26:
+         a = new Array("هرم","هلال","هدهد");
+           
+        break;       
+                 
+}
 
+var name1= a[0];
+var name2= a[1];
+var name3= a[2];
+$("#name1").text(name1);
+$("#name2").text(name2);
+$("#name3").text(name3);
 
 function main(){
-    //var dragletter = $('.temp_information').data('temp'); 
+scoreBar= (dragstage-1)*3;
+   barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
+   dragletter = $('.temp_information').data('temp'); 
+   //dragletter =1;
     //alert("babooo "+dragletter);
     init();
-    var dragletter=2;
-
+  //dragletter=1;
     establecerPropiedades();
+         //alert (dragletter);
 if (dragstage === 1){ 
    document.getElementById("img3").src= "/assets/drag/l"+dragletter+"/1.jpg" ;
    document.getElementById("img4").src= "/assets/drag/l"+dragletter+"/2.jpg" ;
@@ -363,12 +596,12 @@ if(dragstage ===4 || dragstage ===5){
 
     //$('#listen2').css('display', 'inline-block').click(listen);
 
-    var bod=$("body").css("background-image","url('/assets/drag/paper.jpg')");
+    var bod=$("body").css("background-color","#597999");
+
     //var imoo = $("preguntas");
         bod.css("background-repeat","no-repeat");
     bod.css("background-position","center");
 }
-
 function establecerPropiedades(){
     var res =$(".respuesta");
     res.draggable();
@@ -405,11 +638,15 @@ function init() {
     document.addEventListener("touchcancel", touchHandler, true);
 }
 
-
+      // var dragletter = $('.temp_information').data('temp'); 
 function listen(word){
       textq=word;
      //getSpeech(textq);
-     speak(textq);
+    /* speak(textq);*/
+        var testAudio = word;
+
+      new Audio('/assets/Audio/l'+dragletter+'/'+testAudio+'.mp3').play();
+      //new Audio('/assets/Audio/l1/1.mp3').play();
 }
 
 function speak(word){
@@ -431,7 +668,9 @@ function dropPregunta(event,ui){
     var contPregunta =$(this);
     var respuesta = ui.draggable;
 
-    var correcta = contPregunta.text().toLowerCase();
+    //var correcta = contPregunta.text().toLowerCase();
+    var correcta = contPregunta.attr("alt");
+  //  alert(contPregunta.attr("alt"));
     correcta = correcta.trim();
     var pos = contPregunta.position();
     contPregunta.css("background","#BBB");
@@ -444,19 +683,34 @@ function dropPregunta(event,ui){
         contPregunta.addClass("resCorrecta");
         contPregunta.append("<img src='/assets/drag/correcta.png' class='ok' />" +"<img src='"+respuesta.attr("src")+"' class='rDrop' />" );
         numCorrectas++;
+              scoreBar++;
+       barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
+
     respuesta.draggable("destroy");
     contPregunta.droppable("destroy");
     comprobarFinal();
     comprobarResultados();
     respuesta.remove();
       new Audio('/assets/Audio/applause.mp3').play();
+
+
       if(numCorrectas === 3){
+        if(dragstage === 5){
+         new Audio('/assets/Audio/tada.mp3').play();
+         new Audio('/assets/Audio/applausy.mp3').play();
+       }
+         else{
+          new Audio('/assets/Audio/applausy.mp3').play();
+         }
        setTimeout(function(){updateDragStage();}, 3000);
         //chooseDragStage(dragstagy);
         //yalla= $('.temp_information').data('stagy');
     
         //location.reload();
        }
+
+
       
 
     }else{
@@ -469,7 +723,7 @@ function dropPregunta(event,ui){
 
     comprobarFinal();
     comprobarResultados();
-      new Audio('/assets/Audio/boing.wav').play();
+      new Audio('/assets/Audio/boing.mp3').play();
 
     }
     
@@ -477,7 +731,7 @@ function dropPregunta(event,ui){
 
 function comprobarResultados(){
     $(".ok,.inco").fadeIn("slow");
-    $("#resultados").html("Correct answers:     "+numCorrectas+"<br />"+"Incorrect answers:    "+numIncorrectas);
+    $("#resultados").html("");
 
 }
 
@@ -503,19 +757,24 @@ function changeDragStage(n){
     dragstagy = n;
     dragstage= dragstagy;
 }
-
+var tootoo =0;
 function updateDragStage(){
     if(dragstage < 5){
       dragstage ++;
     }
     else{
-      dragstage = 1;
+     
+      celebrate();
+    tootoo = 1;
     }
+          
+
 
         chooseDragStage(dragstage);
         yalla= $('.temp_information').data('stagy');
       //alert(dragstage);
-        location.reload();
+      if(tootoo !== 1){
+        location.reload();}
 }
 
          function chooseDragStage(fieldClicked) {
@@ -530,21 +789,28 @@ function updateDragStage(){
     });
 };
 
+
+function bara(n){
+   chooseDragStage(n);
+        yalla= $('.temp_information').data('stagy');
+        location.reload();
+
+}
+
 var dragstagy=1;
-//var yalla;
+var yalla;
     $('#level1').click(function() {
     chooseDragStage(1);
         yalla= $('.temp_information').data('stagy');
- 
         location.reload();
   });
     $('#level2').click(function() {
     chooseDragStage(2);
             yalla= $('.temp_information').data('stagy');
-       
         location.reload();
   });
     $('#level3').click(function() {
+      alert("lvelllllll 3 ");
     chooseDragStage(3);
             yalla= $('.temp_information').data('stagy');
            
@@ -563,11 +829,19 @@ var dragstagy=1;
        location.reload();
   });
 
+
+
       window.onload = function() {
     chooseDragStage(1);
         yalla= $('.temp_information').data('stagy');
+       dragletter = $('.temp_information').data('temp'); 
+       //dragletter=1;
+
+        //celebrate();
  
    
   };
-
+  var lettoz = dragletter;
 </script>
+ <script src="/assets/fire/requestanimframe.js"></script>
+      <script src="/assets/fire/fireworks.js"></script>

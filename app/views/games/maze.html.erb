@@ -1,88 +1,83 @@
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title> Maze Game</title>
-	<link href="main.css"rel="stylesheet"type="text/css"/>
-	<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!DOCTYPE html public "display of affection from creativejs">
+  <head>
+    <meta charset="uft-8">
+ 
+    <link href="/assets/fire/fireworks.css" rel="stylesheet">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" media="all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait)" href="ipad-portrait.css" />
+
+    <title>Super Hawaz| Maze</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fontello.css" />
+    <link rel="stylesheet" href="css/hawaz.css" />
+        <link href="/assets/fire/fireworks.css" rel="stylesheet">
+   <script src="/assets/fire/fireworks.js"></script>
+   <script src="/assets/fire/requestanimframe.js"></script>
+
+
 
     <%= content_tag :div, class: "temp_information", data: {temp: @tempmaze} do %>
 <% end %>
-</head>
-<body  background="/assets/paper.jpg" onload="start();">
-
-	<div><img id="arrow"src="/assets/maze/garrowd.png"  height="50" width="30" class="spacer"></div>    
-	<div id="navContent"> 
-		<div id="game1"></div>
-		<div id="game2"></div>
-	</div>
 
 
-	<canvas width="420" height="445" id="mazecanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
-	<canvas width="420" height="445" id="questioncanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
-	<div id="score"></div>
-	<div> <img class="alarm"src="/assets/maze/alarm.png"  height="40" width="40"><div id="time"></div> </div>
+  </head>
 
 
-      <a class="button orange" id="up" >٨</a>
-      <a class="button orange" id="down" >٧</a>
-      <a class="button orange" id="left" ><</a>
-      <a class="button orange" id="right" >></a>
 
+    <style>
 
-    <%= button_to "Home", games_home_path, {:class => "button orange", :id => "home"} %>
-
-
-  <style>
-	html, body {
-		width:100%;
-		height:100%;
-		position:relative;
-		margin: 0;
-		padding-top: 300;
-		background-image:url(/assets/paper.jpg);
-		font-family: Arial, Helvetica, sans-serif;
-	}
-    #home{
-    position:absolute;
-    top:0px;
-    left:80px;
-    margin-top: 80px;
-}
 
     #down{
-    position:absolute;
-    top:100px;
-    left:800px;
-    margin-top: 300px;
+position: absolute;
+    top:120px;
+    left:710px;
+    margin-top: 400px;
 }
-
     #up{
-    position:absolute;
-    top:100px;
-    left:800px;
-    margin-top: 250px;
+position: absolute;
+    top:120px;
+    left:710px;
+    margin-top: 350px;
 }
     #left{
-    position:absolute;
-    top:100px;
-    left:730px;
-    margin-top: 300px;
+position: absolute;
+    top:120px;
+    left:640px;
+    margin-top: 400px;
 }
     #right{
-    position:absolute;
-    top:100px;
-    left:870px;
-    margin-top: 300px;
+position: absolute;
+    top:120px;
+    left:780px;
+    margin-top: 400px;
 }
-
     #level5c{
-    position:absolute;
+ position: absolute;
     top:140px;
     left:800px;
-    margin-top: 300px;
+    margin-top: 400px;
+}
+#backy {
+  background-image: url('/assets/rsz_1background7.png');
+  background-size: cover;
+
 }
 
+#mazehint{
 
+
+    left: 0px;
+    bottom: 180px;
+    font-size: 5.5em;
+    cursor: pointer;
+    /* color:#00a*/
+   
+    display: block;
+
+}
     .button {
         display: inline-block;
         outline: none;
@@ -101,9 +96,6 @@
         float:right;
         margin-right: 20px;
         width:50px;
-
-
-
     }
     .orange {
         color: #fef4e9;
@@ -125,8 +117,6 @@
         background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
         filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
     }
-
-
     .button:hover {
         text-decoration: none;
     }
@@ -134,60 +124,51 @@
         position: relative;
         top: 1px;
     }
-
-	#navContent{
-		position:relative;
-		margin-left:380px;	
-		width:800px;
-		height:250px;
-		padding-left: 100px;
-		/*right:-700px;*/
-		/*position:relative;*/
-		overflow:hidden;
-	}
-
-	#game1{
-		margin:auto;
-		width:400px;
-		height:400px;
-		right:0px;
-		position:absolute;
-
-	}
-
-	#game2{
-		margin:auto;	
-		width:400px;
-		height:400px;
-		right:-800px;
-		position:absolute;
-
-	} 
-
-
-
-	
-	.questionText{
-		font-size:40px;
-		color:#006;
-	}
-
-
-	.resultText{
-		width:900px;
-		font-size:20px;
-		color:#006;
-		margin-right:880px;
-	}
-
-	.pix{
-		width:86px;
-		height:86px;
-		margin:15px;
-		float:left;
-		border: 3px solid #B8008A;
-		cursor:pointer;
-	}
+    #navContent{
+        position:relative;
+        margin-left:380px;  
+        width:800px;
+        height:250px;
+        padding-left: 100px;
+        /*right:-700px;*/
+        /*position:relative;*/
+        overflow:hidden;
+    }
+    #game1{
+        margin:auto;
+        width:400px;
+        height:400px;
+        right:250px;
+        position:absolute;
+        
+    }
+    #game2{
+        margin:auto;    
+        width:400px;
+        height:400px;
+        right:-700px;
+        position:absolute;
+       
+    } 
+    
+    .questionText{
+        font-size:40px;
+        color:#006;
+    }
+    .resultText{
+        width:900px;
+        font-size:20px;
+        color:#006;
+        margin-right:880px;
+    }
+    .pix{
+        width:86px;
+        height:86px;
+        margin:15px;
+        float:left;
+        border: 3px solid #B8008A;
+        cursor:pointer;
+    }
     .pixie{
         width:86px;
         height:86px;
@@ -197,217 +178,534 @@
         border: 3px solid #FC0;
      
     }
-
-	.clicked{
-		border:#FC0 solid 4px;
-	}
-
-	.pix:hover{
-		border:#FC0 solid 4px;
-	}
-	.pix:active{
-		border:#FC0 solid 4px;
-	}
-	.pix:target{
-		border:#FC0 solid 4px;
-	}
-
-
-	#arrow{
-
-
-		margin-left:25px;
-        margin-top: 5px;
-
-	}
-
-	#topbar{
-		height:100px;
-		margin:auto;
-		margin-top:50px;
-		color:#FFF;
-		font-size:36px;
-		font-family:Arial, Helvetica, sans-serif;
-		width:800px;
-	}
-	
-	.spacer{
-		height:50px;
-		margin-top: -40px;
-	}
-	.feedback1{
-		width:120px;
-		padding:5px;
-		font-size:20px;
-		color:#FFFFCC;
-		background-color:#009900;
-		font-family:Arial, Helvetica, sans-serif;
-		text-align:center;
-		position:absolute;
-		top:200px;
-		right:180px;
-	}
-
-	.feedback2{
-		width:150px;
-		padding:5px;
-		font-size:20px;
-		color:#FFFFCC;
-		background-color:#CC3300;
-		font-family:Arial, Helvetica, sans-serif;
-		text-align:center;
-		position:absolute;
-		top:200px;
-		right:180px;
-	}
-	h1 {
-		text-align: center;
-		font-family: Tahoma, Geneva, sans-serif;
-		color:#006;
-		font-size: 40px;
-	}
-/*div {
-    font-size: 30px;
-    color: #006;
-    padding-top: 0px;
-    padding-left:980px;
-
-    }*/
-    div {
-    	
-    	margin-top:0px;
-    	margin-left:280px;
-
+    .clicked{
+        border:#FC0 solid 4px;
+    }
+    .pix:hover{
+        border:#FC0 solid 4px;
+    }
+    .pix:active{
+        border:#FC0 solid 4px;
+    }
+    .pix:target{
+        border:#FC0 solid 4px;
+    }
+    #arrow{
+        margin-right:495px;
+ 
+        
+    }
+    #topbar{
+        height:100px;
+        margin:auto;
+        margin-top:50px;
+        color:#FFF;
+        font-size:36px;
+        font-family:Arial, Helvetica, sans-serif;
+        width:800px;
+    }
+    
+ 
+    .feedback1{
+        width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+  
+        right:393px;
+    }
+    .feedback2{
+    width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+        right:393px;
+    }
+    .feedbackNone{
+        width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+        right:350px;
 
     }
+
+        .feedbackdef{
+        width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+        top: 193px;
+        right:588px;
+
+    }
+
+
 
     #time{
-    	font-size: 25px;
-    	
-    	padding-top: 10px;
-    	padding-left:445px;
+        font-size: 25px;
+        
+        padding-top: 10px;
+        padding-left:345px;
     }
-    .alarm{
-
-    	margin-left: 730px;
-    	margin-top: 150px;
-
-    }
-
 
     #score{
-    	font-size: 25px;
-    	color: #B8008A;
-    	padding-top: 10px;
-    	padding-left:300px;
+        font-size: 25px;
+        color: #B8008A;
+        padding-top: 100px;
+        padding-left:100px;
     }
+     #questioncanvas { position:absolute; 
+        top:180px;
+        right: 800px;
+        width: 400px;
+        height:400px;
+        margin: 0px auto;
+        border: 1px solid #B8008A;
+        margin-left:80px; }
+        #mazecanvas { position:absolute; 
+            top:180px;
+            right: 800px;
+            width: 400px;
+            height:400px;
+            margin: 0px auto;
+            border: 1px solid #B8008A;
+            margin-left:80px; }
+            #canvas-wrap {position:relative;}
+            
+            
+            @media screen and (max-width:400px) {
+                #topbar{margin-left:1%;margin-right:1%; width:98%;}
+                #navContent{margin:1%;  width:98%;}
+                #game1{margin:1%;   width:98%;}
+                #game2{margin:1%;   width:98%;}
+                #questioncanvas{margin-left: 300px;}
+                #mazecanvas{margin-left:1%;margin-right:1%; width:98%;}
+            }
+            @media screen and (max-width:1024px) {
+
+    #down{
+    position:absolute;
+    top:120px;
+    left:710px;
+    margin-top: 400px;
+}
+    #up{
+    position:absolute;
+    top:120px;
+    left:710px;
+    margin-top: 350px;
+}
+    #left{
+    position:absolute;
+    top:120px;
+    left:640px;
+    margin-top: 400px;
+}
+    #right{
+    position:absolute;
+    top:120px;
+    left:780px;
+    margin-top: 400px;
+}
+    #level5c{
+    position:absolute;
+    top:140px;
+    left:800px;
+    margin-top: 400px;
+}
+
+#mazehint{
+
+    
+    left: 0px;
+    bottom: 180px;
+    font-size: 5.5em;
+    cursor: pointer;
+    /* color:#00a*/
+   
+    display: block;
+
+}
+
+   
+    #navContent{
+        position:relative;
+        margin-left:380px;  
+        width:800px;
+        height:250px;
+        padding-left: 100px;
+        /*right:-700px;*/
+        /*position:relative;*/
+        overflow:hidden;
+    }
+    #game1{
+        margin:auto;
+        width:400px;
+        height:400px;
+        right:250px;
+        position:absolute;
+        
+    }
+    #game2{
+        margin:auto;    
+        width:400px;
+        height:400px;
+        right:-700px;
+        position:absolute;
+       
+    } 
+    
+   
+    #arrow{
+        margin-right:495px;
+ 
+        
+    }
+    #topbar{
+        height:100px;
+        margin:auto;
+        margin-top:50px;
+        color:#FFF;
+        font-size:36px;
+        font-family:Arial, Helvetica, sans-serif;
+        width:800px;
+    }
+    
+ 
+    .feedback1{
+        width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+  
+        right:393px;
+    }
+    .feedback2{
+    width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+        right:393px;
+    }
+    .feedbackNone{
+        width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+        right:350px;
+
+    }
+
+        .feedbackdef{
+        width:120px;
+        height: 600px;
+        padding:5px;
+        font-size:20px;
+        position:absolute;
+        top: 193px;
+        right:460px;
+
+    }
+
     #questioncanvas { position:absolute; 
-    	top:120px;
-    	width: 400px;
-    	height:400px;
-    	margin: 0px auto;
-    	border: 1px solid #B8008A;
-    	margin-left:80px; }
-    	#mazecanvas { position:absolute; 
-    		top:120px;
-    		width: 400px;
-    		height:400px;
-    		margin: 0px auto;
-    		border: 1px solid #B8008A;
-    		margin-left:80px; }
-
-    		#canvas-wrap {position:relative;}
-
-
-
-    		
-    		
-    		@media screen and (max-width:800px) {
-    			#topbar{margin-left:1%;margin-right:1%;	width:98%;}
-    			#navContent{margin:1%;	width:98%;}
-    			#game1{margin:1%;	width:98%;}
-    			#game2{margin:1%;	width:98%;}
-
-
-    		}
-    		@media screen and (max-width:400px) {
-    			.pix{margin:1px;margin-top:10px;}
-
-
-    		}
-    		</style>
-
-    		
+        top:180px;
+        right: 600px;
+        width: 400px;
+        height:400px;
+        margin: 0px auto;
+        border: 1px solid #B8008A;
+        margin-left:80px; }
+        #mazecanvas { position:absolute; 
+            top:180px;
+            right: 600px;
+            width: 400px;
+            height:400px;
+            margin: 0px auto;
+            border: 1px solid #B8008A;
+            margin-left:80px; }
+            #canvas-wrap {position:relative;}
+            #backy {background-image: url('/assets/background7.png'); background-size: cover;}
+            }
 
 
 
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {
+  .ipad-portrait { color: red; } /* your css rules for ipad portrait */
+}
+            </style>
+  <!--
+  I love including these comments in pages. It pleases me that
+  you're reading them as well. It's like we're having a moment.
+  We are. Anyway, the CreativeJS team though Fireworks would
+  be teh r0xx0rz and I volunteered to give this a shot. So
+  I hope you're enjoying them and doing the "Aaah! Oooh!"
+  thing. If not I'm a bit upset, but I'll let it slide.
 
-    		<noscript>JavaScript is not enabled. To play the game, you should enable it.</noscript>
-    		<script type='text/javascript' > 
+  Also, big shoutz to Paul Irish for the rAF shimidimmydoo.
+
+  Paul | aerotwist
+  -->
+  <body >
+
+     <div class="menu-container" style="height: 50px;">
+      <div class="row">
+        <div class="large-12 columns">
+          <ul class="menu align-right">
+            <li id="site-title"><a href="home"><h3>Super Hawwaz</h3></a></li>
+         </ul>
+       </div>
+      </div>
+    </div>
+
+
+
+    <div id="overlay">
+    <div id="backy" class="body-container">
+ 
+      
+          <div class="progress" style="width: 500px; margin-left:320px; margin-top:20px"  role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+              <div class="progress-meter" id="myBar" style="width: 0%"></div>
+          </div>
+
+           <canvas id="library">
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </canvas>
+       
+       <div><img id="arrow"src="/assets/maze/garrowd.png"  height="50" width="30"></div>
+       <div class="feedbackdef"><img src="/assets/maze/yellow.png"></div>    
+      <div class="row" style="height: 600px;">
+        <div class="large-12 columns">
+
+         
+    <div id="navContent"> 
+        <div id="game1"></div>
+        <div id="game2"></div>
+
+    </div>
+
+
+    <canvas width="420" height="445" id="mazecanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+    <canvas width="420" height="445" id="questioncanvas" dir="rtl">Can't load the maze game, because your browser doesn't support HTML5.</canvas>
+
+    <div id="score"></div>
+
+
+      <a class="button orange" id="up" >&#9650;</a>
+      <a class="button orange" id="down" >&#9660;</a>
+      <a class="button orange" id="left" >&#9668;</a>
+      <a class="button orange" id="right" >&#9658;</a>
+
+     <a><i style="right: 45px; position: relative;" class="icon-star-filled" ontouchend="mazeHint()" id="mazehint"></i></a>
+
+          <!--PUT YOUR GAME HERE-->
+
+            <canvas id="hamada" width="1200" height="500">
+      <img src="/assets/fire/big-glow.png" id="big-glow" />
+      <img src="/assets/fire/small-glow.png" id="small-glow" />
+    </canvas>
+
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+    <div class="footer" style="top: 800px;" id="footy">
+      <div class="row" data-equalizer>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <h1>GWAP</h1>
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Jailan Salah<p><b>Researcher</b></p></h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+          
+        </div>
+        <div class="large-3 columns footer-section" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Contact Us</h6>
+              <p>German University in Cairo</br>
+                New Cairo City . Main Entrance El-Tagamoa El-Khames</p>
+              <p>Hotline 16482 . Tel: +202 27589990-8 . Fax: +202 27581041</p>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns footer-section-last" data-equalizer-watch>
+          <div class="row">
+            <div class="large-12 columns" >
+              <h6>Other Projects</h6>
+              <ul>
+                <li>
+                  <a>Kodr</a>
+                </li>
+                <li>
+                  <a>Rules of Wheels</a>
+                </li>
+                <li>
+                  <a>Lydia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row border-top">
+            <div class="large-12 columns" >
+              <h6>Lorem Ipsum</h6>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hiding library elements in the DOM is fun -->
+   
+  </body>
+  <script type='text/javascript' > 
             var ON_BORDER = 0;
             var ON_BLANK_SPACE = 1;
             var ON_END_OF_MAZE = 2;
             var ON_QUESTION = 3;
+            var sa2afoolhom = false;
+            var khalasoohom = false;
+            var testAudio=1;
 
-    		var answered =0;
-    		var first = 1;
+        var answered =0;
+        var first = 1;
             var balala =1 ;
             var foofoo =1;
-    		var score = 0;
-    		var subscore = 10;
+        var score = 0;
+        var subscore = 10;
             var textq="كرة";
             var mazeletter = $('.temp_information').data('temp'); 
+        
+             //var mazeletter = 12;
             //alert(mazeletter);
             <%= $speech="كرة" %>
 
-    		</script>
-    		<script src="/assets/jquery.js"></script>    <script type="text/javascript" charset="utf-8">
+        </script>
+        <script src="/assets/jquery.js"></script>    <script type="text/javascript" charset="utf-8">
 
-    		var canvas = document.getElementById("mazecanvas");
-    		var context = canvas.getContext("2d");
-    		var dataUrl = canvas.toDataURL();
-    		var myImage = canvas.toDataURL("image/png");  
+        var canvas = document.getElementById("mazecanvas");
+        var context = canvas.getContext("2d");
+        var dataUrl = canvas.toDataURL();
+        var myImage = canvas.toDataURL("image/png");  
 
 
-    		var cnv = document.getElementById("questioncanvas");
-    		var ctx = cnv.getContext("2d");
-    		var currRectX = 425;
-    		var currRectY = 3;
-    		var mazeWidth = 556;
-    		var mazeHeight = 556;
-    		var intervalVar;
+        var cnv = document.getElementById("questioncanvas");
+        var ctx = cnv.getContext("2d");
+        var currRectX = 425;
+        var currRectY = 3;
+        var mazeWidth = 556;
+        var mazeHeight = 556;
+        var intervalVar;
+        var scoreBar = 0;
+        var barPercentage = 0;
 
-    // $('#up').click(function() {
-    //    move(1);
-    // });        
-    		
-    // $('#down').click(function() {
-    //    move(2);
-    // });
-    // $('#left').click(function() {
-    //    move(3);
-    // });
 
-    // $('#right').click(function() {
-    //    move(4);
-    // });
+     function touchHandler(event) {
+    var touch = event.originalEvent.changedTouches[0];
+    var simulatedEvent = document.createEvent("MouseEvent");
+        simulatedEvent.initMouseEvent({
+        touchstart: "mousedown",
+        touchmove: "mousemove",
+        touchend: "mouseup",
+        touchcancel: "mouseout"
+    }[event.type], true, true, window, 1,
+        touch.screenX, touch.screenY,
+        touch.clientX, touch.clientY, false,
+        false, false, false, 0, null);
+
+    touch.target.dispatchEvent(simulatedEvent);
+    event.preventDefault();
+}
+
+function initTouch() {
+    document.addEventListener("touchstart", touchHandler, true);
+    document.addEventListener("touchmove", touchHandler, true);
+    document.addEventListener("touchend", touchHandler, true);
+    document.addEventListener("touchcancel", touchHandler, true);
+
+
+}
+
+function checkHitsSoundy(){
+      if(sa2afoolhom === true){
+     new Audio('/assets/Audio/applause.mp3').play();
+     sa2afoolhom = false;}
+     else{ if(khalasoohom === true){
+        if(correctAnswers === 14){
+     new Audio('/assets/Audio/applausy.mp3').play();
+     new Audio('/assets/Audio/tada.mp3').play();
+      khalasoohom = false;
+    } 
+     else{
+
+        new Audio('/assets/Audio/finish.mp3').play();
+
+         khalasoohom = false;
+     }
+
+ }
+
+}
+}
+
+
+ var bod=$("body").css("background-color","#C6ECFF");
+
 
       $('#up').bind( "touchstart", function(e){
+         //checkHitsSoundy();
+
     timeout = setInterval(function(){
+
         move(1);
     }, 50);
 
     return false;
 });
         $('#down').bind( "touchstart", function(e){
-    timeout = setInterval(function(){
+         // checkHitsSoundy();
+       timeout = setInterval(function(){
         move(2);
-    }, 50);
-
-    return false;
+        }, 50);
+        return false;
 });
 
   $('#left').bind( "touchstart", function(e){
+  
+     //checkHitsSoundy();
     timeout = setInterval(function(){
         move(3);
     }, 50);
@@ -415,6 +713,7 @@
     return false;
 });
     $('#right').bind( "touchstart", function(e){
+         //checkHitsSoundy();
     timeout = setInterval(function(){
         move(4);
     }, 50);
@@ -423,6 +722,7 @@
 });
 
 $(document).bind( "touchend", function(e){
+    checkHitsSoundy();
     clearInterval(timeout);
     return false;
 });
@@ -436,6 +736,7 @@ $(document).bind( "touchend", function(e){
     return false;
 });
         $('#down').mousedown(function(){
+   
     timeout = setInterval(function(){
         move(2);
     }, 50);
@@ -459,59 +760,60 @@ $(document).bind( "touchend", function(e){
 });
 
 $(document).mouseup(function(){
+  checkHitsSoundy();
     clearInterval(timeout);
     return false;
 });
+ 
 
 
+        /* TIMER ************************************/
+        var mins = 5;
+        var secs = 0;
+        var timer;
+        function start(){
+          timer = setInterval('update()', 1000);
 
 
-    		/* TIMER ************************************/
-    		var mins = 5;
-    		var secs = 0;
-    		var timer;
-    		function start(){
-    			timer = setInterval('update()', 1000);
+        }
+        function update(){
 
-    		}
-    		function update(){
+          var timeField = document.getElementById('time');
+          timeField.style.color="green";
+          if(secs == 0){
+            if(mins == 0){
+              timeField.style.color= "red";
+              timeField.innerHTML = 'Time is up!';
 
-    			var timeField = document.getElementById('time');
-    			timeField.style.color="green";
-    			if(secs == 0){
-    				if(mins == 0){
-    					timeField.style.color= "red";
-    					timeField.innerHTML = 'Time is up!';
-
-    					clearInterval(timer);
-    					//alert('Time is up');
-    					return;
-    				}
-    				
-    				secs = 59;
-    				mins--;}
-    				else{
-    					secs--;}
-    					
-    					
-    					if(mins <= 2){
-    						timeField.style.color= "orangered";
-    						timeField.innerHTML = mins + ':' + secs;
-    					}  else if (mins<= 1) {
-    						timeField.style.color= "red";
-    						timeField.innerHTML = mins + ':' + secs;
-    					}
-    					else{
-    						timeField.style.color="green";
-    						timeField.innerHTML =  mins + ':' + secs;
-    					} 
-    					if(secs <10){
-    						timeField.innerHTML =  mins + ':0' + secs;
-    					}
+              clearInterval(timer);
+              //alert('Time is up');
+              return;
+            }
+            
+            secs = 59;
+            mins--;}
+            else{
+              secs--;}
+              
+              
+              if(mins <= 2){
+                timeField.style.color= "orangered";
+                timeField.innerHTML = mins + ':' + secs;
+              }  else if (mins<= 1) {
+                timeField.style.color= "red";
+                timeField.innerHTML = mins + ':' + secs;
+              }
+              else{
+                timeField.style.color="green";
+                timeField.innerHTML =  mins + ':' + secs;
+              } 
+              if(secs <10){
+                timeField.innerHTML =  mins + ':0' + secs;
+              }
 
 
-    				}
-    				/* TIMER ************************************/
+            }
+            /* TIMER ************************************/
       var obstaclesArray = [[300,36],[400,70],[400,120],[300,160],[210,160],[140,160],[24,185],[120,210],[220,210],[290,260],[195,260],[105,310],[24,340],[24,383],[50,434]];
     function drawMazeAndRectangle(rectX, rectY) {
               makeWhite(0, 0, canvas.width, canvas.height);
@@ -544,14 +846,14 @@ $(document).mouseup(function(){
         
         function drawRectangle(x, y, style) {
 
-        	makeWhite(currRectX, currRectY, 17, 17);
-        	currRectX = x;
-        	currRectY = y;
-        	context.beginPath();
-        	context.rect(x, y, 17, 17);
-        	context.closePath();
-        	context.fillStyle = style;
-        	context.fill();
+          makeWhite(currRectX, currRectY, 17, 17);
+          currRectX = x;
+          currRectY = y;
+          context.beginPath();
+          context.rect(x, y, 17, 17);
+          context.closePath();
+          context.fillStyle = style;
+          context.fill();
 
         }
                 function drawStroke(x, y, style) {
@@ -596,15 +898,17 @@ location = canMoveTo(newX, newY);
             questionNumber++;
         }
     } else if (correctAnswers === 15) { // 2 means 'the rectangle reached the end point'
-    alert("khalasnaaa");
-        clearInterval(intervalVar);
-        makeWhite(0, 0, canvas.width, canvas.height);
-        context.font = "40px Arial";
-        context.fillStyle = "#B8008A";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
+    // alert("khalasnaaa");
+    //     clearInterval(intervalVar);
+    //     makeWhite(0, 0, canvas.width, canvas.height);
+    //     context.font = "40px Arial";
+    //     context.fillStyle = "#B8008A";
+    //     context.textAlign = "center";
+    //     context.textBaseline = "middle";
 
-        context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+    //     context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+
+
         //displayFinalSlide();
 
         window.removeEventListener("keydown", moveRect, true);
@@ -612,8 +916,15 @@ location = canMoveTo(newX, newY);
         // window.removeEventListener('click', listener , false);
         //   window.removeEventListener('click', listener, false);
         clearTimeout(timer);
-    } else if (location === ON_QUESTION || location === ON_END_OF_MAZE) { // 3 means 'the rectangle reached the question orange point'
+         // new Audio('/assets/applausy.mp3').play();
+
+        celebrate();
+    } else if (location === ON_QUESTION || location === ON_END_OF_MAZE) {
+      // 3 means 'the rectangle reached the question orange point'
         if(!currentQuestionIsAnswered()) {
+        
+         
+           // document.getElementById('myAudio').play();
 
             if (first === 1){
                 displayQuestion();
@@ -622,13 +933,33 @@ location = canMoveTo(newX, newY);
             } else{
                 if(foofoo === 1){
 
-                setTimeout(function(){changeQuestion()},1000); }
+         setTimeout(function(){changeQuestion();},2500); }
+
+
             }
           
       if (foofoo === 1){
           
             textq=answersBank[questionNumber][0];
-            speak(textq);
+         //   new Audio('/assets/Audio/l'+mazeletter+'/1.mp3').play();
+             testAudio = answersBank[questionNumber][2];
+           // alert("sound play");
+
+
+        //new Audio('/assets/Audio/applause.mp3').play();
+
+  //setTimeout(function(){ },300);
+  //alert(" yamammamamamaa 749 ");
+  //new Audio('/assets/Audio/l'+mazeletter+'/'+testAudio+'.mp3').play();
+
+            //speak(textq);
+        
+            //getSpeechy();
+            //new Audio('/assets/Audio/applause.mp3').play();
+
+
+
+
            clearInterval(intervalVar);
            ctx.font = "200px Arial";
            ctx.fillStyle = "#B8008A";
@@ -654,16 +985,27 @@ location = canMoveTo(newX, newY);
 
     if (isOnMovable(location)) {
         movePiece(newX, newY)
-    }     
+    }
+    return location;     
 
 }
 
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
+}
+
 function moveRect(e) {
-	var newX=currRectX;
-	var newY=currRectY;
-	var location;
-	e = e || window.event;
-	switch (e.keyCode) {
+  var newX=currRectX;
+  var newY=currRectY;
+  var location;
+  e = e || window.event;
+  switch (e.keyCode) {
         case 38:   // arrow up key
         case 87: // W key
         newX = currRectX;
@@ -695,19 +1037,22 @@ function moveRect(e) {
         }
     } else if (correctAnswers === 15) { // 2 means 'the rectangle reached the end point'
     alert("khalasnaaa");
-    	clearInterval(intervalVar);
-        makeWhite(0, 0, canvas.width, canvas.height);
-        context.font = "40px Arial";
-        context.fillStyle = "#B8008A";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
+      clearInterval(intervalVar);
+        // makeWhite(0, 0, canvas.width, canvas.height);
+        // context.font = "40px Arial";
+        // context.fillStyle = "#B8008A";
+        // context.textAlign = "center";
+        // context.textBaseline = "middle";
 
-        context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+        // context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
         //displayFinalSlide();
+
 
         window.removeEventListener("keydown", moveRect, true);
 
         clearTimeout(timer);
+
+        celebrate();
     } else if (location === ON_QUESTION || location === ON_END_OF_MAZE) { // 3 means 'the rectangle reached the question orange point'
         if(!currentQuestionIsAnswered()) {
             if (first === 1){
@@ -718,10 +1063,23 @@ function moveRect(e) {
              setTimeout(function(){changeQuestion()},1000);
             }
             textq=answersBank[questionNumber][0];
-            speak(textq);
+
+            //speak(textq);
+       // // getSpeechy();
+       // alert("sound play");
+       //      new Audio('/assets/Audio/applause.mp3').play();
+
+         testAudio = answersBank[questionNumber][2];
 
 
-            clearInterval(intervalVar);
+ //new Audio('/assets/Audio/applause.mp3').play();
+
+  //setTimeout(function(){ },300);
+
+// alert("yamamaaaaa 854");
+// new Audio('/assets/Audio/l'+mazeletter+'/'+testAudio+'.mp3').play();
+
+     clearInterval(intervalVar);
            makeWhito(0, 0, canvas.width, canvas.height);
            ctx.font = "200px Arial";
            ctx.fillStyle = "#B8008A";
@@ -759,21 +1117,27 @@ function canMoveTo(destX, destY) {
     var data = imgData.data;
     var canMove = ON_BLANK_SPACE; // ON_BLANK_SPACE means the rectangle can move
     if (isInMazeBounds(destX, destY)) {
-    	for (var i = 0; i < 4 * 17* 17; i += 4) {
+      for (var i = 0; i < 4 * 17* 17; i += 4) {
             if (isOnWall(data, i)) { // black
                 canMove = ON_BORDER; // 0 means: the rectangle can't move
                 break;
             } else if (isOnEndMaze(data, i)){ // #B8008A fuschiac
-                canMove = ON_END_OF_MAZE; // 2 means: the end point is reached
+                canMove = ON_END_OF_MAZE;
+                khalasoohom = true; // 2 means: the end point is reached
                 break;
             } else if (isOnQuestion(data, i)) {
-                // #FF9900 orange
+          
                 canMove = ON_QUESTION;
+                sa2afoolhom = true;
+               // khalasoohom = true;
+                //document.getElementById('myAudio').play();
+               // new Audio('/assets/Audio/applause.mp3').play();
+
                 break;
            }
         }
     } else {
-    	canMove = ON_BORDER;
+      canMove = ON_BORDER;
     }
 
 
@@ -787,6 +1151,7 @@ function isOnWall(data, i) {
 }
 
 function isOnQuestion (data, i) {
+
     return data[i] === 255 && data[i + 1] === 153 && data[i + 2] === 0;
 }
 
@@ -798,75 +1163,36 @@ function isInMazeBounds(destX, destY) {
     return destX >= 0 && destX <= mazeWidth - 15 && destY >= 0 && destY <= mazeHeight - 15;
 }
 
-       /* function createTimer(seconds) {
-            intervalVar = setInterval(function () {
-                makeWhite(mazeWidth, 0, canvas.width - mazeWidth, canvas.height);
-                if (seconds === 0) {
-                    clearInterval(intervalVar);
-                    window.removeEventListener("keydown", moveRect, true);
-                    makeWhite(0, 0, canvas.width, canvas.height);
-                    context.font = "40px Arial";
-                    context.fillStyle = "red";
-                    context.textAlign = "center";
-                    context.textBaseline = "middle";
-                    context.fillText("Time's up!", canvas.width / 2, canvas.height / 2);
-                    return;
-                }
-                context.font = "20px Arial";
-                if (seconds <= 10 && seconds > 5) {
-                    context.fillStyle = "orangered";
-                }
-                else if (seconds <= 5) {
-                    context.fillStyle = "red";
-                }
-                else {
-                    context.fillStyle = "green";
-                }
-                context.textAlign = "center";
-                context.textBaseline = "middle";
-                var minutes = Math.floor(seconds / 60);
-                var secondsToShow = (seconds - minutes * 60).toString();
-                if (secondsToShow.length === 1) {
-                    secondsToShow = "0" + secondsToShow; // if the number of seconds is '5' for example, make sure that it is shown as '05'
-                }
-                context.fillText(minutes.toString() + ":" + secondsToShow, mazeWidth-390, canvas.height / 2 -210);
-                seconds--;
-            }, 1000);
-}*/
 
 
 function makeWhite(x, y, w, h) {
 
-	context.beginPath();
-	context.rect(x, y, w, h);
-	context.closePath();
-	context.fillStyle ='rgba(255, 255, 255,0.5)';
-	context.fill();
+  context.beginPath();
+  context.rect(x, y, w, h);
+  context.closePath();
+  context.fillStyle ='rgba(255, 255, 255,0.5)';
+  context.fill();
 }
 
 function makeWhito(x, y, w, h) {
 
-	ctx.beginPath();
-	ctx.rect(x, y, w, h);
-	ctx.closePath();
-	ctx.fillStyle ='rgba(255, 255, 255,0.5)';
-	ctx.fill(); 
+  ctx.beginPath();
+  ctx.rect(x, y, w, h);
+  ctx.closePath();
+  ctx.fillStyle ='rgba(255, 255, 255,0.5)';
+  ctx.fill(); 
 }
 var imo = new Image();
 
 
 function unMakeWhite() {
 
-	imo.src = myImage; 
-	ctx.clearRect ( 0, 0, canvas.width, canvas.height );
+  imo.src = myImage; 
+  ctx.clearRect ( 0, 0, canvas.width, canvas.height );
     //context.drawImage(imo,0,0);
     //drawMazeAndRectangle(currRectX, currRectY);
 
 }
-
-
-
-
 
 drawMazeAndRectangle(242, 7);
 
@@ -886,22 +1212,23 @@ var stage2=new Object;
 var questionLock=false;
 var numberOfQuestions;
 var answersBank=new Array();
+var lettoz= mazeletter;
 
 $.getJSON('/assets/maze/activity'+mazeletter+'.json', function(data) {
     // THE NAME OF THE FILE IS THE ONE WHO DECIDES ACTUALLY ! (MAZELETTER)
 
-	for(i=0;i<data.quizlist.length;i++){ 
-		questionBank[i]=new Array;
-		questionBank[i][0]=data.quizlist[i].question;
-		questionBank[i][1]=data.quizlist[i].option1;
-		questionBank[i][2]=data.quizlist[i].option2;
-		questionBank[i][3]=data.quizlist[i].option3;
-	}
-	numberOfQuestions=questionBank.length; 
+  for(i=0;i<data.quizlist.length;i++){ 
+    questionBank[i]=new Array;
+    questionBank[i][0]=data.quizlist[i].question;
+    questionBank[i][1]=data.quizlist[i].option1;
+    questionBank[i][2]=data.quizlist[i].option2;
+    questionBank[i][3]=data.quizlist[i].option3;
+  }
+  numberOfQuestions=questionBank.length; 
 
-	// if (ask > 0){
+  // if (ask > 0){
 
-	// 	displayQuestion();}
+  //  displayQuestion();}
 
 })//gtjson
 
@@ -930,94 +1257,193 @@ fillDB();
 
 
 function displayQuestion(){
-	var rnd=Math.random()*3;
-	rnd=Math.ceil(rnd);
-	var q1;
-	var q2;
-	var q3;
+  var rnd=Math.random()*3;
+  rnd=Math.ceil(rnd);
+  var q1;
+  var q2;
+  var q3;
     var q0= questionBank[questionNumber][0];
 
 
-	if(rnd==1){q1=questionBank[questionNumber][1];q2=questionBank[questionNumber][2];q3=questionBank[questionNumber][3];}
-	if(rnd==2){q2=questionBank[questionNumber][1];q3=questionBank[questionNumber][2];q1=questionBank[questionNumber][3];}
-	if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
+  if(rnd==1){q1=questionBank[questionNumber][1];q2=questionBank[questionNumber][2];q3=questionBank[questionNumber][3];}
+  if(rnd==2){q2=questionBank[questionNumber][1];q3=questionBank[questionNumber][2];q1=questionBank[questionNumber][3];}
+  if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2];q2=questionBank[questionNumber][3];}
 
     $(stage).append('<div class="pixie"><img src="/assets/maze/l'+mazeletter+'/'+q0+'"></div>');
     $(stage).append('<div id="1" class="pix"><img src="/assets/maze/l'+mazeletter+'/'+q1+'"></div><div id="2" class="pix"><img src="/assets/maze/l'+mazeletter+'/'+q2+'"></div><div id="3" class="pix"><img src="/assets/maze/l'+mazeletter+'/'+q3+'"></div>');
 
-        	/*$(stage).append('<div  class="questionText">'+questionBank[questionNumber][0]+'</div><div id="1" class="pix"><img src="/assets/'+q1+'"></div><div id="2" class="pix"><img src="/assets/'+q2+'"></div><div id="3" class="pix"><img src="/assets/'+q3+'"></div>');*/
-         
-        
-           /*  $(document).ready(function(){
-      $('button').click(function(){
-           $(this).addClass('clicked');
-      });
-}); */
-
-
-
-
 $('.pix').click(function(){
-	$(this).addClass('clicked');
-	
-	if(questionLock==false){questionLock=true;    
+    $(this).addClass('clicked');
+    
+    if(questionLock==false){questionLock=true;    
   //correct answer
   if(this.id==rnd){
+  //  new Audio('/assets/Audio/applause.mp3').play();
   var texti=answersBank[questionNumber][1];
    //getSpeech(texti);
-   speak(texti);
+  /* speak(texti);*/
+               testAudio = answersBank[questionNumber][3];
+
+    //new Audio('/assets/Audio/applause.mp3').play();
+
+  //setTimeout(function(){ },300);
+  // alert("yamamaaaaa 1073");
+  /* THE CORRECT TEST AUDIO */
+   new Audio('/assets/Audio/l'+mazeletter+'/'+testAudio+'.mp3').play();
+   new Audio('/assets/Audio/applausy.mp3').play();
+
   // getSpeechy(texti);
-  // new Audio('/assets/lalazy.mp3').play();
-  	$(stage).append('<div class="feedback1">CORRECT</div>');
-  	unMakeWhite();
-  	answered = 1;
+
+    $(stage).append('<div class="feedback1"><img src="/assets/maze/green.png"></div>');
+      //  new Audio('/assets/Audio/applause.mp3').play();
+    unMakeWhite();
+    answered = 1;
     correctAnswers ++;
+   // new Audio('/assets/applause.mp3').play();
     foofoo = 1;
+    scoreBar++;
+     barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
     //foofoo =1;
     // COLORING THE CORRECTLY ANSWERED QUESTION
-  	    context.beginPath();
+        context.beginPath();
         context.arc(obstaclesArray[questionNumber][0], obstaclesArray[questionNumber][1], 9, 0, 2 * Math.PI, false);
         context.closePath();
         context.fillStyle = '#75A319';//orange
         context.fill();
-  	score=score+subscore;
-  	subscore=10;
+    score=score+subscore;
+    subscore=10;
 
  // if(correctAnswers %3 === 0){
- //     new Audio('/assets/applause.mp3').play();}
+ //   // alert("um here");
+ // new Audio('/assets/Audio/finish.mp3').play();}
+
+ if(correctAnswers === 15){
+            clearInterval(intervalVar);
+        // makeWhite(0, 0, canvas.width, canvas.height);
+        // context.font = "40px Arial";
+        // context.fillStyle = "#B8008A";
+        // context.textAlign = "center";
+        // context.textBaseline = "middle";
+
+        // context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+ 
+        //displayFinalSlide();
+        // new Audio('/assets/applausy.mp3').play();
+        window.removeEventListener("keydown", moveRect, true);
+       // window.removeEventListener('click', move, false);
+        clearTimeout(timer);
+          //new Audio('/assets/applausy.mp3').play();
+               celebrate();
+             
+
+ }
+ 
+    window.addEventListener("keydown", moveRect, true);
+    //window.addEventListener('click', listener, true);
+
+    movingAllowed =0;
+    questionBank[questionNumber].answered = true;
+    // questionNumber++;
+  }
+  //wrong answer    
+  if(this.id!=rnd){
+    $(stage).append('<div class="feedback2"><img src="/assets/maze/red.png"></div>');
+    //new Audio('/assets/no.mp3').play();
+    new Audio('/assets/Audio/boing.mp3').play();
+
+    subscore-=3 ;
+    setTimeout(function(){changeQuestion()},2500); 
+
+  }
+ // setTimeout(function(){changeQuestion()},1000); 
+}});
+
+
+
+$('.pix').bind('touchstart',function(){
+  $(this).addClass('clicked');
+  
+  if(questionLock==false){questionLock=true;    
+  //correct answer
+  if(this.id==rnd){
+    //new Audio('/assets/Audio/applause.mp3').play();
+  var texti=answersBank[questionNumber][1];
+   //getSpeech(texti);
+  /* speak(texti);*/
+               testAudio = answersBank[questionNumber][3];
+
+  //new Audio('/assets/Audio/applause.mp3').play();
+
+  //setTimeout(function(){ },300);
+ // alert("yamamaaaaa 1156");
+ /* THE CORRECT TEST AUDIO*/
+  new Audio('/assets/Audio/l'+mazeletter+'/'+testAudio+'.mp3').play();
+   new Audio('/assets/Audio/applausy.mp3').play();
+
+  // getSpeechy(texti);
+  // new Audio('/assets/lalazy.mp3').play();
+    $(stage).append('<div class="feedback1"><img src="/assets/maze/green.png"></div>');
+    unMakeWhite();
+    answered = 1;
+    correctAnswers ++;
+    //new Audio('/assets/Audio/applause.mp3').play();
+    foofoo = 1;
+      scoreBar++;
+     barPercentage = (scoreBar*100)/15;
+        document.getElementById('myBar').style.width = barPercentage+'%';
+    //foofoo =1;
+    // COLORING THE CORRECTLY ANSWERED QUESTION
+        context.beginPath();
+        context.arc(obstaclesArray[questionNumber][0], obstaclesArray[questionNumber][1], 9, 0, 2 * Math.PI, false);
+        context.closePath();
+        context.fillStyle = '#75A319';//orange
+        context.fill();
+    score=score+subscore;
+    subscore=10;
+
+
+ // if(correctAnswers %3 === 0){
+ //    //alert("um here");
+ //    new Audio('/assets/Audio/finish.mp3').play();}
+
 
  if(correctAnswers === 15){
             clearInterval(intervalVar);
         makeWhite(0, 0, canvas.width, canvas.height);
-        context.font = "40px Arial";
-        context.fillStyle = "#B8008A";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
+        // context.font = "40px Arial";
+        // context.fillStyle = "#B8008A";
+        // context.textAlign = "center";
+        // context.textBaseline = "middle";
 
-        context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+        // context.fillText("Congratulations", canvas.width / 2, canvas.height / 2);
+
         //displayFinalSlide();
-        new Audio('/assets/applause.mp3').play();
+        // new Audio('/assets/Audio/applausy.mp3').play();
         window.removeEventListener("keydown", moveRect, true);
        // window.removeEventListener('click', move, false);
         clearTimeout(timer);
+        //new Audio('/assets/Audio/applausy.mp3').play();
+                celebrate();
+                
 
  }
  
-  	window.addEventListener("keydown", moveRect, true);
+    window.addEventListener("keydown", moveRect, true);
     //window.addEventListener('click', listener, true);
 
-  	movingAllowed =0;
+    movingAllowed =0;
     questionBank[questionNumber].answered = true;
-  	// questionNumber++;
+    // questionNumber++;
   }
   //wrong answer    
   if(this.id!=rnd){
-  	$(stage).append('<div class="feedback2">WRONG</div>');
-  	//new Audio('/assets/no.mp3').play();
-    new Audio('/assets/boing.wav').play();
+    $(stage).append('<div class="feedback2"><img src="/assets/maze/red.png"></div>');
+    //new Audio('/assets/no.mp3').play();
+    new Audio('/assets/Audio/boing.mp3').play();
 
-  	subscore-=3 ;
-  	setTimeout(function(){changeQuestion()},1000); 
+    subscore-=3 ;
+    setTimeout(function(){changeQuestion()},1000); 
 
   }
  // setTimeout(function(){changeQuestion()},1000); 
@@ -1047,13 +1473,16 @@ $('.pix').click(function(){
 function changeQuestion(){
 
 
-	if(stage=="#game1"){stage2="#game1";stage="#game2";}
-	else{stage2="#game2";stage="#game1";}
-	
-	if(questionNumber<numberOfQuestions){displayQuestion();}else{displayFinalSlide();}
-	
-	$(stage2).animate({"right": "+=800px"},"slow", function() {$(stage2).css('right','-800px');$(stage2).empty();});
-	$(stage).animate({"right": "+=800px"},"slow", function() {questionLock=false;});
+  if(stage=="#game1"){stage2="#game1";stage="#game2";}
+  else{stage2="#game2";stage="#game1";}
+  
+  if(questionNumber<numberOfQuestions){displayQuestion();}else{displayFinalSlide();}
+  
+  $(stage2).animate({"right": "+=950px"},"slow", function() {$(stage2).css('right','-700px');$(stage2).empty();});
+  $(stage).animate({"right": "+=950px"},"slow", function() {questionLock=false;});
+//alert(" errahma");
+
+       //new Audio('/assets/Audio/applause.mp3').play();
     }//change question    
  
 function displayFinalSlide(){
@@ -1065,8 +1494,8 @@ function displayFinalSlide(){
     }//display final slide
 
 function displayScore(){
-    	var scoreField = document.getElementById('score');
-    	scoreField.innerHTML = 'Score: '+score+' / '+'70';
+      var scoreField = document.getElementById('score');
+      //scoreField.innerHTML = 'Score: '+score+' / '+'70';
 
     }
 
@@ -1099,14 +1528,22 @@ msg.onend = function(e) {
 speechSynthesis.speak(msg);
 }
 
+function mazeHint(){
+new Audio('/assets/Audio/l'+mazeletter+'/'+testAudio+'.mp3').play()
 
+}
+
+var lettoz = mazeletter;
 
 
 
 
 
 </script>
-
+     <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>
     <script src="soundmanager2.js"></script>
 <script>
      function getSpeechy(fieldClicked) {
@@ -1117,7 +1554,7 @@ soundManager.setup({
 
     var mySound = soundManager.createSound({
       id: 'aSound',
-      url: '/assets/lalazy.mp3'
+      url: '/assets/Audio/applause.mp3'
     });
     mySound.play();
   },
@@ -1129,6 +1566,17 @@ soundManager.setup({
 
 
 
+
 </script>
-</body>
+  <script>
+        window.onload = function() {
+            start();
+//celebrate();
+ 
+   
+  };
+  </script>
+
+  <script src="/assets/fire/requestanimframe.js"></script>
+  <script src="/assets/fire/fireworks.js"></script>
 </html>
