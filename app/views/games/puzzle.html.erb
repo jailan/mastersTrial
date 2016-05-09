@@ -335,12 +335,14 @@ margin-right: 100px;
 
         
           initTouch();
+        //showPreview();
            
         }
 
  function changeImage() {
 //puzzleletter =26;
 puzzleletter = $('.temp_information').data('temp'); 
+puzzleletter = 2;
 var image1 = document.getElementById('img1');
 var image2 = document.getElementById('img2');
 var image3 = document.getElementById('img3');
@@ -423,6 +425,7 @@ function LoadGame() {
             game = new jigsaw(canvasID, imageID, totalRows, totalColumns);
             game.initDrawing();
             yourFunction();
+            //game.showPreview();
 
 }
 
@@ -645,13 +648,16 @@ else{
         SetImageBlock();
         DrawGame();
 
+
+
+
     }
 
 
-    this.showPreview = function () {
+    this.showPreview = function (n) {
 
-        var x1 = 20;
-        var y1 = 20;
+        var x1 = 0;
+        var y1 = 0;
         var width = BLOCK_IMG_WIDTH - (x1 * 2);
         var height = BLOCK_IMG_HEIGHT - (y1 * 2)
         ctx.save();
@@ -663,12 +669,15 @@ else{
           puzzoImg.src= "/assets/puzzle/l"+puzzleletter+"/"+puzzleSubLevel+"d.jpg";
         }
      
-     new Audio("/assets/Audio/l"+puzzleletter+"/"+puzzleSubLevel+".mp3").play();
+if ( n === 1) {
+     new Audio("/assets/Audio/l"+puzzleletter+"/"+puzzleSubLevel+".mp3").play();}
 
     var co = document.getElementById("canJigsaw");
     var ctxo = co.getContext("2d");
     var imgxo = document.getElementById("balala");
-    ctx.drawImage(imgxo, 0, 0,MAIN_IMG_WIDTH,MAIN_IMG_HEIGHT,20,20, width, height);
+    ctx.clearRect(0, 0, width+10, height+10);
+    drawAllImages();
+    ctx.drawImage(imgxo, 0, 0,MAIN_IMG_WIDTH,MAIN_IMG_HEIGHT,0,0, width, height);
           //ctx.drawImage(puzzoImg, 0, 0, MAIN_IMG_WIDTH, MAIN_IMG_HEIGHT, x1, y1, width, height);
     
 
@@ -698,6 +707,7 @@ else{
         if (selectedBlock) {
             drawImageBlock(selectedBlock);
         }
+        //ShowPreview();
     }
       var notRandomX = 620;
       var notRandomY = 5;
@@ -891,6 +901,7 @@ function SetImageBlock() {
     }
 
     function handleOnMouseDown(e) {
+         //ShowPreview();
 
 
         // remove old selected
@@ -921,6 +932,7 @@ function SetImageBlock() {
  var audioElementCorrect = document.createElement('audio');
         //audioElementCorrect.setAttribute('src', '/assets/Audio/applause.mp3');
     function handleOnMouseUp(e) {
+  //ShowPreview(2);
 
          $(document).on('touchend',function(e) {
         
@@ -1009,6 +1021,7 @@ function SetImageBlock() {
 
                 flagsCorrecta[m]=1;
                new Audio('/assets/Audio/applause.mp3').play();
+
         // audioElement.setAttribute('src', '/assets/Audio/applause.mp3');
         // audioElement.play();
               //alert(flagsCorrecta);
@@ -1051,7 +1064,7 @@ function SetImageBlock() {
     }
 
     function handleOnMouseMove(e) {
- 
+ ShowPreview(2);
 
       if (selectedBlock){
        if (flagsCorrecta[selectedBlock.no] === 0) {
@@ -1360,10 +1373,10 @@ $(document).bind('touchmove', false);
                           <a><i style="position: absolute; top: 500px; left: 400px; font-size: 4.3em;color: #ff6600;" class="icon-right-open"></i><i style="position: absolute; top: 500px; left: 370px; font-size: 4.3em; color: #ff6600;" class="icon-right-open" ></i></a>
 
 
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 470px;" onclick="LoadNewImage2('img1'); listen('1');"></img>
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 567px;" onclick="LoadNewImage2('img2'); listen('2');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 470px;" onclick="LoadNewImage2('img1'); listen('1'); ShowPreview(2);  "></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 567px;" onclick="LoadNewImage2('img2'); listen('2'); ShowPreview(2); "></img>
                      
-                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 667px;" onclick="LoadNewImage2('img3'); listen('3');"></img>
+                     <img width="90" height="90"src="/assets/puzzle/frame.png" style="position: absolute; top: 490px; left: 667px;" onclick="LoadNewImage2('img3'); listen('3');  ShowPreview(2); "></img>
 
 
     </table>
@@ -1373,7 +1386,7 @@ $(document).bind('touchmove', false);
     <a  href='#' class="btnYellow" id="level3">3</a>
     <a  href='#' class="btnOrange" id="level4">4</a>
     <a  href='#' class="btnRed" id="level5">5</a>
-     <a><i style="right: 45px; position: relative; top: 350px;  color: #FF7519; " class="icon-star-filled" onclick="ShowPreview()" id="peekz"></i></a>
+     <a><i style="right: 45px; position: relative; top: 350px;  color: #FF7519; " class="icon-star-filled" onclick="ShowPreview(1)" id="peekz"></i></a>
 
    </div>
 

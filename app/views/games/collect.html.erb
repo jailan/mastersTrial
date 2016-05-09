@@ -449,15 +449,16 @@ function collectStar (Myletter) {
     if(abcflags[letterid-1] === 0){
 
       
-    chooseLetter(12);
-    // chooseLetter(12);
+    //chooseLetter(letterid);
+     chooseLetter(2);
+     letterid=2;
     abcflags[letterid-1] =1; }
 
  
        var gamzo = $('.temp_information').data('temp'); 
           //setTimeout(function(){link ='balala';}, 3000);
    var link ='balala';
-   link= 'games_shooting_path';
+   link= 'games_drag_path';
     
         switch (gamzo) {
     case 0:
@@ -506,7 +507,7 @@ function collectStar (Myletter) {
 
 
   $("#hangmanGame").click(function() {
-  collectStar("ث");
+  collectStar('ث');
 
       
 });

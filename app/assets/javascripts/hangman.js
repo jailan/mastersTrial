@@ -12,7 +12,7 @@ correctGuesses;
    var hints = new Array(1,2,3);
      var textq;
      var hangletter = $('.temp_information').data('temp'); 
-    // hangletter = 26;
+     //hangletter = 2;
 
 var scoreBar = 0;
 var barPercentage = 0;
@@ -136,10 +136,106 @@ placeholders = '',
 if (wholeStage < 4){
   abc= ['خ','ح','ج','ث','ت','ب','أ','ص','ش','س','ز','ر','ذ',
   'د','ق','ف','غ','ع','ظ','ط','ض','ي','و','ه','ن','م','ل','ك'];
+  var abcindexat = ['أ', 'ب', 'ت', 'ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
+  var flagSherif = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+
+
+    for (var i = 1; i < wordLength; i++) {
+      placeholders += wordToGuess[i];
+    }
+    // fill the whole word except for the first letter
+
+    word.innerHTML = placeholders;
+// create an alphabet pad to select letters
+letters.innerHTML = '';
+
+
+   var elRandom = parseInt(Math.random() * 3);
+   flagSherif[hangletter-1] = 1;
+
+
+for (i = 0; i < 3; i++) {
+  var div = document.createElement('div');
+  div.style.cursor = 'pointer';
+
+
+if ( i === elRandom ){
+
+       if(hangletter === 26){
+      //     // div.innerHTML="هـ"
+      //    // div.innerHTML = abc[i]+"ـ"; 
+           div.innerHTML =abcindexat [hangletter-1]+"ـ";  
+
+       }
+     else {  div.innerHTML =abcindexat [hangletter-1];}
+  //div.innerHTML =abcindexat [hangletter-1];
+   div.id= abcindexat [hangletter-1];
+   div.onclick = getLetter;
+  frag.appendChild(div);
+}
+ else{
+
+ var elharfeen1 = parseInt(Math.random() * 28);
+
+
+if (flagSherif[elharfeen1] === 0 && elharfeen1 != 27){
+    
+  div.innerHTML = abcindexat[elharfeen1];
+   div.id= abcindexat[elharfeen1];
+  div.onclick = getLetter;
+  frag.appendChild(div);
+
+ flagSherif[elharfeen1] = 1;
+
+}
+else{
+  i=i-1;
+}
+ }
+}
+
+
+
+letters.appendChild(frag);
+
 }
 else{
       var v = hangletter-1;
      abc = [abc1[v],abc2[v],abc3[v]];
+
+  for (var i = 1; i < wordLength; i++) {
+      placeholders += wordToGuess[i];
+    }
+    // fill the whole word except for the first letter
+
+    word.innerHTML = placeholders;
+// create an alphabet pad to select letters
+letters.innerHTML = '';
+
+for (i = 0; i < 3; i++) {
+  var div = document.createElement('div');
+  div.style.cursor = 'pointer';
+
+     if(hangletter === 26){
+          //div.innerHTML="هـ"
+          div.innerHTML = abc[i]+"ـ";   
+
+      }
+      else{
+  div.innerHTML = abc[i];}
+
+
+div.id= abc[i];
+ div.onclick = getLetter;
+frag.appendChild(div);
+
+}
+
+
+
+letters.appendChild(frag);
+
 
 
 }
@@ -148,31 +244,7 @@ else{
 */
 
 		// create row of underscores the same length as letters to guess
-		for (var i = 1; i < wordLength; i++) {
-			placeholders += wordToGuess[i];
-		}
-    // fill the whole word except for the first letter
-
-		word.innerHTML = placeholders;
-// create an alphabet pad to select letters
-letters.innerHTML = '';
-for (i = 0; i < abc.length; i++) {
-	var div = document.createElement('div');
-	div.style.cursor = 'pointer';
-   if(i === 23 || (hangletter === 26 && wholeStage === 5)){
-          //div.innerHTML="هـ"
-          div.innerHTML = abc[i]+"ـ";   
-
-      }
-      else{  
-	div.innerHTML = abc[i];
-}
-
-div.id= abc[i];
-	div.onclick = getLetter;
-	frag.appendChild(div);
-}
-letters.appendChild(frag);
+	
 //window.scrollBy(0, 200);
 }
 
@@ -580,6 +652,11 @@ function getWord() {
         break;
     case 3:
         a = new Array("تاج","تمساح","تفاحة");
+       
+        break;
+
+           case 4:
+        a = new Array("ثعلب","ثمار","ثعبان");
        
         break;
             case 7:

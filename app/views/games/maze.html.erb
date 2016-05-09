@@ -162,18 +162,18 @@ position: absolute;
         margin-right:880px;
     }
     .pix{
-        width:86px;
-        height:86px;
+        width:100px;
+        height:100px;
         margin:15px;
         float:left;
         border: 3px solid #B8008A;
         cursor:pointer;
     }
     .pixie{
-        width:86px;
-        height:86px;
-        margin-right: 180px;
-        margin-left:245px;
+        width:100px;
+        height:100px;
+        margin-right: 157px;
+        margin-left:285px;
         float:right;
         border: 3px solid #FC0;
      
@@ -504,7 +504,7 @@ position: absolute;
       <a class="button orange" id="left" >&#9668;</a>
       <a class="button orange" id="right" >&#9658;</a>
 
-     <a><i style="right: 45px; position: relative;" class="icon-star-filled" ontouchend="mazeHint()" id="mazehint"></i></a>
+     <a><i style="right: 45px; position: relative;" class="icon-star-filled" id="mazehint"></i></a>
 
           <!--PUT YOUR GAME HERE-->
 
@@ -683,6 +683,11 @@ function checkHitsSoundy(){
 
 
  var bod=$("body").css("background-color","#C6ECFF");
+       $('#mazehint').bind( "touchend", function(e){
+         //checkHitsSoundy();
+
+ mazeHint();
+});
 
 
       $('#up').bind( "touchstart", function(e){
@@ -757,6 +762,11 @@ $(document).bind( "touchend", function(e){
     }, 50);
 
     return false;
+});
+ $('#mazehint').mousedown(function(){
+         //checkHitsSoundy();
+
+ mazeHint();
 });
 
 $(document).mouseup(function(){

@@ -685,6 +685,15 @@ function dropPregunta(event,ui){
         numCorrectas++;
               scoreBar++;
        barPercentage = (scoreBar*100)/15;
+       var testAudio;
+       if (correcta === 'بطة')
+        testAudio = 1;
+       if (correcta === 'بنت')
+         testAudio = 2;
+         if (correcta === 'برتقالة')
+           testAudio = 3;
+
+       new Audio('/assets/Audio/l'+dragletter+'/'+testAudio+'.mp3').play();
         document.getElementById('myBar').style.width = barPercentage+'%';
 
     respuesta.draggable("destroy");
@@ -694,6 +703,8 @@ function dropPregunta(event,ui){
     respuesta.remove();
       new Audio('/assets/Audio/applause.mp3').play();
 
+
+//hamada
 
       if(numCorrectas === 3){
         if(dragstage === 5){
