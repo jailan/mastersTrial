@@ -48,7 +48,8 @@ var barPercentage = 0;
   var state = 'intro';
   var sound = true;
   var currentstate;
-var writingletter = $('.temp_information').data('temp'); 
+  var writingletter = 2;
+writingletter = $('.temp_information').data('temp'); 
 var FONTO = 1.5;
 
 

@@ -11,7 +11,8 @@ arabicSound,
 correctGuesses;
    var hints = new Array(1,2,3);
      var textq;
-     var hangletter = $('.temp_information').data('temp'); 
+     var hangletter = 2;
+      hangletter = $('.temp_information').data('temp'); 
      //hangletter = 2;
 
 var scoreBar = 0;
@@ -639,7 +640,7 @@ function getWord() {
   // abjad = $('.temp_information').data('temp'); 
   // HERE , WE CHECK ON THE LETTER AND ACCORDINGLY DECIDE THE WORDS !
   // we handle pictures in line 56 (HANGLETTER)
-  var a = new Array ("أسد");
+ var a = new Array("بطة","بنت","برتقالة");
   var  b = new Array ("1","2","3");
           switch (hangletter) {
     case 1:

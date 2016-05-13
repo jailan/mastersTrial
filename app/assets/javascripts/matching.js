@@ -12,7 +12,8 @@ var stageNumber =1;
 var yalahwytiti = 0 ;
 var irequestflip = false;
 var scory =0;
-var matchletter = $('.temp_information').data('temp'); 
+var matchletter = 2;
+ matchletter = $('.temp_information').data('temp'); 
 var abc = ['أ','ب','ت','ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
 
 var flags = new Array(0,0,0,0,0,0,0);
