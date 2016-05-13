@@ -443,16 +443,20 @@ var abcflags = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   var abc = ['أ', 'ب', 'ت', 'ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
 
 function collectStar (Myletter) {
-  var letterid=2;
+
    letterid = abc.indexOf(Myletter)+1;
     // Removes the star from the screen
     if(abcflags[letterid-1] === 0){
 
+        chooseLetter(letterid);
+
+
+
     
-    chooseLetter(letterid);
+  
      // chooseLetter(2);
      // letterid=2;
-    abcflags[letterid-1] =1; }
+       abcflags[letterid-1] =1;}
 
  
        var gamzo = $('.temp_information').data('temp'); 
