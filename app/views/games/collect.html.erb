@@ -443,12 +443,12 @@ var abcflags = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   var abc = ['أ', 'ب', 'ت', 'ث','ج','ح','خ','د','ذ','ر', 'ز', 'س','ش','ص', 'ض', 'ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي'];
 
 function collectStar (Myletter) {
-
-     var letterid = abc.indexOf(Myletter)+1;
+  var letterid=2;
+   letterid = abc.indexOf(Myletter)+1;
     // Removes the star from the screen
     if(abcflags[letterid-1] === 0){
 
-      
+    
     chooseLetter(letterid);
      // chooseLetter(2);
      // letterid=2;
@@ -456,8 +456,8 @@ function collectStar (Myletter) {
 
  
        var gamzo = $('.temp_information').data('temp'); 
-          //setTimeout(function(){link ='balala';}, 3000);
-   var link ='balala';
+        setTimeout(function(){var link ='balala';}, 3000);
+   
    link= 'games_drag_path';
     
         switch (gamzo) {
@@ -533,7 +533,7 @@ function collectStar (Myletter) {
 
 
   $("#paintletterGame").click(function() {
- collectStar('ز');
+ collectStar('س');
 }); 
 
 
@@ -543,7 +543,7 @@ function collectStar (Myletter) {
  
 
   $("#dragGame").click(function() {
-  collectStar('س');
+  collectStar('ز');
  
   });
 
